@@ -1,4 +1,4 @@
-# voweトレ(仮)
+# vowel-training
 
 ### サービス概要
 滑舌に悩みを持っている人が
@@ -57,8 +57,9 @@
 考えております。
 
 ### スケジュール
-- 12/20 〆README作成
-- 12/25 〆画面遷移図作成
 - 12/31 〆ER図作成
 - 1/31 〆MVPリリース
 - 2/31 〆本リリース
+
+### 画面遷移図
+https://www.figma.com/file/4h1J03eBaY1HfQgUWrITyE/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3
