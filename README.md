@@ -65,4 +65,4 @@
 https://www.figma.com/file/4h1J03eBaY1HfQgUWrITyE/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3
 
 ### ER図
-https://drive.google.com/file/d/1RNFTw4Lj-3CTLxjGEUnhewDpw6bY1NQz/view?usp=sharing
+https://drive.google.com/file/d/1A1z26Ly0_2f2jSIsMQL8VnW_xm36FCwk/view?usp=sharing
