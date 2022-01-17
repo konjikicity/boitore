@@ -60,6 +60,9 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
@@ -92,6 +95,7 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.5)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -231,6 +235,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     semantic_range (3.0.0)
     sexp_processor (4.16.0)
     spring (4.0.0)
@@ -269,12 +276,14 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.4)
   bullet
   enum_help
   factory_bot_rails
+  foreman
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
@@ -291,6 +300,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  seed-fu
   spring
   turbolinks (~> 5)
   tzinfo-data
