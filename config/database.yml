@@ -84,3 +84,6 @@ production:
   database: vowel_training_production
   username: vowel_training
   password: <%= ENV['VOWEL_TRAINING_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
