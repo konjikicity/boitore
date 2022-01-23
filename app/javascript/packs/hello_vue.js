@@ -11,7 +11,20 @@ import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 
 Vue.use(Vuetify);
-const vuetify = new Vuetify();
+const vuetify = new Vuetify(
+  {
+    icons: {
+      iconfont: 'mdi', // default - only for display purposes
+    },
+    theme: {
+      themes: {
+        light: {
+          background: "#A7FFEB"
+        }
+      }
+    }
+  }
+);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
@@ -22,7 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log(app);
 });
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin")
 
+module.exports = {
+    "entry": "hello_vue.js",
+    /* ... */
+    plugins: [
+        new GoogleFontsPlugin({
+            fonts: [
+                { family: "Dela Gothic One" }
+            ]
+        })
+    ]
+}
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would

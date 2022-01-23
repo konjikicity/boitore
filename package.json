@@ -16,8 +16,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@mdi/font": "^6.5.95",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
+    "google-fonts-webpack-plugin": "^0.4.4",
     "webpack-dev-server": "^3"
   },
   "scripts": {
