@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Sentence.seed do |s|
+  s.id = 1
+  s.boin = "おんいいあ"
+  s.normal="こんにちは"
+end
+Sentence.seed do |s|
+  s.id = 2
+  s.boin = "おあおうおあいあう"
+  s.normal="おはようございます"
+end
+Sentence.seed do |s|
+  s.id = 3
+  s.boin = "おおいうおえあいいあう"
+  s.normal="よろしくおねがいします"
+end

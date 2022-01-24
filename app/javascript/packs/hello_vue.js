@@ -8,8 +8,11 @@
 import Vue from 'vue';
 import App from '../app.vue';
 import Vuetify from "vuetify";
+import axios from '../plugins/axios';
 import "vuetify/dist/vuetify.min.css";
-import router from '../router'
+import router from '../router';
+
+Vue.prototype.$axios = axios
 
 Vue.use(Vuetify);
 const vuetify = new Vuetify(
