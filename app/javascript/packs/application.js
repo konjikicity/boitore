@@ -9,5 +9,5 @@ import * as ActiveStorage from '@rails/activestorage';
 import 'router';
 
 Rails.start();
-Turbolinks.start();
+//Turbolinks.start();
 ActiveStorage.start();
