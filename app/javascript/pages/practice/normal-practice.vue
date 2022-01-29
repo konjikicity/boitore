@@ -22,15 +22,15 @@
           class="mb-16"
           elevation="20"
         >
-        <v-card-title
-        class="justify-center"
-        >
+          <v-card-title
+            class="justify-center"
+          >
             <div
               class="text-h2 mt-16 pt-9"
             >
-              {{ normal }}
+              {{ $route.params.normal }}
             </div>
-        </v-card-title>
+          </v-card-title>
         </v-card>
      
         <router-link 
@@ -48,7 +48,6 @@
 </template>
 <script>
 export default {
- props: ["id","normal","boin"]
 
 }
 </script>
