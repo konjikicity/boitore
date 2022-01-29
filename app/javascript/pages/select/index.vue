@@ -10,9 +10,6 @@
       cycle
       height="500"
       hide-delimiter-background
-      show-arrows-on-hover
-      hide-delimiters
-      class="rounded"
     >
       <template v-slot:prev="{ on, attrs }">
         <v-btn
@@ -20,7 +17,7 @@
           v-bind="attrs"
           v-on="on"
         >
-          Previous slide
+          前の文章
         </v-btn>
       </template>
       <template v-slot:next="{ on, attrs }">
@@ -29,12 +26,12 @@
           v-bind="attrs"
           v-on="on"
         >
-          Next slide
+          次の文章
         </v-btn>
       </template>
       <v-carousel-item
-        v-for="(sentence,i) in sentences"
-        :key="i"
+        v-for="sentence in sentences"
+        :key="sentence.id"
       >
         <v-sheet
           color="teal lighten-5"
@@ -45,9 +42,13 @@
             align="center"
             justify="center"
           >
-            <div class="text-h2">
-              {{ sentence.normal }}
-            </div>
+            <router-link 
+              :to="{ name: 'NormalPractice', params: {id: Number(sentence.id), normal: String(sentence.normal), boin: String(sentence.boin)}}"
+            >
+              <div class="text-h2">
+                {{ sentence.normal }}
+              </div>
+            </router-link>
           </v-row>
         </v-sheet>
       </v-carousel-item>
