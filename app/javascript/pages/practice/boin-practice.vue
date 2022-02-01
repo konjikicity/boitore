@@ -17,43 +17,42 @@
             母音法で練習
           </h1>
         </div>
-        <v-card 
-          height="200"
+        <v-card
           class="mb-3"
           elevation="20"
         >
           <v-card-title>
             <h3>母音の文章</h3>
           </v-card-title>
-          <v-card-text>
             <div
-              class="text-h2 text-center align-items-center"
+              class="text-h2 text-center py"
             >
               {{ $route.params.boin }}
             </div>
-          </v-card-text>
         </v-card>
-        <v-card 
-          height="200"
+        <v-card
           class="mb-16"
           elevation="20"
         >
           <v-card-title>
             <h3>通常の文章</h3>
           </v-card-title>
-          <v-card-text>
             <div
-              class="text-h2 text-center align-items-center"
+              class="text-h2 text-center py"
             >
               {{ $route.params.normal }}
             </div>
-          </v-card-text>
         </v-card>
-        <p
-          class="text-center"
+        <div class ="text-center">
+        <v-btn
+          to="/result"
+          color="error"
+          dark
+          large
         >
-          結果画面へ
-        </p>     
+        結果画面へ
+        </v-btn>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -64,3 +63,11 @@ export default {
 
 }
 </script>
+<style scoped>
+.v-card__title {
+  border-bottom: 1px solid #eee;
+}
+.py {
+  padding: 60px 0;
+}
+</style>
