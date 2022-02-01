@@ -43,22 +43,21 @@
               {{ $route.params.normal }}
             </div>
         </v-card>
-        <div class ="text-center">
-        <v-btn
-          to="/result"
-          color="error"
-          dark
-          large
-        >
-        結果画面へ
-        </v-btn>
+        <div
+        class="text-center">
+      <PracticeResult />
         </div>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
+import PracticeResult from 'components/result/PracticeResult.vue'
+
 export default {
+  components:  {
+    PracticeResult
+  }
  
 
 }
