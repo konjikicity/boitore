@@ -24,11 +24,12 @@
           <v-card-title>
             <h3>母音の文章</h3>
           </v-card-title>
-            <div
-              class="text-h2 text-center py"
-            >
-              {{ $route.params.boin }}
-            </div>
+          <v-divider />
+          <div
+            class="text-h2 text-center py-14"
+          >
+            {{ $route.params.boin }}
+          </div>
         </v-card>
         <v-card
           class="mb-16"
@@ -37,15 +38,17 @@
           <v-card-title>
             <h3>通常の文章</h3>
           </v-card-title>
-            <div
-              class="text-h2 text-center py"
-            >
-              {{ $route.params.normal }}
-            </div>
+          <v-divider/>
+          <div
+            class="text-h2 text-center py-14"
+          >
+            {{ $route.params.normal }}
+          </div>
         </v-card>
         <div
-        class="text-center">
-      <PracticeResult />
+          class="text-center"
+        >
+          <PracticeResult />
         </div>
       </v-col>
     </v-row>
@@ -63,10 +66,5 @@ export default {
 }
 </script>
 <style scoped>
-.v-card__title {
-  border-bottom: 1px solid #eee;
-}
-.py {
-  padding: 60px 0;
-}
+
 </style>
