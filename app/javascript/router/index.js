@@ -7,7 +7,6 @@ import TopIndex from "../pages/top/index";
 import SelectIndex from "../pages/select/index";
 import NormalPractice from "../pages/practice/normal-practice";
 import BoinPractice from "../pages/practice/boin-practice";
-import ResultIndex from "../pages/result/index";
 
 Vue.use(Router)
 
@@ -36,13 +35,7 @@ const router = new Router({
       path: "/select/:id/normal-practice/boin-practice",
       component: BoinPractice,
       name: "BoinPractice",
-    },
-    {
-      path: "/result",
-      component: ResultIndex,
-      name: "ResultIndex"
     }
-
   ],
 })
 

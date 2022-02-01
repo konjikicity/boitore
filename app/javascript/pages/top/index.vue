@@ -20,7 +20,7 @@
           dark
           large
         >
-          {{ start }}
+          練習してみる！
         </v-btn>
       </v-col>
     </v-row>
@@ -32,7 +32,7 @@ export default {
   name: "TopIndex",
   data() {
     return {
-      start: "練習してみる！"   
+      
     }
   }
 }
