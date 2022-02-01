@@ -18,15 +18,13 @@
           </h1>
         </div>
         <v-card 
-          height="300"
-          class="mb-16"
           elevation="20"
         >
           <v-card-title
             class="justify-center"
           >
             <div
-              class="text-h2 mt-16 pt-9"
+              class="text-h2 py"
             >
               {{ $route.params.normal }}
             </div>
@@ -51,3 +49,8 @@ export default {
 
 }
 </script>
+<style scoped>
+.py {
+  padding: 80px 0;
+}
+</style>

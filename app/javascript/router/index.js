@@ -36,7 +36,6 @@ const router = new Router({
       component: BoinPractice,
       name: "BoinPractice",
     }
-
   ],
 })
 

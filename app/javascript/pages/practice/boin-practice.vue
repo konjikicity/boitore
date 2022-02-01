@@ -17,50 +17,54 @@
             母音法で練習
           </h1>
         </div>
-        <v-card 
-          height="200"
+        <v-card
           class="mb-3"
           elevation="20"
         >
           <v-card-title>
             <h3>母音の文章</h3>
           </v-card-title>
-          <v-card-text>
-            <div
-              class="text-h2 text-center align-items-center"
-            >
-              {{ $route.params.boin }}
-            </div>
-          </v-card-text>
+          <v-divider />
+          <div
+            class="text-h2 text-center py-14"
+          >
+            {{ $route.params.boin }}
+          </div>
         </v-card>
-        <v-card 
-          height="200"
+        <v-card
           class="mb-16"
           elevation="20"
         >
           <v-card-title>
             <h3>通常の文章</h3>
           </v-card-title>
-          <v-card-text>
-            <div
-              class="text-h2 text-center align-items-center"
-            >
-              {{ $route.params.normal }}
-            </div>
-          </v-card-text>
+          <v-divider/>
+          <div
+            class="text-h2 text-center py-14"
+          >
+            {{ $route.params.normal }}
+          </div>
         </v-card>
-        <p
+        <div
           class="text-center"
         >
-          結果画面へ
-        </p>     
+          <PracticeResult />
+        </div>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
+import PracticeResult from 'components/result/PracticeResult.vue'
+
 export default {
+  components:  {
+    PracticeResult
+  }
  
 
 }
 </script>
+<style scoped>
+
+</style>
