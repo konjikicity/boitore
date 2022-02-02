@@ -10,6 +10,7 @@ import BoinPractice from "../pages/practice/boin-practice";
 
 Vue.use(Router)
 
+
 const router = new Router({
   mode: "history",
   routes: [
@@ -20,19 +21,17 @@ const router = new Router({
 
     },
     {
-      path: "/select",
+      path: "/selects",
       component: SelectIndex,
       name: "SelectIndex",
-      props: true
     },
     {
-      path: "/select/:id/normal-practice",
+      path: "/selects/:id/normal-practice",
       component: NormalPractice,
-      name: "NormalPractice",
-      props: true
+      name: "NormalPractice"
     },
     {
-      path: "/select/:id/normal-practice/boin-practice",
+      path: "/selects/:id/boin-practice",
       component: BoinPractice,
       name: "BoinPractice",
     }

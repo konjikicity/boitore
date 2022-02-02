@@ -8,7 +8,7 @@
       align-content="center"
     >
       <v-col
-        cols="11"
+        cols="9"
       >
         <div>
           <h1
@@ -26,31 +26,52 @@
             <div
               class="text-h2 py"
             >
-              {{ $route.params.normal }}
+              {{ sentence.normal }}
             </div>
           </v-card-title>
         </v-card>
-     
-        <router-link 
-          :to="{ name: 'BoinPractice', params: {normal: $route.params.normal, boin: $route.params.boin}}"
+        <v-row
+        justify="center">
+        <v-btn
+          :to="{ name: 'BoinPractice', params: { id: $route.params.id }}"
+          color="error"
         >
-          <p
-            class="text-center"
-          >
-            次の練習へ
-          </p>     
-        </router-link>
+            次の練習へ    
+        </v-btn>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
 export default {
+  name: "NormalPractice",
+  data () {
+      return {
+        sentence: []
+      }
+  },
+  created () {
+    this.fetchSentences();
+  },
+  methods: {
+   fetchSentences() {
+      this.$axios.get('selects/' + this.$route.params.id)
 
+
+
+        .then(res => this.sentence = res.data)
+        .catch(err => console.log(err.status));
+
+    }
+  }
 }
 </script>
 <style scoped>
 .py {
   padding: 80px 0;
+}
+.v-card {
+  margin-bottom: 100px;
 }
 </style>

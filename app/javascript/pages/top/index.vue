@@ -15,7 +15,7 @@
     <v-row justify="center">
       <v-col cols="auto">
         <v-btn
-          to="/select"
+          to="/selects"
           color="error"
           dark
           large
