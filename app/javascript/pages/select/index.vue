@@ -11,18 +11,18 @@
         cols="11"
       >
         <h1
-          class="mb-16"
+          class="py-5"
         >
           文字の選択
         </h1>
         <v-carousel
           cycle
-          height="400"
           hide-delimiter-background
+          height="400"
         >
           <template v-slot:prev="{ on, attrs }">
             <v-btn
-              color="dark"
+              color="error"
               v-bind="attrs"
               v-on="on"
             >
@@ -31,7 +31,7 @@
           </template>
           <template v-slot:next="{ on, attrs }">
             <v-btn
-              color="dark"
+              color="error"
               v-bind="attrs"
               v-on="on"
             >
@@ -42,9 +42,11 @@
             v-for="sentence in sentences"
             :key="sentence.id"
           >
-            <v-sheet
-              color="teal lighten-5"
+            <v-card
+              elevation="20"
               height="100%"
+          
+
             >
               <v-row
                 class="fill-height"
@@ -52,14 +54,14 @@
                 justify="center"
               >
                 <router-link 
-                  :to="{ name: 'NormalPractice', params: {id: Number(sentence.id), normal: String(sentence.normal), boin: String(sentence.boin)}}"
+                  :to="{ name: 'NormalPractice', params: { id: sentence.id}}"
                 >
                   <div class="text-h2">
                     {{ sentence.normal }}
                   </div>
                 </router-link>
               </v-row>
-            </v-sheet>
+            </v-card>
           </v-carousel-item>
         </v-carousel>
       </v-col>
