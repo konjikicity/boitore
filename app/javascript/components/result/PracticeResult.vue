@@ -40,11 +40,12 @@
               </v-col>
             </v-row>
             <v-divider />
-            <v-card-actions class="justify-center">      
+            <v-card-actions class="justify-center py-15">      
               <v-btn
                 text
                 :to="{ name: 'SelectIndex'}"
                 @click="dialog = false"
+                class="mr-5"
               >
                 もう一度練習する
               </v-btn>
@@ -62,3 +63,7 @@
     </v-col>
   </v-row>
 </template>
+<script>
+</script>
+<style scoped>
+</style>

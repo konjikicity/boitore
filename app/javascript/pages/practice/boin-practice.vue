@@ -12,7 +12,7 @@
       >
         <div>
           <h1
-            class="mb-16"
+            class="py-10"
           >
             母音法で練習
           </h1>
@@ -28,11 +28,11 @@
           <div
             class="text-h2 text-center py-14"
           >
-            {{ $route.params.boin }}
+            {{ sentence.boin }}
           </div>
         </v-card>
         <v-card
-          class="mb-16"
+          class="mb-5"
           elevation="20"
         >
           <v-card-title>
@@ -42,7 +42,7 @@
           <div
             class="text-h2 text-center py-14"
           >
-            {{ $route.params.normal }}
+            {{ sentence.normal }}
           </div>
         </v-card>
         <div
@@ -60,9 +60,27 @@ import PracticeResult from 'components/result/PracticeResult.vue'
 export default {
   components:  {
     PracticeResult
-  }
- 
+  },
+  name: "BoinPractice",
+  data () {
+      return {
+        sentence: []
+      }
+  },
+  created () {
+    this.fetchSentences();
+  },
+  methods: {
+   fetchSentences() {
+      this.$axios.get('selects/' + this.$route.params.id)
 
+
+
+        .then(res => this.sentence = res.data)
+        .catch(err => console.log(err.status));
+
+    }
+  }
 }
 </script>
 <style scoped>
