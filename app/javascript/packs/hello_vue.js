@@ -11,6 +11,7 @@ import Vuetify from "vuetify";
 import axios from '../plugins/axios';
 import "vuetify/dist/vuetify.min.css";
 import router from '../router';
+import '@mdi/font/css/materialdesignicons.css'
 
 Vue.prototype.$axios = axios
 
