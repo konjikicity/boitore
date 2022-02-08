@@ -45,8 +45,6 @@
             <v-card
               elevation="20"
               height="100%"
-          
-
             >
               <v-row
                 class="fill-height"
