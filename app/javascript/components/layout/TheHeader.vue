@@ -7,14 +7,19 @@
     <v-img 
       max-height="200"
       max-width="200"
-      src="../assets/boitore.png"
+      :src="srcLogo"
     />
   </v-app-bar>
 </template>
 
 <script>
 export default {
-  name: "TheHeader"
+  name: "TheHeader",
+  data() {
+    return {
+      srcLogo: require("boitore.png")
+    }
+  }
 }
 </script>
 
