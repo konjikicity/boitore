@@ -11,7 +11,7 @@
     >
         <v-img 
 
-          src="../assets/top.png"
+          :src="srcTop"
           max-width="800"
           max-height="600"
           class="position"
@@ -40,7 +40,7 @@ export default {
   name: "TopIndex",
   data() {
     return {
-      
+      srcTop: require("top.png")
     }
   }
 }
