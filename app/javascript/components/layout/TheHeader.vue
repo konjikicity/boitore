@@ -5,8 +5,8 @@
     app
   >
     <v-img 
-      max-height="200"
-      max-width="200"
+      max-height="150"
+      max-width="150"
       :src="srcLogo"
     />
   </v-app-bar>
@@ -17,7 +17,7 @@ export default {
   name: "TheHeader",
   data() {
     return {
-      srcLogo: require("boitore.png")
+      srcLogo: require("logo.png")
     }
   }
 }

@@ -6,20 +6,17 @@
     <v-row
     justify="center"
     >
-    <v-col
-    cols="6"
-    >
         <v-img 
 
           :src="srcTop"
-          max-width="800"
-          max-height="600"
+          max-width="600"
+          max-height="500"
           class="position"
         /> 
-    </v-col>
-    <v-col
-    cols="6"
-    class="d-flex align-center"
+    </v-row>
+    <v-row
+    justify="center"
+    class="mr"
     >
         <v-btn
           to="/selects"
@@ -30,7 +27,6 @@
         >
           練習してみる！
         </v-btn>  
-    </v-col>
     </v-row>
   </v-container>
 </template>
@@ -47,10 +43,7 @@ export default {
 </script>
 
 <style scoped>
-.position {
-  left: 160px;
-}
-.ml {
-  margin-left: 90px;
+.mr {
+  margin: 0px 0px 20px 0px;
 }
 </style>
