@@ -9,7 +9,7 @@
         <v-img 
 
           :src="srcTop"
-          max-width="600"
+          max-width="800"
           max-height="500"
           class="position"
         /> 
