@@ -9,11 +9,13 @@
       <v-col
         cols="9"
       >
-        <div>
+        <div
+        class="py-14"
+        >
           <h1
-            class="py-14"
+            class="white--text"
           >
-            通常練習
+           通常練習
           </h1>
         </div>
         <v-card 

@@ -9,9 +9,11 @@
       <v-col
         cols="9"
       >
-        <div>
+        <div
+        class="py-10"
+        >
           <h1
-            class="py-10"
+            class="white--text"
           >
             母音法で練習
           </h1>
