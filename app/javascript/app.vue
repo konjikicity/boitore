@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :style="{ 'background-image': 'url(' + srcBg + ')', 'background-size': 'no-repeat center'}">
     <TheHeader />
     <v-main>
       <router-view />
@@ -16,6 +16,14 @@ export default {
   components: {
     TheHeader,
     TheFooter,
+  },
+  data() {
+    return{
+      srcBg: require('back-ground.jpg')
+    }
   }
 }
 </script>
+<style scoped>
+
+</style>
