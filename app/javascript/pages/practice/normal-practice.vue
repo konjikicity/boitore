@@ -22,14 +22,16 @@
           elevation="20"
         >
           <v-card-title
-            class="justify-center"
-          >
+          >  
+          <h3 class="red--text">普通の文章</h3>
+          </v-card-title>
+          <v-divider/>
             <div
-              class="text-h2 py"
+              class="text-h2 py text-center"
             >
               {{ sentence.normal }}
             </div>
-          </v-card-title>
+        
         </v-card>
         <v-row
           justify="center"
