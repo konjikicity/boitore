@@ -23,7 +23,7 @@
           elevation="20"
         >
           <v-card-title>
-            <h3 class="red--text">母音の文章</h3>
+            <h3 class="white--text">母音の文章</h3>
           </v-card-title>
           <v-divider />
           <div
@@ -37,7 +37,7 @@
           elevation="20"
         >
           <v-card-title>
-            <h3 class="red--text">普通の文章</h3>
+            <h3 class="white--text">普通の文章</h3>
           </v-card-title>
           <v-divider />
           <div
@@ -199,5 +199,8 @@ export default {
 }
 </script>
 <style scoped>
+.v-card__title {
+  background-color: #EF5350;
+}
 
 </style>

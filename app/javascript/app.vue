@@ -35,5 +35,4 @@ export default {
 .v-enter, .v-leave-to {
   opacity: 0;
 }
-
 </style>
