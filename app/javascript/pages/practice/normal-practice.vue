@@ -10,28 +10,28 @@
         cols="9"
       >
         <div
-        class="py-14"
+          class="py-14"
         >
           <h1
             class="white--text"
           >
-           通常練習
+            通常練習
           </h1>
         </div>
         <v-card 
           elevation="20"
         >
-          <v-card-title
-          >  
-          <h3 class="white--text">普通の文章</h3>
+          <v-card-title>  
+            <h3 class="white--text">
+              普通の文章
+            </h3>
           </v-card-title>
-          <v-divider/>
-            <div
-              class="text-h2 py text-center"
-            >
-              {{ sentence.normal }}
-            </div>
-        
+          <v-divider />
+          <div
+            class="text-h2 py text-center"
+          >
+            {{ sentence.normal }}
+          </div>
         </v-card>
         <v-row
           justify="center"
