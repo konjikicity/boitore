@@ -10,14 +10,14 @@
       <v-col
         cols="11"
       >
-      <div
-      class="py-5"
-      >
-        <h1
-          class="white--text"
+        <div
+          class="py-5"
         >
-          文字の選択
-        </h1>
+          <h1
+            class="white--text"
+          >
+            文字の選択
+          </h1>
         </div>
         <v-carousel
           hide-delimiter-background
@@ -28,8 +28,8 @@
             <v-btn
               color="error"
               v-bind="attrs"
-              v-on="on"
               x-large
+              v-on="on"
             >
               前の文章
             </v-btn>
@@ -38,8 +38,8 @@
             <v-btn
               color="error"
               v-bind="attrs"
-              v-on="on"
               x-large
+              v-on="on"
             >
               次の文章
             </v-btn>
