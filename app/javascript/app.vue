@@ -21,27 +21,30 @@ export default {
   },
   data() {
     return{
-      srcBg: require('back-ground.jpg')
+      
     }
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+
 .theme--light.v-application{
   background: url('../assets/images/back-ground.jpg');
   background-size: cover;
   background-position: center center;
   width: 100%;
   height: 100%;
-}
-.theme--light.v-application::before{
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0,0,0,0.5);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+
+  }
 }
 .v-enter-active, .v-leave-active {
   transition: opacity .5s;
