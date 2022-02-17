@@ -5,30 +5,14 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue';
-import App from '../app.vue';
-import Vuetify from "vuetify";
-import axios from '../plugins/axios';
-import "vuetify/dist/vuetify.min.css";
-import router from '../router';
+import Vue from 'vue'
+import App from '../app.vue'
+import axios from '../plugins/axios'
+import router from '../router'
+import vuetify from '../plugins/vuetify'
+import '../stylesheets/variables.scss'
 
 Vue.prototype.$axios = axios
-
-Vue.use(Vuetify);
-const vuetify = new Vuetify(
-  {
-    icons: {
-      iconfont: 'mdi', // default - only for display purposes
-    },
-    theme: {
-      themes: {
-        light: {
-          background: "#A7FFEB"
-        }
-      }
-    }
-  }
-);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

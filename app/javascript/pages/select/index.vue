@@ -10,20 +10,25 @@
       <v-col
         cols="11"
       >
-        <h1
+        <div
           class="py-5"
         >
-          文字の選択
-        </h1>
+          <h1
+            class="white--text"
+          >
+            文字の選択
+          </h1>
+        </div>
         <v-carousel
-          cycle
           hide-delimiter-background
           height="400"
+          class="rounded-lg"
         >
           <template v-slot:prev="{ on, attrs }">
             <v-btn
               color="error"
               v-bind="attrs"
+              x-large
               v-on="on"
             >
               前の文章
@@ -33,6 +38,7 @@
             <v-btn
               color="error"
               v-bind="attrs"
+              x-large
               v-on="on"
             >
               次の文章
@@ -45,8 +51,6 @@
             <v-card
               elevation="20"
               height="100%"
-          
-
             >
               <v-row
                 class="fill-height"
@@ -56,9 +60,9 @@
                 <router-link 
                   :to="{ name: 'NormalPractice', params: { id: sentence.id}}"
                 >
-                  <div class="text-h2">
+                  <p>
                     {{ sentence.normal }}
-                  </div>
+                  </p>
                 </router-link>
               </v-row>
             </v-card>
@@ -94,6 +98,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style  scoped>
+.v-application a {
+    color: #212121;
+    text-decoration: none;
+}
+.v-application a:hover {
+  color: #EF5350;
+  transition: 0.5s;
+}
+.v-application p {
+  font-size: 80px;
+  margin-bottom: 0px;
+  
+}
 
 </style>

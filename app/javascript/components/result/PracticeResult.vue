@@ -9,6 +9,7 @@
           <v-btn
             color="error"
             v-bind="attrs"
+            class="mb-5"
             v-on="on"
           >
             結果を見る!
@@ -44,8 +45,8 @@
               <v-btn
                 text
                 :to="{ name: 'SelectIndex'}"
-                @click="dialog = false"
                 class="mr-5"
+                @click="dialog = false"
               >
                 もう一度練習する
               </v-btn>
@@ -66,4 +67,5 @@
 <script>
 </script>
 <style scoped>
+
 </style>
