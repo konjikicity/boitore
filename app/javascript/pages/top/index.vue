@@ -4,29 +4,29 @@
     fill-height
   >
     <v-row
-    justify="center"
+      justify="center"
     >
-        <v-img 
+      <v-img 
 
-          :src="srcTop"
-          max-width="800"
-          max-height="500"
-          class="position"
-        /> 
+        :src="srcTop"
+        max-width="800"
+        max-height="500"
+        class="position"
+      /> 
     </v-row>
     <v-row
-    justify="center"
-    class="mr"
+      justify="center"
+      class="mr"
     >
-        <v-btn
-          to="/selects"
-          color="error"
-          dark
-          x-large
-          class="ml"
-        >
-          練習してみる！
-        </v-btn>  
+      <v-btn
+        to="/selects"
+        color="error"
+        dark
+        x-large
+        class="ml"
+      >
+        練習してみる！
+      </v-btn>  
     </v-row>
   </v-container>
 </template>
