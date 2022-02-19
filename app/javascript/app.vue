@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <TheHeader />
-      <v-main>
-        <transition mode="out-in">
-          <router-view />
-        </transition>
-      </v-main>
+    <v-main>
+      <transition mode="out-in">
+        <router-view />
+      </transition>
+    </v-main>
     <TheFooter />
   </v-app>
 </template>

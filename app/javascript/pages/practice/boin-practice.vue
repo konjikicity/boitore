@@ -54,7 +54,7 @@
           justify="center"
         >
           <v-btn 
-            :loading="status==='NowRecording'"
+            :loading="status==='recording'"
             fab
             dark
             x-large
@@ -83,36 +83,28 @@
           <PracticeResult />
         </v-row>
         <v-layout
-          v-if="recordings.length > 0"
+          v-if="audioData.length > 0"
           column
           wrap
         >
           <h4 class="mt-3">
             Recordings
           </h4>
-          <div
-            v-for="(recording,idx) in recordings"
-            :key="recording.ts"
-          >
-            <v-card>
-              <v-card-title primary-title>
-                <v-layout
-                  column
-                  wrap
-                >
-                  <div class="ml-3">
-                    <div>
-                      <audio
-                        :src="recording.blobUrl"
-                        controls="true"
-                      />
-                    </div>
-                  </div>
-                </v-layout>
-              </v-card-title>
-            </v-card>
-            <v-divider v-if="idx !== (recordings.length-1)" />
-          </div>
+          <v-card>
+            <v-card-title primary-title>
+              <v-layout
+                column
+                wrap
+              >
+                <div class="ml-3">
+                  <audio
+                    :src="boinVoice.url"
+                    controls="true"
+                  />
+                </div>
+              </v-layout>
+            </v-card-title>
+          </v-card>
         </v-layout>
       </v-col>
     </v-row>
@@ -120,37 +112,46 @@
 </template>
 <script>
 import PracticeResult from 'components/result/PracticeResult.vue'
-import RecorderService from '../../plugins/RecorderService'
-import utils from '../../plugins/Utils'
 
 export default {
   name: "BoinPractice",
   components:  {
     PracticeResult
   },
-  filters: {
-    fileSizeToHumanSize (val) {
-      return utils.humanFileSize(val, true)
-    }
-  },
   data () {
       return {
-        sentence: [],
-        status: 'init',
-        supportedMimeTypes: [],
-        recordings: [],
-        cleanupWhenFinished: true,
-        addNoise: false,
-        numAudioSamples: 0
+         sentence: [],
+         status: 'init',     // 状況
+         recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
+         audioData: [],      // 入力された音声データ
+         audioExtension: '', // 音声ファイルの拡張子
+         boinVoice: { url: ''}  
       }
   },
   created () {
     this.fetchSentences();
-    this.recorderSrvc = new RecorderService()
-    this.recorderSrvc.em.addEventListener('recording', (evt) => this.onNewRecording(evt))
-    this.recorderSrvc.em.addEventListener('onaudioprocess', (evt) => this.onAudioProcess(evt))
-    this.recorderSrvc.config.broadcastAudioProcessEvents = true
   },
+  mounted() {
+      navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+
+        this.recorder = new MediaRecorder(stream);
+        this.recorder.addEventListener('dataavailable', e => {
+
+            this.audioData.push(e.data);
+            this.audioExtension = this.getExtension(e.data.type);
+
+        });
+        this.recorder.addEventListener('stop', () => {
+
+            const audioBlob = new Blob(this.audioData);
+            const url = URL.createObjectURL(audioBlob);
+            this.boinVoice.url = url;
+
+        });
+
+    });
+    },
   methods: {
    fetchSentences() {
       this.$axios.get('selects/' + this.$route.params.id)
@@ -161,45 +162,34 @@ export default {
         .catch(err => console.log(err.status));
 
     },
-    startRecording () {
-      this.numAudioSamples = 0
-      this.recorderSrvc.startRecording()
-        .then(() => {
-          this.status = 'NowRecording'
-        })
-        .catch((error) => {
-          console.error('Exception while start recording: ' + error)
-          alert('Exception while start recording: ' + error.message)
-        })
+    startRecording() {
+
+    this.status = 'recording';
+    this.audioData = [];
+    this.recorder.start();
+
     },
-     stopRecording () {
-      this.recorderSrvc.stopRecording()
-      this.status = 'recorded'
+    stopRecording() {
+
+    this.recorder.stop();
+    this.status = 'ready';
+
     },
-        onAudioProcess (e) {
-      this.numAudioSamples++
-      let inputBuffer = e.detail.inputBuffer
-      let outputBuffer = e.detail.outputBuffer
-      for (let channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
-        let inputData = inputBuffer.getChannelData(channel)
-        let outputData = outputBuffer.getChannelData(channel)
-        // Each sample
-        for (let sample = 0; sample < inputBuffer.length; sample++) {
-          if (this.addNoise) {
-            outputData[sample] = (inputData[sample] + (Math.random() * 0.02))
-          }
-          else {
-            outputData[sample] = inputData[sample]
-          }
-        }
-      }
-    },
-    onNewRecording (evt) {
-      this.recordings.push(evt.detail.recording)
+    getExtension(audioType) {
+
+    let extension = 'wav';
+    const matches = audioType.match(/audio\/([^;]+)/);
+
+    if(matches) {
+
+        extension = matches[1];
+
     }
 
-    
-  }
+    return '.'+ extension;
+
+   }
+    }
 }
 </script>
 <style scoped>
