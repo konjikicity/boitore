@@ -10,7 +10,7 @@
         cols="9"
       >
         <div
-          class="py-14"
+          class="py-4"
         >
           <h1
             class="white--text"
@@ -36,8 +36,9 @@
         <v-row
           justify="center"
         >
-          <v-btn 
-            :loading="status==='recording'"
+          <v-btn
+            :disabled="status === 'recorded'"
+            :loading="status ==='recording'"
             fab
             dark
             x-large
@@ -46,58 +47,34 @@
           >
             <v-icon>mdi-microphone</v-icon>
           </v-btn>
+          <v-btn 
+            v-if="status === 'recording'" 
+            transition
+            fab
+            dark
+            x-large
+            class="ml-5"
+            color="error"
+            @click="stopRecording"
+          >
+            <v-icon>
+              mdi-square
+            </v-icon>
+          </v-btn>
         </v-row>
-        <v-btn 
-          :disabled="status === 'init'" 
-          class="mx-2"
-          fab
-          dark
-          x-large
-          color="error"
-          @click="stopRecording"
-        >
-          <v-icon>
-            mdi-square
-          </v-icon>
-        </v-btn>
         <v-row
           justify="center"
         >
           <v-btn
+            v-if="status=== 'recorded'"
             :to="{ name: 'BoinPractice', params: { id: $route.params.id }}"
             color="error"
-            class="mb-10"
+            class="my-10"
+            x-large
           >
             次の練習へ    
           </v-btn>
         </v-row>
-       
-        <v-layout
-          v-if="audioData.length > 0"
-          column
-          wrap
-        >
-          <h4 class="mt-3">
-            Recordings
-          </h4>
-          <v-card>
-            <v-card-title primary-title>
-              <v-layout
-                column
-                wrap
-              >
-                <div class="ml-3">
-                  <div>
-                    <audio
-                      :src="normalVoice.url"
-                      controls
-                    />
-                  </div>
-                </div>
-              </v-layout>
-            </v-card-title>
-          </v-card>
-        </v-layout>
       </v-col>
     </v-row>
   </v-container>
@@ -120,7 +97,7 @@ export default {
   created () {
     this.fetchSentences();
   },
-    mounted() {
+   mounted() {
       navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
 
@@ -140,7 +117,7 @@ export default {
         });
 
     });
-    },
+  },
   methods: {
    fetchSentences() {
       this.$axios.get('selects/' + this.$route.params.id)
@@ -161,7 +138,7 @@ export default {
     stopRecording() {
 
     this.recorder.stop();
-    this.status = 'ready';
+    this.status = 'recorded';
 
     },
     getExtension(audioType) {
@@ -177,10 +154,8 @@ export default {
 
     return '.'+ extension;
 
-}
     }
-
-   
+  },
 }
 </script>
 <style scoped>

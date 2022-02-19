@@ -10,6 +10,7 @@
             color="error"
             v-bind="attrs"
             class="mb-5"
+            x-large
             v-on="on"
           >
             結果を見る!

@@ -10,7 +10,7 @@
         cols="9"
       >
         <div
-          class="py-10"
+          class="py-4"
         >
           <h1
             class="white--text"
@@ -29,7 +29,7 @@
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py-14"
+            class="text-h2 text-center py"
           >
             {{ sentence.boin }}
           </div>
@@ -45,7 +45,7 @@
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py-14"
+            class="text-h2 text-center py"
           >
             {{ sentence.normal }}
           </div>
@@ -55,57 +55,36 @@
         >
           <v-btn 
             :loading="status==='recording'"
+            :disabled="status === 'recorded'"
             fab
             dark
             x-large
             color="error"
-            class="mt-5"
+            class="my-10"
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
           </v-btn>
+          <v-btn 
+            v-if="status === 'recording'" 
+            transition
+            fab
+            dark
+            x-large
+            class="my-10 ml-5"
+            color="error"
+            @click="stopRecording"
+          >
+            <v-icon>
+              mdi-square
+            </v-icon>
+          </v-btn>
         </v-row>
-        <v-btn 
-          :disabled="status === 'init'" 
-          fab
-          dark
-          x-large
-          color="error"
-          @click="stopRecording"
-        >
-          <v-icon>
-            mdi-square
-          </v-icon>
-        </v-btn> 
-        <v-row
-          justify="center"
-        >
-          <PracticeResult />
+        <v-row>
+          <PracticeResult
+            v-if="status==='recorded'"
+          />
         </v-row>
-        <v-layout
-          v-if="audioData.length > 0"
-          column
-          wrap
-        >
-          <h4 class="mt-3">
-            Recordings
-          </h4>
-          <v-card>
-            <v-card-title primary-title>
-              <v-layout
-                column
-                wrap
-              >
-                <div class="ml-3">
-                  <audio
-                    :src="boinVoice.url"
-                    controls="true"
-                  />
-                </div>
-              </v-layout>
-            </v-card-title>
-          </v-card>
-        </v-layout>
       </v-col>
     </v-row>
   </v-container>
@@ -132,7 +111,7 @@ export default {
     this.fetchSentences();
   },
   mounted() {
-      navigator.mediaDevices.getUserMedia({ audio: true })
+    navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
 
         this.recorder = new MediaRecorder(stream);
@@ -150,8 +129,8 @@ export default {
 
         });
 
-    });
-    },
+      });
+  },
   methods: {
    fetchSentences() {
       this.$axios.get('selects/' + this.$route.params.id)
@@ -172,7 +151,7 @@ export default {
     stopRecording() {
 
     this.recorder.stop();
-    this.status = 'ready';
+    this.status = 'recorded';
 
     },
     getExtension(audioType) {
@@ -189,12 +168,14 @@ export default {
     return '.'+ extension;
 
    }
-    }
+  },
 }
 </script>
 <style scoped>
 .v-card__title {
   background-color: #EF5350;
 }
-
+.py {
+  padding: 35px 0px 35px 0px; 
+}
 </style>
