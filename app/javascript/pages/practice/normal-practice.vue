@@ -96,9 +96,14 @@ export default {
   },
   created () {
     this.fetchSentences();
+
   },
-   mounted() {
-      navigator.mediaDevices.getUserMedia({ audio: true })
+  mounted() {
+      navigator.mediaDevices.getUserMedia({ audio: {
+        echoCancellation: true,
+        echoCancellationType: 'system',
+        noiseSuppression: false
+      }})
       .then(stream => {
 
         this.recorder = new MediaRecorder(stream);
@@ -113,6 +118,7 @@ export default {
             const audioBlob = new Blob(this.audioData);
             const url = URL.createObjectURL(audioBlob);
             this.normalVoice.url = url;
+            sessionStorage.setItem('setNormal',this.normalVoice.url);
 
         });
 
@@ -155,7 +161,7 @@ export default {
     return '.'+ extension;
 
     }
-  },
+  }
 }
 </script>
 <style scoped>
