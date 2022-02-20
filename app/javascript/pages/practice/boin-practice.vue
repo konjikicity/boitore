@@ -104,14 +104,21 @@ export default {
          recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
          audioData: [],      // 入力された音声データ
          audioExtension: '', // 音声ファイルの拡張子
-         boinVoice: { url: ''}  
+         boinVoice: { url: ''}
+         
       }
   },
   created () {
     this.fetchSentences();
+    
   },
   mounted() {
-    navigator.mediaDevices.getUserMedia({ audio: true })
+     navigator.mediaDevices.getUserMedia({ audio: {
+       
+       echoCancellation: true,
+       echoCancellationType: 'system',
+       noiseSuppression: false
+     }})
       .then(stream => {
 
         this.recorder = new MediaRecorder(stream);
@@ -125,7 +132,8 @@ export default {
 
             const audioBlob = new Blob(this.audioData);
             const url = URL.createObjectURL(audioBlob);
-            this.boinVoice.url = url;
+            this.boinVoice.url = url; 
+            sessionStorage.setItem('setBoin',this.boinVoice.url);
 
         });
 
@@ -168,7 +176,7 @@ export default {
     return '.'+ extension;
 
    }
-  },
+  }
 }
 </script>
 <style scoped>

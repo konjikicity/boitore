@@ -83,6 +83,9 @@ export default {
   },
   created () {
     this.fetchSentences();
+    sessionStorage.removeItem('setNormal');
+    sessionStorage.removeItem('setBoin');
+
   },
   methods: {
    fetchSentences() {
