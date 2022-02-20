@@ -12,6 +12,7 @@
             class="mb-5"
             x-large
             v-on="on"
+            @click="setRecords"
           >
             結果を見る!
           </v-btn>
@@ -30,15 +31,21 @@
                 class="text-center py-9"
                 cols="5"
               >
-                <p>通常の文章</p>
-                <audio controls />
+                <p>練習前の音声</p>
+                <audio
+                  :src="normalVoice.url"
+                  controls
+                />
               </v-col>
               <v-col
                 class="text-center py-9"
                 cols="5"
               >
-                <p>母音の文章</p>
-                <audio controls />
+                <p>練習後の音声</p>
+                <audio 
+                  :src="boinVoice.url"
+                  controls
+                />
               </v-col>
             </v-row>
             <v-divider />
@@ -66,6 +73,20 @@
   </v-row>
 </template>
 <script>
+export default {
+  data () {
+      return {
+         boinVoice: { url: ''},
+         normalVoice: { url: ''}
+      }
+  },
+  methods: {
+    setRecords() {
+      this.boinVoice.url = sessionStorage.getItem('setBoin');
+      this.normalVoice.url = sessionStorage.getItem('setNormal');
+    }
+  }
+} 
 </script>
 <style scoped>
 
