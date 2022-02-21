@@ -91,7 +91,9 @@ export default {
         recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
         audioData: [],      // 入力された音声データ
         audioExtension: '', // 音声ファイルの拡張子
-        normalVoice: { url: ''}  
+        normalVoice: { url: ''},
+        recognition: null,
+        normalRecognition: ''
       }
   },
   created () {
@@ -105,8 +107,9 @@ export default {
         noiseSuppression: false
       }})
       .then(stream => {
-
+        
         this.recorder = new MediaRecorder(stream);
+        this.recognition = new webkitSpeechRecognition(stream);
         this.recorder.addEventListener('dataavailable', e => {
 
             this.audioData.push(e.data);
@@ -121,6 +124,13 @@ export default {
             sessionStorage.setItem('setNormal',this.normalVoice.url);
 
         });
+        this.recognition.onresult = (event) => {
+        if (event.results.length > 0) {
+          this.normalRecognition = event.results[0][0].transcript;
+          sessionStorage.setItem('setNormalRecognition',this.normalRecognition);
+
+        }
+      }
 
     });
   },
@@ -139,11 +149,12 @@ export default {
     this.status = 'recording';
     this.audioData = [];
     this.recorder.start();
-
+    this.recognition.start();
     },
     stopRecording() {
 
     this.recorder.stop();
+    this.recognition.stop();
     this.status = 'recorded';
 
     },
