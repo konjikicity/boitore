@@ -85,6 +85,8 @@ export default {
     this.fetchSentences();
     sessionStorage.removeItem('setNormal');
     sessionStorage.removeItem('setBoin');
+    sessionStorage.removeItem('setNormalRecognition');
+    sessionStorage.removeItem('setBoinRecognition');
 
   },
   methods: {
