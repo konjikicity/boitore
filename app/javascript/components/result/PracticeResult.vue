@@ -20,10 +20,19 @@
 
         <template v-slot:default="dialog">
           <v-card>
-            <div class="text-h3 text-center py-9">
-              録音結果！
+            <div class="text-center">
+              <h3 class="text-h3 font-weight-bold pt-10">判定結果！</h3>
+            </div>
+            <div class="text-center py-9">
+            <p v-bind:style="{ color: activeColor }" class="text-h2 font-weight-bold">{{ judge }}</p>
+            <p class="py text-h4">{{ judgeText }}</p>
             </div>
             <v-divider />
+            <v-row
+            justify="center"
+            >
+            <h3 class="py-9 text-h5 font-weight-bold">音声認識の結果</h3>
+            </v-row>
             <v-row
             justify ="center"
             >
@@ -97,8 +106,9 @@ export default {
          normalVoice: { url: ''},
          boinRecognition: '',
          normalRecognition: '',
-         Judge: '',
-         JudgeText: ''
+         judge: '',
+         judgeText: '',
+         activeColor: ''
       }
   },
   methods: {
@@ -108,26 +118,31 @@ export default {
       this.boinRecognition = sessionStorage.getItem('setBoinRecognition');
       this.normalRecognition = sessionStorage.getItem('setNormalRecognition')
 
-    },
-    watch: {
-      judgeRecognition() {
-      if(this.boinRecognition == "こんにちは") {
-        this.judge = 'good!'
-        this.judgeText = 'しっかりこんにちはと発音できています。'
+    }
+  },
+  watch: {
+    boinRecognition: function() {
+      if(this.boinRecognition == 'こんにちは'){
+        this.judge = 'Good!'
+        this.activeColor = 'red'
+        this.judgeText = 'しっかりこんにちはと聞こえています!'
       }
-      else if(this.boinRecognition == "おはようございます") {
-        this.judge = 'good!'
-        this.judgeText = 'しっかりおはようございますと発音できています。'
+      else if(this.boinRecognition == 'おはようございます') {
+        this.judge = 'Good!'
+        this.activeColor = 'red'
+        this.judgeText = 'しっかりおはようございますと聞こえています!'
       }
-      else if(this.boinRecognition == "よろしくお願いします"){
-        this.judge = 'good!'
-        this.judgeText = 'しっかりよろしくお願いしますと発音できています。'
+      else if(this.boinRecognition == 'よろしくお願いします') {
+        this.judge = 'Good!'
+        this.activeColor = 'red'
+        this.judgeText = 'しっかりよろしくお願いしますと聞こえています!'
       }
       else {
-        this.judge = 'bad!'
-        this.judgeText = '発音がただしく認識されませんでした...もう一度練習してみよう！'
+        this.judge = 'Bad..'
+        this.activeColor = 'blue'
+        this.judgeText = '文字を認識できませんでした...もう一度練習しましょう!'
+        
       }
-     }
     }
   }
 } 
@@ -135,7 +150,7 @@ export default {
 <style scoped>
 .py {
   margin: 0;
-  padding: 30px 0px 30px 0px;
+  padding: 0px 0px 30px 0px;
 }
 
 </style>
