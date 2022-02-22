@@ -16,8 +16,8 @@
           <h1
             class="white--text"
           >
-            文字の選択
-          </h1>
+            文章の選択
+          </h1>          
         </div>
         <v-carousel
           hide-delimiter-background
