@@ -65,7 +65,7 @@
               <v-btn
                 color="error"
                 text
-                :to="{ name: 'SelectIndex' }"
+                :to="{ name: 'HowToIndex' }"
                 @click="dialog = false"
               >
                 はじめての方はこちら
