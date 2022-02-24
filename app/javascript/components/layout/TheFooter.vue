@@ -33,10 +33,10 @@
     name: "TheFooter",
     data: function () {
     return {
-      copylight:"©︎2021 boiトレ",
+      copylight:"©︎2021 BOIトレ",
       links: [
-        'home',
-        'boiトレとは？',
+        'HOME',
+        'BOIトレとは？',
         '利用規約',
         'プライバシーポリシー',
         'お問い合わせ',
