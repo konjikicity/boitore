@@ -47,17 +47,17 @@
 
         },
         {
-          url: '/user-policy'
+          url: '/user-policy',
           text: '利用規約'
 
         },
         {
-          url: '/privacy'
+          url: '/privacy',
           text: 'プライバシーポリシー'
 
         },
         {
-          url: '/info'
+          url: '/info',
           text: 'お問い合わせ'
 
         }
