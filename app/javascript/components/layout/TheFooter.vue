@@ -11,12 +11,13 @@
         v-for="link in links"
         :key="link"
         color="white"
+        :to="link.url"
         text
         rounded
         class="my-2"
         style="text-transform: none"
       >
-        {{ link }}
+        {{ link.text }}
       </v-btn>
       <v-col
         class="grey darken-4 py-4 text-center white--text"
@@ -35,11 +36,31 @@
     return {
       copylight:"©︎2021 BOIトレ",
       links: [
-        'HOME',
-        'BOIトレとは？',
-        '利用規約',
-        'プライバシーポリシー',
-        'お問い合わせ',
+        {
+          url: '/',
+          text: 'HOME'
+
+        },
+        {
+          url: '/how-to',
+          text: 'BOIトレとは？'
+
+        },
+        {
+          url: '/user-policy'
+          text: '利用規約'
+
+        },
+        {
+          url: '/privacy'
+          text: 'プライバシーポリシー'
+
+        },
+        {
+          url: '/info'
+          text: 'お問い合わせ'
+
+        }
       ]
     }
   }
