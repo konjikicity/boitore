@@ -81,7 +81,7 @@
           </v-btn>
         </v-row>
         <v-row>
-          <PracticeResult/>
+          <PracticeResult />
         </v-row>
       </v-col>
     </v-row>

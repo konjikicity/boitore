@@ -21,33 +21,48 @@
         <template v-slot:default="dialog">
           <v-card>
             <div class="text-center">
-              <h3 class="text-h3 font-weight-bold pt-10">判定結果！</h3>
+              <h3 class="text-h3 font-weight-bold pt-10">
+                判定結果！
+              </h3>
             </div>
             <div class="text-center py-9">
-            <p v-bind:style="{ color: activeColor }" class="text-h2 font-weight-bold">{{ judge }}</p>
-            <p class="py text-h4">{{ judgeText }}</p>
+              <p
+                :style="{ color: activeColor }"
+                class="text-h2 font-weight-bold"
+              >
+                {{ judge }}
+              </p>
+              <p class="py text-h4">
+                {{ judgeText }}
+              </p>
             </div>
             <v-divider />
             <v-row
-            justify="center"
+              justify="center"
             >
-            <h3 class="py-9 text-h5 font-weight-bold">音声認識の結果</h3>
+              <h3 class="py-9 text-h5 font-weight-bold">
+                音声認識の結果
+              </h3>
             </v-row>
             <v-row
-            justify ="center"
+              justify="center"
             >
-            <v-col
-            cols="5"
-            class="text-center"
-            >
-            <p class="py">通常の録音は<span class="red--text">{{ normalRecognition }}</span>と聞こえています。</p>
-            </v-col>
-            <v-col
-            cols="5"
-            class="text-center"
-            >
-            <p class="py">母音法の録音は<span class="red--text">{{ boinRecognition }}</span>と聞こえています。</p>
-            </v-col>
+              <v-col
+                cols="5"
+                class="text-center"
+              >
+                <p class="py">
+                  通常の録音は<span class="red--text">{{ normalRecognition }}</span>と聞こえています。
+                </p>
+              </v-col>
+              <v-col
+                cols="5"
+                class="text-center"
+              >
+                <p class="py">
+                  母音法の録音は<span class="red--text">{{ boinRecognition }}</span>と聞こえています。
+                </p>
+              </v-col>
             </v-row>
             <v-divider />
             <v-row
@@ -111,15 +126,6 @@ export default {
          activeColor: ''
       }
   },
-  methods: {
-    setRecords() {
-      this.boinVoice.url = sessionStorage.getItem('setBoin');
-      this.normalVoice.url = sessionStorage.getItem('setNormal');
-      this.boinRecognition = sessionStorage.getItem('setBoinRecognition');
-      this.normalRecognition = sessionStorage.getItem('setNormalRecognition')
-
-    }
-  },
   watch: {
     boinRecognition: function() {
       if(this.boinRecognition == 'こんにちは'){
@@ -143,6 +149,15 @@ export default {
         this.judgeText = '文字を認識できませんでした...もう一度練習しましょう!'
         
       }
+    }
+  },
+  methods: {
+    setRecords() {
+      this.boinVoice.url = sessionStorage.getItem('setBoin');
+      this.normalVoice.url = sessionStorage.getItem('setNormal');
+      this.boinRecognition = sessionStorage.getItem('setBoinRecognition');
+      this.normalRecognition = sessionStorage.getItem('setNormalRecognition')
+
     }
   }
 } 
