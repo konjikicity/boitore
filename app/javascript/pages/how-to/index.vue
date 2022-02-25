@@ -183,7 +183,7 @@ li {
   margin-left: 1rem;
   position: sticky;
   top: 1rem;
-  max-height: 90vh;
+  max-height: 70vh;
   overflow: scroll;
   margin: 50px 0px 50px 0px;
 }
