@@ -81,7 +81,9 @@
           </v-btn>
         </v-row>
         <v-row>
-          <PracticeResult />
+          <PracticeResult 
+          v-if="status === 'recorded'"
+          />
         </v-row>
       </v-col>
     </v-row>
