@@ -16,11 +16,13 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: unicode 
+  username: onodaosamu
+  password: meisei07
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+  
 development:
   <<: *default
   database: vowel_training_development
@@ -82,8 +84,3 @@ test:
 production:
   <<: *default
   database: vowel_training_production
-  username: vowel_training
-  password: <%= ENV['VOWEL_TRAINING_DATABASE_PASSWORD'] %>
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
