@@ -91,6 +91,7 @@ export default {
   name: "TopIndex",
   data() {
     return {
+      dialog: false,
       srcTop: require("top.png")
     }
   }
