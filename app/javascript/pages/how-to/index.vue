@@ -86,7 +86,7 @@
           <v-img
             :src="srcHowToNormal"
             width="900"
-            height="300"
+            height="350"
             class="position"
           />
           <div
@@ -106,8 +106,8 @@
           </div>
           <v-img
             :src="srcHowToBoin"
-            width="1000"
-            height="400"
+            width="1100"
+            height="500"
             class="position"
           />
           <div
