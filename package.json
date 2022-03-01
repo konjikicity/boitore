@@ -2,6 +2,7 @@
   "name": "vowel-training",
   "private": true,
   "dependencies": {
+    "@mdi/font": "^6.5.95",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -17,8 +18,7 @@
     "vuetify": "^2.6.2",
     "vuetify-loader": "^1.7.3",
     "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "@mdi/font": "^6.5.95"
+    "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "devDependencies": {
