@@ -17,7 +17,7 @@ export default {
   name: "TheHeader",
   data() {
     return {
-      srcLogo: require("logo.png")
+      srcLogo: require("logo.svg")
     }
   }
 }

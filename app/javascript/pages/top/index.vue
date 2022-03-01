@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       dialog: false,
-      srcTop: require("top.png")
+      srcTop: require("top.svg")
     }
   }
 }
