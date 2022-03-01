@@ -4,11 +4,15 @@
     style="height: 70px"
     app
   >
+    <router-link
+    :to="{ name: 'TopIndex'}"
+    >
     <v-img 
       max-height="150"
       max-width="150"
       :src="srcLogo"
     />
+    </router-link>
   </v-app-bar>
 </template>
 
