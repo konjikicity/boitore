@@ -42,6 +42,7 @@
           justify="center"
         >
           <v-btn
+            v-if="status === 'init' || 'recording'"
             :disabled="status === 'recorded'"
             :loading="status ==='recording'"
             fab
@@ -52,21 +53,6 @@
           >
             <v-icon>mdi-microphone</v-icon>
           </v-btn>
-          <v-btn 
-            v-if="status === 'recording'" 
-            transition
-            fab
-            dark
-            x-large
-            class="ml-5"
-            color="error"
-            @click="stopRecording"
-          >
-            <v-icon>
-              mdi-square
-            </v-icon>
-          </v-btn>
-         
         </v-row> 
         <v-row
           justify="center"
@@ -134,6 +120,7 @@ export default {
         });
         this.recorder.addEventListener('stop', () => {
 
+            this.recordingText= '録音完了!';
             const audioBlob = new Blob(this.audioData);
             const url = URL.createObjectURL(audioBlob);
             this.normalVoice.url = url;
@@ -146,7 +133,22 @@ export default {
           sessionStorage.setItem('setNormalRecognition',this.normalRecognition);
 
         }
-      }
+      };
+      this.recorder.addEventListener('start', () => {
+            
+            this.recordingText = '録音中..(終了まであと4秒)';
+            let sec = 3;
+            let countDownTime =  setInterval( () => {
+              let remainingTime = sec--;
+              this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
+              if( sec === 0 ){
+                clearInterval(countDownTime);
+              };
+            }, 1000);
+            setTimeout( () => {
+              this.stopRecording();
+            }, 4000);
+          });
 
     });
   },
@@ -163,14 +165,12 @@ export default {
     startRecording() {
 
     this.status = 'recording';
-    this.recordingText= '録音中...';
     this.audioData = [];
     this.recorder.start();
     this.recognition.start();
     },
     stopRecording() {
     
-    this.recordingText= '録音完了!';
     this.recorder.stop();
     this.recognition.stop();
     this.status = 'recorded';

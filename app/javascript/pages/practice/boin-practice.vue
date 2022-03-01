@@ -59,7 +59,8 @@
           justify="center"
           class="mb-4"
         >
-          <v-btn 
+          <v-btn
+            v-if="status==='init' || 'recording'"
             :loading="status==='recording'"
             :disabled="status === 'recorded'"
             fab
@@ -69,20 +70,6 @@
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
-          </v-btn>
-          <v-btn 
-            v-if="status === 'recording'" 
-            transition
-            fab
-            dark
-            x-large
-            class="ml-5"
-            color="error"
-            @click="stopRecording"
-          >
-            <v-icon>
-              mdi-square
-            </v-icon>
           </v-btn>
         </v-row>
         <v-row
@@ -146,7 +133,8 @@ export default {
 
         });
         this.recorder.addEventListener('stop', () => {
-
+            
+            this.recordingText='録音完了!';
             const audioBlob = new Blob(this.audioData);
             const url = URL.createObjectURL(audioBlob);
             this.boinVoice.url = url; 
@@ -160,8 +148,21 @@ export default {
 
         }
       };
-
-
+      this.recorder.addEventListener('start', () => {
+            
+            this.recordingText = '録音中..(終了まであと4秒)';
+            let sec = 3;
+            let countDownTime =  setInterval( () => {
+              let remainingTime = sec--;
+              this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
+              if( sec === 0 ){
+                clearInterval(countDownTime);
+              };
+            }, 1000);
+            setTimeout( () => {
+              this.stopRecording();
+            }, 4000);
+          });
       });
   },
   methods: {
@@ -177,7 +178,6 @@ export default {
     startRecording() {
 
     this.status = 'recording';
-    this.recordingText='録音中...';
     this.audioData = [];
     this.recorder.start();
     this.recognition.start();
@@ -186,7 +186,6 @@ export default {
     stopRecording() { 
 
     this.status = 'recorded';
-    this.recordingText='録音完了!';
     this.recorder.stop();
     this.recognition.stop();
     
