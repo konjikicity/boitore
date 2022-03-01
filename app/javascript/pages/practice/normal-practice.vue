@@ -61,6 +61,16 @@
               mdi-square
             </v-icon>
           </v-btn>
+         
+        </v-row> 
+        <v-row
+          justify="center"
+        >
+        <div 
+        class="white--text py-5 text-h6 font-weight-bold"
+        >
+          {{ recordingText }}
+        </div>
         </v-row>
         <v-row
           justify="center"
@@ -93,7 +103,8 @@ export default {
         audioExtension: '', // 音声ファイルの拡張子
         normalVoice: { url: ''},
         recognition: null,
-        normalRecognition: ''
+        normalRecognition: '',
+        recordingText: ''
       }
   },
   created () {
@@ -147,12 +158,14 @@ export default {
     startRecording() {
 
     this.status = 'recording';
+    this.recordingText= '録音中...';
     this.audioData = [];
     this.recorder.start();
     this.recognition.start();
     },
     stopRecording() {
-
+    
+    this.recordingText= '録音完了!';
     this.recorder.stop();
     this.recognition.stop();
     this.status = 'recorded';
