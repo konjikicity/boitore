@@ -35,7 +35,7 @@
           </div>
         </v-card>
         <v-card
-          class="mb-5"
+          class="mb-15"
           elevation="20"
         >
           <v-card-title>
@@ -52,6 +52,7 @@
         </v-card>
         <v-row
           justify="center"
+          class="mb-4"
         >
           <v-btn 
             :loading="status==='recording'"
@@ -60,7 +61,6 @@
             dark
             x-large
             color="error"
-            class="my-10"
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
@@ -71,7 +71,7 @@
             fab
             dark
             x-large
-            class="my-10 ml-5"
+            class="ml-5"
             color="error"
             @click="stopRecording"
           >
@@ -79,6 +79,15 @@
               mdi-square
             </v-icon>
           </v-btn>
+        </v-row>
+        <v-row
+          justify="center"
+        >
+        <div 
+        class="white--text text-h6 pb-5 font-weight-bold"
+        >
+          {{ recordingText }}
+        </div>
         </v-row>
         <v-row>
           <PracticeResult 
@@ -107,6 +116,7 @@ export default {
          boinVoice: { url: ''},
          recognition: null,
          boinRecognition: '',
+         recordingText: ''
       }
   },
   created () {
@@ -162,16 +172,19 @@ export default {
     startRecording() {
 
     this.status = 'recording';
+    this.recordingText='録音中...';
     this.audioData = [];
     this.recorder.start();
     this.recognition.start();
 
     },
-    stopRecording() {
+    stopRecording() { 
 
+    this.status = 'recorded';
+    this.recordingText='録音完了!';
     this.recorder.stop();
     this.recognition.stop();
-    this.status = 'recorded';
+    
 
     },
     getExtension(audioType) {
