@@ -29,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 
 .theme--light.v-application{
-  background: url('../assets/images/back-ground.svg');
+  background: url('../assets/images/back-ground.jpg');
   background-size: cover;
   background-position: center center;
   width: 100%;
