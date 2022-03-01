@@ -164,10 +164,10 @@ export default {
 name: "HowToIndex",
   data(){
     return {
-      srcHowToSelect: require("HowToSelect.svg"),
-      srcHowToNormal: require("HowToNormal.svg"),
-      srcHowToBoin: require("HowToBoin.svg"),
-      srcHowToResult: require("HowToResult.svg")
+      srcHowToSelect: require("HowToSelect.png"),
+      srcHowToNormal: require("HowToNormal.png"),
+      srcHowToBoin: require("HowToBoin.png"),
+      srcHowToResult: require("HowToResult.png")
     }
   }
 }
