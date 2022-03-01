@@ -16,8 +16,13 @@
           <h1
             class="white--text"
           >
-            文章の選択
+            Step.1 文章の選択
           </h1>          
+        </div>
+         <div
+        class="white--text font-weight-bold pb-5"
+        >
+        練習したい文章を選択しましょう!
         </div>
         <v-carousel
           hide-delimiter-background
