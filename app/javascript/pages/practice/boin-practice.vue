@@ -15,8 +15,13 @@
           <h1
             class="white--text"
           >
-            母音法で練習
+            Step.3 母音法で練習
           </h1>
+        </div>
+        <div
+        class="white--text font-weight-bold pb-5"
+        >
+        母音の文章を<span class="red--text">しっかり・ゆっくり</span>発音した後に普通の文章を録音してみましょう!
         </div>
         <v-card
           class="mb-3"

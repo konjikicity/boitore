@@ -15,8 +15,13 @@
           <h1
             class="white--text"
           >
-            通常練習
+            Step.2 通常練習
           </h1>
+        </div>
+        <div
+        class="white--text font-weight-bold pb-5"
+        >
+        まずは普通の文章を録音してみましょう!
         </div>
         <v-card 
           elevation="20"
@@ -82,7 +87,7 @@
             class="my-10"
             x-large
           >
-            次の練習へ    
+            母音法で練習する!   
           </v-btn>
         </v-row>
       </v-col>
