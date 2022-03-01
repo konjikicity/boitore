@@ -28,5 +28,8 @@ export default {
 </script>
 
 <style scoped>
+.v-image:hover {
+  opacity: 0.8;
+}
 
 </style>
