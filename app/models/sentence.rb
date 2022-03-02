@@ -9,6 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Sentence < ApplicationRecord
-  validates :normal, presence: true, uniqueness: true
-  validates :boin, presence: true, uniqueness: true
+  validates :normal, presence: true
+  validates :boin, presence: true
 end

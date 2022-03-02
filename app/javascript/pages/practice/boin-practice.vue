@@ -19,9 +19,9 @@
           </h1>
         </div>
         <div
-        class="white--text font-weight-bold pb-5"
+          class="white--text font-weight-bold pb-5"
         >
-        母音の文章を<span class="red--text">しっかり・ゆっくり</span>発音した後に普通の文章を録音してみましょう!
+          母音の文章を<span class="red--text">しっかり・ゆっくり</span>発音した後に普通の文章を録音してみましょう!
         </div>
         <v-card
           class="mb-3"
@@ -75,15 +75,15 @@
         <v-row
           justify="center"
         >
-        <div 
-        class="white--text text-h6 pb-5 font-weight-bold"
-        >
-          {{ recordingText }}
-        </div>
+          <div 
+            class="white--text text-h6 pb-5 font-weight-bold"
+          >
+            {{ recordingText }}
+          </div>
         </v-row>
         <v-row>
           <PracticeResult 
-          v-if="status === 'recorded'"
+            v-if="status === 'recorded'"
           />
         </v-row>
       </v-col>
