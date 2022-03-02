@@ -19,9 +19,9 @@
           </h1>
         </div>
         <div
-        class="white--text font-weight-bold pb-5"
+          class="white--text font-weight-bold pb-5"
         >
-        まずは普通の文章を録音してみましょう!
+          まずは普通の文章を録音してみましょう!
         </div>
         <v-card 
           elevation="20"
@@ -57,11 +57,11 @@
         <v-row
           justify="center"
         >
-        <div 
-        class="white--text py-5 text-h6 font-weight-bold"
-        >
-          {{ recordingText }}
-        </div>
+          <div 
+            class="white--text py-5 text-h6 font-weight-bold"
+          >
+            {{ recordingText }}
+          </div>
         </v-row>
         <v-row
           justify="center"

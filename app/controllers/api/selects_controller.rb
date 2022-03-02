@@ -4,9 +4,8 @@ class Api::SelectsController < ApplicationController
     render json: sentence
   end
 
-  def show 
+  def show
     sentence = Sentence.find(params[:id])
     render json: sentence
   end
-
 end

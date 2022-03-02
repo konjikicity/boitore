@@ -5,13 +5,13 @@
     app
   >
     <router-link
-    :to="{ name: 'TopIndex'}"
+      :to="{ name: 'TopIndex'}"
     >
-    <v-img 
-      max-height="150"
-      max-width="150"
-      :src="srcLogo"
-    />
+      <v-img 
+        max-height="150"
+        max-width="150"
+        :src="srcLogo"
+      />
     </router-link>
   </v-app-bar>
 </template>
