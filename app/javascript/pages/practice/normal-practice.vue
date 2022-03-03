@@ -136,8 +136,8 @@ export default {
       };
       this.recorder.addEventListener('start', () => {
             
-            this.recordingText = '録音中..(終了まであと4秒)';
-            let sec = 3;
+            this.recordingText = '録音中..(終了まであと5秒)';
+            let sec = 4;
             let countDownTime =  setInterval( () => {
               let remainingTime = sec--;
               this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
@@ -147,7 +147,7 @@ export default {
             }, 1000);
             setTimeout( () => {
               this.stopRecording();
-            }, 4000);
+            }, 5000);
           });
 
     });
