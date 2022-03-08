@@ -95,6 +95,7 @@ export default {
         normalVoice: { url: ''},
         recognition: null,
         normalRecognition: '',
+        normalRecognitionToHiragana: [],
         recordingText: ''
       }
   },
@@ -102,6 +103,36 @@ export default {
     this.fetchSentences();
 
   },
+  watch: {
+    normalRecognition:function() {
+      const axios = require('axios');
+      const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5'; //API KEY
+      const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
+      const SENTECE = this.normalRecognition;
+      const OUTPU_TYPE = 'hiragana';
+
+      const options = {
+    method: 'post',
+    url: BASE_URL,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json'
+    },
+    data: {
+        app_id: APIKEY,
+        sentence: SENTECE,
+        output_type: OUTPU_TYPE
+    }
+   };
+
+   axios(options)
+    .then(res => {
+      this.normalRecognitionToHiragana = res.data
+      sessionStorage.setItem('setNormalRecognition',this.normalRecognitionToHiragana.converted);
+    })
+    .catch(err => console.log(err.status));
+         
+  }},
   mounted() {
       navigator.mediaDevices.getUserMedia({ audio: {
         echoCancellation: true,
@@ -130,7 +161,6 @@ export default {
         this.recognition.onresult = (event) => {
         if (event.results.length > 0) {
           this.normalRecognition = event.results[0][0].transcript;
-          sessionStorage.setItem('setNormalRecognition',this.normalRecognition);
 
         }
       };
