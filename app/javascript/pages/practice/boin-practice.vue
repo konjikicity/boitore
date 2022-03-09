@@ -109,13 +109,44 @@ export default {
          boinVoice: { url: ''},
          recognition: null,
          boinRecognition: '',
-         recordingText: ''
+         recordingText: '',
+         boinRecognitionToHiragana: []
       }
   },
   created () {
     this.fetchSentences();
     
   },
+  watch: {
+    boinRecognition:function() {
+      const axios = require('axios');
+      const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5'; //API KEY
+      const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
+      const SENTECE = this.boinRecognition;
+      const OUTPU_TYPE = 'hiragana'; //or `hiragana`
+
+      const options = {
+    method: 'post',
+    url: BASE_URL,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json'
+    },
+    data: {
+        app_id: APIKEY,
+        sentence: SENTECE,
+        output_type: OUTPU_TYPE
+    }
+   };
+
+   axios(options)
+    .then(res => {
+      this.boinRecognitionToHiragana = res.data
+      sessionStorage.setItem('setBoinRecognition',this.boinRecognitionToHiragana.converted);
+    })
+    .catch(err => console.log(err.status));
+         
+  }},
   mounted() {
      navigator.mediaDevices.getUserMedia({ audio: {
        
@@ -127,6 +158,7 @@ export default {
 
         this.recorder = new MediaRecorder(stream);
         this.recognition = new webkitSpeechRecognition(stream);
+        this.recognition.lang = 'ja-JP'
         this.recorder.addEventListener('dataavailable', e => {
 
             this.audioData.push(e.data);

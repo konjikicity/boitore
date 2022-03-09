@@ -147,6 +147,8 @@ export default {
       // 選択した文章と音声認識した文章を比較して何文字あっているかを算出
       let resultWord = this.boinRecognition
       let normalWord = this.resultSentence
+      resultWord = resultWord.replace(/\s+/g, "");
+      normalWord = normalWord.replace(/\s+/g, "");
       let resultWordBreak = resultWord.split('');
       let normalWordBreak = normalWord.split('');
       let resultDifference = normalWordBreak.filter(i => resultWordBreak.indexOf(i) == -1);
