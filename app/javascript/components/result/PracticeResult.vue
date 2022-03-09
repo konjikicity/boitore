@@ -174,25 +174,25 @@ export default {
         this.judge = 'A'
         this.activeColor = 'red'
         this.judgeText = 'あと一歩で完璧です！自信持っていきましょう！'
-        this.score = 75 + Math.floor( Math.random() * 100 ); 
+        this.score = 75 + Math.floor( Math.random() * 25 ); 
       }
       else if( result >= resultB ) {
         this.judge = 'B'
         this.activeColor = 'red'
         this.judgeText = '人によっては聞こえづらいかもしれません...もう少し頑張りましょう！'
-        this.score = 50 + Math.floor( Math.random() * 75 );
+        this.score = 50 + Math.floor( Math.random() * 26 );
       }
       else if( result >= resultC ) {
         this.judge = 'C'
         this.activeColor = 'red'
         this.judgeText = '少し聞き取りずらいかもしれません...fight!'
-        this.score = 25 + Math.floor( Math.random() * 50 );
+        this.score = 25 + Math.floor( Math.random() * 26 );
       }
       else {
         this.judge = 'D'
         this.activeColor = 'blue'
         this.judgeText = '全く聞き取れないかもです...もう一度練習しましょう!'
-        this.score = 0 + Math.floor( Math.random() * 25 );
+        this.score = 10 + Math.floor( Math.random() * 16 );
          
       }
   
