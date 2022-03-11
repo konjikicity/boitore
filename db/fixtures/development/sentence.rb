@@ -8,15 +8,18 @@
 Sentence.seed do |s|
   s.id = 1
   s.boin = "おんいいあ"
-  s.normal="こんにちは"
+  s.normal= "こんにちは"
+  s.mode_id = 1
 end
 Sentence.seed do |s|
   s.id = 2
-  s.boin = "おあおうおあいあう"
-  s.normal="おはようございます"
+  s.boin =  "おあおうおあいあう"
+  s.normal= "おはようございます"
+  s.mode_id= 1
 end
 Sentence.seed do |s|
   s.id = 3
   s.boin = "おおいうおえあいいあう"
-  s.normal="よろしくおねがいします"
+  s.normal= "よろしくおねがいします"
+  s.mode_id= 1
 end
