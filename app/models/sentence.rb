@@ -18,6 +18,6 @@
 #  fk_rails_...  (mode_id => modes.id)
 #
 class Sentence < ApplicationRecord
-  validates :normal, presence: true
-  validates :boin, presence: true
+  has_one: mode
+
 end
