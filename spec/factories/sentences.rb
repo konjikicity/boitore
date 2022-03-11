@@ -7,6 +7,15 @@
 #  normal     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  mode_id    :bigint
+#
+# Indexes
+#
+#  index_sentences_on_mode_id  (mode_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (mode_id => modes.id)
 #
 FactoryBot.define do
   factory :sentence do

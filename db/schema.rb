@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_132555) do
+ActiveRecord::Schema.define(version: 2022_03_11_121514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "modes", force: :cascade do |t|
+    t.string "difficulty", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sentences", force: :cascade do |t|
     t.string "boin", null: false
     t.string "normal", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "mode_id"
+    t.index ["mode_id"], name: "index_sentences_on_mode_id"
   end
 
+  add_foreign_key "sentences", "modes"
 end
