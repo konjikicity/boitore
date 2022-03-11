@@ -8,6 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Mode < ApplicationRecord
-  has_many: sentences
+  has_many :sentences
 
 end

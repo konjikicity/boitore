@@ -18,6 +18,6 @@
 #  fk_rails_...  (mode_id => modes.id)
 #
 class Sentence < ApplicationRecord
-  has_one: mode
+  belongs_to :mode
 
 end
