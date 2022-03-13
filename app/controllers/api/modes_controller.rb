@@ -1,6 +1,6 @@
 class Api::ModesController < ApplicationController
   def index
-    mode = Modes.all
+    mode = Mode.all
     render json: mode
   end
 end
