@@ -1,6 +1,6 @@
 class Api::ModesController < ApplicationController
   def index
-    mode = Mode.all
+    mode = Mode.select(:id, :difficulty)
     render json: mode
   end
 end
