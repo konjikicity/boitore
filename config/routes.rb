@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'top#index'
   namespace :api do
     resources :selects, only: %i[index show]
+    resources :modes, only: %i[index]
   end
   get '*path', to: 'top#index'
 end
