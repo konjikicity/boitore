@@ -1,6 +1,6 @@
 class Api::SelectsController < ApplicationController
   def index
-    sentence = Sentence.all
+    sentence = Sentence.select(:id, :boin, :normal)
     render json: sentence
   end
 
