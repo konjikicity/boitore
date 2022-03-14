@@ -28,7 +28,7 @@ const router = new Router({
       name: "ModeIndex"
     },
     {
-      path: "/:id/selects",
+      path: "/modes/:id/selects",
       component: SelectIndex,
       name: "SelectIndex"
     },
