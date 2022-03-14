@@ -114,7 +114,7 @@ export default {
       }
   },
   created () {
-    this.fetchSentences();
+    
     
   },
   watch: {
@@ -148,6 +148,7 @@ export default {
          
   }},
   mounted() {
+     this.fetchSentences();
      navigator.mediaDevices.getUserMedia({ audio: {
        
        echoCancellation: true,
@@ -200,7 +201,7 @@ export default {
   },
   methods: {
    fetchSentences() {
-      this.$axios.get('selects/' + this.$route.params.id)
+      this.$axios.get('/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
 
 
 
