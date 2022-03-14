@@ -8,6 +8,7 @@ import SelectIndex from "../pages/select/index";
 import NormalPractice from "../pages/practice/normal-practice";
 import BoinPractice from "../pages/practice/boin-practice";
 import HowToIndex from "../pages/how-to/index";
+import ModeIndex from "../pages/mode/index";
 
 Vue.use(Router)
 
@@ -20,9 +21,14 @@ const router = new Router({
       component: TopIndex,
       name: "TopIndex"
 
+    }, 
+    {
+      path:"/modes",
+      component: ModeIndex,
+      name: "ModeIndex"
     },
     {
-      path: "/selects",
+      path: "/modes/:id/selects",
       component: SelectIndex,
       name: "SelectIndex"
     },
@@ -41,7 +47,8 @@ const router = new Router({
       path:"/how-to",
       component: HowToIndex,
       name: "HowToIndex"
-    }
+    },
+   
   ],
 })
 

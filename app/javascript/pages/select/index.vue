@@ -63,7 +63,7 @@
                 justify="center"
               >
                 <router-link 
-                  :to="{ name: 'NormalPractice', params: { id: sentence.id}}"
+                  :to="{ name: 'NormalPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
                 >
                   <p>
                     {{ sentence.normal }}
@@ -87,16 +87,18 @@ export default {
       }
   },
   created () {
-    this.fetchSentences();
     sessionStorage.removeItem('setNormal');
     sessionStorage.removeItem('setBoin');
     sessionStorage.removeItem('setNormalRecognition');
     sessionStorage.removeItem('setBoinRecognition');
 
   },
+  mounted (){
+    this.fetchSentences();
+  },
   methods: {
    fetchSentences() {
-      this.$axios.get("selects")
+      this.$axios.get( '/modes/' + this.$route.params.id + '/selects')
 
 
 
