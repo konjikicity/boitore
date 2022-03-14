@@ -68,7 +68,7 @@
         >
           <v-btn
             v-if="status=== 'recorded'"
-            :to="{ name: 'BoinPractice', params: { id: $route.params.id }}"
+            :to="{ name: 'BoinPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
             color="error"
             class="my-10"
             x-large
@@ -134,6 +134,8 @@ export default {
          
   }},
   mounted() {
+    this.fetchSentences();
+
       navigator.mediaDevices.getUserMedia({ audio: {
         echoCancellation: true,
         echoCancellationType: 'system',
@@ -184,7 +186,7 @@ export default {
   },
   methods: {
    fetchSentences() {
-      this.$axios.get('selects/' + this.$route.params.id)
+      this.$axios.get('/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
 
 
 

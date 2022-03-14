@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :modes, only: %i[index] do
       resources :selects, only: %i[index show]
-    end 
+    end
   end
   get '*path', to: 'top#index'
 end
