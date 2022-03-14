@@ -99,10 +99,6 @@ export default {
         recordingText: ''
       }
   },
-  created () {
-    this.fetchSentences();
-
-  },
   watch: {
     normalRecognition:function() {
       const axios = require('axios');
