@@ -3,14 +3,13 @@
   fill-height
   fluid
   >
-  <v-row>
   <v-btn
-  v-for="(mode, index) of modes"
+  v-for="mode in modes"
     :key="mode"
+    :to="{ name: 'SelectIndex', params: { id: mode.id}}"
   >
-  {{ mode }}
+  {{ mode.difficulty }}
   </v-btn>
-  </v-row>
   </v-container>
 </template>
 <script>
@@ -18,7 +17,8 @@ export default {
   name: "ModeIndex",
   data(){
     return {
-      modes: []
+      modes: [
+      ]
     }
   },
   mounted() {

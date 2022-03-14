@@ -96,7 +96,7 @@ export default {
   },
   methods: {
    fetchSentences() {
-      this.$axios.get("selects")
+      this.$axios.get( '/modes/' + this.$route.params.id + '/selects')
 
 
 
