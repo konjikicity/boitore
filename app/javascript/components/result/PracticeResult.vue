@@ -97,12 +97,14 @@
               <v-btn
                 :to="{ name: 'ModeIndex'}"
                 class="mr-5"
+                @click="dialog = false"
               >
                 もう一度練習する
               </v-btn>
               <v-btn
                 :to="{ name: 'TopIndex'}"
                 exact
+                @click="dialog = false"
               >
                 タイトルへ戻る
               </v-btn>

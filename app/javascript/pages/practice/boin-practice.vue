@@ -113,10 +113,6 @@ export default {
          boinRecognitionToHiragana: []
       }
   },
-  created () {
-    this.fetchSentences();
-    
-  },
   watch: {
     boinRecognition:function() {
       const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5';
@@ -146,6 +142,10 @@ export default {
     .catch(err => console.log(err.status));
          
   }},
+  created () {
+    this.fetchSentences();
+    
+  },
   mounted() {
      // マイク許可
      navigator.mediaDevices.getUserMedia({ audio: {
