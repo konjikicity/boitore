@@ -149,7 +149,7 @@
         >
           <v-btn
             class="error my-4z" 
-            :to="{ name: 'SelectIndex'}"
+            :to="{ name: 'ModeIndex'}"
             x-large
           >
             練習開始！

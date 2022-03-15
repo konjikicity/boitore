@@ -114,7 +114,7 @@ export default {
       }
   },
   created () {
-    
+    this.fetchSentences();
     
   },
   watch: {
@@ -148,7 +148,7 @@ export default {
          
   }},
   mounted() {
-     this.fetchSentences();
+
      navigator.mediaDevices.getUserMedia({ audio: {
        
        echoCancellation: true,

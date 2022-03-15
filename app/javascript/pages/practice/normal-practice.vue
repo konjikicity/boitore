@@ -129,9 +129,11 @@ export default {
     .catch(err => console.log(err.status));
          
   }},
-  mounted() {
+  created() {
     this.fetchSentences();
-
+  },
+  mounted() {
+  
       navigator.mediaDevices.getUserMedia({ audio: {
         echoCancellation: true,
         echoCancellationType: 'system',
