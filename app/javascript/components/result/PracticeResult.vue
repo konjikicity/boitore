@@ -95,17 +95,14 @@
             <v-divider />
             <v-card-actions class="justify-center py-15">      
               <v-btn
-                text
-                :to="{ name: 'SelectIndex'}"
+                :to="{ name: 'ModeIndex'}"
                 class="mr-5"
-                @click="dialog = false"
               >
                 もう一度練習する
               </v-btn>
               <v-btn
-                text
                 :to="{ name: 'TopIndex'}"
-                @click="dialog = false"
+                exact
               >
                 タイトルへ戻る
               </v-btn>
