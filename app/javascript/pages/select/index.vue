@@ -86,14 +86,7 @@ export default {
         sentences: []
       }
   },
-  created () {
-    sessionStorage.removeItem('setNormal');
-    sessionStorage.removeItem('setBoin');
-    sessionStorage.removeItem('setNormalRecognition');
-    sessionStorage.removeItem('setBoinRecognition');
-
-  },
-  mounted (){
+  created (){
     this.fetchSentences();
   },
   methods: {
