@@ -88,10 +88,10 @@ export default {
   data () {
       return {
         sentence: [],
-        status: 'init',     // 状況
-        recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
-        audioData: [],      // 入力された音声データ
-        audioExtension: '', // 音声ファイルの拡張子
+        status: 'init',     
+        recorder: null,     
+        audioData: [],      
+        audioExtension: '', 
         normalVoice: { url: ''},
         recognition: null,
         normalRecognition: '',
@@ -100,12 +100,12 @@ export default {
       }
   },
   watch: {
+    // 音声認識にデータが代入されたタイミングでひらがなに変換する
     normalRecognition:function() {
-      const axios = require('axios');
       const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5'; //API KEY
       const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
-      const SENTECE = this.normalRecognition;
-      const OUTPU_TYPE = 'hiragana';
+      const SENTENCE = this.normalRecognition;
+      const OUTPUT_TYPE = 'hiragana';
 
       const options = {
     method: 'post',
@@ -116,12 +116,12 @@ export default {
     },
     data: {
         app_id: APIKEY,
-        sentence: SENTECE,
-        output_type: OUTPU_TYPE
+        sentence: SENTENCE,
+        output_type: OUTPUT_TYPE
     }
    };
 
-   axios(options)
+   this.$axios(options)
     .then(res => {
       this.normalRecognitionToHiragana = res.data
       sessionStorage.setItem('setNormalRecognition',this.normalRecognitionToHiragana.converted);
@@ -133,7 +133,7 @@ export default {
     this.fetchSentences();
   },
   mounted() {
-  
+      //マイク許可
       navigator.mediaDevices.getUserMedia({ audio: {
         echoCancellation: true,
         echoCancellationType: 'system',
@@ -143,6 +143,7 @@ export default {
         
         this.recorder = new MediaRecorder(stream);
         this.recognition = new webkitSpeechRecognition(stream);
+        this.recognition.lang = 'ja';
         this.recorder.addEventListener('dataavailable', e => {
 
             this.audioData.push(e.data);
@@ -192,6 +193,7 @@ export default {
         .catch(err => console.log(err.status));
 
     },
+    // 録音開始
     startRecording() {
 
     this.status = 'recording';
@@ -199,6 +201,7 @@ export default {
     this.recorder.start();
     this.recognition.start();
     },
+    // 録音停止
     stopRecording() {
     
     this.recorder.stop();
@@ -206,6 +209,7 @@ export default {
     this.status = 'recorded';
 
     },
+    //拡張子を正規表現を使って必要な部分だけ抜き出す
     getExtension(audioType) {
 
     let extension = 'wav';

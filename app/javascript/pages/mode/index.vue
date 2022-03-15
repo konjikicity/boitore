@@ -52,6 +52,7 @@ export default {
       ]
     }
   },
+  //sessionStorageに保存されているデータを削除する
   created () {
     sessionStorage.removeItem('setNormal');
     sessionStorage.removeItem('setBoin');
