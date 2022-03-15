@@ -19,5 +19,4 @@
 #
 class Sentence < ApplicationRecord
   belongs_to :mode
-
 end

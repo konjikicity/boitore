@@ -102,10 +102,10 @@ export default {
   data () {
       return {
          sentence: [],
-         status: 'init',     // 状況
-         recorder: null,     // 音声にアクセスする "MediaRecorder" のインスタンス
-         audioData: [],      // 入力された音声データ
-         audioExtension: '', // 音声ファイルの拡張子
+         status: 'init',
+         recorder: null,
+         audioData: [],
+         audioExtension: '',
          boinVoice: { url: ''},
          recognition: null,
          boinRecognition: '',
@@ -113,17 +113,12 @@ export default {
          boinRecognitionToHiragana: []
       }
   },
-  created () {
-    this.fetchSentences();
-    
-  },
   watch: {
     boinRecognition:function() {
-      const axios = require('axios');
-      const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5'; //API KEY
+      const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5';
       const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
-      const SENTECE = this.boinRecognition;
-      const OUTPU_TYPE = 'hiragana'; //or `hiragana`
+      const SENTENCE = this.boinRecognition;
+      const OUTPUT_TYPE = 'hiragana';
 
       const options = {
     method: 'post',
@@ -134,12 +129,12 @@ export default {
     },
     data: {
         app_id: APIKEY,
-        sentence: SENTECE,
-        output_type: OUTPU_TYPE
+        sentence: SENTENCE,
+        output_type: OUTPUT_TYPE
     }
    };
 
-   axios(options)
+   this.$axios(options)
     .then(res => {
       this.boinRecognitionToHiragana = res.data
       sessionStorage.setItem('setBoinRecognition',this.boinRecognitionToHiragana.converted);
@@ -147,8 +142,12 @@ export default {
     .catch(err => console.log(err.status));
          
   }},
+  created () {
+    this.fetchSentences();
+    
+  },
   mounted() {
-
+     // マイク許可
      navigator.mediaDevices.getUserMedia({ audio: {
        
        echoCancellation: true,
@@ -159,7 +158,7 @@ export default {
 
         this.recorder = new MediaRecorder(stream);
         this.recognition = new webkitSpeechRecognition(stream);
-        this.recognition.lang = 'ja-JP'
+        this.recognition.lang = 'ja';
         this.recorder.addEventListener('dataavailable', e => {
 
             this.audioData.push(e.data);
@@ -209,6 +208,7 @@ export default {
         .catch(err => console.log(err.status));
 
     },
+    // 録音開始
     startRecording() {
 
     this.status = 'recording';
@@ -217,6 +217,7 @@ export default {
     this.recognition.start();
 
     },
+    // 録音停止
     stopRecording() { 
 
     this.status = 'recorded';
@@ -225,6 +226,7 @@ export default {
     
 
     },
+    // 拡張子を正規表現を使って必要な部分だけ抜き出す
     getExtension(audioType) {
 
     let extension = 'wav';
