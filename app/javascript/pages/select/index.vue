@@ -82,15 +82,15 @@
 export default {
   name: "SelectIndex",
   data () {
-      return {
-        sentences: []
-      }
+    return {
+      sentences: []
+    }
   },
   created (){
     this.fetchSentences();
   },
   methods: {
-   fetchSentences() {
+    fetchSentences() {
       this.$axios.get( '/modes/' + this.$route.params.id + '/selects')
 
 

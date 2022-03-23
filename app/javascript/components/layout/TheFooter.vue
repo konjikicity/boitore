@@ -29,10 +29,10 @@
   </v-footer>
 </template>
 
- <script>
-  export default {
-    name: "TheFooter",
-    data: function () {
+<script>
+export default {
+  name: "TheFooter",
+  data: function () {
     return {
       copylight:"©︎2021 BOIトレ",
       links: [
@@ -65,7 +65,7 @@
     }
   }
 }
- </script>
+</script>
 
   <style scoped>
   

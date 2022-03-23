@@ -86,18 +86,18 @@ export default {
   name: "NormalPractice",
 
   data () {
-      return {
-        sentence: [],
-        status: 'init',     
-        recorder: null,     
-        audioData: [],      
-        audioExtension: '', 
-        normalVoice: { url: ''},
-        recognition: null,
-        normalRecognition: '',
-        normalRecognitionToHiragana: [],
-        recordingText: ''
-      }
+    return {
+      sentence: [],
+      status: 'init',     
+      recorder: null,     
+      audioData: [],      
+      audioExtension: '', 
+      normalVoice: { url: ''},
+      recognition: null,
+      normalRecognition: '',
+      normalRecognitionToHiragana: [],
+      recordingText: ''
+    }
   },
   watch: {
     // 音声認識にデータが代入されたタイミングでひらがなに変換する
@@ -108,37 +108,37 @@ export default {
       const OUTPUT_TYPE = 'hiragana';
 
       const options = {
-    method: 'post',
-    url: BASE_URL,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Type': 'application/json'
-    },
-    data: {
-        app_id: APIKEY,
-        sentence: SENTENCE,
-        output_type: OUTPUT_TYPE
-    }
-   };
+        method: 'post',
+        url: BASE_URL,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json'
+        },
+        data: {
+          app_id: APIKEY,
+          sentence: SENTENCE,
+          output_type: OUTPUT_TYPE
+        }
+      };
 
-   this.$axios(options)
-    .then(res => {
-      this.normalRecognitionToHiragana = res.data
-      sessionStorage.setItem('setNormalRecognition',this.normalRecognitionToHiragana.converted);
-    })
-    .catch(err => console.log(err.status));
+      this.$axios(options)
+        .then(res => {
+          this.normalRecognitionToHiragana = res.data
+          sessionStorage.setItem('setNormalRecognition',this.normalRecognitionToHiragana.converted);
+        })
+        .catch(err => console.log(err.status));
          
-  }},
+    }},
   created() {
     this.fetchSentences();
   },
   mounted() {
-      //マイク許可
-      navigator.mediaDevices.getUserMedia({ audio: {
-        echoCancellation: true,
-        echoCancellationType: 'system',
-        noiseSuppression: false
-      }})
+    //マイク許可
+    navigator.mediaDevices.getUserMedia({ audio: {
+      echoCancellation: true,
+      echoCancellationType: 'system',
+      noiseSuppression: false
+    }})
       .then(stream => {
         
         this.recorder = new MediaRecorder(stream);
@@ -146,45 +146,45 @@ export default {
         this.recognition.lang = 'ja';
         this.recorder.addEventListener('dataavailable', e => {
 
-            this.audioData.push(e.data);
-            this.audioExtension = this.getExtension(e.data.type);
+          this.audioData.push(e.data);
+          this.audioExtension = this.getExtension(e.data.type);
 
         });
         this.recorder.addEventListener('stop', () => {
 
-            this.recordingText= '録音完了!';
-            const audioBlob = new Blob(this.audioData);
-            const url = URL.createObjectURL(audioBlob);
-            this.normalVoice.url = url;
-            sessionStorage.setItem('setNormal',this.normalVoice.url);
+          this.recordingText= '録音完了!';
+          const audioBlob = new Blob(this.audioData);
+          const url = URL.createObjectURL(audioBlob);
+          this.normalVoice.url = url;
+          sessionStorage.setItem('setNormal',this.normalVoice.url);
 
         });
         this.recognition.onresult = (event) => {
-        if (event.results.length > 0) {
-          this.normalRecognition = event.results[0][0].transcript;
+          if (event.results.length > 0) {
+            this.normalRecognition = event.results[0][0].transcript;
 
-        }
-      };
-      this.recorder.addEventListener('start', () => {
+          }
+        };
+        this.recorder.addEventListener('start', () => {
             
-            this.recordingText = '録音中..(終了まであと5秒)';
-            let sec = 4;
-            let countDownTime =  setInterval( () => {
-              let remainingTime = sec--;
-              this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
-              if( sec === 0 ){
-                clearInterval(countDownTime);
-              };
-            }, 1000);
-            setTimeout( () => {
-              this.stopRecording();
-            }, 5000);
-          });
+          this.recordingText = '録音中..(終了まであと5秒)';
+          let sec = 4;
+          let countDownTime =  setInterval( () => {
+            let remainingTime = sec--;
+            this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
+            if( sec === 0 ){
+              clearInterval(countDownTime);
+            };
+          }, 1000);
+          setTimeout( () => {
+            this.stopRecording();
+          }, 5000);
+        });
 
-    });
+      });
   },
   methods: {
-   fetchSentences() {
+    fetchSentences() {
       this.$axios.get('/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
 
 
@@ -196,32 +196,32 @@ export default {
     // 録音開始
     startRecording() {
 
-    this.status = 'recording';
-    this.audioData = [];
-    this.recorder.start();
-    this.recognition.start();
+      this.status = 'recording';
+      this.audioData = [];
+      this.recorder.start();
+      this.recognition.start();
     },
     // 録音停止
     stopRecording() {
     
-    this.recorder.stop();
-    this.recognition.stop();
-    this.status = 'recorded';
+      this.recorder.stop();
+      this.recognition.stop();
+      this.status = 'recorded';
 
     },
     //拡張子を正規表現を使って必要な部分だけ抜き出す
     getExtension(audioType) {
 
-    let extension = 'wav';
-    const matches = audioType.match(/audio\/([^;]+)/);
+      let extension = 'wav';
+      const matches = audioType.match(/audio\/([^;]+)/);
 
-    if(matches) {
+      if(matches) {
 
         extension = matches[1];
 
-    }
+      }
 
-    return '.'+ extension;
+      return '.'+ extension;
 
     }
   }
