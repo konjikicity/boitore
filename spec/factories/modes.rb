@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :string
-#  difficulty  :string           not null
+#  difficulty  :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
