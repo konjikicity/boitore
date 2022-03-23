@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_03_14_143524) do
   enable_extension "plpgsql"
 
   create_table "modes", force: :cascade do |t|
-    t.string "difficulty", null: false
+    t.integer "difficulty", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
