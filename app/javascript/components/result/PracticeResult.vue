@@ -125,17 +125,17 @@ export default {
     }
   },
   data () {
-      return {
-         boinVoice: { url: ''},
-         normalVoice: { url: ''},
-         boinRecognition: '',
-         normalRecognition: '',
-         judge: '',
-         judgeText: '',
-         activeColor: '',
-         resultSentence: this.normalSentence,
-         score: ''
-      }
+    return {
+      boinVoice: { url: ''},
+      normalVoice: { url: ''},
+      boinRecognition: '',
+      normalRecognition: '',
+      judge: '',
+      judgeText: '',
+      activeColor: '',
+      resultSentence: this.normalSentence,
+      score: ''
+    }
   },
   watch: {
     normalSentence(newValue) {

@@ -137,9 +137,8 @@
           <div>結果画面では以下が確認できます</div>
           <ul>
             <li>判定結果:母音法での音声認識結果が元の文章と一致しているかを判定します</li>
-            <li>
-              判定基準:5段階のS・A・B・C・Dの順で評価
-            </li><li>音声認識結果: それぞれの録音した文章の音声認識結果</li>
+            <li>判定基準:5段階のS・A・B・C・Dの順で評価</li>
+            <li>音声認識結果: それぞれの録音した文章の音声認識結果</li>
             <li>録音結果: それぞれの文章の録音結果を再生することができます</li>
           </ul>
         </v-card-text>
@@ -163,7 +162,7 @@
 
 <script>
 export default {
-name: "HowToIndex",
+  name: "HowToIndex",
   data(){
     return {
       srcHowToSelect: require("HowToSelect.png"),
