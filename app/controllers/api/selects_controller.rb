@@ -1,6 +1,6 @@
 class Api::SelectsController < ApplicationController
   def index
-    sentence = Sentence.where(mode_id: params[:mode_id])
+    sentence = Sentence.where(mode_id: params[:mode_id]).select(:id, :normal, :mode_id)
     render json: sentence
   end
 
