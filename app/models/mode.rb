@@ -10,5 +10,5 @@
 #
 class Mode < ApplicationRecord
   has_many :sentences, dependent: :destroy
-  enum difficulty: { "かんたん": 0, "ふつう": 1, "むずかしい": 2 }
+  enum difficulty: { easy: 0, normal: 1, hard: 2 }
 end
