@@ -10,7 +10,9 @@ import App from '../app.vue'
 import axios from '../plugins/axios'
 import router from '../router'
 import vuetify from '../plugins/vuetify'
+import TurbolinksAdapter from 'vue-turbolinks';
 
+Vue.use(TurbolinksAdapter);
 Vue.prototype.$axios = axios
 
 document.addEventListener('DOMContentLoaded', () => {
