@@ -1,5 +1,9 @@
 <template>
-  <v-container class="privacy-policy white--text" fill-height fluid>
+  <v-container
+    class="privacy-policy white--text"
+    fill-height
+    fluid
+  >
     <v-row align-content="center">
       <v-spacer />
       <v-col cols="10">
@@ -83,8 +87,8 @@
         <h2>事業者の名称</h2>
         <p>BOIトレ</p>
 
-        <br/>
-        2022年3月26日 制定<br/>
+        <br>
+        2022年3月26日 制定<br>
       </v-col>
       <v-spacer />
     </v-row>
