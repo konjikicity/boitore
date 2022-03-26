@@ -94,12 +94,6 @@
     </v-row>
   </v-container>
 </template>
-
-<script>
-export default {
-}
-</script>
-
 <style scoped>
 h1 {
   margin-top: 20px;
