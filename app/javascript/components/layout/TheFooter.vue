@@ -57,7 +57,7 @@ export default {
 
         },
         {
-          url: '/info',
+          url: '/contact',
           text: 'お問い合わせ'
 
         }

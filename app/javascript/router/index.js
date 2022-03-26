@@ -11,6 +11,7 @@ import HowToIndex from "../pages/how-to/index";
 import ModeIndex from "../pages/mode/index";
 import SharedTerms from "../pages/shared/terms";
 import SharedPrivacy from "../pages/shared/privacy-policy";
+import SharedContact from "../pages/shared/contact";
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ const router = new Router({
       path:"/privacy",
       component: SharedPrivacy,
       name: "SharedPrivacy"
+    },
+    {
+      path: "/contact",
+      component: SharedContact,
+      name: "SharedContact"
     }
    
   ],
