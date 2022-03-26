@@ -1,8 +1,15 @@
 <template>
-  <v-container class="inquiry white--text" fill-height fluid>
+  <v-container
+    class="inquiry white--text"
+    fill-height
+    fluid
+  >
     <v-row align-content="center">
       <v-spacer />
-      <v-col class="text-center" cols="10">
+      <v-col
+        class="text-center"
+        cols="10"
+      >
         <p>サービスの利用に関するお問い合わせ、不具合の報告などがございましたら、</p>
         <p>お手数ですが、以下のTwitterアカウント宛のダイレクトメールにてお知らせください。</p>
         <v-icon>mdi-email</v-icon>
@@ -14,12 +21,12 @@
             rounded
             style="text-transform: none"
           >
-          <v-icon
-          class="mr-2"
-          >
-          mdi-twitter
-          </v-icon>
-          @konjikicity
+            <v-icon
+              class="mr-2"
+            >
+              mdi-twitter
+            </v-icon>
+            @konjikicity
           </v-btn>
         </p>
       </v-col>
