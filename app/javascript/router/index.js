@@ -9,6 +9,7 @@ import NormalPractice from "../pages/practice/normal-practice";
 import BoinPractice from "../pages/practice/boin-practice";
 import HowToIndex from "../pages/how-to/index";
 import ModeIndex from "../pages/mode/index";
+import SharedTerms from "../pages/shared/terms";
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ const router = new Router({
       component: HowToIndex,
       name: "HowToIndex"
     },
+    {
+      path:"/terms",
+      component: SharedTerms,
+      name: "SharedTerms"
+    }
    
   ],
 })
