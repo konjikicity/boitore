@@ -10,6 +10,7 @@ import BoinPractice from "../pages/practice/boin-practice";
 import HowToIndex from "../pages/how-to/index";
 import ModeIndex from "../pages/mode/index";
 import SharedTerms from "../pages/shared/terms";
+import SharedPrivacy from "../pages/shared/privacy-policy";
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ const router = new Router({
       path:"/terms",
       component: SharedTerms,
       name: "SharedTerms"
+    },
+    {
+      path:"/privacy",
+      component: SharedPrivacy,
+      name: "SharedPrivacy"
     }
    
   ],
