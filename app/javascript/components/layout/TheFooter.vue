@@ -47,7 +47,7 @@ export default {
 
         },
         {
-          url: '/user-policy',
+          url: '/terms',
           text: '利用規約'
 
         },
