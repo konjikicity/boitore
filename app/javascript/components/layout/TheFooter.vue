@@ -47,7 +47,7 @@ export default {
 
         },
         {
-          url: '/user-policy',
+          url: '/terms',
           text: '利用規約'
 
         },
@@ -57,7 +57,7 @@ export default {
 
         },
         {
-          url: '/info',
+          url: '/contact',
           text: 'お問い合わせ'
 
         }
