@@ -3,24 +3,18 @@
     fill-height
     fluid
   >
-    <v-row
-      justify="center"
-    >
-      <v-col
-        cols="5"
-      >
-        <div
-          class="py-4"
-        >
-          <h1
-            class="white--text text-center"
-          >
-            モード選択
-          </h1>
-        </div>
         <v-row
           class="d-flex flex-column"
+          justify="center"
+          align-content="center"
         >
+        <div
+        class="text-center mb-6"
+        >
+        <h1
+        class="white--text"
+        >モード選択</h1>
+        </div>
           <div
             v-for=" mode in modes"
             :key="mode.id"
@@ -38,8 +32,6 @@
             {{ mode.description }}
           </div>
         </v-row>
-      </v-col>
-    </v-row>
   </v-container>
 </template>
 <script>
