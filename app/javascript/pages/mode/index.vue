@@ -3,35 +3,37 @@
     fill-height
     fluid
   >
-        <v-row
-          class="d-flex flex-column"
-          justify="center"
-          align-content="center"
-        >
-        <div
+    <v-row
+      class="d-flex flex-column"
+      justify="center"
+      align-content="center"
+    >
+      <div
         class="text-center mb-6"
-        >
+      >
         <h1
+          class="white--text"
+        >
+          モード選択
+        </h1>
+      </div>
+      <div
+        v-for=" mode in modes"
+        :key="mode.id"
         class="white--text"
-        >モード選択</h1>
-        </div>
-          <div
-            v-for=" mode in modes"
-            :key="mode.id"
-            class="white--text"
-          >
-            <v-btn
-              :to="{ name: 'SelectIndex', params: { id: mode.id}}"
-              class="error my-5 rounded-pill mr-4"
-              elevation="10"
-              x-large
-              :width="150"
-            >
-              {{ mode.difficulty }}
-            </v-btn>
-            {{ mode.description }}
-          </div>
-        </v-row>
+      >
+        <v-btn
+          :to="{ name: 'SelectIndex', params: { id: mode.id}}"
+          class="error my-5 rounded-pill mr-4"
+          elevation="10"
+          x-large
+          :width="150"
+        >
+          {{ mode.difficulty }}
+        </v-btn>
+        {{ mode.description }}
+      </div>
+    </v-row>
   </v-container>
 </template>
 <script>
