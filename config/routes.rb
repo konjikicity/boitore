@@ -6,5 +6,8 @@ Rails.application.routes.draw do
       resources :selects, only: %i[index show]
     end
   end
+  namespace :admin do
+    root to: 'dashboards#index'
+  end
   get '*path', to: 'top#index'
 end
