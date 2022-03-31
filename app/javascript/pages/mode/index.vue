@@ -4,41 +4,35 @@
     fluid
   >
     <v-row
+      class="d-flex flex-column"
       justify="center"
+      align-content="center"
     >
-      <v-col
-        cols="5"
+      <div
+        class="text-center mb-6"
       >
-        <div
-          class="py-4"
+        <h1
+          class="white--text"
         >
-          <h1
-            class="white--text text-center"
-          >
-            モード選択
-          </h1>
-        </div>
-        <v-row
-          class="d-flex flex-column"
+          モード選択
+        </h1>
+      </div>
+      <div
+        v-for=" mode in modes"
+        :key="mode.id"
+        class="white--text"
+      >
+        <v-btn
+          :to="{ name: 'SelectIndex', params: { id: mode.id}}"
+          class="error my-5 rounded-pill mr-4"
+          elevation="10"
+          x-large
+          :width="150"
         >
-          <div
-            v-for=" mode in modes"
-            :key="mode.id"
-            class="white--text"
-          >
-            <v-btn
-              :to="{ name: 'SelectIndex', params: { id: mode.id}}"
-              class="error my-5 rounded-pill mr-4"
-              elevation="10"
-              x-large
-              :width="150"
-            >
-              {{ mode.difficulty }}
-            </v-btn>
-            {{ mode.description }}
-          </div>
-        </v-row>
-      </v-col>
+          {{ mode.difficulty }}
+        </v-btn>
+        {{ mode.description }}
+      </div>
     </v-row>
   </v-container>
 </template>

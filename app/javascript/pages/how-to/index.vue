@@ -10,7 +10,7 @@
         elevation="20"
         tile
         outlined
-        width="1300"
+        width="100%"
       >
         <v-card-title>
           <div
@@ -60,7 +60,33 @@
           <div
             class="font-weight-bold pb-8 text-h6"
           >
-            Step.1 文章を選択する
+            Step.1 モードを選択する
+          </div>
+          <v-img
+            :src="srcHowToMode"
+            width="900"
+            height="500"
+            class="position"
+          />
+          <div
+            class="pt-5"
+          >
+            練習したいモードを選択してください
+          </div>
+          <div
+            class="pb-5"
+          >
+            現在3つの中から選べます
+          </div>
+          <div
+            class="pb-8"
+          >
+            ※モードは随時追加予定です。
+          </div>
+          <div
+            class="font-weight-bold pb-8 text-h6"
+          >
+            Step.2 文章を選択する
           </div>
           <v-img
             :src="srcHowToSelect"
@@ -69,9 +95,9 @@
             class="position"
           />
           <div
-            class="pt-8"
+            class="pt-8 pb-5"
           >
-            練習したい文章をまず選択してください
+            練習したい文章を選択してください
           </div>
           <div
             class="pb-8"
@@ -81,7 +107,7 @@
           <div
             class="font-weight-bold pb-8 text-h6"
           >
-            Step.2 まずは普通に録音！
+            Step.3 まずは普通に録音！
           </div>
           <v-img
             :src="srcHowToNormal"
@@ -102,7 +128,7 @@
           <div
             class="font-weight-bold pb-8 text-h6"
           >
-            Step.3 母音法で練習！
+            Step.4 母音法で練習！
           </div>
           <v-img
             :src="srcHowToBoin"
@@ -126,7 +152,7 @@
           <div
             class="font-weight-bold pb-8 text-h6"
           >
-            Step.4 結果を見る！
+            Step.5 結果を見る！
           </div>
           <v-img
             :src="srcHowToResult"
@@ -134,7 +160,11 @@
             height="500"
             class="position"
           />
-          <div>結果画面では以下が確認できます</div>
+          <div
+            class="pb-5"
+          >
+            結果画面では以下が確認できます
+          </div>
           <ul>
             <li>判定結果:母音法での音声認識結果が元の文章と一致しているかを判定します</li>
             <li>判定基準:5段階のS・A・B・C・Dの順で評価</li>
@@ -168,7 +198,8 @@ export default {
       srcHowToSelect: require("HowToSelect.png"),
       srcHowToNormal: require("HowToNormal.png"),
       srcHowToBoin: require("HowToBoin.png"),
-      srcHowToResult: require("HowToResult.png")
+      srcHowToResult: require("HowToResult.png"),
+      srcHowToMode: require("HowToMode.png")
     }
   }
 }
@@ -179,14 +210,7 @@ li {
   list-style: none;
 }
 .v-card {
-  border-radius: 20px;
   padding: 1rem;
-  margin-left: 1rem;
-  position: sticky;
-  top: 1rem;
-  max-height: 70vh;
-  overflow: scroll;
-  margin: 50px 0px 50px 0px;
 }
 .py {
   padding: 50px 0px 50px 0px;
