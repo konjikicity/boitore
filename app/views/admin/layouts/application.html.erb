@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta lang='ja'>
   <meta name="robots" content="noindex, nofollow">
-  <title><%= page_title(yield(:title), admin: true) %></title>
+  <title>BOIトレ管理画面</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'admin', media: 'all' %>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -17,7 +17,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <%= render 'shared/flash_message' %>
+    <%= render 'admin/shared/flash_message' %>
     <%= yield %>
   </div>
   <!-- /.content-wrapper -->
