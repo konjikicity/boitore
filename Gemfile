@@ -52,6 +52,9 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'spring'
+  gem 'bootstrap', '~> 4.4.1'
+  gem 'font-awesome-sass', '~> 5.12.0'
+  gem 'jquery-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
