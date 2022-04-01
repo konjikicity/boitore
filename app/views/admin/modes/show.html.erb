@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <div class="text-right mb-3">
+        <%= link_to t('defaults.edit'), edit_admin_mode_path(@mode), class: 'btn btn-success' %>
+        <%= link_to t('defaults.delete'), admin_mode_path(@mode), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row"><%= Mode.human_attribute_name(:id) %></th>
+          <td><%= @mode.id %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Mode.human_attribute_name(:title) %></th>
+          <td><%= @mode.difficulty %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Mode.human_attribute_name(:user) %></th>
+          <td><%= @mode.description %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Mode.human_attribute_name(:created_at) %></th>
+          <td><%= l @mode.created_at, format: :long %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
