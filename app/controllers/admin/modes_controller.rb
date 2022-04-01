@@ -5,7 +5,20 @@ class Admin::ModesController < Admin::BaseController
     @modes = Mode.all.order(:id)
   end
 
+  def new
+    @mode = Mode.new
+  end
+
   def edit; end
+
+  def create
+    if @mode.save(mode_params)
+      redirect_to admin_modes_path, success: t('defaults.message.created', item: Mode.model_name.human)
+    else
+      flash.now['danger'] = t('defaults.message.not_created', item: Mode.model_name.human)
+      renfer :new
+    end
+  end
 
   def update
     if @mode.update(mode_params)

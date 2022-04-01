@@ -4,6 +4,19 @@ class Admin::SentencesController < Admin::BaseController
   def index
     @sentences = Sentence.all.order(:id)
   end
+  
+  def new
+    @sentence = Sentence.new
+  end
+
+  def create
+    if @sentence.save(sentence_params)
+      redirect_to admin_sentences_path, success: t('defaults.message.created', item: Sentence.model.name.human)
+    else
+      flash.new['danger'] = t('defaults.message.not_created', item: Sentence.mode_name.human)
+      render :new
+    end
+  end
 
   def edit; end
 
