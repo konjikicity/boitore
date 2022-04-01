@@ -2,14 +2,14 @@ class Admin::SentencesController < Admin::BaseController
   before_action :set_sentence, only: %i[edit update show destroy]
   
   def index
-    @sentences = Sentence.all
+    @sentences = Sentence.all.order(:id)
   end
 
   def edit; end
 
   def update
     if @sentence.update(sentence_params)
-      redirect_to admin_board_path(@sentence), success: t('defaults.message.updated', item: Sentence.model_name.human)
+      redirect_to admin_sentence_path(@sentence), success: t('defaults.message.updated', item: Sentence.model_name.human)
     else
       flash.now['danger'] = t('defaults.message.not_updated', item: Sentence.model_name.human)
       render :edit
