@@ -1,0 +1,44 @@
+ja:
+  defaults:
+    edit: '編集'
+    submit: '送信'
+    show: '詳細'
+    delete: '削除'
+    unspecified: '指定なし'
+    message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      deleted : "%{item}を削除しました"
+      not_updated: "%{item}を更新できませんせした"
+      delete_confirm: '削除しますか？'
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+  admin:
+    dashboards:
+      index:
+        title: 'BOIトレ管理画面'
+    modes:
+      index:
+        title: 'モード一覧'
+      show:
+        title: 'モード詳細'
+      edit:
+        title: 'モード編集'
+    sentence:
+      index:
+        title: '文章一覧'
+      show:
+        title: '文章詳細'
+      edit:
+        title: '文章編集'
+  time:
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%m/%d %H:%M"
+      short: "%m/%d %

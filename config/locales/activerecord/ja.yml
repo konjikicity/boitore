@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      mode:  モード
+      sentence: 文章
+      created_at: 作成日
+    attributes:
+        mode:
+          id: ID
+          difficulty: 難易度
+          description: 説明
+          created_at: 作成日
+        sentence:
+          id: ID
+          normal: 通常の文章
+          boin: 母音の文章
+          created_at: 作成日
+          mode_id: 難易度
