@@ -8,19 +8,23 @@
       </div>
       <table class="table table-bordered bg-white">
         <tr>
-          <th scope="row"><%= Mode.human_attribute_name(:id) %></th>
+          <th scope="row"><%= Sentence.human_attribute_name(:id) %></th>
           <td><%= @sentence.id %></td>
         </tr>
         <tr>
-          <th scope="row"><%= Mode.human_attribute_name(:title) %></th>
+          <th scope="row"><%= Sentence.human_attribute_name(:title) %></th>
           <td><%= @sentence.normal %></td>
         </tr>
         <tr>
-          <th scope="row"><%= Mode.human_attribute_name(:user) %></th>
+          <th scope="row"><%= Sentence.human_attribute_name(:user) %></th>
           <td><%= @sentence.boin %></td>
         </tr>
         <tr>
-          <th scope="row"><%= Mode.human_attribute_name(:created_at) %></th>
+          <th scope="row"><%= Sentence.human_attribute_name(:mode_id) %></th>
+          <td><%= @sentence.mode.difficulty %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Sentence.human_attribute_name(:created_at) %></th>
           <td><%= l @sentence.created_at, format: :long %></td>
         </tr>
       </table>
