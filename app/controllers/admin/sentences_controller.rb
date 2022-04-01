@@ -2,7 +2,7 @@ class Admin::SentencesController < Admin::BaseController
   before_action :set_sentence, only: %i[edit update show destroy]
   
   def index
-    @sentences = Mode.all.includes(:mode).order(id: :asc)
+    @sentences = Sentence.all
   end
 
   def edit; end

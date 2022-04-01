@@ -3,8 +3,8 @@
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
       <h1><%= t('.title') %></h1>
       <div class="text-right mb-3">
-        <%= link_to t('defaults.edit'), edit_admin_sentence_path(@mode), class: 'btn btn-success' %>
-        <%= link_to t('defaults.delete'), admin_sentence_path(@mode), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+        <%= link_to t('defaults.edit'), edit_admin_sentence_path(@sentence), class: 'btn btn-success' %>
+        <%= link_to t('defaults.delete'), admin_sentence_path(@sentence), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
       </div>
       <table class="table table-bordered bg-white">
         <tr>

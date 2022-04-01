@@ -2,7 +2,7 @@ class Admin::ModesController < Admin::BaseController
   before_action :set_mode, only: %i[edit update show destroy]
   
   def index
-    @modes = Mode.all.includes(:mode).order(id: :asc)
+    @modes = Mode.all
   end
 
   def edit; end

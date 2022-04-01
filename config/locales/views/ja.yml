@@ -30,7 +30,7 @@ ja:
         title: 'モード詳細'
       edit:
         title: 'モード編集'
-    sentence:
+    sentences:
       index:
         title: '文章一覧'
       show:
@@ -41,4 +41,4 @@ ja:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %
+      short: "%m/%d %"

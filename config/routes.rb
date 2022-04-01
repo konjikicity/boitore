@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     root to: 'dashboards#index'
+    resources :modes, only: %i[index edit update show destroy]
+    resources :sentences, only: %i[index edit update show destroy]
   end
   get '*path', to: 'top#index'
 end
