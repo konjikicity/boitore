@@ -11,7 +11,8 @@
 #
 # Indexes
 #
-#  index_sentences_on_mode_id  (mode_id)
+#  index_sentences_on_boin_and_normal  (boin,normal) UNIQUE
+#  index_sentences_on_mode_id          (mode_id)
 #
 # Foreign Keys
 #
