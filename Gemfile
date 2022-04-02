@@ -60,3 +60,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'enum_help'
 gem 'rails-i18n'
 gem 'seed-fu'
+gem 'bootstrap', '~> 4.4.1'
+gem 'font-awesome-sass', '~> 5.12.0'
