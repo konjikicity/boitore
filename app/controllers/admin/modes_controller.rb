@@ -6,17 +6,18 @@ class Admin::ModesController < Admin::BaseController
   end
 
   def new
-    @mode = Mode.new
+   @mode = Mode.new
   end
 
   def edit; end
 
   def create
-    if @mode.save(mode_params)
+    @mode = Mode.new(mode_params)
+    if @mode.save
       redirect_to admin_modes_path, success: t('defaults.message.created', item: Mode.model_name.human)
     else
-      flash.now['danger'] = t('defaults.message.not_created', item: Mode.model_name.human)
-      renfer :new
+      flash.new['danger'] = t('defaults.message.not_created', item: Mode.model_name.human)
+      render :new
     end
   end
 
@@ -43,6 +44,6 @@ class Admin::ModesController < Admin::BaseController
   end
 
   def mode_params
-    params.require(:mode).permit(:dificullty, :description)
+    params.require(:mode).permit(:difficulty, :description)
   end
 end

@@ -2,7 +2,7 @@ class Admin::SentencesController < Admin::BaseController
   before_action :set_sentence, only: %i[edit update show destroy]
   
   def index
-    @sentences = Sentence.all.order(:id)
+    @sentences = Sentence.all.includes(:mode).order(:id)
   end
   
   def new
@@ -13,7 +13,7 @@ class Admin::SentencesController < Admin::BaseController
     if @sentence.save(sentence_params)
       redirect_to admin_sentences_path, success: t('defaults.message.created', item: Sentence.model.name.human)
     else
-      flash.new['danger'] = t('defaults.message.not_created', item: Sentence.mode_name.human)
+      flash.new['danger'] = t('defaults.message.not_created', item: Sentence.model_name.human)
       render :new
     end
   end
