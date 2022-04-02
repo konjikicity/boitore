@@ -45,16 +45,16 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bootstrap', '~> 4.4.1'
+  gem 'font-awesome-sass', '~> 5.12.0'
   gem 'foreman'
+  gem 'jquery-rails'
   gem 'rails_best_practices'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'spring'
-  gem 'bootstrap', '~> 4.4.1'
-  gem 'font-awesome-sass', '~> 5.12.0'
-  gem 'jquery-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

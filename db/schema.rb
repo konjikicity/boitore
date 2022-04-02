@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_023631) do
+ActiveRecord::Schema.define(version: 2022_04_02_032810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 2022_04_02_023631) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "mode_id"
-    t.index ["boin", "normal"], name: "index_sentences_on_boin_and_normal", unique: true
+    t.index ["boin"], name: "index_sentences_on_boin", unique: true
     t.index ["mode_id"], name: "index_sentences_on_mode_id"
+    t.index ["normal"], name: "index_sentences_on_normal", unique: true
   end
 
   add_foreign_key "sentences", "modes"
