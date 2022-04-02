@@ -14,7 +14,7 @@ class Admin::SentencesController < Admin::BaseController
     if @sentence.save
       redirect_to admin_sentences_path, success: t('defaults.message.created', item: Sentence.model_name.human)
     else
-      flash.new['danger'] = t('defaults.message.not_created', item: Sentence.model_name.human)
+      flash.now['danger'] = t('defaults.message.not_created', item: Sentence.model_name.human)
       render :new
     end
   end

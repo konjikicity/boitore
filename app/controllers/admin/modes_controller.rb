@@ -16,7 +16,7 @@ class Admin::ModesController < Admin::BaseController
     if @mode.save
       redirect_to admin_modes_path, success: t('defaults.message.created', item: Mode.model_name.human)
     else
-      flash.new['danger'] = t('defaults.message.not_created', item: Mode.model_name.human)
+      flash.now['danger'] = t('defaults.message.not_created', item: Mode.model_name.human)
       render :new
     end
   end

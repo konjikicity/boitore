@@ -30,6 +30,8 @@ ja:
         title: 'モード詳細'
       edit:
         title: 'モード編集'
+      new:
+        title: 'モード新規作成'
     sentences:
       index:
         title: '文章一覧'
@@ -37,6 +39,8 @@ ja:
         title: '文章詳細'
       edit:
         title: '文章編集'
+      new:
+        title: '文章新規作成'
   time:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
