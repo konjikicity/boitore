@@ -21,6 +21,6 @@
 class Sentence < ApplicationRecord
   belongs_to :mode
 
-  validates :normal, uniqueness: true, presence: true
-  validates :boin, uniqueness: true, presence: true
+  validates :normal, uniqueness: true, presence: true, length: { maximum: 20 }
+  validates :boin, uniqueness: true, presence: true, length: { maximum: 20 }
 end
