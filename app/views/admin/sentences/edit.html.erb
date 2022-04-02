@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t '.title' %></h1>
+      <%= form_with model: @sentence, url: admin_sentence_path(@sentence), local: true do |f| %>
+        <%= render 'admin/shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label :normal %>
+          <%= f.text_field :normal, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :boin %>
+          <%= f.text_area :boin, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mode_id %>
+          <%= f.collection_select :mode_id, Mode.all, :id, :difficulty %>
+        </div>
+          <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

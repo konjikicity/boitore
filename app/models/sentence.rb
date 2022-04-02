@@ -11,7 +11,9 @@
 #
 # Indexes
 #
+#  index_sentences_on_boin     (boin) UNIQUE
 #  index_sentences_on_mode_id  (mode_id)
+#  index_sentences_on_normal   (normal) UNIQUE
 #
 # Foreign Keys
 #
@@ -19,4 +21,7 @@
 #
 class Sentence < ApplicationRecord
   belongs_to :mode
+
+  validates :normal, uniqueness: true, presence: true, length: { maximum: 20 }
+  validates :boin, uniqueness: true, presence: true, length: { maximum: 20 }
 end

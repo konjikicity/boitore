@@ -45,7 +45,10 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bootstrap', '~> 4.4.1'
+  gem 'font-awesome-sass', '~> 5.12.0'
   gem 'foreman'
+  gem 'jquery-rails'
   gem 'rails_best_practices'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
