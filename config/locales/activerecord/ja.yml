@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      mode:  モード
+      mode: モード
       sentence: 文章
       created_at: 作成日
     attributes:
@@ -16,3 +16,4 @@ ja:
           boin: 母音の文章
           created_at: 作成日
           mode_id: 難易度
+          mode: 難易度
