@@ -269,6 +269,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unicode-display_width (2.1.0)
     uniform_notifier (1.14.2)
     web-console (4.2.0)
@@ -294,7 +296,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.4)
-  bootstrap (~> 4.4.1)
+  bootstrap
   bullet
   enum_help
   factory_bot_rails
@@ -320,6 +322,7 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
+  uglifier
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
 
