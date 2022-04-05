@@ -67,6 +67,18 @@
      </v-list-item>
      </router-link>
 
+      <router-link
+      :to="{ name: 'TopIndex'}"
+      @click.native="logout"
+    >
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-logout</v-icon>
+        </v-list-item-icon>
+      <v-list-item-title>ログアウト</v-list-item-title>
+     </v-list-item>
+     </router-link>
+
      <router-link
       :to="{ name: 'SignUpForm'}"
     >
@@ -85,6 +97,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "TheHeader",
   data() {
@@ -92,6 +106,30 @@ export default {
       srcLogo: require("logo.png"),
       drawer: false,
       group: null,
+    }
+  },
+  methods: {
+
+    async logout () {
+      try {
+        const res = await axios.delete('http://localhost:3000/auth/sign_out', {
+          headers: {
+            uid: window.localStorage.getItem('uid'),
+            "access-token": window.localStorage.getItem('access-token'),
+            client: window.localStorage.getItem('client')
+          }
+        })
+
+        console.log("ログアウトしました")
+        window.localStorage.removeItem('access-token')
+        window.localStorage.removeItem('client')
+        window.localStorage.removeItem('uid')
+        window.localStorage.removeItem('name')
+
+        return res
+      } catch (error) {
+        console.log({ error })
+      }
     }
   }
 }
