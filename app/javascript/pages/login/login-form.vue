@@ -48,13 +48,12 @@ export default {
   methods: {
     async login(){
       try {
-
         const res = await axios.post('http://localhost:3000/auth/sign_in', {
           email: this.email,
           password: this.password,
           }
         )
-
+        this.$router.push({ name: 'ModeIndex' })
         console.log({ res })
         return res
       } catch (error) {
