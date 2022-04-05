@@ -40,13 +40,15 @@ v-model="passwordConfirmation"
   <v-card-actions>
     <v-btn 
     class="error ml-7"
-    @click="submit"
-    >ログイン</v-btn>
+    @click="signUp"
+    >登録</v-btn>
   </v-card-actions>
 </v-form>
   </v-card>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   name: "LoginForm",
   data(){
@@ -55,11 +57,24 @@ export default {
       name: '', 
       email:'',
       password:'',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
     }
   },
   methods: {
-    submit(){
+   async signUp () {
+      try {
+        const res = await axios.post('http://localhost:3000/auth', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.passwordConfirmation
+          }
+        )
+        console.log({ res })
+        return res
+      } catch (error) {
+        console.log({ error })
+      }
 
     }
   }
