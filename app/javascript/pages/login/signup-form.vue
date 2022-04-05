@@ -70,8 +70,10 @@ export default {
           password_confirmation: this.passwordConfirmation
           }
         )
+        this.$router.push({ name: 'ModeIndex' })
         console.log({ res })
         return res
+       
       } catch (error) {
         console.log({ error })
       }
