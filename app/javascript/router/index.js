@@ -12,6 +12,8 @@ import ModeIndex from "../pages/mode/index";
 import SharedTerms from "../pages/shared/terms";
 import SharedPrivacy from "../pages/shared/privacy-policy";
 import SharedContact from "../pages/shared/contact";
+import LoginForm from "../pages/login/login-form";
+import SignUpForm from "../pages/login/signup-form";
 
 Vue.use(Router)
 
@@ -65,6 +67,16 @@ const router = new Router({
       path: "/contact",
       component: SharedContact,
       name: "SharedContact"
+    },
+    {
+      path: '/login',
+      component: LoginForm,
+      name: "LoginForm"      
+    },
+    {
+      path: '/signup',
+      component: SignUpForm,
+      name: "SignUpForm"
     }
    
   ],
