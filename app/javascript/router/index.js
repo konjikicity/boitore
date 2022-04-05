@@ -14,7 +14,7 @@ import SharedPrivacy from "../pages/shared/privacy-policy";
 import SharedContact from "../pages/shared/contact";
 import LoginForm from "../pages/login/login-form";
 import SignUpForm from "../pages/login/signup-form";
-import MyPageIndex from "../pages/MyPage/index";
+import MyPageIndex from "../pages/my-page/index";
 
 Vue.use(Router)
 
