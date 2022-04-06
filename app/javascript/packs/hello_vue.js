@@ -12,7 +12,6 @@ import router from '../router'
 import store from '../store/store'
 import vuetify from '../plugins/vuetify'
 
-Turbolinks.start()
 Vue.config.devtools = true
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
