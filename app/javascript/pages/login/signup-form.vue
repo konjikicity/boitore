@@ -77,6 +77,15 @@ export default {
         )
         setItem(res.headers, res.data.data.name)
         this.$router.push({ name: 'ModeIndex' })
+        this.$store.dispatch(
+         "showMessage",
+         {
+          message: "ユーザー登録が完了しました",
+          type: "success",
+          status: true,
+        },
+      { root: true }
+        )
         console.log({ res })
         return res
        
