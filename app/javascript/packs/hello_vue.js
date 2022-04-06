@@ -7,7 +7,6 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
-import Turbolinks from 'turbolinks'
 import axios from '../plugins/axios'
 import router from '../router'
 import store from '../store/store'
@@ -18,7 +17,7 @@ Vue.config.devtools = true
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify,
     router,
