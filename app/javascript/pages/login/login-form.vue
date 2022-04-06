@@ -8,46 +8,73 @@
         ログイン
       </h1>
     </v-card-title>
-    <v-form
-      @submit.prevent="login"
+    <validation-observer
+      ref="observer"
     >
-      <v-text-field 
-        v-model="email"
-        prepend-icon="mdi-account-circle"
-        label="メールアドレス"
-        class="px-7"  
-      />
-      <v-text-field 
-        v-model="password" 
-        :type="showPassword ? 'text' : 'password'" 
-        prepend-icon="mdi-lock" 
-        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
-        label="パスワード"
-        class="px-7" 
-        @click:append="showPassword = !showPassword"
-      />
-      <v-card-actions>
-        <v-btn 
-          class="error ml-7"
-          @click="login"
+      <v-form
+        @submit.prevent="login"
+      >
+        <validation-provider
+          v-slot="{ errors }"
+          rules="required"
+          name="メールアドレス"
         >
-          ログイン
-        </v-btn>
-      </v-card-actions>
-    </v-form>
+          <v-text-field 
+            v-model="email"
+            prepend-icon="mdi-account-circle"
+            :error-messages="errors"
+            label="メールアドレス"
+            class="px-7"
+          />
+        </validation-provider>
+
+        <validation-provider
+          v-slot="{ errors }"
+          rules="required"
+          name="パスワード"
+        >
+          <v-text-field 
+            v-model="password" 
+            :type="showPassword ? 'text' : 'password'" 
+            prepend-icon="mdi-lock" 
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
+            label="パスワード"
+            :error-messages="errors"
+            class="px-7" 
+            @click:append="showPassword = !showPassword"
+          />
+        </validation-provider>
+        <div
+          v-show="this.email !== null && this.password !== null" 
+          class="valid"
+        >
+          {{ error }}
+        </div>
+        <v-card-actions>
+          <v-btn 
+            class="error ml-7"
+            @click="login"
+          >
+            ログイン
+          </v-btn>
+        </v-card-actions>
+      </v-form>
+    </validation-observer>
   </v-card>
 </template>
 <script>
 import axios from 'axios'
 import setItem from '../../src/auth/setItem'
+import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
 export default {
   name: "LoginForm",
   data(){
     return {
       showPassword: false,
-      email:'',
-      password:'',
+      email: null,
+      password: null,
+      error: null
     }
   },
   methods: {
@@ -64,11 +91,23 @@ export default {
         console.log({ res })
         return res
       } catch (error) {
+        this.$refs.observer.validate()
+        if(this.email !== null && this.password !== null){
+          this.error= "メールアドレスかパスワードを間違えています"
+        }
         console.log({ error })
+        
       }
     }
   }
 }
 </script>
 <style scoped>
+.valid {
+  line-height: 12px;
+  word-break: break-word;
+  text-align: center;
+  color: red;
+  font-size: 15px;
+}
 </style>
