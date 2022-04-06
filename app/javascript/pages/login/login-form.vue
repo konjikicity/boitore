@@ -55,6 +55,7 @@ export default {
           }
         )
         setItem(res.headers, res.data.data.name)
+        this.$store.commit('updateToken', res.headers["access-token"])
         this.$router.push({ name: 'ModeIndex' })
         console.log({ res })
         return res

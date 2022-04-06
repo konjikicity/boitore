@@ -82,7 +82,7 @@ const router = new Router({
     {
       path:'/MyPage',
       component: MyPageIndex,
-      name: "MyPageIndex"
+      name: "MyPageIndex",
     }
   ]
 })

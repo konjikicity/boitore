@@ -47,6 +47,7 @@
 
            <router-link
       :to="{ name: 'MyPageIndex'}"
+      v-if="isLoggedIn"
     >
       <v-list-item>
         <v-list-item-icon>
@@ -58,6 +59,7 @@
 
           <router-link
       :to="{ name: 'LoginForm'}"
+      v-if="isNotLoggedIn"
     >
       <v-list-item>
         <v-list-item-icon>
@@ -70,6 +72,7 @@
       <router-link
       :to="{ name: 'TopIndex'}"
       @click.native="logout"
+      v-if="isLoggedIn"
     >
       <v-list-item>
         <v-list-item-icon>
@@ -81,6 +84,7 @@
 
      <router-link
       :to="{ name: 'SignUpForm'}"
+      v-if="isNotLoggedIn"
     >
       <v-list-item>
         <v-list-item-icon>
@@ -121,6 +125,7 @@ export default {
         })
 
         console.log("ログアウトしました")
+        this.$store.commit('updateToken', null);
         window.localStorage.removeItem('access-token')
         window.localStorage.removeItem('client')
         window.localStorage.removeItem('uid')
@@ -130,6 +135,14 @@ export default {
       } catch (error) {
         console.log({ error })
       }
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.token !== null;
+    },
+    isNotLoggedIn() {
+      return this.$store.getters.token == null;
     }
   }
 }
