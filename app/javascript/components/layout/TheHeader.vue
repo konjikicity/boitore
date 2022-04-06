@@ -6,6 +6,7 @@
       dark
       app
     >
+     <FlashMessage />
       <router-link
         :to="{ name: 'TopIndex'}"
       >
@@ -102,9 +103,13 @@
 
 <script>
 import axios from 'axios'
+import FlashMessage from "components/layout/FlashMessage"
 
 export default {
   name: "TheHeader",
+  components: {
+    FlashMessage
+  },
   data() {
     return {
       srcLogo: require("logo.png"),
@@ -132,8 +137,16 @@ export default {
           }
         })
 
-        console.log("ログアウトしました")
         this.$store.commit('updateToken', null);
+        this.$store.dispatch(
+         "showMessage",
+         {
+          message: "ログアウトしました",
+          type: "error",
+          status: true,
+        },
+      { root: true }
+        )
         window.localStorage.removeItem('access-token')
         window.localStorage.removeItem('client')
         window.localStorage.removeItem('uid')

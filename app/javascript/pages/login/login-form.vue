@@ -61,6 +61,15 @@ export default {
         setItem(res.headers, res.data.data.name)
         this.$store.commit('updateToken', res.headers["access-token"])
         this.$router.push({ name: 'ModeIndex' })
+        this.$store.dispatch(
+         "showMessage",
+         {
+          message: "ログインしました",
+          type: "success",
+          status: true,
+        },
+      { root: true }
+        )
         console.log({ res })
         return res
       } catch (error) {
