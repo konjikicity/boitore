@@ -9,16 +9,18 @@ import Vue from 'vue'
 import App from '../app.vue'
 import axios from '../plugins/axios'
 import router from '../router'
+import store from '../store/store'
 import vuetify from '../plugins/vuetify'
-import TurbolinksAdapter from 'vue-turbolinks';
 
-Vue.use(TurbolinksAdapter);
+Vue.config.devtools = true
+Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify,
     router,
+    store,
     render: h => h(App)
   }).$mount();
   document.body.appendChild(app.$el);
