@@ -46,7 +46,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'foreman'
-  gem 'jquery-rails'
   gem 'rails_best_practices'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -58,13 +57,13 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'enum_help'
-gem 'rails-i18n'
-gem 'seed-fu'
-gem 'font-awesome-sass', '~> 5.12.0'
-gem 'uglifier'
-gem 'jquery-rails'
 gem 'bootstrap'
 gem 'devise', '~> 4.8'
 gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
+gem 'enum_help'
+gem 'font-awesome-sass', '~> 5.12.0'
+gem 'jquery-rails'
 gem 'rack-cors'
+gem 'rails-i18n'
+gem 'seed-fu'
+gem 'uglifier'

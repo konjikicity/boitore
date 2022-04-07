@@ -11,7 +11,9 @@ import axios from '../plugins/axios'
 import router from '../router'
 import store from '../store/store'
 import vuetify from '../plugins/vuetify'
+import veeValidate from "../plugins/vee-validate"
 
+Vue.mixin(veeValidate)
 Vue.config.devtools = true
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
