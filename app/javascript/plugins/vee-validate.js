@@ -1,8 +1,9 @@
 import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
-import { required } from 'vee-validate/dist/rules'
+import { required, confirmed, email, max } from 'vee-validate/dist/rules'
 setInteractionMode('eager')
 
 export default {
+  name: 'SignUpForm',
   components: {
     ValidationProvider,
     ValidationObserver,
@@ -13,5 +14,20 @@ export default {
 
 extend("required", {
   ...required,
-  message: "{_field_}は必須項目です"
+  message: "入力してください"
+});
+
+extend('confirmed', {
+  ...confirmed,
+  message: "パスワードと一致しません。"
+});
+
+extend('email', {
+  ...email,
+  message: '形式が正しくありません。'
+});
+
+extend('max', {
+  ...max,
+  message: '{length}文字以内で入力してください。'
 });

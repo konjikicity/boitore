@@ -8,6 +8,7 @@
         ログイン
       </h1>
     </v-card-title>
+    
     <validation-observer
       ref="observer"
     >
@@ -17,7 +18,7 @@
         <validation-provider
           v-slot="{ errors }"
           rules="required"
-          name="メールアドレス"
+          name="email"
         >
           <v-text-field 
             v-model="email"
@@ -31,7 +32,7 @@
         <validation-provider
           v-slot="{ errors }"
           rules="required"
-          name="パスワード"
+          name="password"
         >
           <v-text-field 
             v-model="password" 
@@ -46,10 +47,10 @@
         </validation-provider>
         <div
           v-show="this.email !== null && this.password !== null" 
-          class="valid"
         >
-          {{ error }}
+         <Message :alert="alert"/>
         </div>
+   
         <v-card-actions>
           <v-btn 
             class="error ml-7"
@@ -65,16 +66,21 @@
 <script>
 import axios from 'axios'
 import setItem from '../../src/auth/setItem'
+import Message from '../../components/layout/Message'
 import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
 export default {
   name: "LoginForm",
+   components: {
+    Message
+  },
   data(){
     return {
       showPassword: false,
       email: null,
       password: null,
-      error: null
+      alert: null,
+      notice: null
     }
   },
   methods: {
@@ -102,7 +108,8 @@ export default {
       } catch (error) {
         this.$refs.observer.validate()
         if(this.email !== null && this.password !== null){
-          this.error= "メールアドレスかパスワードを間違えています"
+          this.alert = 'メールアドレスまたはパスワードが違います。'
+          this.notice = null
         }
         console.log({ error })
         
