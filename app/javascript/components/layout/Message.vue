@@ -1,6 +1,9 @@
-  <template>
+<template>
   <div>
-    <v-alert v-if="alert" type="error">
+    <v-alert
+      v-if="alert"
+      type="error"
+    >
       {{ alert }}
     </v-alert>
   </div>

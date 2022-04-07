@@ -48,7 +48,7 @@
         <div
           v-show="this.email !== null && this.password !== null" 
         >
-         <Message :alert="alert"/>
+          <Message :alert="alert" />
         </div>
    
         <v-card-actions>
@@ -71,7 +71,7 @@ import { ValidationProvider, ValidationObserver, setInteractionMode, extend } fr
 
 export default {
   name: "LoginForm",
-   components: {
+  components: {
     Message
   },
   data(){
@@ -95,13 +95,13 @@ export default {
         this.$store.commit('updateToken', res.headers["access-token"])
         this.$router.push({ name: 'ModeIndex' })
         this.$store.dispatch(
-         "showMessage",
-         {
-          message: "ログインしました",
-          type: "success",
-          status: true,
-        },
-      { root: true }
+          "showMessage",
+          {
+            message: "ログインしました",
+            type: "success",
+            status: true,
+          },
+          { root: true }
         )
         console.log({ res })
         return res
