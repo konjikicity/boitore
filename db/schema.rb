@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_020422) do
+ActiveRecord::Schema.define(version: 2022_04_15_073425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 2022_04_05_020422) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "description", null: false
     t.index ["difficulty"], name: "index_modes_on_difficulty", unique: true
+  end
+
+  create_table "play_results", force: :cascade do |t|
+    t.string "practiced_normal", null: false
+    t.string "practiced_boin", null: false
+    t.string "normal_voice", null: false
+    t.string "boin_voice", null: false
+    t.string "judge", null: false
+    t.integer "score", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_play_results_on_user_id"
   end
 
   create_table "sentences", force: :cascade do |t|
@@ -47,5 +60,6 @@ ActiveRecord::Schema.define(version: 2022_04_05_020422) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "play_results", "users"
   add_foreign_key "sentences", "modes"
 end
