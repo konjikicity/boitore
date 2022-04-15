@@ -22,4 +22,12 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class PlayResult < ApplicationRecord
+  belongs_to :user
+
+  validates :practiced_normal, presence: true
+  validates :practiced_boin, presence: true
+  validates :normal_voice, presence: true
+  validates :boin_voice, presence: true
+  validates :judge, presence: true
+  validates :score, presence: true
 end
