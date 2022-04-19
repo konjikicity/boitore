@@ -202,7 +202,12 @@ export default {
 
 
 
-        .then(res => this.sentence = res.data)
+        .then(res => {
+          this.sentence = res.data
+          this.$store.commit('practice/setNormalSentence', this.sentence.normal)
+          this.$store.commit('practice/setBoinSentence', this.sentence.boin)
+          
+        })
         .catch(err => console.log(err.status));
 
     },
