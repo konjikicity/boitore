@@ -104,7 +104,6 @@
 <script>
 import axios from 'axios'
 import FlashMessage from "components/layout/FlashMessage"
-import { useStore } from 'vuex'
 
 export default {
   name: "TheHeader",
@@ -147,6 +146,7 @@ export default {
           
         ),
         this.$store.commit('login/logoutUser')
+        console.log({ res })
         return res
 
       } catch (error) {
