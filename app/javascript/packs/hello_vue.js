@@ -9,7 +9,7 @@ import Vue from 'vue'
 import App from '../app.vue'
 import axios from '../plugins/axios'
 import router from '../router'
-import store from '../store/store'
+import store from '../store/index'
 import vuetify from '../plugins/vuetify'
 
 Vue.config.devtools = true
