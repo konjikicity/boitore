@@ -137,15 +137,14 @@ export default {
           }
         })
 
-        this.$store.commit('updateToken', null);
+        this.$store.commit('login/updateToken', null);
         this.$store.dispatch(
-          "showMessage",
+          "message/showMessage",
           {
             message: "ログアウトしました",
             type: "error",
             status: true,
           },
-          { root: true }
         )
         window.localStorage.removeItem('access-token')
         window.localStorage.removeItem('client')
