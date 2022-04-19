@@ -90,8 +90,8 @@ export default {
           password: this.password,
         }
         )
-        this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client, uid: res.data.data.uid, name: res.data.data.name,
-        id: res.data.data.id
+        this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client,
+          uid: res.data.data.uid, name: res.data.data.name,id: res.data.data.id
         })
         this.$router.push({ name: 'ModeIndex' })
         this.$store.dispatch(
