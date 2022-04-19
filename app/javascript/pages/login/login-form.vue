@@ -91,8 +91,9 @@ export default {
           password: this.password,
         }
         )
-        setItem(res.headers, res.data.data.name)
-        this.$store.commit('login/updateToken', res.headers["access-token"])
+        this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client, uid: res.data.data.uid, name: res.data.data.name,
+        id: res.data.data.id
+        })
         this.$router.push({ name: 'ModeIndex' })
         this.$store.dispatch(
           "message/showMessage",
@@ -102,6 +103,7 @@ export default {
             status: true,
           },
         )
+     
         console.log({ res })
         return res
       } catch (error) {

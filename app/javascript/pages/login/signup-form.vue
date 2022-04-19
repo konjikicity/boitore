@@ -113,7 +113,9 @@ export default {
           password_confirmation: this.passwordConfirmation
         }
         )
-        setItem(res.headers, res.data.data.name)
+        this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client, uid: res.data.data.uid, name: res.data.data.name,
+        id: res.data.data.id
+        })
         this.$router.push({ name: 'ModeIndex' })
         this.$store.dispatch(
           "message/showMessage",
