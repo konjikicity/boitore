@@ -118,12 +118,6 @@
 <script>
 export default {
   name: 'PracticeResult',
-  props: {
-    normalSentence: {
-      type: String,
-      required: true
-    }
-  },
   data () {
     return {
       boinVoice: { url: ''},
@@ -133,28 +127,28 @@ export default {
       judge: '',
       judgeText: '',
       activeColor: '',
-      resultSentence: this.normalSentence,
+      resultSentence: '',
       score: ''
     }
   },
   watch: {
-    normalSentence(newValue) {
-      this.resultSentence = newValue;
-    },
     boinRecognition: function() {
         
       // 選択した文章と音声認識した文章を比較して何文字あっているかを算出
       let resultWord = this.boinRecognition
       let normalWord = this.resultSentence
       let resultWordReplace = resultWord.replace(/\s+/g, "");
-      let normalWordReplace = normalWord.replace(/\s+/g, "");
       let resultWordSplit = resultWordReplace.split('');
-      let normalWordSplit = normalWordReplace.split('');
+      let normalWordSplit = normalWord.split('');
       let resultDifference = normalWordSplit.filter(i => resultWordSplit.indexOf(i) == -1);
       let resultNormalLength = normalWord.length
       let resultDifferenceLength = resultDifference.length
       let result = resultNormalLength - resultDifferenceLength
-      
+
+      //音声認識された文章の空白をなくす
+      this.boinRecognition = resultWordReplace
+      this.normalRecognition = this.normalRecognition.replace(/\s+/g, "")
+
       // 全体の文字の数を細分化して評価基準を作る
       let resultA = resultNormalLength * 0.75
       if (resultA > 0) resultA = Math.round(resultA);
@@ -198,12 +192,13 @@ export default {
     }
   },
   methods: {
-    //sessionStorageに保存したデータを取得する
+    //storeに保存した文章を取得する
     setRecords() {
-      this.boinVoice.url = sessionStorage.getItem('setBoin');
-      this.normalVoice.url = sessionStorage.getItem('setNormal');
-      this.boinRecognition = sessionStorage.getItem('setBoinRecognition');
-      this.normalRecognition = sessionStorage.getItem('setNormalRecognition');
+      this.resultSentence = this.$store.getters['practice/normalSentence']
+      this.boinVoice.url = this.$store.getters['practice/boinVoice']
+      this.normalVoice.url = this.$store.getters['practice/normalVoice']
+      this.boinRecognition = this.$store.getters['practice/boinRecognition']
+      this.normalRecognition = this.$store.getters['practice/normalRecognition']
     }
   }
 } 

@@ -84,7 +84,6 @@
         <v-row>
           <PracticeResult 
             v-if="status === 'recorded'"
-            :normal-sentence="sentence.normal"
           />
         </v-row>
       </v-col>
