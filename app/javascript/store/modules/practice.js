@@ -1,10 +1,10 @@
 export default {
   namespaced: true,
   state: {
-    normalVoice: "",
-    boinVoice: "",
-    normalRecognition: "",
-    boinRecognition:""
+    normalVoice: null,
+    boinVoice: null,
+    normalRecognition: null,
+    boinRecognition: null
   }, 
   getters: {
     normalVoice: state => state.normalVoice,
@@ -24,6 +24,12 @@ export default {
     },
     setBoinRecognition(state, boinRecognition) {
       state.boinRecognition = boinRecognition
+    },
+    resetResult(state){
+      state.normalVoice = null,
+      state.boinVoice = null,
+      state.normalRecognition = null,
+      state.boinRecognition = null
     }
   }
 }
