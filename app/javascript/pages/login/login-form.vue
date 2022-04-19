@@ -65,7 +65,6 @@
 </template>
 <script>
 import axios from 'axios'
-import setItem from '../../src/auth/setItem'
 import Message from '../../components/layout/Message'
 import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
