@@ -1,6 +1,7 @@
 class CreatePlayResults < ActiveRecord::Migration[6.1]
   def change
     create_table :play_results do |t|
+      t.string :practiced_sentence, null:false
       t.string :practiced_normal, null: false
       t.string :practiced_boin, null: false
       t.string :normal_voice, null: false

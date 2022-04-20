@@ -1,23 +1,10 @@
 class Api::PlayResultsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create show]
-   
-  def show
 
   def create
-    play_results = PlayResult.new(play_result_params)
-    if play_results.save
-      render status: :created   
-    else
-      render json: play_results.errors, status: :unprocessable_entity
-    end
-  end
-
-  private
-
-  def play_result_params
-    params.fetch(:play_result, {}).permit(
-      :practiced_normal, :practiced_boin, :normal_voice, :boin_voice, :judge, :score, :user_id
-    )
+    user = User.find_by(email: params[:uid])
+    play_results = PlayResult.new(user_id: user.id, practiced_sentence: params[:practiced_sentence], practiced_normal: params[:practiced_normal], 
+    practiced_boin: params[:practiced_boin], normal_voice: params[:normal_voice], boin_voice: params[:boin_voice], judge: params[:judge], score: params[:score])
+    play_results.save
   end
 
 end

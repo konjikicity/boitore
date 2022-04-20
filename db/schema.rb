@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_04_15_073425) do
   end
 
   create_table "play_results", force: :cascade do |t|
+    t.string "practiced_sentence", null: false
     t.string "practiced_normal", null: false
     t.string "practiced_boin", null: false
     t.string "normal_voice", null: false

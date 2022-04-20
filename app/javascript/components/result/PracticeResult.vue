@@ -92,6 +92,16 @@
                 />
               </v-col>
             </v-row>
+            <v-row
+              justify="center"
+            >
+              <v-btn
+                class="primary my-12"
+                @click="saveResult"
+              >
+                結果を保存する
+              </v-btn>
+            </v-row>            
             <v-divider />
             <v-card-actions class="justify-center py-15">      
               <v-btn
@@ -116,8 +126,13 @@
   </v-row>
 </template>
 <script>
+import Message from '../../components/layout/Message'
+
 export default {
   name: 'PracticeResult',
+  components: {
+    Message
+  },
   data () {
     return {
       boinVoice: { url: ''},
@@ -127,8 +142,12 @@ export default {
       judge: '',
       judgeText: '',
       activeColor: '',
-      resultSentence: '',
-      score: ''
+      normalSentence: '',
+      boinSentence: '',
+      score: '',
+      token: null,
+      uid: null,
+      client: null,
     }
   },
   watch: {
@@ -136,7 +155,7 @@ export default {
         
       // 選択した文章と音声認識した文章を比較して何文字あっているかを算出
       let resultWord = this.boinRecognition
-      let normalWord = this.resultSentence
+      let normalWord = this.normalSentence
       let resultWordReplace = resultWord.replace(/\s+/g, "");
       let resultWordSplit = resultWordReplace.split('');
       let normalWordSplit = normalWord.split('');
@@ -194,11 +213,47 @@ export default {
   methods: {
     //storeに保存した文章を取得する
     setRecords() {
-      this.resultSentence = this.$store.getters['practice/normalSentence']
+      this.uid = this.$store.getters['login/uid']
+      this.token = this.$store.getters['login/token']
+      this.client = this.$store.getters['login/client']
+      this.normalSentence = this.$store.getters['practice/normalSentence']
+      this.boinSentence = this.$store.getters['practice/boinSentence']
       this.boinVoice.url = this.$store.getters['practice/boinVoice']
       this.normalVoice.url = this.$store.getters['practice/normalVoice']
       this.boinRecognition = this.$store.getters['practice/boinRecognition']
       this.normalRecognition = this.$store.getters['practice/normalRecognition']
+    },
+    saveResult() {
+      this.$axios.post('/play_results', {
+        uid: this.uid,
+        "access-token": this.token,
+        client: this.client,
+        practiced_sentence: this.normalSentence,
+        practiced_normal: this.normalRecognition,
+        practiced_boin: this.boinRecognition,
+        normal_voice: this.normalVoice.url,
+        boin_voice:  this.boinVoice.url,
+        judge: this.judge,
+        score: this.score,
+      })
+        .then(res => {
+        
+          this.$store.dispatch(
+            "message/showMessage",
+            {
+              message: "文章を保存しました。",
+              type: "success",
+              status: true,
+            },
+          )
+          
+          console.log({ res })
+          this.$router.push({ name: 'MyPageIndex' })
+        })
+        .catch(err => {
+          console.log(err.status)
+      
+        });
     }
   }
 } 

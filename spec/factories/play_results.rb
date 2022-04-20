@@ -2,16 +2,17 @@
 #
 # Table name: play_results
 #
-#  id               :bigint           not null, primary key
-#  boin_voice       :string           not null
-#  judge            :string           not null
-#  normal_voice     :string           not null
-#  practiced_boin   :string           not null
-#  practiced_normal :string           not null
-#  score            :integer          not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  user_id          :bigint
+#  id                 :bigint           not null, primary key
+#  boin_voice         :string           not null
+#  judge              :string           not null
+#  normal_voice       :string           not null
+#  practiced_boin     :string           not null
+#  practiced_normal   :string           not null
+#  practiced_sentence :string           not null
+#  score              :integer          not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint
 #
 # Indexes
 #
