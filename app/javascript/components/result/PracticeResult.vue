@@ -93,11 +93,17 @@
               </v-col>
             </v-row>
             <v-row
-              justify="center"
+            justify="center"
             >
+          <Message :alert="alert"/>
+          </v-row>
+             <v-row
+             justify="center"
+             >
               <v-btn
-                class="primary my-12"
+                class="error my-12"
                 @click="saveResult"
+                v-if="token !== null"
               >
                 結果を保存する
               </v-btn>
@@ -148,6 +154,7 @@ export default {
       token: null,
       uid: null,
       client: null,
+      alert: null,
     }
   },
   watch: {
@@ -252,7 +259,7 @@ export default {
         })
         .catch(err => {
           console.log(err.status)
-      
+          this.alert = "練習していない文章があります！ 文章が保存できませんでした."
         });
     }
   }
