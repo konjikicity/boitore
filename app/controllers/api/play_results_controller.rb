@@ -1,11 +1,9 @@
 class Api::PlayResultsController < ApplicationController
-  before_action :authenticate_user!, except: %i[create show]
   before_action :play_results_params, only: %i[create]
-  skip_before_action :verify_authenticity_token
-
-  def show
-    play_result = PlayResult.where(user_id: params[:user_id])
-    render json: play_result
+  before_action :authenticate_user!, only: %i[index create]
+  def index
+    play_results = PlayResult.where(user_id: current_user.id)
+    render json: play_results
   end
 
   def create

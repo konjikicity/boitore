@@ -151,7 +151,9 @@ export default {
       normalSentence: '',
       boinSentence: '',
       score: '',
-      id: '',
+      token: null,
+      uid: null,
+      id: null,
       alert: null
     }
   },
@@ -220,6 +222,8 @@ export default {
     setRecords() {
       this.id = this.$store.getters['login/id']
       this.token = this.$store.getters['login/token']
+      this.uid = this.$store.getters['login/uid']
+      this.client = this.$store.getters['login/client']
       this.normalSentence = this.$store.getters['practice/normalSentence']
       this.boinSentence = this.$store.getters['practice/boinSentence']
       this.boinVoice.url = this.$store.getters['practice/boinVoice']
@@ -229,6 +233,9 @@ export default {
     },
     saveResult() {
       this.$axios.post('/play_results', {
+        uid: this.uid,
+        "access-token": this.token,
+        client: this.client,
         practiced_sentence: this.normalSentence,
         practiced_normal: this.normalRecognition,
         practiced_boin: this.boinRecognition,

@@ -16,11 +16,14 @@
           </h1>
         </v-card-title>
         <div>
-          <p>こんにちは、<span class="name">{{ name }}</span>さん</p>
-          <p class="email">
-            現在、 {{ email }} でログイン中です
-          </p>    
+          <p>こんにちは、{{ name }}さん</p>
         </div>
+        <ul v-for="play_result in play_results" :key="play_result.id">
+        <li>
+         {{ play_result.practiced_sentence }}
+        </li>
+        
+      </ul>
       </v-card>
     </v-row>
   </v-container>
@@ -31,8 +34,36 @@ export default {
   name: 'MyPageIndex',
   data(){
     return {
-      name: window.localStorage.getItem('name'),
-      email: window.localStorage.getItem('uid')
+      name: null,
+      uid: null,
+      token: null,
+      client: null,
+      play_results: []
+    }
+  },
+  created() {
+    this.name = this.$store.getters['login/name']
+    this.uid = this.$store.getters['login/uid']
+    this.token = this.$store.getters['login/token']
+    this.client = this.$store.getters['login/client']
+  },
+  mounted() {
+    this.fetchPlayResults();
+  },
+  methods: {
+    fetchPlayResults() {
+      this.$axios.get('/play_results', {
+          headers: {
+            uid: this.uid,
+            "access-token": this.token,
+            client: this.client,
+          },
+        })
+        .then(res => {
+          console.log(res.data);
+          this.play_results = res.data;
+        })
+        .catch(err => console.log(err.status));
     }
   }
 }
