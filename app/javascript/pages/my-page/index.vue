@@ -18,12 +18,14 @@
         <div>
           <p>こんにちは、{{ name }}さん</p>
         </div>
-        <ul v-for="play_result in play_results" :key="play_result.id">
-        <li>
-         {{ play_result.practiced_sentence }}
-        </li>
-        
-      </ul>
+        <ul
+          v-for="play_result in play_results"
+          :key="play_result.id"
+        >
+          <li>
+            {{ play_result.practiced_sentence }}
+          </li>
+        </ul>
       </v-card>
     </v-row>
   </v-container>
@@ -53,12 +55,12 @@ export default {
   methods: {
     fetchPlayResults() {
       this.$axios.get('/play_results', {
-          headers: {
-            uid: this.uid,
-            "access-token": this.token,
-            client: this.client,
-          },
-        })
+        headers: {
+          uid: this.uid,
+          "access-token": this.token,
+          client: this.client,
+        },
+      })
         .then(res => {
           console.log(res.data);
           this.play_results = res.data;

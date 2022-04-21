@@ -93,17 +93,17 @@
               </v-col>
             </v-row>
             <v-row
-            justify="center"
+              justify="center"
             >
-          <Message :alert="alert"/>
-          </v-row>
-             <v-row
-             justify="center"
-             >
+              <Message :alert="alert" />
+            </v-row>
+            <v-row
+              justify="center"
+            >
               <v-btn
+                v-if="token !== null"
                 class="error my-12"
                 @click="saveResult"
-                v-if="token !== null"
               >
                 結果を保存する
               </v-btn>
