@@ -151,10 +151,8 @@ export default {
       normalSentence: '',
       boinSentence: '',
       score: '',
-      token: null,
-      uid: null,
-      client: null,
-      alert: null,
+      id: '',
+      alert: null
     }
   },
   watch: {
@@ -220,9 +218,8 @@ export default {
   methods: {
     //storeに保存した文章を取得する
     setRecords() {
-      this.uid = this.$store.getters['login/uid']
+      this.id = this.$store.getters['login/id']
       this.token = this.$store.getters['login/token']
-      this.client = this.$store.getters['login/client']
       this.normalSentence = this.$store.getters['practice/normalSentence']
       this.boinSentence = this.$store.getters['practice/boinSentence']
       this.boinVoice.url = this.$store.getters['practice/boinVoice']
@@ -232,9 +229,6 @@ export default {
     },
     saveResult() {
       this.$axios.post('/play_results', {
-        uid: this.uid,
-        "access-token": this.token,
-        client: this.client,
         practiced_sentence: this.normalSentence,
         practiced_normal: this.normalRecognition,
         practiced_boin: this.boinRecognition,
@@ -242,6 +236,7 @@ export default {
         boin_voice:  this.boinVoice.url,
         judge: this.judge,
         score: this.score,
+        user_id: this.id
       })
         .then(res => {
         
