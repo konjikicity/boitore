@@ -1,25 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state: {
-    token: null,
     message: "",
     type: "",
     status: false,
   }, 
   getters: {
-    token: state => state.token,
     message: state => state.message,
     type: state => state.type,
     status: state => state.status,
   },
   mutations: {
-    updateToken(state, token) { 
-      state.token = token;
-    },
     setMessage(state, message) {
       state.message = message
     },
@@ -40,4 +31,4 @@ export default new Vuex.Store({
       }, 2000)
     },
   }
-})
+}

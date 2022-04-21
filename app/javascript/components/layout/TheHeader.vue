@@ -119,10 +119,10 @@ export default {
   },
   computed: {
     isLoggedIn() {
-      return this.$store.getters.token !== null;
+      return this.$store.getters['login/token'] !== null;
     },
     isNotLoggedIn() {
-      return this.$store.getters.token == null;
+      return this.$store.getters['login/token'] == null;
     }
   },
   methods: {
@@ -131,28 +131,24 @@ export default {
       try {
         const res = await axios.delete('http://localhost:3000/auth/sign_out', {
           headers: {
-            uid: window.localStorage.getItem('uid'),
-            "access-token": window.localStorage.getItem('access-token'),
-            client: window.localStorage.getItem('client')
-          }
+            uid: this.$store.getters['login/uid'],
+            "access-token": this.$store.getters['login/token'],
+            client: this.$store.getters['login/client']
+          },
         })
-
-        this.$store.commit('updateToken', null);
         this.$store.dispatch(
-          "showMessage",
+          "message/showMessage",
           {
             message: "ログアウトしました",
             type: "error",
             status: true,
           },
-          { root: true }
-        )
-        window.localStorage.removeItem('access-token')
-        window.localStorage.removeItem('client')
-        window.localStorage.removeItem('uid')
-        window.localStorage.removeItem('name')
-
+          
+        ),
+        this.$store.commit('login/logoutUser')
+        console.log({ res })
         return res
+
       } catch (error) {
         console.log({ error })
       }

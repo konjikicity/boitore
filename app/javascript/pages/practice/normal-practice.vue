@@ -124,7 +124,7 @@ export default {
       this.$axios(options)
         .then(res => {
           this.normalRecognitionToHiragana = res.data
-          sessionStorage.setItem('setNormalRecognition',this.normalRecognitionToHiragana.converted);
+          this.$store.commit('practice/setNormalRecognition', this.normalRecognitionToHiragana.converted )
         })
         .catch(err => console.log(err.status));
          
@@ -156,7 +156,7 @@ export default {
           const audioBlob = new Blob(this.audioData);
           const url = URL.createObjectURL(audioBlob);
           this.normalVoice.url = url;
-          sessionStorage.setItem('setNormal',this.normalVoice.url);
+          this.$store.commit('practice/setNormalVoice', this.normalVoice.url )
 
         });
         this.recognition.onresult = (event) => {

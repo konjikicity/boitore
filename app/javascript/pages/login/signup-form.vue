@@ -89,7 +89,6 @@
 </template>
 <script>
 import axios from 'axios'
-import setItem from '../../src/auth/setItem'
 import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
 export default {
@@ -113,16 +112,17 @@ export default {
           password_confirmation: this.passwordConfirmation
         }
         )
-        setItem(res.headers, res.data.data.name)
+        this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client, 
+          uid: res.data.data.uid, name: res.data.data.name,id: res.data.data.id
+        })
         this.$router.push({ name: 'ModeIndex' })
         this.$store.dispatch(
-          "showMessage",
+          "message/showMessage",
           {
             message: "ユーザー登録が完了しました",
             type: "success",
             status: true,
           },
-          { root: true }
         )
         console.log({ res })
         return res

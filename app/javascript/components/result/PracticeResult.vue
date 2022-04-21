@@ -92,6 +92,22 @@
                 />
               </v-col>
             </v-row>
+            <v-row
+              justify="center"
+            >
+              <Message :alert="alert" />
+            </v-row>
+            <v-row
+              justify="center"
+            >
+              <v-btn
+                v-if="token !== null"
+                class="error my-12"
+                @click="saveResult"
+              >
+                結果を保存する
+              </v-btn>
+            </v-row>            
             <v-divider />
             <v-card-actions class="justify-center py-15">      
               <v-btn
@@ -116,13 +132,12 @@
   </v-row>
 </template>
 <script>
+import Message from '../../components/layout/Message'
+
 export default {
   name: 'PracticeResult',
-  props: {
-    normalSentence: {
-      type: String,
-      required: true
-    }
+  components: {
+    Message
   },
   data () {
     return {
@@ -133,28 +148,33 @@ export default {
       judge: '',
       judgeText: '',
       activeColor: '',
-      resultSentence: this.normalSentence,
-      score: ''
+      normalSentence: '',
+      boinSentence: '',
+      score: '',
+      token: null,
+      uid: null,
+      id: null,
+      alert: null
     }
   },
   watch: {
-    normalSentence(newValue) {
-      this.resultSentence = newValue;
-    },
     boinRecognition: function() {
         
       // 選択した文章と音声認識した文章を比較して何文字あっているかを算出
       let resultWord = this.boinRecognition
-      let normalWord = this.resultSentence
+      let normalWord = this.normalSentence
       let resultWordReplace = resultWord.replace(/\s+/g, "");
-      let normalWordReplace = normalWord.replace(/\s+/g, "");
       let resultWordSplit = resultWordReplace.split('');
-      let normalWordSplit = normalWordReplace.split('');
+      let normalWordSplit = normalWord.split('');
       let resultDifference = normalWordSplit.filter(i => resultWordSplit.indexOf(i) == -1);
       let resultNormalLength = normalWord.length
       let resultDifferenceLength = resultDifference.length
       let result = resultNormalLength - resultDifferenceLength
-      
+
+      //音声認識された文章の空白をなくす
+      this.boinRecognition = resultWordReplace
+      this.normalRecognition = this.normalRecognition.replace(/\s+/g, "")
+
       // 全体の文字の数を細分化して評価基準を作る
       let resultA = resultNormalLength * 0.75
       if (resultA > 0) resultA = Math.round(resultA);
@@ -198,12 +218,51 @@ export default {
     }
   },
   methods: {
-    //sessionStorageに保存したデータを取得する
+    //storeに保存した文章を取得する
     setRecords() {
-      this.boinVoice.url = sessionStorage.getItem('setBoin');
-      this.normalVoice.url = sessionStorage.getItem('setNormal');
-      this.boinRecognition = sessionStorage.getItem('setBoinRecognition');
-      this.normalRecognition = sessionStorage.getItem('setNormalRecognition');
+      this.id = this.$store.getters['login/id']
+      this.token = this.$store.getters['login/token']
+      this.uid = this.$store.getters['login/uid']
+      this.client = this.$store.getters['login/client']
+      this.normalSentence = this.$store.getters['practice/normalSentence']
+      this.boinSentence = this.$store.getters['practice/boinSentence']
+      this.boinVoice.url = this.$store.getters['practice/boinVoice']
+      this.normalVoice.url = this.$store.getters['practice/normalVoice']
+      this.boinRecognition = this.$store.getters['practice/boinRecognition']
+      this.normalRecognition = this.$store.getters['practice/normalRecognition']
+    },
+    saveResult() {
+      this.$axios.post('/play_results', {
+        uid: this.uid,
+        "access-token": this.token,
+        client: this.client,
+        practiced_sentence: this.normalSentence,
+        practiced_normal: this.normalRecognition,
+        practiced_boin: this.boinRecognition,
+        normal_voice: this.normalVoice.url,
+        boin_voice:  this.boinVoice.url,
+        judge: this.judge,
+        score: this.score,
+        user_id: this.id
+      })
+        .then(res => {
+        
+          this.$store.dispatch(
+            "message/showMessage",
+            {
+              message: "文章を保存しました。",
+              type: "success",
+              status: true,
+            },
+          )
+          
+          console.log({ res })
+          this.$router.push({ name: 'MyPageIndex' })
+        })
+        .catch(err => {
+          console.log(err.status)
+          this.alert = "練習していない文章があります！ 文章が保存できませんでした."
+        });
     }
   }
 } 

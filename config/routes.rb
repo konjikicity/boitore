@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :modes, only: %i[index] do
       resources :selects, only: %i[index show]
     end
+    resources :play_results, only: %i[index create]
   end
   namespace :admin do
     root to: 'dashboards#index'

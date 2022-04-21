@@ -84,7 +84,6 @@
         <v-row>
           <PracticeResult 
             v-if="status === 'recorded'"
-            :normal-sentence="sentence.normal"
           />
         </v-row>
       </v-col>
@@ -137,7 +136,7 @@ export default {
       this.$axios(options)
         .then(res => {
           this.boinRecognitionToHiragana = res.data
-          sessionStorage.setItem('setBoinRecognition',this.boinRecognitionToHiragana.converted);
+          this.$store.commit('practice/setBoinRecognition', this.boinRecognitionToHiragana.converted )
         })
         .catch(err => console.log(err.status));
          
@@ -171,14 +170,12 @@ export default {
           const audioBlob = new Blob(this.audioData);
           const url = URL.createObjectURL(audioBlob);
           this.boinVoice.url = url; 
-          sessionStorage.setItem('setBoin',this.boinVoice.url);
-
+          this.$store.commit('practice/setBoinVoice', this.boinVoice.url )
         });
         this.recognition.onresult = (event) => {
           if (event.results.length > 0) {
             this.boinRecognition = event.results[0][0].transcript;
-            sessionStorage.setItem('setBoinRecognition',this.boinRecognition);
-
+      
           }
         };
         this.recorder.addEventListener('start', () => {
@@ -204,7 +201,12 @@ export default {
 
 
 
-        .then(res => this.sentence = res.data)
+        .then(res => {
+          this.sentence = res.data
+          this.$store.commit('practice/setNormalSentence', this.sentence.normal)
+          this.$store.commit('practice/setBoinSentence', this.sentence.boin)
+          
+        })
         .catch(err => console.log(err.status));
 
     },
