@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="2">
+      <v-col cols="3">
         <v-sheet rounded="lg">
           <v-list color="transparent">
             <v-list-item
@@ -39,7 +39,7 @@
 
       <v-col>
         <v-sheet
-          height="73vh"
+          height="70vh"
           rounded="lg"
         >
           <Calendar />
