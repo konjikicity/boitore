@@ -1,13 +1,29 @@
 <template>
   <div>
-    <v-sheet tile height="6vh" color="grey lighten-3" class="d-flex align-center">
-    <v-btn outlined small class="ma-4" @click="setToday">
-+       今日
-+     </v-btn>
-      <v-btn icon @click="$refs.calendar.prev()">
+    <v-sheet
+      tile
+      height="6vh"
+      color="grey lighten-3"
+      class="d-flex align-center"
+    >
+      <v-btn
+        outlined
+        small
+        class="ma-4"
+        @click="setToday"
+      >
+        今日
+      </v-btn>
+      <v-btn
+        icon
+        @click="$refs.calendar.prev()"
+      >
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
-      <v-btn icon @click="$refs.calendar.next()">
+      <v-btn
+        icon
+        @click="$refs.calendar.next()"
+      >
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
@@ -15,17 +31,51 @@
     <v-sheet height="73vh">
       <v-calendar
         ref="calendar"
+        v-model="value"
         :events="events"
         :event-color="getEventColor"
-        @change="getEvents"
-        v-model="value"
         locale="ja-jp"
         :day-format="(timestamp) => new Date(timestamp.date).getDate()"
         :month-format="(timestamp) => (new Date(timestamp.date).getMonth() + 1) + ' /'"
-        @click:event="showEvent"
-        @click:date="viewDay"
         dark
-      ></v-calendar>
+        @change="getEvents"
+        @click:date="viewDay" 
+        @click:event="showEvent"
+      />
+      <v-row justify="center">
+        <v-dialog
+          v-model="selectedOpen"
+          :close-on-content-click="false"
+          :activator="selectedElement"
+          offset-x
+          max-width="60vw"
+        >
+          <v-card
+            color="grey lighten-4"
+            flat
+          >
+            <v-toolbar
+              :color="selectedEvent.color"
+              dark
+            >
+              <v-toolbar-title>
+                {{ selectedEvent.name }}
+              </v-toolbar-title>
+              <div>{{ selectedEvent.start }}</div>
+            </v-toolbar>
+            <v-card-text />
+            <v-card-actions>
+              <v-btn
+                text
+                color="secondary"
+                @click="selectedOpen = false"
+              >
+                Cancel
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
     </v-sheet>
   </div>
 </template>
@@ -34,40 +84,105 @@
 import moment from 'moment'
 
 export default {
-  data: () => ({
-    events: [],
-    value: moment().format('yyyy-MM-DD')
-  }),
+  name: 'Calender',
+  data(){
+    return {
+      events: [],
+      value: moment().format('yyyy-MM-DD'),
+      uid: null,
+      token: null,
+      client: null,
+      play_results: [],
+      dialog: false,
+      selectedEvent: {},
+      selectedElement: null,
+      selectedOpen: false,
+    }
+  },
   computed: {
     title() {
       return moment(this.value).format('yyyy年 M月')
     }
   },
+  mounted() {
+    this.fetchPlayResults();
+
+  },
+  created() {
+    this.name = this.$store.getters['login/name']
+    this.uid = this.$store.getters['login/uid']
+    this.token = this.$store.getters['login/token']
+    this.client = this.$store.getters['login/client']
+  },
   methods: {
     getEvents() {
-      const events = [
-        {
-          name: '会議',
-          start: new Date('2023-05-03T01:00:00'), 
-          end: new Date('2020-05-03T02:00:00'), 
-          color: 'blue',
-          timed: true, 
-        },
-      ];
-      this.events = events;
+      let i = 0;
+      const events = [];
+      for (let i = 0; i < this.play_results.length; i++) {
+        const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH');
+        const name = this.play_results[i].practiced_sentence
+        const practiced_normal = this.play_results[i].practiced_normal
+        const practiced_boin = this.play_results[i].practiced_boin
+        const normal_voice = this.play_results[i].normal_voice
+        const boin_voice = this.play_results[i].boin_voice
+        const score = this.play_results[i].score
+        const judge = this.play_results[i].judge
+        events.push({
+          name: name,
+          start: first,
+          color: 'cyan',
+          practiced_normal: practiced_normal,
+          practiced_boin: practiced_boin,
+          normal_voice: normal_voice,
+          boin_voice: boin_voice,
+          score: score,
+          judge: judge
+        }); 
+       
+      }
+      console.log(events)
+      this.events = events
     },
-     setToday () {
-       this.value = moment().format('yyyy-MM-DD')
-  },
+    setToday () {
+      this.value = moment().format('yyyy-MM-DD')
+    },
     getEventColor(event) {
       return event.color;
     },
-    showEvent({ event }) {
-      alert(`clicked ${event.name}`);
- },
-  viewDay({ date }) {
-  alert(`date: ${date}`);
-  },
-  },
+    viewDay({ date }) {
+      alert(`date: ${date}`);
+    },
+    fetchPlayResults() {
+      this.$axios.get('/play_results', {
+        headers: {
+          uid: this.uid,
+          "access-token": this.token,
+          client: this.client,
+        },
+      })
+        .then(res => {
+          console.log(res.data);
+          this.play_results = res.data;
+          this.getEvents();
+        })
+        .catch(err => console.log(err.status));
+    },
+    showEvent ({ nativeEvent, event }) {
+      const open = () => {
+        this.selectedEvent = event
+        this.selectedElement = nativeEvent.target
+        requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
+      }
+
+      if (this.selectedOpen) {
+        this.selectedOpen = false
+        requestAnimationFrame(() => requestAnimationFrame(() => open()))
+      } else {
+        open()
+      }
+
+      nativeEvent.stopPropagation()
+    },
+  }
 };
 </script>
