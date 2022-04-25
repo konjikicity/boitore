@@ -63,16 +63,46 @@
               </v-toolbar-title>
               <div>{{ selectedEvent.start }}</div>
             </v-toolbar>
-            <v-card-text />
-            <v-card-actions>
-              <v-btn
-                text
-                color="secondary"
-                @click="selectedOpen = false"
-              >
-                Cancel
-              </v-btn>
-            </v-card-actions>
+            <v-simple-table>
+              <template v-slot:default>
+                <tbody>
+                  <tr>
+                    <th>音声認識(通常練習)</th>
+                    <td>{{ selectedEvent.practiced_normal }}</td>
+                  </tr>
+                  <tr>
+                    <th>音声認識(母音法後の練習)</th>
+                    <td>{{ selectedEvent.practiced_boin }}</td>
+                  </tr>
+                  <tr>
+                    <th>得点</th>
+                    <td>{{ selectedEvent.score }}</td>
+                  </tr>
+                  <tr>
+                    <th>評価</th>
+                    <td>{{ selectedEvent.judge }}</td>
+                  </tr> 
+                  <tr>
+                    <th>通常練習の音声</th>
+                    <td>
+                      <audio
+                        :src="selectedEvent.normal_voice"
+                        controls
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>母音法後の音声</th>
+                    <td>
+                      <audio
+                        :src="selectedEvent.normal_voice"
+                        controls
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
           </v-card>
         </v-dialog>
       </v-row>
@@ -170,6 +200,7 @@ export default {
     showEvent ({ nativeEvent, event }) {
       const open = () => {
         this.selectedEvent = event
+        console.log(event)
         this.selectedElement = nativeEvent.target
         requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
       }
@@ -183,6 +214,9 @@ export default {
 
       nativeEvent.stopPropagation()
     },
+  },
+  showMore() {
+    
   }
 };
 </script>

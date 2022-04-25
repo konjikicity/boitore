@@ -23,15 +23,17 @@
 
             <v-divider class="my-2" />
             <v-list-item
-              v-for="link in links"
-              :key="link.index"
-              link
+            v-for="(item, i) in items"
+             :key="i"
+            @click="triggerClick(item.action)"
+            link
             >
+            <v-list-item-icon>
+            <v-icon v-text="item.icon"></v-icon>
+          </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>
-                  {{ link }}
-                </v-list-item-title>
-              </v-list-item-content>
+            <v-list-item-title v-text="item.text"></v-list-item-title>
+          </v-list-item-content>
             </v-list-item>
           </v-list>
         </v-sheet>
@@ -42,7 +44,12 @@
           height="70vh"
           rounded="lg"
         >
-          <Calendar />
+          <ResultTable 
+          v-show="ChangeSheet === true"
+          />
+          <Calendar
+          v-show="ChangeSheet === false"
+           />
         </v-sheet>
       </v-col>
     </v-row>
@@ -50,27 +57,46 @@
 </template>
 
 <script>
-import Message from '../../components/layout/Message'
 import Calendar from'../../components/layout/Calendar'
+import ResultTable from '../../components/layout/ResultTable'
 
 export default {
   name: 'MyPageIndex',
   components: {
     Calendar,
+    ResultTable
   },
   data(){
     return {
       name: null,
       uid: null,
-      links: [
-        '練習一覧',
-        'カレンダー',
+      items: [
+        { text: '練習履歴', icon: 'mdi-clock', action: "OpenHistory" },
+        { text: 'カレンダー', icon: 'mdi-calendar', action: "OpenCalendar" },
       ],
+      ChangeSheet: false
     }
   },
   created() {
     this.name = this.$store.getters['login/name']
     this.uid = this.$store.getters['login/uid']
+  },
+  methods: {
+     triggerClick(action) {
+        if (action === 'OpenHistory') {
+          this.anyHistory()
+        } else if (action === 'OpenCalendar') {
+          this.anyCalendar()
+        }
+     },
+
+    anyHistory() {
+      this.ChangeSheet = true  
+    },
+    anyCalendar() {
+      this.ChangeSheet = false  
+    }
+   
   }
 }
 </script>
