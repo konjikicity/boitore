@@ -6,7 +6,7 @@
     class="elevation-1"
     :footer-props="{ 'items-per-page-text' : '行/ページ:'}"
     dark
-    @click:row="editItem" 
+    @click:row="showItem" 
     @page-count="pageCount = $event"
   >
     <template v-slot:item.created_at="{ item }">
@@ -26,7 +26,7 @@
           flat
         >
           <v-toolbar
-            class="error"
+            class="red lighten-1"
             dark
           >
             <v-toolbar-title>
@@ -142,11 +142,10 @@ export default {
         .then(res => {
           console.log(res.data);
           this.play_results = res.data;
-          this.getEvents();
         })
         .catch(err => console.log(err.status));
     },
-    editItem (item) {
+    showItem (item) {
       this.editIndex = this.play_results.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true

@@ -3,13 +3,13 @@
     <v-sheet
       tile
       height="6vh"
-      color="grey lighten-3"
+      color="red lighten-1"
       class="d-flex align-center"
     >
       <v-btn
         outlined
         small
-        class="ma-4"
+        class="ma-4 white--text"
         @click="setToday"
       >
         今日
@@ -18,15 +18,27 @@
         icon
         @click="$refs.calendar.prev()"
       >
-        <v-icon>mdi-chevron-left</v-icon>
+        <v-icon
+          class="white--text"
+        >
+          mdi-chevron-left
+        </v-icon>
       </v-btn>
       <v-btn
         icon
         @click="$refs.calendar.next()"
       >
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon
+          class="white--text"
+        >
+          mdi-chevron-right
+        </v-icon>
       </v-btn>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title
+        class="white--text font-weight-bold"
+      >
+        {{ title }}
+      </v-toolbar-title>
     </v-sheet>
     <v-sheet height="73vh">
       <v-calendar
@@ -164,7 +176,7 @@ export default {
         events.push({
           name: name,
           start: first,
-          color: 'cyan',
+          color: 'red lighten-1',
           practiced_normal: practiced_normal,
           practiced_boin: practiced_boin,
           normal_voice: normal_voice,
