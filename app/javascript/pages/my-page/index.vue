@@ -23,17 +23,17 @@
 
             <v-divider class="my-2" />
             <v-list-item
-            v-for="(item, i) in items"
-             :key="i"
-            @click="triggerClick(item.action)"
-            link
+              v-for="(item, i) in items"
+              :key="i"
+              link
+              @click="triggerClick(item.action)"
             >
-            <v-list-item-icon>
-            <v-icon v-text="item.icon"></v-icon>
-          </v-list-item-icon>
+              <v-list-item-icon>
+                <v-icon v-text="item.icon" />
+              </v-list-item-icon>
               <v-list-item-content>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-          </v-list-item-content>
+                <v-list-item-title v-text="item.text" />
+              </v-list-item-content>
             </v-list-item>
           </v-list>
         </v-sheet>
@@ -45,11 +45,11 @@
           rounded="lg"
         >
           <ResultTable 
-          v-show="ChangeSheet === true"
+            v-show="ChangeSheet === true"
           />
           <Calendar
-          v-show="ChangeSheet === false"
-           />
+            v-show="ChangeSheet === false"
+          />
         </v-sheet>
       </v-col>
     </v-row>
@@ -70,9 +70,9 @@ export default {
     return {
       name: null,
       uid: null,
-      items: [
-        { text: '練習履歴', icon: 'mdi-clock', action: "OpenHistory" },
+      items: [ 
         { text: 'カレンダー', icon: 'mdi-calendar', action: "OpenCalendar" },
+        { text: '練習履歴', icon: 'mdi-clock', action: "OpenHistory" }
       ],
       ChangeSheet: false
     }
@@ -82,14 +82,13 @@ export default {
     this.uid = this.$store.getters['login/uid']
   },
   methods: {
-     triggerClick(action) {
-        if (action === 'OpenHistory') {
-          this.anyHistory()
-        } else if (action === 'OpenCalendar') {
-          this.anyCalendar()
-        }
-     },
-
+    triggerClick(action) {
+      if (action === 'OpenHistory') {
+        this.anyHistory()
+      } else if (action === 'OpenCalendar') {
+        this.anyCalendar()
+      }
+    },
     anyHistory() {
       this.ChangeSheet = true  
     },

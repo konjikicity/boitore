@@ -61,7 +61,11 @@
               <v-toolbar-title>
                 {{ selectedEvent.name }}
               </v-toolbar-title>
-              <div>{{ selectedEvent.start }}</div>
+              <div
+                class="pl-15"
+              >
+                {{ selectedEvent.start }}
+              </div>
             </v-toolbar>
             <v-simple-table>
               <template v-slot:default>
@@ -149,7 +153,7 @@ export default {
       let i = 0;
       const events = [];
       for (let i = 0; i < this.play_results.length; i++) {
-        const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH');
+        const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH:mm');
         const name = this.play_results[i].practiced_sentence
         const practiced_normal = this.play_results[i].practiced_normal
         const practiced_boin = this.play_results[i].practiced_boin
@@ -215,8 +219,5 @@ export default {
       nativeEvent.stopPropagation()
     },
   },
-  showMore() {
-    
-  }
 };
 </script>
