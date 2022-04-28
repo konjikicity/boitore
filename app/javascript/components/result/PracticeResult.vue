@@ -154,7 +154,9 @@ export default {
       token: null,
       uid: null,
       id: null,
-      alert: null
+      alert: null,
+      normalForm: null,
+      boinForm: null
     }
   },
   watch: {
@@ -230,20 +232,26 @@ export default {
       this.normalVoice.url = this.$store.getters['practice/normalVoice']
       this.boinRecognition = this.$store.getters['practice/boinRecognition']
       this.normalRecognition = this.$store.getters['practice/normalRecognition']
+      this.boinForm = this.$store.getters['practice/boinForm']
+      this.normalForm = this.$store.getters['practice/normalForm']
     },
     saveResult() {
-      this.$axios.post('/play_results', {
-        uid: this.uid,
-        "access-token": this.token,
-        client: this.client,
-        practiced_sentence: this.normalSentence,
-        practiced_normal: this.normalRecognition,
-        practiced_boin: this.boinRecognition,
-        normal_voice: this.normalVoice.url,
-        boin_voice:  this.boinVoice.url,
-        judge: this.judge,
-        score: this.score,
-        user_id: this.id
+      const form = new FormData();
+      form.append("play_result[normal_voice]", this.normalForm)
+      form.append("play_result[boin_voice]", this.boinForm)
+      form.append("play_result[practiced_sentence]", this.normalSentence)
+      form.append("play_result[practiced_normal]", this.normalRecognition)
+      form.append("play_result[practiced_boin]", this.boinRecognition)
+      form.append("play_result[judge]", this.judge)
+      form.append("play_result[score]", this.score)
+      form.append("play_result[user_id]", this.id)
+      this.$axios.post('/play_results', form,{
+        headers: {
+          'content-type': 'multipart/form-data',
+          uid: this.uid,
+          "access-token": this.token,
+          client: this.client,
+        },   
       })
         .then(res => {
         

@@ -170,6 +170,7 @@ export default {
           const audioBlob = new Blob(this.audioData);
           const url = URL.createObjectURL(audioBlob);
           this.boinVoice.url = url; 
+          this.$store.commit('practice/setBoinForm', audioBlob)
           this.$store.commit('practice/setBoinVoice', this.boinVoice.url )
         });
         this.recognition.onresult = (event) => {

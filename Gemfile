@@ -58,6 +58,8 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bootstrap'
+gem 'carrierwave'
+gem 'cloudinary'
 gem 'devise', '~> 4.8'
 gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
 gem 'enum_help'

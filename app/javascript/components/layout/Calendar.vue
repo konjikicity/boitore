@@ -102,7 +102,7 @@
                     <th>通常練習の音声</th>
                     <td>
                       <audio
-                        :src="selectedEvent.normal_voice"
+                        :src="selectedEvent.normal_voice.url"
                         controls
                       />
                     </td>
@@ -111,7 +111,7 @@
                     <th>母音法後の音声</th>
                     <td>
                       <audio
-                        :src="selectedEvent.normal_voice"
+                        :src="selectedEvent.normal_voice.url"
                         controls
                       />
                     </td>

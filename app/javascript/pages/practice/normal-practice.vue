@@ -96,7 +96,8 @@ export default {
       recognition: null,
       normalRecognition: '',
       normalRecognitionToHiragana: [],
-      recordingText: ''
+      recordingText: '',
+      normalForm: ''
     }
   },
   watch: {
@@ -153,11 +154,12 @@ export default {
         this.recorder.addEventListener('stop', () => {
 
           this.recordingText= '録音完了!';
-          const audioBlob = new Blob(this.audioData);
+          const audioBlob = new Blob(this.audioData, { type: 'audio/wav' });
           const url = URL.createObjectURL(audioBlob);
           this.normalVoice.url = url;
+          this.$store.commit('practice/setNormalForm', audioBlob)
           this.$store.commit('practice/setNormalVoice', this.normalVoice.url )
-
+          
         });
         this.recognition.onresult = (event) => {
           if (event.results.length > 0) {
