@@ -1,12 +1,10 @@
 const { environment } = require('@rails/webpacker')
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
 const vue = require('./loaders/vue')
 const webpack = require('webpack')
 const dotenv = require('dotenv')
-require('dotenv').config({ debug: true });
-
 const dotenvFiles = [
-  '.env'
+  `.env.${process.env.NODE_ENV}`,
 ]
 dotenvFiles.forEach((dotenvFile) => {
   dotenv.config({ path: dotenvFile, silent: true })

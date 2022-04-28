@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     fetchPlayResults()  {
-      this.$axios.get('/play_results', {
+      this.$axios.get('api/play_results', {
         headers: {
           uid: this.uid,
           "access-token": this.token,

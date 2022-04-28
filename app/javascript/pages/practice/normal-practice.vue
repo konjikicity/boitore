@@ -103,10 +103,8 @@ export default {
   watch: {
     // 音声認識にデータが代入されたタイミングでひらがなに変換する
     normalRecognition:function() {
-      const KEY = process.env.HIRAGANA_KEY
-      const APIKEY = KEY.trim();
-      const URL = process.env.API_URL
-      const BASE_URL = URL.trim();
+      const APIKEY = process.env.VUE_APP_HIRAGANA_KEY
+      const BASE_URL = process.env.VUE_APP_API_URL
       const SENTENCE = this.normalRecognition;
       const OUTPUT_TYPE = 'hiragana';
 
@@ -190,7 +188,7 @@ export default {
   },
   methods: {
     fetchSentences() {
-      this.$axios.get('/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+      this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
 
 
 

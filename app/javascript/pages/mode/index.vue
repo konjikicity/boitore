@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     fetchModes() {
-      this.$axios.get('/modes')
+      this.$axios.get('/api/modes')
 
 
         .then(res => this.modes = res.data)
