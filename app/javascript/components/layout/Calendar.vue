@@ -39,6 +39,34 @@
       >
         {{ title }}
       </v-toolbar-title>
+      <v-spacer />
+      <v-menu
+        bottom
+        right
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            outlined
+            color="white"
+            v-bind="attrs"
+            class="mr-10"
+            v-on="on"
+          >
+            <span>{{ typeToLabel[type] }}</span>
+            <v-icon right>
+              mdi-menu-down
+            </v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item @click="type = 'month'">
+            <v-list-item-title>月</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="type = 'day'">
+            <v-list-item-title>日</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-sheet>
     <v-sheet height="73vh">
       <v-calendar
@@ -50,8 +78,10 @@
         :day-format="(timestamp) => new Date(timestamp.date).getDate()"
         :month-format="(timestamp) => (new Date(timestamp.date).getMonth() + 1) + ' /'"
         dark
-        :event-more="false"
+        :type="type"
         @change="getEvents"
+        @click:more="viewDay"
+        @click:date="viewDay"
         @click:event="showEvent"
       />
       <v-row justify="center">
@@ -143,6 +173,11 @@ export default {
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
+      type: 'month',
+      typeToLabel: {
+        month: '月',
+        day: '日',
+      },
     }
   },
   computed: {
@@ -191,6 +226,7 @@ export default {
     },
     setToday () {
       this.value = moment().format('yyyy-MM-DD')
+      this.type = 'day'
     },
     getEventColor(event) {
       return event.color;
@@ -227,6 +263,10 @@ export default {
 
       nativeEvent.stopPropagation()
     },
+    viewDay ({ date }) {
+      this.value = date
+      this.type = 'day'
+    }
   },
 };
 </script>
