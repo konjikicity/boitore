@@ -9,8 +9,8 @@
       <v-img 
 
         :src="srcTop"
-        max-width="800"
-        max-height="500"
+        max-width="600"
+        max-height="550"
         class="position"
       /> 
     </v-row>
