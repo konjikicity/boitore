@@ -103,8 +103,10 @@ export default {
   watch: {
     // 音声認識にデータが代入されたタイミングでひらがなに変換する
     normalRecognition:function() {
-      const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5'; //API KEY
-      const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
+      const KEY = process.env.HIRAGANA_KEY
+      const APIKEY = KEY.trim();
+      const URL = process.env.API_URL
+      const BASE_URL = URL.trim();
       const SENTENCE = this.normalRecognition;
       const OUTPUT_TYPE = 'hiragana';
 
@@ -121,6 +123,7 @@ export default {
           output_type: OUTPUT_TYPE
         }
       };
+      console.log(options)
 
       this.$axios(options)
         .then(res => {
