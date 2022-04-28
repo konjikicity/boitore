@@ -50,8 +50,8 @@
         :day-format="(timestamp) => new Date(timestamp.date).getDate()"
         :month-format="(timestamp) => (new Date(timestamp.date).getMonth() + 1) + ' /'"
         dark
+        :event-more="false"
         @change="getEvents"
-        @click:date="viewDay" 
         @click:event="showEvent"
       />
       <v-row justify="center">
@@ -148,7 +148,7 @@ export default {
   computed: {
     title() {
       return moment(this.value).format('yyyy年 M月')
-    }
+    },
   },
   mounted() {
     this.fetchPlayResults();
@@ -194,9 +194,6 @@ export default {
     },
     getEventColor(event) {
       return event.color;
-    },
-    viewDay({ date }) {
-      alert(`date: ${date}`);
     },
     fetchPlayResults() {
       this.$axios.get('/play_results', {
