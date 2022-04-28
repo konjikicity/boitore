@@ -6,7 +6,9 @@ export default {
     normalVoice: null,
     boinVoice: null,
     normalRecognition: null,
-    boinRecognition: null
+    boinRecognition: null,
+    normalForm: null,
+    boinForm: null
   }, 
   getters: {
     normalSentence: state => state.normalSentence,
@@ -14,7 +16,9 @@ export default {
     normalVoice: state => state.normalVoice,
     boinVoice: state => state.boinVoice,
     normalRecognition: state => state.normalRecognition,
-    boinRecognition: state => state.boinRecognition
+    boinRecognition: state => state.boinRecognition,
+    normalForm: state => state.normalForm,
+    boinForm: state => state.boinForm,
   },
   mutations: {
     setNormalSentence(state, normalSentence) {
@@ -34,6 +38,12 @@ export default {
     },
     setBoinRecognition(state, boinRecognition) {
       state.boinRecognition = boinRecognition
+    },
+    setNormalForm(state, normalForm) {
+      state.normalForm = normalForm
+    },
+    setBoinForm(state, boinForm) {
+      state.boinForm = boinForm
     },
     resetResult(state){
       state.sentence = null,

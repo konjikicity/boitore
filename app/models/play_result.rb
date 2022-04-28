@@ -32,4 +32,7 @@ class PlayResult < ApplicationRecord
   validates :judge, presence: true
   validates :score, presence: true
   validates :practiced_sentence, presence: true
+
+  mount_uploader :boin_voice, AudioUploader
+  mount_uploader :normal_voice, AudioUploader
 end

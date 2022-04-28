@@ -15,6 +15,7 @@
 <script>
 import { mapGetters } from "vuex"
 export default {
+  name: "FlashMessage",
   computed: {
     ...mapGetters('message', ["message", "type", "status"])
   }
