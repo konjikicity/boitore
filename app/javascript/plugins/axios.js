@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-const axiosInstance = axios.create({
-  baseURL: `${process.env.VUE_APP_API_ORIGIN}`,
-})
-
-export default axiosInstance
+export default () => {
+  const instance1 = axios.create({
+    baseURL: `${process.env.VUE_APP_API_ORIGIN}`,
+  })
+  return instance1;
+};
