@@ -33,6 +33,7 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
+    "postinstall": "NODE_ENV=development && yarn run client-install && yarn run client-build && NODE_ENV= production",
     "lint": "eslint --ext .js,.vue app/javascript",
     "lint-fix": "eslint --fix --ext .js,.vue app/javascript",
     "serve": "vue-cli-service serve",
