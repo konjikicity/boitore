@@ -64,7 +64,6 @@
   </v-card>
 </template>
 <script>
-import axios from 'axios'
 import Message from '../../components/layout/Message'
 import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
@@ -85,7 +84,7 @@ export default {
   methods: {
     async login(){
       try {
-        const res = await axios.post('/auth/sign_in', {
+        const res = await this.$axios.post('/auth/sign_in', {
           email: this.email,
           password: this.password,
         }
