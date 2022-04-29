@@ -1,5 +1,5 @@
 {
-  "name": "vowel-training",
+  "name": "boitore",
   "private": true,
   "dependencies": {
     "@mdi/font": "^6.5.95",
@@ -29,7 +29,6 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "postinstall": "NODE_ENV=development && yarn run client-install && yarn run client-build && NODE_ENV= production",
     "lint": "eslint --ext .js,.vue app/javascript",
     "lint-fix": "eslint --fix --ext .js,.vue app/javascript"
   }
