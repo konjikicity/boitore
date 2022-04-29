@@ -34,6 +34,12 @@
   },
   "scripts": {
     "lint": "eslint --ext .js,.vue app/javascript",
-    "lint-fix": "eslint --fix --ext .js,.vue app/javascript"
+    "lint-fix": "eslint --fix --ext .js,.vue app/javascript",
+    "serve": "vue-cli-service serve",
+    "dev-serve": "vue-cli-service serve --mode development",
+    "prod-serve": "vue-cli-service serve --mode production",
+    "build": "vue-cli-service build",
+    "dev-build": "vue-cli-service build --mode development",
+    "prod-build": "vue-cli-service build --mode production"
   }
 }
