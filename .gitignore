@@ -37,6 +37,6 @@ yarn-debug.log*
 /.env.production
 .DS_Store
 /config/database.yml
-.env
-/config/credentials/production.key
+/.env.development
+/.env.test
 /public/uploads

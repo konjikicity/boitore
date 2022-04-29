@@ -105,7 +105,7 @@ export default {
   methods: {
     async signUp () {
       try {
-        const res = await axios.post('http://localhost:3000/auth', {
+        const res = await axios.post('/auth', {
           name: this.name,
           email: this.email,
           password: this.password,

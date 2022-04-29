@@ -114,8 +114,8 @@ export default {
   },
   watch: {
     boinRecognition:function() {
-      const APIKEY = 'a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5';
-      const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
+      const APIKEY = process.env.VUE_APP_HIRAGANA_KEY
+      const BASE_URL = process.env.VUE_APP_API_URL
       const SENTENCE = this.boinRecognition;
       const OUTPUT_TYPE = 'hiragana';
 
@@ -198,7 +198,7 @@ export default {
   },
   methods: {
     fetchSentences() {
-      this.$axios.get('/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+      this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
 
 
 
