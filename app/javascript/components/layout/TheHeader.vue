@@ -102,7 +102,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import FlashMessage from "components/layout/FlashMessage"
 
 export default {
@@ -129,7 +128,7 @@ export default {
 
     async logout () {
       try {
-        const res = await axios.delete('http://localhost:3000/auth/sign_out', {
+        const res = await this.$axios.delete('/auth/sign_out', {
           headers: {
             uid: this.$store.getters['login/uid'],
             "access-token": this.$store.getters['login/token'],

@@ -245,7 +245,7 @@ export default {
       form.append("play_result[judge]", this.judge)
       form.append("play_result[score]", this.score)
       form.append("play_result[user_id]", this.id)
-      this.$axios.post('/play_results', form,{
+      this.$axios.post('/api/play_results', form,{
         headers: {
           'content-type': 'multipart/form-data',
           uid: this.uid,
