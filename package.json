@@ -34,6 +34,9 @@
   },
   "scripts": {
     "lint": "eslint --ext .js,.vue app/javascript",
-    "lint-fix": "eslint --fix --ext .js,.vue app/javascript"
+    "lint-fix": "eslint --fix --ext .js,.vue app/javascript",
+    "stg": "NODE_ENV=stg webpack --mode production",
+    "prd": "NODE_ENV=prd webpack --mode production",
+    "start": "NODE_ENV=dev webpack-dev-server --mode development --hot --inline --watch-content-base"
   }
 }
