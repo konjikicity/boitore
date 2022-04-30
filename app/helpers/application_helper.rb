@@ -13,13 +13,13 @@ module ApplicationHelper
         type: 'website',
         site_name: 'boiトレ',
         url: request.original_url,
-        image: image_url(''),
+        image: image_url('boitore_ogp.png'),
         locale: 'ja_JP',
       },
       twitter: {
         card: 'summary_large_image',
         creater: '@konjikicity',
-        image: image_url('')
+        image: image_url('boitore_ogp.png')
       }
     }
   end
