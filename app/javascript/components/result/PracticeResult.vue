@@ -98,6 +98,21 @@
               <Message :alert="alert" />
             </v-row>
             <v-row
+            justify="center"
+            >
+              <v-btn
+                :href="shareTwitter"
+                target="_blank"
+              >
+                <v-icon
+                  class="mr-2"
+                >
+                  mdi-twitter
+                </v-icon>
+                シェアする！
+              </v-btn>
+            </v-row>
+            <v-row
               justify="center"
             >
               <v-btn
@@ -217,6 +232,29 @@ export default {
          
       }
   
+    }
+  },
+  computed: {
+    fullPath() {
+      return window.location.origin + this.$router.resolve({ name: "TopIndex" }).href
+    },
+    shareTwitter() {
+     
+      let share= "https://twitter.com/intent/tweet?url=" + 
+      "【練習結果】" +
+      "%0D%0A" +
+      "%0D%0A" +
+      "通常の音声認識:"+ `『${this.normalRecognition}』と聞こえました` +
+      "%0D%0A" + 
+      "母音法の音声認識:"+ `『${this.boinRecognition}』と聞こえました` +
+      "%0D%0A" + 
+      "得点:" + `%20${this.score}` +
+      "%0D%0A" + 
+      "評価:" + `%20${this.judge}` +
+      "%0D%0A" +
+      this.fullPath + "&hashtags=BOIトレ"+"&hashtags=母音法"
+
+      return share
     }
   },
   methods: {
