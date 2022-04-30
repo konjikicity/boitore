@@ -100,15 +100,46 @@
             <v-row
               justify="center"
             >
+            <v-col
+            cols="2"
+            class="text-center"
+            >
+              <v-btn
+                :href="shareTwitter"
+                target="_blank"
+                class="x-small light-blue white--text my-12"
+                rounded
+               style="text-transform: none"
+
+              >
+                <v-icon
+                  class="mr-2"
+                >
+                  mdi-twitter
+                </v-icon>
+                結果をツイートする！
+              </v-btn>
+              </v-col>
+              <v-col
+              cols="2"
+              class="text-center"
+              >
               <v-btn
                 v-if="token !== null"
                 class="error my-12"
                 @click="saveResult"
+                rounded
               >
+              <v-icon
+                class="mr-2"
+              >
+              mdi-content-save-outline
+              </v-icon>
                 結果を保存する
               </v-btn>
-            </v-row>            
-            <v-divider />
+              </v-col>
+            </v-row>
+            <v-divider />            
             <v-card-actions class="justify-center py-15">      
               <v-btn
                 :to="{ name: 'ModeIndex'}"
@@ -217,6 +248,29 @@ export default {
          
       }
   
+    }
+  },
+  computed: {
+    fullPath() {
+      return window.location.origin + this.$router.resolve({ name: "TopIndex" }).href
+    },
+    shareTwitter() {
+     
+      let share= "https://twitter.com/intent/tweet?url=" + 
+      "【練習結果】" +
+      "%0D%0A" +
+      "%0D%0A" +
+      "通常の音声認識:"+ `『${this.normalRecognition}』と聞こえました` +
+      "%0D%0A" + 
+      "母音法の音声認識:"+ `『${this.boinRecognition}』と聞こえました` +
+      "%0D%0A" + 
+      "得点:" + `%20${this.score}` +
+      "%0D%0A" + 
+      "評価:" + `%20${this.judge}` +
+      "%0D%0A" +
+      this.fullPath + "&hashtags=BOIトレ"+"&hashtags=母音法"
+
+      return share
     }
   },
   methods: {

@@ -149,7 +149,6 @@ export default {
         this.recorder.addEventListener('dataavailable', e => {
 
           this.audioData.push(e.data);
-          this.audioExtension = this.getExtension(e.data.type);
 
         });
         this.recorder.addEventListener('stop', () => {
@@ -212,21 +211,6 @@ export default {
       this.status = 'recorded';
 
     },
-    //拡張子を正規表現を使って必要な部分だけ抜き出す
-    getExtension(audioType) {
-
-      let extension = 'wav';
-      const matches = audioType.match(/audio\/([^;]+)/);
-
-      if(matches) {
-
-        extension = matches[1];
-
-      }
-
-      return '.'+ extension;
-
-    }
   }
 }
 </script>
