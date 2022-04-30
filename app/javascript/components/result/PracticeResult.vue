@@ -98,32 +98,48 @@
               <Message :alert="alert" />
             </v-row>
             <v-row
-            justify="center"
+              justify="center"
+            >
+            <v-col
+            cols="2"
+            class="text-center"
             >
               <v-btn
                 :href="shareTwitter"
                 target="_blank"
+                class="x-small light-blue white--text my-12"
+                rounded
+               style="text-transform: none"
+
               >
                 <v-icon
                   class="mr-2"
                 >
                   mdi-twitter
                 </v-icon>
-                シェアする！
+                結果をツイートする！
               </v-btn>
-            </v-row>
-            <v-row
-              justify="center"
-            >
+              </v-col>
+              <v-col
+              cols="2"
+              class="text-center"
+              >
               <v-btn
                 v-if="token !== null"
                 class="error my-12"
                 @click="saveResult"
+                rounded
               >
+              <v-icon
+                class="mr-2"
+              >
+              mdi-content-save-outline
+              </v-icon>
                 結果を保存する
               </v-btn>
-            </v-row>            
-            <v-divider />
+              </v-col>
+            </v-row>
+            <v-divider />            
             <v-card-actions class="justify-center py-15">      
               <v-btn
                 :to="{ name: 'ModeIndex'}"
