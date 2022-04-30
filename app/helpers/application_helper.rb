@@ -7,8 +7,7 @@ module ApplicationHelper
       noindex: !Rails.env.production?,
       charset: 'UTF-8',
       og: {
-        title: :title
-        site_name: :title,
+        title: :title,
         description: :description, 
         type: 'website',
         site_name: 'boiトレ',
