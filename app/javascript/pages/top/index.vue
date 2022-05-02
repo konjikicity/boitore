@@ -19,67 +19,20 @@
       class="mr"
     >
       <div>
+        <v-btn
+          class="mb-8"
+          color="error"
+          x-large
+          dark
+          @click.stop="isPlay"
+        >
+          練習してみる！
+        </v-btn>
         <v-dialog
           v-model="dialog"
           width="800"
         >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              class="mb-8"
-              color="error"
-              x-large
-              dark
-              v-bind="attrs"
-              v-on="on"
-            >
-              練習してみる！
-            </v-btn>
-          </template>
-          <v-card>
-            <v-card-title
-              class="white--text font-weight-bold"
-            >
-              注意事項
-            </v-card-title>
-            <v-card-text
-              class="pt-5"
-            >
-              <ul>
-                <li>
-                  このサービスは、PCでのみプレイ可能です。<br>
-                  現時点で、スマートフォンからはご利用いただけません。
-                </li>
-                <li>
-                  対応ブラウザは現在GoogleChromeのみとなっております。申し訳ございません
-                </li>
-                <li>このサービスでは、マイクを使用します。周囲の環境には十分ご配慮ください。</li>
-                <li>
-                  練習を開始した時点で、利用規約、プライバシーポリシーに同意頂いたものとみなします。
-                </li>
-              </ul>
-            </v-card-text>
-            <v-divider />
-            <v-card-actions
-              class="justify-end"
-            >
-              <v-btn
-                color="error"
-                text
-                :to="{ name: 'HowToIndex' }"
-                @click="dialog = false"
-              >
-                はじめての方はこちら
-              </v-btn>
-              <v-btn
-                color="error"
-                text
-                :to="{ name: 'ModeIndex' }"
-                @click="dialog = false"
-              >
-                開始！
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+          <Warning />
         </v-dialog>
       </div>
     </v-row>
@@ -87,12 +40,22 @@
 </template>
 
 <script>
+import Warning from "components/layout/Warning"
+
 export default {
   name: "TopIndex",
+  components: {
+    Warning
+  },
   data() {
     return {
       dialog: false,
       srcTop: require("top.png")
+    }
+  },
+  methods: {
+    isPlay(){
+      this.dialog = true
     }
   }
 }

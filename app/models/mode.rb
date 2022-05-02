@@ -14,7 +14,7 @@
 #
 class Mode < ApplicationRecord
   has_many :sentences, dependent: :destroy
-  
+
   validates :difficulty, uniqueness: true, presence: true
   validates :description, presence: true
   enum difficulty: { easy: 0, normal: 1, hard: 2 }
