@@ -28,7 +28,7 @@
           elevation="20"
         >
           <v-card-title
-          class="red lighten-1"
+            class="red lighten-1"
           >
             <h3 class="white--text">
               母音の文章
@@ -46,7 +46,7 @@
           elevation="20"
         >
           <v-card-title
-          class="red lighten-1"
+            class="red lighten-1"
           >
             <h3 class="white--text">
               普通の文章
@@ -85,10 +85,28 @@
             {{ recordingText }}
           </div>
         </v-row>
-        <v-row>
-          <PracticeResult 
-            v-if="status === 'recorded'"
-          />
+        <v-row
+          justify="center"
+        >
+          <div>
+            <v-btn
+              v-if="status === 'recorded'"
+              color="error"
+              class="mb-5"
+              x-large
+              rounded
+              @click.stop="PracticeResult"
+            >
+              結果を見る!
+            </v-btn>
+            <v-dialog
+              v-model="dialog"
+              transition="dialog-bottom-transition"
+              max-width="auto"
+            >
+              <PracticeResult />
+            </v-dialog>
+          </div>
         </v-row>
       </v-col>
     </v-row>
@@ -108,12 +126,13 @@ export default {
       status: 'init',
       recorder: null,
       audioData: [],
-      audioExtension: '',
       boinVoice: { url: ''},
       recognition: null,
-      boinRecognition: '',
+      boinRecognition: null,
       recordingText: '',
-      boinRecognitionToHiragana: []
+      boinRecognitionToHiragana: [],
+      normalRecognition: null,
+      dialog: false
     }
   },
   watch: {
@@ -147,6 +166,7 @@ export default {
     }},
   created () {
     this.fetchSentences();
+    this.normalRecognition = this.$store.getters['practice/normalRecognition']
     
   },
   mounted() {
@@ -231,6 +251,27 @@ export default {
       this.recognition.stop();
     
 
+    },
+    PracticeResult(){
+      if(this.normalRecognition && this.boinRecognition !== null) {
+        this.dialog = true
+      }
+      else {
+        this.$router.push({ name: 'ModeIndex' })
+        this.$store.dispatch(
+          "message/showMessage",
+          {
+            message: "音声をうまく認識できませんでした....もう一度練習してみよう",
+            type: "error",
+            status: true,
+          }
+        )
+    
+      
+      }  
+    
+  
+ 
     }
   }
 }

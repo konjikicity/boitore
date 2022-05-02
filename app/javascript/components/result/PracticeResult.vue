@@ -1,175 +1,152 @@
 <template>
   <v-row justify="space-around">
     <v-col cols="auto">
-      <v-dialog
-        transition="dialog-bottom-transition"
-        max-width="auto"
+      <v-card
+        min-width="80vw"
       >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="error"
-            v-bind="attrs"
-            class="mb-5"
-            x-large
-            v-on="on"
-            @click="setRecords"
-            rounded
+        <div class="text-center">
+          <h3 class="text-h3 font-weight-bold pt-10">
+            判定結果！
+          </h3>
+        </div>
+        <div class="text-center py-9">
+          <p
+            :style="{ color: activeColor }"
+            class="text-h2 font-weight-bold"
           >
-            結果を見る!
+            {{ judge }}
+          </p>
+          <p class="py text-h4">
+            {{ judgeText }}
+          </p>
+          <p class="py text-h4">
+            {{ score }}点
+          </p>
+        </div>
+        <v-divider />
+        <v-row
+          justify="center"
+        >
+          <h3 class="py-9 text-h5 font-weight-bold">
+            音声認識の結果
+          </h3>
+        </v-row>
+        <v-row
+          justify="center"
+        >
+          <v-col
+            cols="5"
+            class="text-center"
+          >
+            <p class="py">
+              通常の録音は<span class="red--text">{{ normalRecognition }}</span>と聞こえています。
+            </p>
+          </v-col>
+          <v-col
+            cols="5"
+            class="text-center"
+          >
+            <p class="py">
+              母音法の録音は<span class="red--text">{{ boinRecognition }}</span>と聞こえています。
+            </p>
+          </v-col>
+        </v-row>
+        <v-divider />
+        <v-row
+          justify="center"
+        >
+          <v-col
+            class="text-center py-9"
+            cols="5"
+          >
+            <p>通常の音声</p>
+            <audio
+              :src="normalVoice.url"
+              controls
+            />
+          </v-col>
+          <v-col
+            class="text-center py-9"
+            cols="5"
+          >
+            <p>母音法の音声</p>
+            <audio 
+              :src="boinVoice.url"
+              controls
+            />
+          </v-col>
+        </v-row>
+        <v-row
+          justify="center"
+        >
+          <Message :alert="alert" />
+        </v-row>
+        <v-row
+          justify="center"
+        >
+          <v-col
+            cols="3"
+            class="text-center"
+          >
+            <v-btn
+              :href="shareTwitter"
+              target="_blank"
+              class="x-small light-blue white--text my-12"
+              rounded
+              style="text-transform: none"
+            >
+              <v-icon
+                class="mr-2"
+              >
+                mdi-twitter
+              </v-icon>
+              結果をツイートする！
+            </v-btn>
+          </v-col>
+          <v-col
+            v-if="token !== null"
+            cols="3"
+            class="text-center"
+          >
+            <v-btn
+              class="error my-12"
+              rounded
+              @click="saveResult"
+            >
+              <v-icon
+                class="mr-2"
+              >
+                mdi-content-save-outline
+              </v-icon>
+              結果を保存する
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-divider />            
+        <v-card-actions class="justify-center py-15">      
+          <v-btn
+            :to="{ name: 'ModeIndex'}"
+            class="mr-5"
+            @click="dialog = false"
+          >
+            もう一度練習する
           </v-btn>
-        </template>
-
-        <template v-slot:default="dialog">
-          <v-card>
-            <div class="text-center">
-              <h3 class="text-h3 font-weight-bold pt-10">
-                判定結果！
-              </h3>
-            </div>
-            <div class="text-center py-9">
-              <p
-                :style="{ color: activeColor }"
-                class="text-h2 font-weight-bold"
-              >
-                {{ judge }}
-              </p>
-              <p class="py text-h4">
-                {{ judgeText }}
-              </p>
-              <p class="py text-h4">
-                {{ score }}点
-              </p>
-            </div>
-            <v-divider />
-            <v-row
-              justify="center"
-            >
-              <h3 class="py-9 text-h5 font-weight-bold">
-                音声認識の結果
-              </h3>
-            </v-row>
-            <v-row
-              justify="center"
-            >
-              <v-col
-                cols="5"
-                class="text-center"
-              >
-                <p class="py">
-                  通常の録音は<span class="red--text">{{ normalRecognition }}</span>と聞こえています。
-                </p>
-              </v-col>
-              <v-col
-                cols="5"
-                class="text-center"
-              >
-                <p class="py">
-                  母音法の録音は<span class="red--text">{{ boinRecognition }}</span>と聞こえています。
-                </p>
-              </v-col>
-            </v-row>
-            <v-divider />
-            <v-row
-              justify="center"
-            >
-              <v-col
-                class="text-center py-9"
-                cols="5"
-              >
-                <p>通常の音声</p>
-                <audio
-                  :src="normalVoice.url"
-                  controls
-                />
-              </v-col>
-              <v-col
-                class="text-center py-9"
-                cols="5"
-              >
-                <p>母音法の音声</p>
-                <audio 
-                  :src="boinVoice.url"
-                  controls
-                />
-              </v-col>
-            </v-row>
-            <v-row
-              justify="center"
-            >
-              <Message :alert="alert" />
-            </v-row>
-            <v-row
-              justify="center"
-            >
-              <v-col
-                cols="2"
-                class="text-center"
-              >
-                <v-btn
-                  :href="shareTwitter"
-                  target="_blank"
-                  class="x-small light-blue white--text my-12"
-                  rounded
-                  style="text-transform: none"
-                >
-                  <v-icon
-                    class="mr-2"
-                  >
-                    mdi-twitter
-                  </v-icon>
-                  結果をツイートする！
-                </v-btn>
-              </v-col>
-              <v-col
-                cols="2"
-                class="text-center"
-                v-if="token !== null"
-              >
-                <v-btn
-                  class="error my-12"
-                  rounded
-                  @click="saveResult"
-                >
-                  <v-icon
-                    class="mr-2"
-                  >
-                    mdi-content-save-outline
-                  </v-icon>
-                  結果を保存する
-                </v-btn>
-              </v-col>
-            </v-row>
-            <v-divider />            
-            <v-card-actions class="justify-center py-15">      
-              <v-btn
-                :to="{ name: 'ModeIndex'}"
-                class="mr-5"
-                @click="dialog = false"
-              >
-                もう一度練習する
-              </v-btn>
-              <v-btn
-                :to="{ name: 'TopIndex'}"
-                exact
-                @click="dialog = false"
-              >
-                タイトルへ戻る
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </template>
-      </v-dialog>
+          <v-btn
+            :to="{ name: 'TopIndex'}"
+            exact
+            @click="dialog = false"
+          >
+            タイトルへ戻る
+          </v-btn>
+        </v-card-actions>
+      </v-card>
     </v-col>
   </v-row>
 </template>
 <script>
-import Message from '../../components/layout/Message'
 
 export default {
   name: 'PracticeResult',
-  components: {
-    Message
-  },
   data () {
     return {
       boinVoice: { url: ''},
@@ -187,7 +164,7 @@ export default {
       id: null,
       alert: null,
       normalForm: null,
-      boinForm: null
+      boinForm: null,
     }
   },
   computed: {
@@ -273,22 +250,23 @@ export default {
   
     }
   },
+  created() {
+  
+    this.id = this.$store.getters['login/id']
+    this.token = this.$store.getters['login/token']
+    this.uid = this.$store.getters['login/uid']
+    this.client = this.$store.getters['login/client']
+    this.normalSentence = this.$store.getters['practice/normalSentence']
+    this.boinSentence = this.$store.getters['practice/boinSentence']
+    this.boinVoice.url = this.$store.getters['practice/boinVoice']
+    this.normalVoice.url = this.$store.getters['practice/normalVoice']
+    this.boinRecognition = this.$store.getters['practice/boinRecognition']
+    this.normalRecognition = this.$store.getters['practice/normalRecognition']
+    this.boinForm = this.$store.getters['practice/boinForm']
+    this.normalForm = this.$store.getters['practice/normalForm']
+  },
   methods: {
-    //storeに保存した文章を取得する
-    setRecords() {
-      this.id = this.$store.getters['login/id']
-      this.token = this.$store.getters['login/token']
-      this.uid = this.$store.getters['login/uid']
-      this.client = this.$store.getters['login/client']
-      this.normalSentence = this.$store.getters['practice/normalSentence']
-      this.boinSentence = this.$store.getters['practice/boinSentence']
-      this.boinVoice.url = this.$store.getters['practice/boinVoice']
-      this.normalVoice.url = this.$store.getters['practice/normalVoice']
-      this.boinRecognition = this.$store.getters['practice/boinRecognition']
-      this.normalRecognition = this.$store.getters['practice/normalRecognition']
-      this.boinForm = this.$store.getters['practice/boinForm']
-      this.normalForm = this.$store.getters['practice/normalForm']
-    },
+  
     saveResult() {
       const form = new FormData();
       form.append("play_result[normal_voice]", this.normalForm)

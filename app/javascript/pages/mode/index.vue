@@ -20,11 +20,11 @@
       <div
         v-for=" mode in modes"
         :key="mode.id"
-        class="white--text"
+        class="font-weight-bold white--text"
       >
         <v-btn
           :to="{ name: 'SelectIndex', params: { id: mode.id}}"
-          class="red lighten-1 my-5 rounded-pill mr-4 white--text"
+          class="red lighten-1 my-5 rounded-pill mr-4 white--text font-weight-bold"
           elevation="10"
           x-large
           :width="150"
@@ -54,7 +54,7 @@ export default {
 
         .then(res => {this.modes = res.data
         
-        console.log(res)}
+          console.log(res)}
         )
         .catch(err => console.log(err.status));
     }

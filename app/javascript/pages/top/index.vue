@@ -24,8 +24,8 @@
           color="error"
           x-large
           dark
-          @click.stop="isPlay"
           rounded
+          @click.stop="isPlay"
         >
           練習してみる！
         </v-btn>

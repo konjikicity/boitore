@@ -29,16 +29,16 @@
       <v-btn
         class="red--text"
         :to="{ name: 'HowToIndex' }"
-        @click="dialog = false"
         text
+        @click="dialog = false"
       >
         はじめての方はこちら
       </v-btn>
       <v-btn
         class="red--text"
         :to="{ name: 'ModeIndex' }"
-        @click="dialog = false"
         text
+        @click="dialog = false"
       >
         開始！
       </v-btn>

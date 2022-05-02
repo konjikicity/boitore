@@ -34,8 +34,8 @@
               class="red lighten-1"
               v-bind="attrs"
               x-large
-              v-on="on"
               rounded
+              v-on="on"
             >
               前の文章
             </v-btn>
@@ -45,8 +45,8 @@
               class="red lighten-1"
               v-bind="attrs"
               x-large
-              v-on="on"
               rounded
+              v-on="on"
             >
               次の文章
             </v-btn>
@@ -67,8 +67,7 @@
                 <router-link 
                   :to="{ name: 'NormalPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
                 >
-                  <p
-                  >
+                  <p>
                     {{ sentence.normal }}
                   </p>
                 </router-link>

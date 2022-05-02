@@ -27,7 +27,7 @@
           elevation="20"
         >
           <v-card-title
-          class="red lighten-1"
+            class="red lighten-1"
           >  
             <h3 class="white--text">
               普通の文章
