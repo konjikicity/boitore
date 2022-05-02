@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :string           not null
-#  difficulty  :string           not null
+#  difficulty  :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -17,4 +17,5 @@ class Mode < ApplicationRecord
 
   validates :difficulty, uniqueness: true, presence: true
   validates :description, presence: true
+  enum difficulty: { easy: 0, normal: 1, hard: 2 }
 end

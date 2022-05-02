@@ -2,6 +2,7 @@
 // Channel files must be named *_channel.js.
 import Vue from "vue";
 import Router from "vue-router";
+import store from '../store/index';
 
 import TopIndex from "../pages/top/index";
 import SelectIndex from "../pages/select/index";
@@ -25,66 +26,95 @@ const router = new Router({
     {
       path: "/",
       component: TopIndex,
-      name: "TopIndex"
-
+      name: "TopIndex",
     }, 
     {
       path:"/modes",
       component: ModeIndex,
-      name: "ModeIndex"
+      name: "ModeIndex",
     },
     {
       path: "/modes/:id/selects",
       component: SelectIndex,
-      name: "SelectIndex"
+      name: "SelectIndex",
     },
     {
       path: "/selects/:id/normal-practice",
       component: NormalPractice,
-      name: "NormalPractice"
+      name: "NormalPractice",
     },
     {
       path: "/selects/:id/boin-practice",
       component: BoinPractice,
-      name: "BoinPractice"
+      name: "BoinPractice",
     }
     ,
     {
       path:"/how-to",
       component: HowToIndex,
-      name: "HowToIndex"
+      name: "HowToIndex",
     },
     {
       path:"/terms",
       component: SharedTerms,
-      name: "SharedTerms"
+      name: "SharedTerms",
     },
     {
       path:"/privacy",
       component: SharedPrivacy,
-      name: "SharedPrivacy"
+      name: "SharedPrivacy",
     },
     {
       path: "/contact",
       component: SharedContact,
-      name: "SharedContact"
+      name: "SharedContact",
     },
     {
       path: '/login',
       component: LoginForm,
-      name: "LoginForm"      
+      name: "LoginForm",    
     },
     {
       path: '/signup',
       component: SignUpForm,
-      name: "SignUpForm"
+      name: "SignUpForm",
     },
     {
       path:'/MyPage',
       component: MyPageIndex,
       name: "MyPageIndex",
+      meta: {requiresAuth: true}
     }
   ]
+  
 })
+
+
+function isLogin() {
+  return store.getters['login/token']
+}
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    
+    if (!isLogin()) {
+      
+      store.dispatch(
+        "message/showMessage",
+        {
+          message: "ログインしてください",
+          type: "warning",
+          status: true,
+        },
+      )
+      next('/login')
+    } else {
+      next()  
+    }
+  } else {
+    next()  
+  }
+})
+
 
 export default router
