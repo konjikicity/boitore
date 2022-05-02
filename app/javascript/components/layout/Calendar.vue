@@ -197,7 +197,6 @@ export default {
   },
   methods: {
     getEvents() {
-      let i = 0;
       const events = [];
       for (let i = 0; i < this.play_results.length; i++) {
         const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH:mm');

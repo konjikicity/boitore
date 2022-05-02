@@ -65,7 +65,6 @@
 </template>
 <script>
 import Message from '../../components/layout/Message'
-import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
 export default {
   name: "LoginForm",

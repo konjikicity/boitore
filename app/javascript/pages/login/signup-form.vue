@@ -88,7 +88,6 @@
   </v-card>
 </template>
 <script>
-import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
 
 export default {
   name: "SignUpForm",

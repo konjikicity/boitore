@@ -179,7 +179,7 @@ export default {
             this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
             if( sec === 0 ){
               clearInterval(countDownTime);
-            };
+            }
           }, 1000);
           setTimeout( () => {
             this.stopRecording();
@@ -190,13 +190,10 @@ export default {
   },
   methods: {
     fetchSentences() {
+      
       this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
-
-
-
         .then(res => this.sentence = res.data)
         .catch(err => console.log(err.status));
-
     },
     // 録音開始
     startRecording() {
@@ -212,7 +209,6 @@ export default {
       this.recorder.stop();
       this.recognition.stop();
       this.status = 'recorded';
-
     },
   }
 }

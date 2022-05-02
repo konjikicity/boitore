@@ -137,6 +137,7 @@ export default {
   },
   watch: {
     boinRecognition:function() {
+
       const APIKEY = process.env.VUE_APP_HIRAGANA_KEY
       const BASE_URL = process.env.VUE_APP_API_URL
       const SENTENCE = this.boinRecognition;
@@ -162,31 +163,30 @@ export default {
           this.$store.commit('practice/setBoinRecognition', this.boinRecognitionToHiragana.converted )
         })
         .catch(err => console.log(err.status));
-         
+
     }},
   created () {
     this.fetchSentences();
     this.normalRecognition = this.$store.getters['practice/normalRecognition']
-    
   },
   mounted() {
     // マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
-       
       echoCancellation: true,
       echoCancellationType: 'system',
       noiseSuppression: false
     }})
       .then(stream => {
-
         this.recorder = new MediaRecorder(stream);
         this.recognition = new webkitSpeechRecognition(stream);
         this.recognition.lang = 'ja';
+
         this.recorder.addEventListener('dataavailable', e => {
 
           this.audioData.push(e.data);
 
         });
+
         this.recorder.addEventListener('stop', () => {
             
           this.recordingText='録音完了!';
@@ -195,13 +195,18 @@ export default {
           this.boinVoice.url = url; 
           this.$store.commit('practice/setBoinForm', audioBlob)
           this.$store.commit('practice/setBoinVoice', this.boinVoice.url )
+
         });
+
         this.recognition.onresult = (event) => {
+
           if (event.results.length > 0) {
             this.boinRecognition = event.results[0][0].transcript;
       
           }
+
         };
+
         this.recorder.addEventListener('start', () => {
             
           this.recordingText = '録音中..(終了まであと5秒)';
@@ -211,7 +216,7 @@ export default {
             this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
             if( sec === 0 ){
               clearInterval(countDownTime);
-            };
+            }
           }, 1000);
           setTimeout( () => {
             this.stopRecording();
@@ -221,18 +226,15 @@ export default {
   },
   methods: {
     fetchSentences() {
+
       this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
-
-
-
         .then(res => {
+
           this.sentence = res.data
           this.$store.commit('practice/setNormalSentence', this.sentence.normal)
-          this.$store.commit('practice/setBoinSentence', this.sentence.boin)
-          
+          this.$store.commit('practice/setBoinSentence', this.sentence.boin)         
         })
-        .catch(err => console.log(err.status));
-
+        .catch(err => console.log(err.status));   
     },
     // 録音開始
     startRecording() {
@@ -241,7 +243,6 @@ export default {
       this.audioData = [];
       this.recorder.start();
       this.recognition.start();
-
     },
     // 録音停止
     stopRecording() { 
@@ -249,10 +250,9 @@ export default {
       this.status = 'recorded';
       this.recorder.stop();
       this.recognition.stop();
-    
-
     },
     PracticeResult(){
+
       if(this.normalRecognition && this.boinRecognition !== null) {
         this.dialog = true
       }
@@ -266,12 +266,7 @@ export default {
             status: true,
           }
         )
-    
-      
       }  
-    
-  
- 
     }
   }
 }
