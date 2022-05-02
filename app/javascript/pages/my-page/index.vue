@@ -40,10 +40,10 @@
           height="70vh"
           rounded="lg"
         >
-          <ResultTable 
+          <TheResultTable 
             v-show="ChangeSheet === true"
           />
-          <Calendar
+          <TheCalendar
             v-show="ChangeSheet === false"
           />
         </v-sheet>
@@ -53,14 +53,14 @@
 </template>
 
 <script>
-import Calendar from'../../components/layout/Calendar'
-import ResultTable from '../../components/layout/ResultTable'
+import TheCalendar from'../../components/calendar/TheCalendar'
+import TheResultTable from '../../components/calendar/TheResultTable'
 
 export default {
   name: 'MyPageIndex',
   components: {
-    Calendar,
-    ResultTable
+    TheCalendar,
+    TheResultTable
   },
   data(){
     return {

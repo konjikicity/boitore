@@ -48,7 +48,7 @@
         <div
           v-show="this.email !== null && this.password !== null" 
         >
-          <Message :alert="alert" />
+          <TheMessage :alert="alert" />
         </div>
    
         <v-card-actions>
@@ -64,12 +64,12 @@
   </v-card>
 </template>
 <script>
-import Message from '../../components/layout/Message'
+import TheMessage from '../../components/shared/TheMessage'
 
 export default {
   name: "LoginForm",
   components: {
-    Message
+    TheMessage
   },
   data(){
     return {

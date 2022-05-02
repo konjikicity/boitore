@@ -33,7 +33,7 @@
           v-model="dialog"
           width="800"
         >
-          <Warning />
+          <TheWarning />
         </v-dialog>
       </div>
     </v-row>
@@ -41,12 +41,12 @@
 </template>
 
 <script>
-import Warning from "components/layout/Warning"
+import TheWarning from "components/shared/TheWarning"
 
 export default {
   name: "TopIndex",
   components: {
-    Warning
+    TheWarning
   },
   data() {
     return {

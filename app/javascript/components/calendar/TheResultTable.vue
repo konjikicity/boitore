@@ -87,7 +87,7 @@
 import moment from 'moment'
 
 export default {
-  name: "ResultTable",
+  name: "TheResultTable",
   data() {
     return {
       page: 1,

@@ -160,7 +160,7 @@
 import moment from 'moment'
 
 export default {
-  name: 'Calender',
+  name: 'TheCalender',
   data(){
     return {
       events: [],

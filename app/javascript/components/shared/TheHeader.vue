@@ -6,7 +6,7 @@
       dark
       app
     >
-      <FlashMessage />
+      <TheFlashMessage />
       <router-link
         :to="{ name: 'TopIndex'}"
       >
@@ -102,12 +102,12 @@
 </template>
 
 <script>
-import FlashMessage from "components/layout/FlashMessage"
+import TheFlashMessage from "components/shared/TheFlashMessage"
 
 export default {
   name: "TheHeader",
   components: {
-    FlashMessage
+    TheFlashMessage
   },
   data() {
     return {

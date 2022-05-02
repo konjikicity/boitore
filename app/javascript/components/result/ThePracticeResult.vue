@@ -146,7 +146,7 @@
 <script>
 
 export default {
-  name: 'PracticeResult',
+  name: 'ThePracticeResult',
   data () {
     return {
       boinVoice: { url: ''},

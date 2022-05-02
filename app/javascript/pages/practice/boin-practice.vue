@@ -104,7 +104,7 @@
               transition="dialog-bottom-transition"
               max-width="auto"
             >
-              <PracticeResult />
+              <ThePracticeResult />
             </v-dialog>
           </div>
         </v-row>
@@ -113,12 +113,12 @@
   </v-container>
 </template>
 <script>
-import PracticeResult from 'components/result/PracticeResult.vue'
+import ThePracticeResult from 'components/result/ThePracticeResult.vue'
 
 export default {
   name: "BoinPractice",
   components:  {
-    PracticeResult
+    ThePracticeResult
   },
   data () {
     return {
