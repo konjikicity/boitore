@@ -26,25 +26,27 @@
         </div>
         <v-carousel
           hide-delimiter-background
+          hide-delimiters
           height="400"
-          class="rounded-lg"
         >
           <template v-slot:prev="{ on, attrs }">
             <v-btn
-              color="error"
+              class="red lighten-1"
               v-bind="attrs"
               x-large
               v-on="on"
+              rounded
             >
               前の文章
             </v-btn>
           </template>
           <template v-slot:next="{ on, attrs }">
             <v-btn
-              color="error"
+              class="red lighten-1"
               v-bind="attrs"
               x-large
               v-on="on"
+              rounded
             >
               次の文章
             </v-btn>
@@ -65,7 +67,8 @@
                 <router-link 
                   :to="{ name: 'NormalPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
                 >
-                  <p>
+                  <p
+                  >
                     {{ sentence.normal }}
                   </p>
                 </router-link>
@@ -104,18 +107,17 @@ export default {
 </script>
 
 <style  scoped>
-.v-application a {
-    color: #212121;
+.v-application a{
     text-decoration: none;
+    color: #616161;
 }
 .v-application a:hover {
-  color: #EF5350;
-  transition: 0.5s;
+   color: #E57373;
+   transition: 0.5s;
 }
 .v-application p {
   font-size: 80px;
   margin-bottom: 0px;
   
 }
-
 </style>

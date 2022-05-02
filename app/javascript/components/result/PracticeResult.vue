@@ -13,6 +13,7 @@
             x-large
             v-on="on"
             @click="setRecords"
+            rounded
           >
             結果を見る!
           </v-btn>
@@ -122,9 +123,9 @@
               <v-col
                 cols="2"
                 class="text-center"
+                v-if="token !== null"
               >
                 <v-btn
-                  v-if="token !== null"
                   class="error my-12"
                   rounded
                   @click="saveResult"

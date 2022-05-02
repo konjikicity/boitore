@@ -26,14 +26,16 @@
         <v-card 
           elevation="20"
         >
-          <v-card-title>  
+          <v-card-title
+          class="red lighten-1"
+          >  
             <h3 class="white--text">
               普通の文章
             </h3>
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 py text-center"
+            class="text-h2 py text-center fc"
           >
             {{ sentence.normal }}
           </div>
@@ -48,7 +50,7 @@
             fab
             dark
             x-large
-            color="error"
+            class="red lighten-1"
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
@@ -72,6 +74,7 @@
             color="error"
             class="my-10"
             x-large
+            rounded
           >
             母音法で練習する!   
           </v-btn>
@@ -224,7 +227,7 @@ export default {
 .v-card {
   margin-bottom: 50px;
 }
-.v-card__title {
-  background-color: #EF5350;
+.fc {
+  color: #424242;
 }
 </style>

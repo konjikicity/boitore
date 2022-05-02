@@ -24,7 +24,7 @@
       >
         <v-btn
           :to="{ name: 'SelectIndex', params: { id: mode.id}}"
-          class="error my-5 rounded-pill mr-4"
+          class="red lighten-1 my-5 rounded-pill mr-4 white--text"
           elevation="10"
           x-large
           :width="150"

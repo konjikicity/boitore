@@ -27,18 +27,18 @@
       class="justify-end"
     >
       <v-btn
-        color="error"
-        text
+        class="red--text"
         :to="{ name: 'HowToIndex' }"
         @click="dialog = false"
+        text
       >
         はじめての方はこちら
       </v-btn>
       <v-btn
-        color="error"
-        text
+        class="red--text"
         :to="{ name: 'ModeIndex' }"
         @click="dialog = false"
+        text
       >
         開始！
       </v-btn>

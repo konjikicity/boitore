@@ -25,6 +25,7 @@
           x-large
           dark
           @click.stop="isPlay"
+          rounded
         >
           練習してみる！
         </v-btn>

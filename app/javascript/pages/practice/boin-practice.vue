@@ -27,14 +27,16 @@
           class="mb-3"
           elevation="20"
         >
-          <v-card-title>
+          <v-card-title
+          class="red lighten-1"
+          >
             <h3 class="white--text">
               母音の文章
             </h3>
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py"
+            class="text-h2 text-center py fc"
           >
             {{ sentence.boin }}
           </div>
@@ -43,14 +45,16 @@
           class="mb-15"
           elevation="20"
         >
-          <v-card-title>
+          <v-card-title
+          class="red lighten-1"
+          >
             <h3 class="white--text">
               普通の文章
             </h3>
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py"
+            class="text-h2 text-center py fc"
           >
             {{ sentence.normal }}
           </div>
@@ -66,7 +70,7 @@
             fab
             dark
             x-large
-            color="error"
+            class="red lighten-1"
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
@@ -232,10 +236,10 @@ export default {
 }
 </script>
 <style scoped>
-.v-card__title {
-  background-color: #EF5350;
-}
 .py {
   padding: 35px 0px 35px 0px; 
+}
+.fc {
+  color: #424242;
 }
 </style>
