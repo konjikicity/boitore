@@ -19,7 +19,7 @@
       </div>
       <div
         v-for=" mode in modes"
-        :key="mode.id"
+        :key="mode.difficulty"
         class="white--text"
       >
         <v-btn
@@ -41,17 +41,8 @@ export default {
   name: "ModeIndex",
   data(){
     return {
-      modes: [
-      ]
+      modes: []
     }
-  },
-  //sessionStorageに保存されているデータを削除する
-  created () {
-    sessionStorage.removeItem('setNormal');
-    sessionStorage.removeItem('setBoin');
-    sessionStorage.removeItem('setNormalRecognition');
-    sessionStorage.removeItem('setBoinRecognition');
-
   },
   mounted() {
     this.fetchModes();
@@ -61,12 +52,13 @@ export default {
       this.$axios.get('/api/modes')
 
 
-        .then(res => this.modes = res.data)
+        .then(res => {this.modes = res.data
+        
+        console.log(res)}
+        )
         .catch(err => console.log(err.status));
     }
   }
 }
 </script>
-<style scoped>
 
-</style>
