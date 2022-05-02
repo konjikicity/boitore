@@ -9,14 +9,14 @@
       <v-img 
 
         :src="srcTop"
-        max-width="600"
-        max-height="550"
+        max-width="700"
+        max-height="500"
         class="position"
       /> 
     </v-row>
     <v-row
       justify="center"
-      class="mr"
+      class="mr pb-100"
     >
       <div>
         <v-btn
@@ -67,6 +67,9 @@ export default {
 }
 .v-card__title {
   background-color: #EF5350;
+}
+.pb-100 {
+  padding-bottom: 100px;
 }
 
 </style>
