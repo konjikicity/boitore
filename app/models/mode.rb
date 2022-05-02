@@ -17,5 +17,5 @@ class Mode < ApplicationRecord
 
   validates :difficulty, uniqueness: true, presence: true
   validates :description, presence: true
-  enum difficulty: { easy: 0, normal: 1, hard: 2 }
+  enum difficulty: { "かんたん": 0, "ふつう": 1, "むずかしい": 2 }
 end
