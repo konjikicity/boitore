@@ -19,7 +19,7 @@
       </div>
       <div
         v-for=" mode in modes"
-        :key="mode.difficulty"
+        :key="mode.id"
         class="white--text"
       >
         <v-btn
