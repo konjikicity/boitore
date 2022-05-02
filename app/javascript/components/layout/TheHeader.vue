@@ -144,7 +144,9 @@ export default {
           },
           
         ),
+        this.drawer = false
         this.$store.commit('login/logoutUser')
+        this.$store.commit('practice/resetResult')
         console.log({ res })
         return res
 

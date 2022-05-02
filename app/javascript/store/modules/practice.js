@@ -46,11 +46,14 @@ export default {
       state.boinForm = boinForm
     },
     resetResult(state){
-      state.sentence = null,
+      state.normalSentence = null,
+      state.boinSentence = null,
       state.normalVoice = null,
       state.boinVoice = null,
       state.normalRecognition = null,
-      state.boinRecognition = null
+      state.boinRecognition = null,
+      state.normalForm = null,
+      state.boinForm = null
     }
   }
 }
