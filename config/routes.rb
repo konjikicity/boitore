@@ -10,10 +10,5 @@ Rails.application.routes.draw do
     end
     resources :play_results, only: %i[index create]
   end
-  namespace :admin do
-    root to: 'dashboards#index'
-    resources :modes
-    resources :sentences
-  end
   get '*path', to: 'top#index'
 end
