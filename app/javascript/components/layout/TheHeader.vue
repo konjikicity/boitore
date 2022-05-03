@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <div>
     <v-app-bar
       color="grey darken-3"
       height="70"
@@ -27,6 +27,8 @@
       absolute
       temporary
       right
+      fixed
+      style="position:fixed;"
     >
       <v-list
         nav
@@ -34,7 +36,7 @@
       >
         <v-list-item-group
           v-model="group"
-          active-class="deep-purple--text text--accent-4"
+          active-class="red--text text--accent-4"
         >
           <router-link
             :to="{ name: 'TopIndex'}"
@@ -133,7 +135,7 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  </header>
+  </div>
 </template>
 
 <script>
