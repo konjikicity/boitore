@@ -1,5 +1,6 @@
 module.exports = {
   "extends": [
+    "eslint:recommended",
     "plugin:vue/recommended",
   ],
   "env": {
@@ -11,6 +12,8 @@ module.exports = {
   "rules": {
     "indent": ["error", 2],
     "vue/html-indent": ["error", 2],
-    "vue/this-in-template": "off"
+    "vue/this-in-template": "off",
+    "no-undef": "off",
+    "no-dupe-keys": "off"
   }
 };

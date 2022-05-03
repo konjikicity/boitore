@@ -6,9 +6,8 @@
     <v-row
       justify="center"
     >
-      <v-img 
-
-        :src="srcTop"
+      <v-img
+        src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.webp"
         max-width="700"
         max-height="500"
         class="position"
@@ -24,6 +23,7 @@
           color="error"
           x-large
           dark
+          rounded
           @click.stop="isPlay"
         >
           練習してみる！
@@ -32,7 +32,7 @@
           v-model="dialog"
           width="800"
         >
-          <Warning />
+          <TheWarning />
         </v-dialog>
       </div>
     </v-row>
@@ -40,17 +40,16 @@
 </template>
 
 <script>
-import Warning from "components/layout/Warning"
+import TheWarning from "components/shared/TheWarning"
 
 export default {
   name: "TopIndex",
   components: {
-    Warning
+    TheWarning
   },
   data() {
     return {
       dialog: false,
-      srcTop: require("top.png")
     }
   },
   methods: {

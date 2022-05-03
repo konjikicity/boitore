@@ -27,17 +27,16 @@
       class="justify-end"
     >
       <v-btn
-        color="error"
+        class="red--text"
         text
-        :to="{ name: 'HowToIndex' }"
         @click="dialog = false"
       >
         はじめての方はこちら
       </v-btn>
       <v-btn
-        color="error"
-        text
+        class="red--text"
         :to="{ name: 'ModeIndex' }"
+        text
         @click="dialog = false"
       >
         開始！
@@ -47,7 +46,6 @@
 </template>
 <script>
 export default {
-  name: "Warning",
-  
+  name: "TheWarning",
 }
 </script>

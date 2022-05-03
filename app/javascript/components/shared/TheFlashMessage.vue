@@ -5,6 +5,7 @@
     right
     top
     :color="type"
+    timeout="9000"
   >
     <div class="ml-5 font-weight-bold white--text">
       {{ message }}
@@ -15,7 +16,7 @@
 <script>
 import { mapGetters } from "vuex"
 export default {
-  name: "FlashMessage",
+  name: "TheFlashMessage",
   computed: {
     ...mapGetters('message', ["message", "type", "status"])
   }

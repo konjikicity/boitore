@@ -27,14 +27,16 @@
           class="mb-3"
           elevation="20"
         >
-          <v-card-title>
+          <v-card-title
+            class="red lighten-1"
+          >
             <h3 class="white--text">
               母音の文章
             </h3>
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py"
+            class="text-h2 text-center py fc"
           >
             {{ sentence.boin }}
           </div>
@@ -43,14 +45,16 @@
           class="mb-15"
           elevation="20"
         >
-          <v-card-title>
+          <v-card-title
+            class="red lighten-1"
+          >
             <h3 class="white--text">
               普通の文章
             </h3>
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py"
+            class="text-h2 text-center py fc"
           >
             {{ sentence.normal }}
           </div>
@@ -66,7 +70,7 @@
             fab
             dark
             x-large
-            color="error"
+            class="red lighten-1"
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
@@ -81,22 +85,40 @@
             {{ recordingText }}
           </div>
         </v-row>
-        <v-row>
-          <PracticeResult 
-            v-if="status === 'recorded'"
-          />
+        <v-row
+          justify="center"
+        >
+          <div>
+            <v-btn
+              v-if="status === 'recorded'"
+              color="error"
+              class="mb-5"
+              x-large
+              rounded
+              @click.stop="PracticeResult"
+            >
+              結果を見る!
+            </v-btn>
+            <v-dialog
+              v-model="dialog"
+              transition="dialog-bottom-transition"
+              max-width="auto"
+            >
+              <ThePracticeResult />
+            </v-dialog>
+          </div>
         </v-row>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
-import PracticeResult from 'components/result/PracticeResult.vue'
+import ThePracticeResult from 'components/result/ThePracticeResult.vue'
 
 export default {
   name: "BoinPractice",
   components:  {
-    PracticeResult
+    ThePracticeResult
   },
   data () {
     return {
@@ -104,15 +126,17 @@ export default {
       status: 'init',
       recorder: null,
       audioData: [],
-      audioExtension: '',
       boinVoice: { url: ''},
       recognition: null,
-      boinRecognition: '',
+      boinRecognition: null,
       recordingText: '',
-      boinRecognitionToHiragana: []
+      boinRecognitionToHiragana: [],
+      normalRecognition: null,
+      dialog: false
     }
   },
   watch: {
+    // 音声認識にデータが代入されたタイミングでひらがなに変換する
     boinRecognition:function() {
       const APIKEY = process.env.VUE_APP_HIRAGANA_KEY
       const BASE_URL = process.env.VUE_APP_API_URL
@@ -139,30 +163,30 @@ export default {
           this.$store.commit('practice/setBoinRecognition', this.boinRecognitionToHiragana.converted )
         })
         .catch(err => console.log(err.status));
-         
+
     }},
-  created () {
+  created() {
     this.fetchSentences();
-    
+    this.normalRecognition = this.$store.getters['practice/normalRecognition']
   },
   mounted() {
     // マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
-       
       echoCancellation: true,
       echoCancellationType: 'system',
       noiseSuppression: false
     }})
       .then(stream => {
-
         this.recorder = new MediaRecorder(stream);
         this.recognition = new webkitSpeechRecognition(stream);
         this.recognition.lang = 'ja';
+
         this.recorder.addEventListener('dataavailable', e => {
 
           this.audioData.push(e.data);
 
         });
+
         this.recorder.addEventListener('stop', () => {
             
           this.recordingText='録音完了!';
@@ -171,13 +195,18 @@ export default {
           this.boinVoice.url = url; 
           this.$store.commit('practice/setBoinForm', audioBlob)
           this.$store.commit('practice/setBoinVoice', this.boinVoice.url )
+
         });
+
         this.recognition.onresult = (event) => {
+
           if (event.results.length > 0) {
             this.boinRecognition = event.results[0][0].transcript;
       
           }
+
         };
+
         this.recorder.addEventListener('start', () => {
             
           this.recordingText = '録音中..(終了まであと5秒)';
@@ -187,7 +216,7 @@ export default {
             this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
             if( sec === 0 ){
               clearInterval(countDownTime);
-            };
+            }
           }, 1000);
           setTimeout( () => {
             this.stopRecording();
@@ -196,19 +225,16 @@ export default {
       });
   },
   methods: {
-    fetchSentences() {
-      this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
-
-
-
-        .then(res => {
-          this.sentence = res.data
-          this.$store.commit('practice/setNormalSentence', this.sentence.normal)
-          this.$store.commit('practice/setBoinSentence', this.sentence.boin)
-          
-        })
-        .catch(err => console.log(err.status));
-
+    async fetchSentences() {
+      try {
+        const res = await this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+        this.sentence = res.data
+        this.$store.commit('practice/setNormalSentence', this.sentence.normal)
+        this.$store.commit('practice/setBoinSentence', this.sentence.boin)         
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
     // 録音開始
     startRecording() {
@@ -217,7 +243,6 @@ export default {
       this.audioData = [];
       this.recorder.start();
       this.recognition.start();
-
     },
     // 録音停止
     stopRecording() { 
@@ -225,17 +250,32 @@ export default {
       this.status = 'recorded';
       this.recorder.stop();
       this.recognition.stop();
-    
+    },
+    PracticeResult(){
 
+      if(this.normalRecognition && this.boinRecognition !== null) {
+        this.dialog = true
+      }
+      else {
+        this.$router.push({ name: 'ModeIndex' })
+        this.$store.dispatch(
+          "message/showMessage",
+          {
+            message: "音声をうまく認識できませんでした....もう一度練習してみよう",
+            type: "error",
+            status: true,
+          }
+        )
+      }  
     }
   }
 }
 </script>
 <style scoped>
-.v-card__title {
-  background-color: #EF5350;
-}
 .py {
   padding: 35px 0px 35px 0px; 
+}
+.fc {
+  color: #424242;
 }
 </style>

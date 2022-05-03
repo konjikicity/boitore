@@ -6,14 +6,14 @@
       dark
       app
     >
-      <FlashMessage />
+      <TheFlashMessage />
       <router-link
         :to="{ name: 'TopIndex'}"
       >
         <v-img 
           max-height="150"
           max-width="150"
-          :src="srcLogo"
+          src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544232/logo_j6nywc.webp"
         />
       </router-link>
       <v-app-bar-nav-icon
@@ -72,6 +72,18 @@
           </router-link>
 
           <router-link
+            v-if="isNotLoggedIn"
+            :to="{ name: 'SignUpForm'}"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-file-sign</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>新規登録</v-list-item-title>
+            </v-list-item>
+          </router-link>
+
+          <router-link
             v-if="isLoggedIn"
             :to="{ name: 'TopIndex'}"
             @click.native="logout"
@@ -85,14 +97,37 @@
           </router-link>
 
           <router-link
-            v-if="isNotLoggedIn"
-            :to="{ name: 'SignUpForm'}"
+            :to="{ name: 'Terms'}"
+          >
+            <v-list-item
+            class="mt-9"
+            >
+              <v-list-item-icon>
+                <v-icon>mdi-note-text-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>利用規約</v-list-item-title>
+            </v-list-item>
+          </router-link>
+
+           <router-link
+            :to="{ name: 'PrivacyPolicy'}"
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-file-sign</v-icon>
+                <v-icon>mdi-shield-sun-outline</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>新規登録</v-list-item-title>
+              <v-list-item-title>プライバシーポリシー</v-list-item-title>
+            </v-list-item>
+          </router-link>
+
+           <router-link
+            :to="{ name: 'Contact'}"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-help-circle-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>お問い合わせ</v-list-item-title>
             </v-list-item>
           </router-link>
         </v-list-item-group>
@@ -102,16 +137,15 @@
 </template>
 
 <script>
-import FlashMessage from "components/layout/FlashMessage"
+import TheFlashMessage from "components/shared/TheFlashMessage"
 
 export default {
   name: "TheHeader",
   components: {
-    FlashMessage
+    TheFlashMessage
   },
   data() {
     return {
-      srcLogo: require("logo.png"),
       drawer: false,
       group: null,
     }

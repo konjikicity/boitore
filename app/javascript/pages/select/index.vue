@@ -26,14 +26,15 @@
         </div>
         <v-carousel
           hide-delimiter-background
+          hide-delimiters
           height="400"
-          class="rounded-lg"
         >
           <template v-slot:prev="{ on, attrs }">
             <v-btn
-              color="error"
+              class="red lighten-1"
               v-bind="attrs"
               x-large
+              rounded
               v-on="on"
             >
               前の文章
@@ -41,9 +42,10 @@
           </template>
           <template v-slot:next="{ on, attrs }">
             <v-btn
-              color="error"
+              class="red lighten-1"
               v-bind="attrs"
               x-large
+              rounded
               v-on="on"
             >
               次の文章
@@ -90,32 +92,31 @@ export default {
     this.fetchSentences();
   },
   methods: {
-    fetchSentences() {
-      this.$axios.get( '/api/modes/' + this.$route.params.id + '/selects')
-
-
-
-        .then(res => this.sentences = res.data)
-        .catch(err => console.log(err.status));
-
+    async fetchSentences() {
+      try {
+        const res = await this.$axios.get( '/api/modes/' + this.$route.params.id + '/selects')
+        this.sentences = res.data
+      }
+      catch(error) {
+        console.log(error)
+      }
     }
   }
 }
 </script>
 
 <style  scoped>
-.v-application a {
-    color: #212121;
+.v-application a{
     text-decoration: none;
+    color: #616161;
 }
 .v-application a:hover {
-  color: #EF5350;
-  transition: 0.5s;
+   color: #E57373;
+   transition: 0.5s;
 }
 .v-application p {
   font-size: 80px;
   margin-bottom: 0px;
   
 }
-
 </style>

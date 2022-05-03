@@ -10,23 +10,18 @@
 </template>
 
 <script>
-import TheHeader from "components/layout/TheHeader"
+import TheHeader from "components/shared/TheHeader"
 
 export default {
   components: {
     TheHeader,
   },
-  data() {
-    return{
-      
-    }
-  }
 }
 </script>
 <style lang="scss" scoped>
 
 .theme--light.v-application{
-  background: url('../assets/images/back-ground.jpg');
+  background: url('https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/back-ground_myiel1.webp');
   background-size: cover;
   background-position: center center;
   width: 100%;

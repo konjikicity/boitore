@@ -26,14 +26,16 @@
         <v-card 
           elevation="20"
         >
-          <v-card-title>  
+          <v-card-title
+            class="red lighten-1"
+          >  
             <h3 class="white--text">
               普通の文章
             </h3>
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 py text-center"
+            class="text-h2 py text-center fc"
           >
             {{ sentence.normal }}
           </div>
@@ -48,7 +50,7 @@
             fab
             dark
             x-large
-            color="error"
+            class="red lighten-1"
             @click="startRecording"
           >
             <v-icon>mdi-microphone</v-icon>
@@ -72,6 +74,7 @@
             color="error"
             class="my-10"
             x-large
+            rounded
           >
             母音法で練習する!   
           </v-btn>
@@ -84,7 +87,6 @@
 
 export default {
   name: "NormalPractice",
-
   data () {
     return {
       sentence: [],
@@ -176,7 +178,7 @@ export default {
             this.recordingText = '録音中..(終了まであと'+remainingTime+'秒)';
             if( sec === 0 ){
               clearInterval(countDownTime);
-            };
+            }
           }, 1000);
           setTimeout( () => {
             this.stopRecording();
@@ -186,14 +188,14 @@ export default {
       });
   },
   methods: {
-    fetchSentences() {
-      this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
-
-
-
-        .then(res => this.sentence = res.data)
-        .catch(err => console.log(err.status));
-
+    async fetchSentences() {
+      try {
+        const res = await this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+        this.sentence = res.data
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
     // 録音開始
     startRecording() {
@@ -209,7 +211,6 @@ export default {
       this.recorder.stop();
       this.recognition.stop();
       this.status = 'recorded';
-
     },
   }
 }
@@ -224,7 +225,7 @@ export default {
 .v-card {
   margin-bottom: 50px;
 }
-.v-card__title {
-  background-color: #EF5350;
+.fc {
+  color: #424242;
 }
 </style>

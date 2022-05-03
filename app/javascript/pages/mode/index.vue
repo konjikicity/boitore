@@ -20,11 +20,11 @@
       <div
         v-for=" mode in modes"
         :key="mode.id"
-        class="white--text"
+        class="font-weight-bold white--text"
       >
         <v-btn
           :to="{ name: 'SelectIndex', params: { id: mode.id}}"
-          class="error my-5 rounded-pill mr-4"
+          class="red lighten-1 my-5 rounded-pill mr-4 white--text font-weight-bold"
           elevation="10"
           x-large
           :width="150"
@@ -41,32 +41,23 @@ export default {
   name: "ModeIndex",
   data(){
     return {
-      modes: [
-      ]
+      modes: []
     }
   },
-  //sessionStorageに保存されているデータを削除する
-  created () {
-    sessionStorage.removeItem('setNormal');
-    sessionStorage.removeItem('setBoin');
-    sessionStorage.removeItem('setNormalRecognition');
-    sessionStorage.removeItem('setBoinRecognition');
-
-  },
-  mounted() {
+  created() {
     this.fetchModes();
   },
   methods: {
-    fetchModes() {
-      this.$axios.get('/api/modes')
-
-
-        .then(res => this.modes = res.data)
-        .catch(err => console.log(err.status));
+    async fetchModes(){
+      try {
+        const res = await this.$axios.get('/api/modes')
+        this.modes = res.data
+      }
+      catch(error) {
+        console.log(err.status); 
+      }
     }
   }
 }
 </script>
-<style scoped>
 
-</style>

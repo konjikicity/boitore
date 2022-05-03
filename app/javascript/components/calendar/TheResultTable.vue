@@ -87,7 +87,7 @@
 import moment from 'moment'
 
 export default {
-  name: "ResultTable",
+  name: "TheResultTable",
   data() {
     return {
       page: 1,
@@ -131,19 +131,21 @@ export default {
 
   },
   methods: {
-    fetchPlayResults()  {
-      this.$axios.get('/api/play_results', {
-        headers: {
-          uid: this.uid,
-          "access-token": this.token,
-          client: this.client,
-        },
-      })
-        .then(res => {
-          console.log(res.data);
-          this.play_results = res.data;
+    async fetchPlayResults()  {
+      try {
+        const res = await this.$axios.get('/api/play_results', {
+          headers: {
+            uid: this.uid,
+            "access-token": this.token,
+            client: this.client,
+          },
         })
-        .catch(err => console.log(err.status));
+        console.log(res.data);
+        this.play_results = res.data;
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
     showItem (item) {
       this.editIndex = this.play_results.indexOf(item)

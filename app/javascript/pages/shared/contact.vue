@@ -34,6 +34,11 @@
     </v-row>
   </v-container>
 </template>
+<script>
+export default {
+  name: "Contact"
+}
+</script>
 <style scoped>
 .post-link {
   display: inline-block;

@@ -8,11 +8,10 @@ import TopIndex from "../pages/top/index";
 import SelectIndex from "../pages/select/index";
 import NormalPractice from "../pages/practice/normal-practice";
 import BoinPractice from "../pages/practice/boin-practice";
-import HowToIndex from "../pages/how-to/index";
 import ModeIndex from "../pages/mode/index";
-import SharedTerms from "../pages/shared/terms";
-import SharedPrivacy from "../pages/shared/privacy-policy";
-import SharedContact from "../pages/shared/contact";
+import Terms from "../pages/shared/terms";
+import PrivacyPolicy from "../pages/shared/privacy-policy";
+import Contact from "../pages/shared/contact";
 import LoginForm from "../pages/login/login-form";
 import SignUpForm from "../pages/login/signup-form";
 import MyPageIndex from "../pages/my-page/index";
@@ -50,24 +49,19 @@ const router = new Router({
     }
     ,
     {
-      path:"/how-to",
-      component: HowToIndex,
-      name: "HowToIndex",
-    },
-    {
       path:"/terms",
-      component: SharedTerms,
-      name: "SharedTerms",
+      component: Terms,
+      name: "Terms",
     },
     {
       path:"/privacy",
-      component: SharedPrivacy,
-      name: "SharedPrivacy",
+      component: PrivacyPolicy,
+      name: "PrivacyPolicy",
     },
     {
       path: "/contact",
-      component: SharedContact,
-      name: "SharedContact",
+      component: Contact,
+      name: "Contact",
     },
     {
       path: '/login',
