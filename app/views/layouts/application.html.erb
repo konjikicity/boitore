@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <% if Rails.env.production? %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-227498081-1"></script>
     <script>
@@ -10,14 +11,13 @@
 
       gtag('config', 'UA-227498081-1');
     </script>
+  <% end %>
     <title>BOIトレ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= display_meta_tags(default_meta_tags) %>
     <%= favicon_link_tag('favicon.ico') %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
