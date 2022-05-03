@@ -11,8 +11,7 @@
         max-width="700"
         max-height="500"
         class="position"
-      >
-      </v-img> 
+      /> 
     </v-row>
     <v-row
       justify="center"

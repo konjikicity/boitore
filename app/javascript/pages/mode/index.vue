@@ -48,15 +48,14 @@ export default {
     this.fetchModes();
   },
   methods: {
-    fetchModes() {
-      this.$axios.get('/api/modes')
-
-
-        .then(res => {this.modes = res.data
-        
-          console.log(res)}
-        )
-        .catch(err => console.log(err.status));
+    async fetchModes(){
+      try {
+        const res = await this.$axios.get('/api/modes')
+        this.modes = res.data
+      }
+      catch(error) {
+        console.log(err.status); 
+      }
     }
   }
 }
