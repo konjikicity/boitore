@@ -103,6 +103,9 @@ export default {
       normalForm: ''
     }
   },
+  created() {
+    this.fetchSentences();
+  },
   watch: {
     // 音声認識にデータが代入されたタイミングでひらがなに変換する
     normalRecognition:function() {
@@ -135,8 +138,6 @@ export default {
          
     }},
   mounted() {
-    this.fetchSentences();
-
     //マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,

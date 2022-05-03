@@ -135,6 +135,10 @@ export default {
       dialog: false
     }
   },
+  created() {
+    this.fetchSentences();
+    this.normalRecognition = this.$store.getters['practice/normalRecognition']
+  },
   watch: {
     // 音声認識にデータが代入されたタイミングでひらがなに変換する
     boinRecognition:function() {
@@ -166,8 +170,6 @@ export default {
 
     }},
   mounted() {
-    this.fetchSentences();
-    this.normalRecognition = this.$store.getters['practice/normalRecognition']
     // マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,
