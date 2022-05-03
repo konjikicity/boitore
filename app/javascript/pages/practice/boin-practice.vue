@@ -136,8 +136,8 @@ export default {
     }
   },
   watch: {
+    // 音声認識にデータが代入されたタイミングでひらがなに変換する
     boinRecognition:function() {
-
       const APIKEY = process.env.VUE_APP_HIRAGANA_KEY
       const BASE_URL = process.env.VUE_APP_API_URL
       const SENTENCE = this.boinRecognition;
@@ -165,11 +165,9 @@ export default {
         .catch(err => console.log(err.status));
 
     }},
-  created () {
+  mounted() {
     this.fetchSentences();
     this.normalRecognition = this.$store.getters['practice/normalRecognition']
-  },
-  mounted() {
     // マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,
@@ -225,16 +223,16 @@ export default {
       });
   },
   methods: {
-    fetchSentences() {
-
-      this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
-        .then(res => {
-
-          this.sentence = res.data
-          this.$store.commit('practice/setNormalSentence', this.sentence.normal)
-          this.$store.commit('practice/setBoinSentence', this.sentence.boin)         
-        })
-        .catch(err => console.log(err.status));   
+    async fetchSentences() {
+      try {
+        const res = await this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+        this.sentence = res.data
+        this.$store.commit('practice/setNormalSentence', this.sentence.normal)
+        this.$store.commit('practice/setBoinSentence', this.sentence.boin)         
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
     // 録音開始
     startRecording() {

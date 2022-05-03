@@ -134,10 +134,9 @@ export default {
         .catch(err => console.log(err.status));
          
     }},
-  created() {
-    this.fetchSentences();
-  },
   mounted() {
+    this.fetchSentences();
+
     //マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,
@@ -189,11 +188,14 @@ export default {
       });
   },
   methods: {
-    fetchSentences() {
-      
-      this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
-        .then(res => this.sentence = res.data)
-        .catch(err => console.log(err.status));
+    async fetchSentences() {
+      try {
+        const res = await this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+        this.sentence = res.data
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
     // 録音開始
     startRecording() {

@@ -187,7 +187,6 @@ export default {
   },
   mounted() {
     this.fetchPlayResults();
-
   },
   created() {
     this.name = this.$store.getters['login/name']
@@ -230,20 +229,22 @@ export default {
     getEventColor(event) {
       return event.color;
     },
-    fetchPlayResults() {
-      this.$axios.get('/api/play_results', {
-        headers: {
-          uid: this.uid,
-          "access-token": this.token,
-          client: this.client,
-        },
-      })
-        .then(res => {
-          console.log(res.data);
-          this.play_results = res.data;
-          this.getEvents();
+    async fetchPlayResults() {
+      try {
+        const res = await this.$axios.get('/api/play_results', {
+          headers: {
+            uid: this.uid,
+            "access-token": this.token,
+            client: this.client,
+          },
         })
-        .catch(err => console.log(err.status));
+        console.log(res.data);
+        this.play_results = res.data;
+        this.getEvents();
+      }
+      catch(error) {
+        console.log(err.status)
+      }
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {
@@ -266,6 +267,6 @@ export default {
       this.value = date
       this.type = 'day'
     }
-  },
+  }
 };
 </script>

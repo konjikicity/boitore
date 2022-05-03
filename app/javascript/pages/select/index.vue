@@ -92,14 +92,14 @@ export default {
     this.fetchSentences();
   },
   methods: {
-    fetchSentences() {
-      this.$axios.get( '/api/modes/' + this.$route.params.id + '/selects')
-
-
-
-        .then(res => this.sentences = res.data)
-        .catch(err => console.log(err.status));
-
+    async fetchSentences() {
+      try {
+        const res = await this.$axios.get( '/api/modes/' + this.$route.params.id + '/selects')
+        this.sentences = res.data
+      }
+      catch(error) {
+        console.log(error)
+      }
     }
   }
 }
