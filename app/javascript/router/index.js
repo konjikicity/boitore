@@ -69,7 +69,7 @@ const router = new Router({
       name: "LoginForm",    
     },
     {
-      path: '/signup',
+      path: '/SignUp',
       component: SignUpForm,
       name: "SignUpForm",
     },
