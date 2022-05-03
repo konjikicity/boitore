@@ -6,13 +6,13 @@
     <v-row
       justify="center"
     >
-      <v-img 
-
-        src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.png"
+      <v-img
+        src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.webp"
         max-width="700"
         max-height="500"
         class="position"
-      /> 
+      >
+      </v-img> 
     </v-row>
     <v-row
       justify="center"

@@ -28,7 +28,6 @@
     >
       <v-btn
         class="red--text"
-        :to="{ name: 'HowToIndex' }"
         text
         @click="dialog = false"
       >
@@ -48,6 +47,5 @@
 <script>
 export default {
   name: "TheWarning",
-  
 }
 </script>
