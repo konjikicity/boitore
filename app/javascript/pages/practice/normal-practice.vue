@@ -87,7 +87,6 @@
 
 export default {
   name: "NormalPractice",
-
   data () {
     return {
       sentence: [],
@@ -102,9 +101,6 @@ export default {
       recordingText: '',
       normalForm: ''
     }
-  },
-  created() {
-    this.fetchSentences();
   },
   watch: {
     // 音声認識にデータが代入されたタイミングでひらがなに変換する
@@ -137,6 +133,9 @@ export default {
         .catch(err => console.log(err.status));
          
     }},
+  created() {
+    this.fetchSentences();
+  },
   mounted() {
     //マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
