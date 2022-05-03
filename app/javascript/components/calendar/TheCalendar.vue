@@ -108,6 +108,15 @@
               >
                 {{ selectedEvent.start }}
               </div>
+              <v-spacer />
+              <v-btn
+                outlined
+                small
+                class="ma-4 white--text"
+                @click="DeleteResult"
+              >
+                削除する
+              </v-btn>
             </v-toolbar>
             <v-simple-table>
               <template v-slot:default>
@@ -200,6 +209,7 @@ export default {
       for (let i = 0; i < this.play_results.length; i++) {
         const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH:mm');
         const name = this.play_results[i].practiced_sentence
+        const id = this.play_results[i].id
         const practiced_normal = this.play_results[i].practiced_normal
         const practiced_boin = this.play_results[i].practiced_boin
         const normal_voice = this.play_results[i].normal_voice
@@ -207,6 +217,7 @@ export default {
         const score = this.play_results[i].score
         const judge = this.play_results[i].judge
         events.push({
+          id: id,
           name: name,
           start: first,
           color: 'red lighten-1',
@@ -243,7 +254,7 @@ export default {
         this.getEvents();
       }
       catch(error) {
-        console.log(err.status)
+        console.log(error)
       }
     },
     showEvent ({ nativeEvent, event }) {
@@ -266,7 +277,29 @@ export default {
     viewDay ({ date }) {
       this.value = date
       this.type = 'day'
-    }
+    },
+    async DeleteResult(){
+      try{
+        let accept = confirm('本当に削除しますか？')
+        if(accept) {
+          const result = await this.$axios.delete('/api/play_results/' + this.selectedEvent.id , {
+            headers: {
+              uid: this.uid,
+              "access-token": this.token,
+              client: this.client,
+            },
+          })
+          console.log(result.data)
+          this.$router.go(this.$router.currentRoute.path)
+        }
+        else {
+          console.log(accept)
+        }
+      }
+      catch(error) {
+        console.log(error)
+      }
+    } 
   }
-};
+}
 </script>

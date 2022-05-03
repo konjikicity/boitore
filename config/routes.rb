@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :modes, only: %i[index] do
       resources :selects, only: %i[index show]
     end
-    resources :play_results, only: %i[index create]
+    resources :play_results, only: %i[index create destroy]
   end
   get '*path', to: 'top#index'
 end

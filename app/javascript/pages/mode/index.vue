@@ -54,7 +54,7 @@ export default {
         this.modes = res.data
       }
       catch(error) {
-        console.log(err.status); 
+        console.log(error); 
       }
     }
   }

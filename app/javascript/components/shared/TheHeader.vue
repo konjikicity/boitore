@@ -102,7 +102,7 @@
             :to="{ name: 'Terms'}"
           >
             <v-list-item
-            class="mt-9"
+              class="mt-9"
             >
               <v-list-item-icon>
                 <v-icon>mdi-note-text-outline</v-icon>
@@ -111,7 +111,7 @@
             </v-list-item>
           </router-link>
 
-           <router-link
+          <router-link
             :to="{ name: 'PrivacyPolicy'}"
           >
             <v-list-item>
@@ -122,7 +122,7 @@
             </v-list-item>
           </router-link>
 
-           <router-link
+          <router-link
             :to="{ name: 'Contact'}"
           >
             <v-list-item>
