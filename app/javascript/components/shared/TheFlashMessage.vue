@@ -5,7 +5,7 @@
     right
     top
     :color="type"
-    timeout="9000"
+    timeout="6000"
   >
     <div class="ml-5 font-weight-bold white--text">
       {{ message }}

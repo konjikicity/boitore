@@ -16,6 +16,12 @@ class Api::PlayResultsController < ApplicationController
     end
   end
 
+  def destroy
+    play_results = PlayResult.find(params[:id])
+    play_results.destroy
+    render json: true 
+  end
+  
   private
 
   def play_results_params

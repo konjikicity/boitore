@@ -290,7 +290,7 @@ export default {
           this.$store.dispatch(
             "message/showMessage",
             {
-              message: "文章を保存しました。",
+              message: "練習内容を保存しました。",
               type: "success",
               status: true,
             },

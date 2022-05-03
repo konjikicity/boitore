@@ -37,6 +37,15 @@
             >
               {{ formatDate(editedItem.created_at) }}
             </div>
+            <v-spacer />
+            <v-btn
+              outlined
+              small
+              class="ma-4 white--text"
+              @click="DeleteResult"
+            >
+              削除する
+            </v-btn>
           </v-toolbar>
           <v-simple-table>
             <template v-slot:default>
@@ -154,7 +163,29 @@ export default {
     },
     formatDate(value) {
       return moment(value).format("YYYY年MM月DD日")
-    }
+    },
+    async DeleteResult(){
+      try{
+        let accept = confirm('本当に削除しますか？')
+        if(accept) {
+          const result = await this.$axios.delete('/api/play_results/' + this.selectedEvent.id , {
+            headers: {
+              uid: this.uid,
+              "access-token": this.token,
+              client: this.client,
+            },
+          })
+          console.log(result.data)
+          this.$router.go(this.$router.currentRoute.path)
+        }
+        else {
+          console.log(accept)
+        }
+      }
+      catch(error) {
+        console.log(error)
+      }
+    } 
   },
 }
 </script>

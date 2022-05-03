@@ -23,7 +23,6 @@
           color="error"
           x-large
           dark
-          rounded
           @click.stop="isPlay"
         >
           練習してみる！
