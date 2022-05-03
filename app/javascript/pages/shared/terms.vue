@@ -163,6 +163,11 @@
     </v-row>
   </v-container>
 </template>
+<script>
+export default {
+  name: "Terms"
+}
+</script>
 <style scoped>
 h1 {
   margin-top: 20px;
