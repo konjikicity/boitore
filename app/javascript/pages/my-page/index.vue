@@ -7,7 +7,7 @@
           class="pb-4"
         >
           <v-toolbar
-            color="orange lighten-2"
+            color="grey darken-2"
             rounded="lg"
             class="rounded-b-0"
           >

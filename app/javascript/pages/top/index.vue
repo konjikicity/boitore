@@ -8,7 +8,7 @@
     >
       <v-img 
 
-        :src="srcTop"
+        src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.png"
         max-width="700"
         max-height="500"
         class="position"
@@ -51,7 +51,6 @@ export default {
   data() {
     return {
       dialog: false,
-      srcTop: require("top.png")
     }
   },
   methods: {
