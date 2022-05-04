@@ -60,13 +60,13 @@
           </v-btn>
         </v-card-actions>
         <v-row
-        justify="center"
-        class="font-weight-bold py-9"
+          justify="center"
+          class="font-weight-bold py-9"
         >
-        新規登録がお済みでない方は
-        <router-link :to="{ name: 'SignUpForm' }">
-        こちら
-        </router-link>
+          新規登録がお済みでない方は
+          <router-link :to="{ name: 'SignUpForm' }">
+            こちら
+          </router-link>
         </v-row>
       </v-form>
     </validation-observer>

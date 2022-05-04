@@ -80,19 +80,19 @@
           お客様の情報の開示、情報の訂正、利用停止、削除をご希望の場合は、以下のTwitterアカウント宛にダイレクトメールにてご連絡ください。
         </p>
         <v-btn
-            href="https://twitter.com/konjikicity"
-            min-height="20"
-            class="x-small light-blue white--text my-10"
-            style="text-transform: none"
-            rounded
+          href="https://twitter.com/konjikicity"
+          min-height="20"
+          class="x-small light-blue white--text my-10"
+          style="text-transform: none"
+          rounded
+        >
+          <v-icon
+            class="mr-2"
           >
-            <v-icon
-              class="mr-2"
-            >
-              mdi-twitter
-            </v-icon>
-            @konjikicity
-          </v-btn>
+            mdi-twitter
+          </v-icon>
+          @konjikicity
+        </v-btn>
         <p>
           この場合、必ず、運転免許証のご提示等当社が指定する方法により、ご本人からのご請求であることの確認をさせていただきます。なお、情報の開示請求については、開示の有無に関わらず、ご申請時に一件あたり1,000円の事務手数料を申し受けます。
         </p>

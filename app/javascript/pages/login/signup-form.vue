@@ -85,15 +85,15 @@
         </v-card-actions>
       </v-form>
     </validation-observer>
-     <v-row
-        justify="center"
-        class="font-weight-bold py-9"
-        >
-        既にご登録済みの方は
-        <router-link :to="{ name: 'LoginForm' }">
+    <v-row
+      justify="center"
+      class="font-weight-bold py-9"
+    >
+      既にご登録済みの方は
+      <router-link :to="{ name: 'LoginForm' }">
         こちら
-        </router-link>
-        </v-row>
+      </router-link>
+    </v-row>
   </v-card>
 </template>
 <script>
