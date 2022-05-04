@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="privacy-policy white--text"
+    class="privacy-policy white--text scroll"
     fill-height
     fluid
   >
@@ -68,7 +68,7 @@
         <p>
           本サービスは、ユーザーのアクセス解析のために、「Googleアナリティクス」を利用しています。Googleアナリティクスは、トラフィックデータの収集のためにCookieを使用しています。トラフィックデータは匿名で収集されており、個人を特定するものではありません。Cookieを無効にすれば、これらの情報の収集を拒否することができます。詳しくはお使いのブラウザの設定をご確認ください。Googleアナリティクスについて、詳しくは以下からご確認ください。
         </p>
-        <p>https://marketingplatform.google.com/about/analytics/terms/jp/</p>
+        <a href="https://marketingplatform.google.com/about/analytics/terms/jp/">Googleアナリティクス利用規約</a>
      
         <h2>プライバシーポリシーの変更</h2>
         <p>
@@ -79,7 +79,20 @@
         <p>
           お客様の情報の開示、情報の訂正、利用停止、削除をご希望の場合は、以下のTwitterアカウント宛にダイレクトメールにてご連絡ください。
         </p>
-        <p>Twitter ID: @konjikicity</p>
+        <v-btn
+            href="https://twitter.com/konjikicity"
+            min-height="20"
+            class="x-small light-blue white--text my-10"
+            style="text-transform: none"
+            rounded
+          >
+            <v-icon
+              class="mr-2"
+            >
+              mdi-twitter
+            </v-icon>
+            @konjikicity
+          </v-btn>
         <p>
           この場合、必ず、運転免許証のご提示等当社が指定する方法により、ご本人からのご請求であることの確認をさせていただきます。なお、情報の開示請求については、開示の有無に関わらず、ご申請時に一件あたり1,000円の事務手数料を申し受けます。
         </p>
@@ -124,5 +137,10 @@ ol li {
 }
 .privacy-policy {
   margin-bottom: 20px;
+}
+.scroll {
+  position: fixed;
+  overflow: auto;
+  height: 90vh;
 }
 </style>
