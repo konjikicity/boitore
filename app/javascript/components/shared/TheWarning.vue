@@ -25,6 +25,7 @@
     >
       <v-btn
         class="red--text"
+        :to="{ name: 'HowTo' }"
         text
         @click="dialog = false"
       >

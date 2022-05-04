@@ -4,20 +4,18 @@
     fill-height
   >
     <v-row
+      align-content="center"
       justify="center"
     >
       <v-img
         src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.webp"
         max-width="700"
-        max-height="500"
-        class="position"
-      /> 
-    </v-row>
-    <v-row
+        max-height="450"
+      />
+      </v-row>
+      <v-row
       justify="center"
-      class="mr pb-100"
-    >
-      <div>
+      >
         <v-btn
           class="mb-8 font-weight-bold"
           color="error"
@@ -33,8 +31,7 @@
         >
           <TheWarning />
         </v-dialog>
-      </div>
-    </v-row>
+      </v-row>
   </v-container>
 </template>
 

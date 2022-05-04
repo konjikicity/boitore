@@ -14,6 +14,7 @@ import PrivacyPolicy from "../pages/shared/privacy-policy";
 import Contact from "../pages/shared/contact";
 import LoginForm from "../pages/login/login-form";
 import SignUpForm from "../pages/login/signup-form";
+import HowTo from "../pages/how-to/index"
 import MyPageIndex from "../pages/my-page/index";
 
 Vue.use(Router)
@@ -72,6 +73,11 @@ const router = new Router({
       path: '/SignUp',
       component: SignUpForm,
       name: "SignUpForm",
+    },
+    {
+      path: '/HowTo',
+      component: HowTo,
+      name: "HowTo"
     },
     {
       path:'/MyPage',

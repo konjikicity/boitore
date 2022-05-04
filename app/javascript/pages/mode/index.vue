@@ -44,7 +44,7 @@ export default {
       modes: []
     }
   },
-  created() {
+  mounted() {
     this.fetchModes();
   },
   methods: {
