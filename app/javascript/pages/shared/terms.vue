@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="terms white--text"
+    class="terms white--text scroll"
     fill-height
     fluid
   >
@@ -193,5 +193,10 @@ ol li {
 }
 .terms {
   margin-bottom: 20px;
+}
+.scroll {
+  position: fixed;
+  overflow: auto;
+  height: 90vh;
 }
 </style>
