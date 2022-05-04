@@ -19,7 +19,7 @@
     >
       <div>
         <v-btn
-          class="mb-8"
+          class="mb-8 font-weight-bold"
           color="error"
           x-large
           dark

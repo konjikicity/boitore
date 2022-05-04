@@ -4,7 +4,7 @@
     class="mx-auto mt-5"
   >
     <v-card-title>
-      <h1 class="display-1">
+      <h1 class="display-1 font-weight-bold">
         ログイン
       </h1>
     </v-card-title>
@@ -53,12 +53,21 @@
    
         <v-card-actions>
           <v-btn 
-            class="error ml-7"
+            class="error ml-7 font-weight-bold"
             @click="login"
           >
             ログイン
           </v-btn>
         </v-card-actions>
+        <v-row
+        justify="center"
+        class="font-weight-bold py-9"
+        >
+        新規登録がお済みでない方は
+        <router-link :to="{ name: 'SignUpForm' }">
+        こちら
+        </router-link>
+        </v-row>
       </v-form>
     </validation-observer>
   </v-card>

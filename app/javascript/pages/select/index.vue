@@ -31,7 +31,7 @@
         >
           <template v-slot:prev="{ on, attrs }">
             <v-btn
-              class="red lighten-1"
+              class="red lighten-1 font-weight-bold"
               v-bind="attrs"
               x-large
               rounded
@@ -42,7 +42,7 @@
           </template>
           <template v-slot:next="{ on, attrs }">
             <v-btn
-              class="red lighten-1"
+              class="red lighten-1 font-weight-bold"
               v-bind="attrs"
               x-large
               rounded
