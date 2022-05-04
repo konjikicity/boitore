@@ -8,7 +8,11 @@ Vue.use(Vuetify)
 
 export default new Vuetify({
   theme: {
-    options: { minifyTheme }
+    options: { themeCache: {
+      get: key => localStorage.getItem(key),
+      set: (key, value) => localStorage.setItem(key, value),
+    },
+    minifyTheme }
   },
   icons: {
     iconfont: 'mdi',

@@ -124,7 +124,8 @@ export default {
         boin_voice: '',
         judge: '',
         score: '',
-        created_at: ''
+        created_at: '',
+        id: ''
       
       }
     }
@@ -168,7 +169,7 @@ export default {
       try{
         let accept = confirm('本当に削除しますか？')
         if(accept) {
-          const result = await this.$axios.delete('/api/play_results/' + this.selectedEvent.id , {
+          const result = await this.$axios.delete('/api/play_results/' + this.editedItem.id , {
             headers: {
               uid: this.uid,
               "access-token": this.token,

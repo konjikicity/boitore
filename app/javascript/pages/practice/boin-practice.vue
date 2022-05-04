@@ -92,7 +92,7 @@
             <v-btn
               v-if="status === 'recorded'"
               color="error"
-              class="mb-5"
+              class="mb-5 rounded-lg font-weight-bold"
               x-large
               rounded
               @click.stop="PracticeResult"

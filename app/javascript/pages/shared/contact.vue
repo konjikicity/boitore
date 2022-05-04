@@ -10,8 +10,12 @@
         class="text-center"
         cols="10"
       >
-        <p>サービスの利用に関するお問い合わせ、不具合の報告などがございましたら、</p>
-        <p>お手数ですが、以下のTwitterアカウント宛のダイレクトメールにてお知らせください。</p>
+        <p class="font-weight-bold">
+          サービスの利用に関するお問い合わせ、不具合の報告などがございましたら、
+        </p>
+        <p class="font-weight-bold">
+          お手数ですが、以下のTwitterアカウント宛のダイレクトメールにてお知らせください。
+        </p>
         <v-icon>mdi-email</v-icon>
         <p>
           <v-btn

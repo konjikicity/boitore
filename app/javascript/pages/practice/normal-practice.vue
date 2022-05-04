@@ -72,9 +72,8 @@
             v-if="status=== 'recorded'"
             :to="{ name: 'BoinPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
             color="error"
-            class="my-10"
+            class="my-10 font-weight-bold rounded-lg"
             x-large
-            rounded
           >
             母音法で練習する!   
           </v-btn>
