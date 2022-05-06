@@ -6,9 +6,9 @@
       ようこそBOIトレへ！
     </v-card-title>
     <v-card-text
-    class="font-weight-bold text-h6 pt-5"
+      class="font-weight-bold text-h6 pt-5"
     >
-     このサービスは母音法という発声練習法で発声練習をするサービスです！
+      このサービスは母音法という発声練習法で発声練習をするサービスです！
     </v-card-text>
     <v-card-text
       class="pt-2"
@@ -40,8 +40,8 @@
         class="red--text"
         :to="{ name: 'ModeIndex' }"
         text
-        @click="dialog = false"
         style="text-transform: none"
+        @click="dialog = false"
       >
         Start !
       </v-btn>

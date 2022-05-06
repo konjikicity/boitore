@@ -21,8 +21,8 @@
         color="error"
         x-large
         dark
-        @click.stop="isPlay"
         style="text-transform: none"
+        @click.stop="isPlay"
       >
         Start !
       </v-btn>

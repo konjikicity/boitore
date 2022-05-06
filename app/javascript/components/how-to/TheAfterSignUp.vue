@@ -44,40 +44,42 @@
     </p>
     <ul>
       他にもこんなことができます！
-      <li class="pt-5">日単位での表示</li>
+      <li class="pt-5">
+        日単位での表示
+      </li>
       <li>練習履歴を一覧で表示</li>
       <li>日付でのソート機能</li>
-      </ul>
-      <v-row
-          justify="space-around"
-          class="font-weight-bold py-15 text-h5"
+    </ul>
+    <v-row
+      justify="space-around"
+      class="font-weight-bold py-15 text-h5"
+    >
+      <v-btn
+        class="x-small light-blue white--text rounded-lg ml-10 font-weight-bold"
+        :to="{ name: 'SignUpForm'}"
+        style="text-transform: none"
+        x-large
+      >
+        <v-icon
+          class="mr-2"
         >
-          <v-btn
-          class="x-small light-blue white--text rounded-lg ml-10 font-weight-bold"
-          :to="{ name: 'SignUpForm'}"
-          style="text-transform: none"
-          x-large
+          mdi-file-sign
+        </v-icon>
+        新規登録!
+      </v-btn>
+      <v-btn
+        class="x-small white--text rounded-lg error mr-10 font-weight-bold"
+        style="text-transform: none"
+        x-large
+        :to="{ name: 'ModeIndex'}"
+      >
+        <v-icon
+          class="mr-2"
         >
-          <v-icon
-            class="mr-2"
-          >
-            mdi-file-sign
-          </v-icon>
-          新規登録!
-        </v-btn>
-         <v-btn
-          class="x-small white--text rounded-lg error mr-10 font-weight-bold"
-          style="text-transform: none"
-          x-large
-          :to="{ name: 'ModeIndex'}"
-        >
-         <v-icon
-            class="mr-2"
-          >
-            mdi-microphone
-          </v-icon>
-          Start!
-        </v-btn>
+          mdi-microphone
+        </v-icon>
+        Start!
+      </v-btn>
     </v-row>
   </v-card>
 </template>
