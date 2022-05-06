@@ -4,7 +4,7 @@ class Api::PlayResultsController < ApplicationController
 
   def index
     play_results = PlayResult.where(user_id: current_user.id)
-    render json: play_results
+    render json: play_results, each_serializer: PlayResultSerializer
   end
 
   def create
