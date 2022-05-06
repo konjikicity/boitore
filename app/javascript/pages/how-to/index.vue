@@ -72,13 +72,13 @@
             href="#tab-1"
             class="basil--text font-weight-bold text-h6 basil"
           >
-            練習方法！
+            練習方法
           </v-tab>
           <v-tab
             href="#tab-2"
             class="basil--text font-weight-bold text-h6 basil"
           >
-            新規登録後！
+            新規登録後に利用可能な機能
           </v-tab>
           <v-tabs-slider color="basil--text" />
           <v-tab-item
@@ -88,7 +88,7 @@
             <TheHowToPlay />
           </v-tab-item>
           <v-tab-item value="tab-2">
-            Tab 2 Content
+            <TheAfterSignUp />
           </v-tab-item>
         </v-tabs>
         <transition name="fade">
@@ -113,11 +113,12 @@
 
 <script>
 import TheHowToPlay from'../../components/how-to/TheHowToPlay'
-
+import TheAfterSignUp from'../../components/how-to/TheAfterSignUp'
 export default {
   name: "HowToIndex",
   components: {
-    TheHowToPlay
+    TheHowToPlay,
+    TheAfterSignUp
   },
   data() {
     return {
@@ -138,23 +139,6 @@ export default {
 </script>
 
 <style scoped>
-li {
-  list-style: none;
-}
-.py {
-  padding: 50px 0px 50px 0px;
-}
-p {
-  font-size: 15px;
-  font-weight: bold;
-}
-ul {
-  font-weight: bold;
-}
-li {
-  font-weight: bold;
-  padding-bottom: 10px;
-}
 
 .basil--text {
   color: #356859 !important;
@@ -171,5 +155,9 @@ li {
 }
 .basil {
   background-color: #FFFBE6 !important;
+}
+p {
+  font-size: 15px;
+  font-weight: bold;
 }
 </style>

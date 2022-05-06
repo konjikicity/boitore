@@ -33,7 +33,7 @@
       Step.2 文章を選択する
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/HowToSelect_mxojiv.png"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/HowToSelect_mxojiv.webp"
       width="900"
       height="300"
     />
@@ -53,7 +53,7 @@
       Step.3 まずは普通に録音！ 
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/HowToNormal_kzv4aj.png"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/HowToNormal_kzv4aj.webp"
       width="1100"
       height="400"
     />
@@ -73,7 +73,7 @@
       Step.4 母音法で練習！
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/HowToBoin_mwospo.png"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/HowToBoin_mwospo.webp"
       width="1100"
       height="500"
     />
@@ -96,7 +96,7 @@
       Step.5 結果を見る！
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651833567/791fe2b17ae9dca4894bccddf15e71b4_ayrewv.png"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651833567/boi%E3%83%88%E3%83%AC/791fe2b17ae9dca4894bccddf15e71b4_ayrewv.webp"
       width="900"
       height="600"
     />
