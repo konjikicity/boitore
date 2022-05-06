@@ -22,9 +22,9 @@ class Api::PlayResultsController < ApplicationController
     play_results.remove_boin_voice!
     play_results.save
     play_results.destroy
-    render json: true 
+    render json: true
   end
-  
+
   private
 
   def play_results_params
