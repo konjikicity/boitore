@@ -1,11 +1,11 @@
 class Api::SelectsController < ApplicationController
   def index
-    sentence = Sentence.where(mode_id: params[:mode_id]).select(:id, :normal, :mode_id).order(:id)
-    render json: sentence
+    sentences = Sentence.where(mode_id: params[:mode_id])
+    render json: sentences, each_serializer: SentenceSerializer
   end
 
   def show
     sentence = Sentence.find(params[:id])
-    render json: sentence
+    render json: sentence, serializer: SentenceSerializer
   end
 end
