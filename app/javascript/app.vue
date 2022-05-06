@@ -21,7 +21,7 @@ export default {
 <style lang="scss" scoped>
 
 .theme--light.v-application{
-  background: url('https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/back-ground_myiel1.webp');
+  background: url('https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/back-ground_myiel1.webp');
   background-size: cover;
   background-position: center center;
   width: 100%;

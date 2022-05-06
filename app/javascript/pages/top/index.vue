@@ -9,8 +9,8 @@
     >
       <v-img
         src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.webp"
-        max-width="800"
-        max-height="450"
+        max-width="50vw"
+        max-height="50vh"
       />
     </v-row>
     <v-row
@@ -22,8 +22,9 @@
         x-large
         dark
         @click.stop="isPlay"
+        style="text-transform: none"
       >
-        練習してみる！
+        Start !
       </v-btn>
       <v-dialog
         v-model="dialog"

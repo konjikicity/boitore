@@ -36,8 +36,9 @@
         :to="{ name: 'ModeIndex' }"
         text
         @click="dialog = false"
+        style="text-transform: none"
       >
-        開始！
+        Start !
       </v-btn>
     </v-card-actions>
   </v-card>

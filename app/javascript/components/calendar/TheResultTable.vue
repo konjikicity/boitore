@@ -19,7 +19,7 @@
     <template v-slot:top>
       <v-dialog
         v-model="dialog"
-        max-width="35vw"
+        max-width="40vw"
       >
         <v-card
           color="grey lighten-4"

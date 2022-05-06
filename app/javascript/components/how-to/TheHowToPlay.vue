@@ -8,9 +8,9 @@
       Step.1 モードを選択する
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/HowToMode_mq9isf.webp"
-      width="700"
-      height="400"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/boi%E3%83%88%E3%83%AC/HowToMode_mq9isf.webp"
+      width="100%"
+      height="65vh"
     />
     <p
       class="pt-5"
@@ -33,9 +33,9 @@
       Step.2 文章を選択する
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/HowToSelect_mxojiv.webp"
-      width="900"
-      height="300"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651847193/boi%E3%83%88%E3%83%AC/8290d4739603c545808a957f722a595a_xqixvd.webp"
+      width="100%"
+      height="65vh"
     />
     <p
       class="pt-8 pb-5"
@@ -53,9 +53,9 @@
       Step.3 まずは普通に録音！ 
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/HowToNormal_kzv4aj.webp"
-      width="1100"
-      height="400"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651847642/boi%E3%83%88%E3%83%AC/a0e0967ffcb302e8cce56974233d6ed4_biatha.webp"
+      width="100%"
+      height="70vh"
     />
     <p
       class="pt-8"
@@ -73,9 +73,9 @@
       Step.4 母音法で練習！
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544234/boi%E3%83%88%E3%83%AC/HowToBoin_mwospo.webp"
-      width="1100"
-      height="500"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651847979/boi%E3%83%88%E3%83%AC/1dfd99d9ad8c985772cc7f4074289176_kgtv1g.jpg"
+      width="100%"
+      height="80vh"
     />
     <p
       class="pt-8"
@@ -97,8 +97,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651833567/boi%E3%83%88%E3%83%AC/791fe2b17ae9dca4894bccddf15e71b4_ayrewv.webp"
-      width="900"
-      height="600"
+      width="100%"
+      height="90vh"
     />
     <p
       class="py-7 font-weight-bold text-h5"
@@ -115,16 +115,35 @@
       </li>
     </ul>
     <v-row
-      justify="center"
-      class="py"
-    >
-      <v-btn
-        class="error my-4z" 
-        :to="{ name: 'ModeIndex'}"
-        x-large
-      >
-        練習開始！
-      </v-btn>
+          justify="space-around"
+          class="font-weight-bold py-15 text-h5"
+        >
+          <v-btn
+          class="x-small light-blue white--text rounded-lg ml-10 font-weight-bold"
+          :to="{ name: 'SignUpForm'}"
+          style="text-transform: none"
+          x-large
+        >
+          <v-icon
+            class="mr-2"
+          >
+            mdi-file-sign
+          </v-icon>
+          新規登録!
+        </v-btn>
+         <v-btn
+          class="x-small white--text rounded-lg error mr-10 font-weight-bold"
+          style="text-transform: none"
+          x-large
+          :to="{ name: 'ModeIndex'}"
+        >
+                 <v-icon
+            class="mr-2"
+          >
+            mdi-microphone
+          </v-icon>
+          Start!
+        </v-btn>
     </v-row>
   </v-card>
 </template>
