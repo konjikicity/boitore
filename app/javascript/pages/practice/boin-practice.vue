@@ -86,26 +86,25 @@
           </div>
         </v-row>
         <v-row
-          justify="center mb-8"
+          class="mb-8"
+          justify="center"
         >
-          <div>
-            <v-btn
-              v-if="status === 'recorded'"
-              color="error"
-              class="rounded-lg font-weight-bold"
-              x-large
-              @click.stop="PracticeResult"
-            >
-              結果を見る!
-            </v-btn>
-            <v-dialog
-              v-model="dialog"
-              transition="dialog-bottom-transition"
-              max-width="auto"
-            >
-              <ThePracticeResult />
-            </v-dialog>
-          </div>
+          <v-btn
+            v-if="status === 'recorded'"
+            color="error"
+            class="rounded-lg font-weight-bold text-center"
+            x-large
+            @click.stop="PracticeResult"
+          >
+            結果を見る!
+          </v-btn>
+          <v-dialog
+            v-model="dialog"
+            transition="dialog-bottom-transition"
+            max-width="auto"
+          >
+            <ThePracticeResult />
+          </v-dialog>
         </v-row>
       </v-col>
     </v-row>
