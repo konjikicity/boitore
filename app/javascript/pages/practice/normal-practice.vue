@@ -131,7 +131,7 @@ export default {
         })
         .catch(err => console.log(err.status));
          
-  }},
+    }},
   mounted() {
 
     this.fetchSentences();
