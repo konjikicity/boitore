@@ -36,7 +36,7 @@
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py fc"
+            class="text-h3 text-center py-5 fc"
           >
             {{ sentence.boin }}
           </div>
@@ -54,7 +54,7 @@
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py fc"
+            class="text-h3 text-center py-5 fc"
           >
             {{ sentence.normal }}
           </div>
@@ -273,10 +273,7 @@ export default {
 }
 </script>
 <style scoped>
-.py {
-  padding: 35px 0px 35px 0px; 
-}
 .fc {
-  color: #424242;
+  color: #616161;
 }
 </style>

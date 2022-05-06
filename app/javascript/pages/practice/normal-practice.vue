@@ -131,7 +131,7 @@ export default {
         })
         .catch(err => console.log(err.status));
          
-    }},
+  }},
   mounted() {
 
     this.fetchSentences();
@@ -224,6 +224,6 @@ export default {
   margin-bottom: 50px;
 }
 .fc {
-  color: #424242;
+  color: #616161;
 }
 </style>
