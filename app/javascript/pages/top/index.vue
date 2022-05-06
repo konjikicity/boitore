@@ -9,29 +9,29 @@
     >
       <v-img
         src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/top_eyvzeg.webp"
-        max-width="700"
+        max-width="800"
         max-height="450"
       />
-      </v-row>
-      <v-row
+    </v-row>
+    <v-row
       justify="center"
+    >
+      <v-btn
+        class="mb-8 font-weight-bold"
+        color="error"
+        x-large
+        dark
+        @click.stop="isPlay"
       >
-        <v-btn
-          class="mb-8 font-weight-bold"
-          color="error"
-          x-large
-          dark
-          @click.stop="isPlay"
-        >
-          練習してみる！
-        </v-btn>
-        <v-dialog
-          v-model="dialog"
-          width="800"
-        >
-          <TheWarning />
-        </v-dialog>
-      </v-row>
+        練習してみる！
+      </v-btn>
+      <v-dialog
+        v-model="dialog"
+        width="800"
+      >
+        <TheWarning />
+      </v-dialog>
+    </v-row>
   </v-container>
 </template>
 
@@ -66,5 +66,7 @@ export default {
 .pb-100 {
   padding-bottom: 100px;
 }
-
+.row+.row {
+    margin: 0;
+}
 </style>

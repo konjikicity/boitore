@@ -1,7 +1,5 @@
 <template>
-  <v-container 
-    fill-height 
-  >
+  <v-container>
     <v-row
       justify="center"
     >
@@ -11,88 +9,129 @@
         outlined
         height="100%"
         width="80vw"
-        class="rounded-lg pa-md-4 mx-lg-auto overflow-y-auto mt-9"
+        class="rounded-lg pa-md-8 mx-lg-auto my-9 basil"
       >
-        <v-card-title>
-          <div
-            class="font-weight-bold text-h4"
+        <v-card
+          elevation="0"
+          class="basil"
+        >
+          <v-card-title>
+            <div
+              class="font-weight-bold text-h4"
+            >
+              BOIトレとは？
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <p>劇団四季にも使われている母音法を使って、発声練習ができるサービスです。</p>
+            <p>テレワークで喋ることが少なくなった方にもおすすめです！</p>
+          </v-card-text>
+          <v-divider />
+          <v-card-title
+            class="pt-7"
           >
-            BOIトレとは？
-          </div>
-        </v-card-title>
-        <v-card-text>
-          <p>劇団四季にも使われている母音法を使って、発声練習ができるサービスです。</p>
-          <p>テレワークで喋ることが少なくなった方にもおすすめです！</p>
-        </v-card-text>
-        <v-divider />
-        <v-card-title>
-          <div
-            class="font-weight-bold text-h4"
+            <div
+              class="font-weight-bold text-h4"
+            >
+              母音法とは？
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <p>文章を母音のみで発声する練習法で、母音がはっきり聞こえるようになり、</p>
+            <p>聞こえづらかった声もはっきり聞こえるようになります！</p>
+          </v-card-text>
+          <v-divider />
+          <v-divider />
+          <v-card-title
+            class="pt-7"
           >
-            母音法とは？
-          </div>
-        </v-card-title>
-        <v-card-text>
-          <p>文章を母音のみで発声する練習法で、母音がはっきり聞こえるようになり、</p>
-          <p>聞こえづらかった声もはっきり聞こえるようになります！</p>
-        </v-card-text>
-        <v-divider />
-        <v-divider />
-        <v-card-title>
-          <div
-            class="font-weight-bold text-h4"
+            <div
+              class="font-weight-bold text-h4"
+            >
+              なにができるの？
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <p>通常の文章と母音法後の文章の録音と再生</p>
+            <p>音声認識を利用してそれぞれの文章がどう聞こえているかを確認できます！</p>
+            <p>他にもTwiterで練習内容の共有, 登録していただくと練習内容の保存, MyPageから管理を行うことができます!</p>
+          </v-card-text>
+          <v-divider />
+        </v-card>
+        <div class="text-center justify-center py-9 basil">
+          <h1
+            class="font-weight-bold text-h2 basil--text"
+          > 
+            HowToBOIトレ？
+          </h1>
+        </div>
+        <v-tabs
+          grow
+        >
+          <v-tab
+            href="#tab-1"
+            class="basil--text font-weight-bold text-h6 basil"
           >
-            なにができるの？
-          </div>
-        </v-card-title>
-        <v-card-text>
-          <p>通常の文章と母音法後の文章の録音と再生</p>
-          <p>音声認識を利用してそれぞれの文章がどう聞こえているかを確認できます！</p>
-          <p>他にもTwiterで練習内容の共有, 登録していただくと練習内容の保存, MyPageから管理を行うことができます!</p>
-        </v-card-text>
-        <v-divider />
-         <v-card color="basil"
-         class="mt-9"
-         elevation="0"
-         >
-    <v-card-title class="text-center justify-center py-6">
-      <h1 class="font-weight-bold text-h2 basil--text">
-        HowToBOIトレ？
-      </h1>
-    </v-card-title>
-
-    <v-tabs
-    grow
-    color="basil"
-    >
-      <v-tab href="#tab1" class="font-weight-bold basil--text">練習方法！</v-tab>
-      <v-tab href="#tab2" class="font-weight-bold basil--text">新規登録後！</v-tab>
-      <v-tabs-slider color="light-green darken-3" />
-    </v-tabs>
-
-    <v-tab-item value="tab-1" transition="fade-transition">
-    Tab 1 Content
-  </v-tab-item>
-  <v-tab-item value="tab-2" transition="fade-transition">
-    Tab 2 Content
-  </v-tab-item>
-  </v-card>
-  </v-sheet>
+            練習方法！
+          </v-tab>
+          <v-tab
+            href="#tab-2"
+            class="basil--text font-weight-bold text-h6 basil"
+          >
+            新規登録後！
+          </v-tab>
+          <v-tabs-slider color="basil--text" />
+          <v-tab-item
+            value="tab-1"
+            class="basil"
+          >
+            <TheHowToPlay />
+          </v-tab-item>
+          <v-tab-item value="tab-2">
+            Tab 2 Content
+          </v-tab-item>
+        </v-tabs>
+        <transition name="fade">
+          <v-btn 
+            v-show="fab"
+            v-scroll="onScroll"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="error"
+            @click="toTop"
+          >
+            <v-icon>mdi-apple-keyboard-caps</v-icon>
+          </v-btn>
+        </transition>
+      </v-sheet>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import TheHowToPlay from'../../components/how-to/TheHowToPlay'
+
 export default {
   name: "HowToIndex",
+  components: {
+    TheHowToPlay
+  },
   data() {
     return {
-  tab: null,
-        items: [
-          '練習方法！', '新規登録後！'
-        ],
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-  
+      fab: false
+    }
+  },
+  methods: {
+    onScroll (e){
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset ||   e.target.scrollTop || 0
+      this.fab = top > 500
+    },
+    toTop () {
+      this.$vuetify.goTo(0)
     }
   }
 }
@@ -102,17 +141,35 @@ export default {
 li {
   list-style: none;
 }
-.v-card {
-  padding: 1rem;
-}
 .py {
   padding: 50px 0px 50px 0px;
 }
 p {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
 }
+ul {
+  font-weight: bold;
+}
+li {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
 .basil--text {
   color: #356859 !important;
+}
+.v-card__title {
+  padding-bottom: 40px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: 0.5s;
+} 
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+.basil {
+  background-color: #FFFBE6 !important;
 }
 </style>

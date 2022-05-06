@@ -16,10 +16,10 @@
           >
             {{ judge }}
           </p>
-          <p class="py text-h4">
+          <p class="py text-h4 font-weight-bold">
             {{ judgeText }}
           </p>
-          <p class="py text-h4">
+          <p class="py text-h4 font-weight-bold">
             {{ score }}点
           </p>
         </div>
