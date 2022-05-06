@@ -115,7 +115,7 @@ export default {
    transition: 0.5s;
 }
 .v-application p {
-  font-size: 80px;
+  font-size: 58px;
   margin-bottom: 0px;
   
 }

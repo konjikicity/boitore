@@ -4,7 +4,7 @@ class Api::PlayResultsController < ApplicationController
 
   def index
     play_results = PlayResult.where(user_id: current_user.id)
-    render json: play_results
+    render json: play_results, each_serializer: PlayResultSerializer
   end
 
   def create
@@ -22,9 +22,9 @@ class Api::PlayResultsController < ApplicationController
     play_results.remove_boin_voice!
     play_results.save
     play_results.destroy
-    render json: true 
+    render json: true
   end
-  
+
   private
 
   def play_results_params
