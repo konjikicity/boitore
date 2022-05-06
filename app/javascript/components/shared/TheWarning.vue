@@ -3,10 +3,15 @@
     <v-card-title
       class="white--text font-weight-bold red lighten-1 pb-4"
     >
-      注意事項
+      ようこそBOIトレへ！
     </v-card-title>
     <v-card-text
-      class="pt-5"
+    class="font-weight-bold text-h6 pt-5"
+    >
+     このサービスは母音法という発声練習法で発声練習をするサービスです！
+    </v-card-text>
+    <v-card-text
+      class="pt-2"
     >
       <ul>
         <li>
