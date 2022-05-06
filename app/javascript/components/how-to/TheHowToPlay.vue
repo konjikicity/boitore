@@ -113,6 +113,9 @@
       <li class="pt-6">
         練習の結果をtwitterに共有することもできます！
       </li>
+      <li class="red--text">
+        ※ 録音音声は共有されません
+      </li>
     </ul>
     <v-row
       justify="space-around"
