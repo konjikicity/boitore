@@ -132,10 +132,9 @@ export default {
         .catch(err => console.log(err.status));
          
     }},
-  created() {
-    this.fetchSentences();
-  },
   mounted() {
+
+    this.fetchSentences();
     //マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,

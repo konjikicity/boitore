@@ -99,6 +99,17 @@
           </router-link>
 
           <router-link
+            :to="{ name: 'HowToIndex'}"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-lightbulb-on-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>BOIトレとは？</v-list-item-title>
+            </v-list-item>
+          </router-link>
+
+          <router-link
             :to="{ name: 'Terms'}"
           >
             <v-list-item

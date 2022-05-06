@@ -1,0 +1,163 @@
+<template>
+  <v-container>
+    <v-row
+      justify="center"
+    >
+      <v-sheet
+        elevation="20"
+        tile
+        outlined
+        height="100%"
+        width="80vw"
+        class="rounded-lg pa-md-8 mx-lg-auto my-9 basil"
+      >
+        <v-card
+          elevation="0"
+          class="basil"
+        >
+          <v-card-title>
+            <div
+              class="font-weight-bold text-h4"
+            >
+              BOIトレとは？
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <p>劇団四季にも使われている母音法を使って、発声練習ができるサービスです。</p>
+            <p>テレワークで喋ることが少なくなった方にもおすすめです！</p>
+          </v-card-text>
+          <v-divider />
+          <v-card-title
+            class="pt-7"
+          >
+            <div
+              class="font-weight-bold text-h4"
+            >
+              母音法とは？
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <p>文章を母音のみで発声する練習法で、母音がはっきり聞こえるようになり、</p>
+            <p>聞こえづらかった声もはっきり聞こえるようになります！</p>
+          </v-card-text>
+          <v-divider />
+          <v-divider />
+          <v-card-title
+            class="pt-7"
+          >
+            <div
+              class="font-weight-bold text-h4"
+            >
+              なにができるの？
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <p>通常の文章と母音法後の文章の録音と再生</p>
+            <p>音声認識を利用してそれぞれの文章がどう聞こえているかを確認できます！</p>
+            <p>他にもTwiterで練習内容の共有, 登録していただくと練習内容の保存, MyPageから管理を行うことができます!</p>
+          </v-card-text>
+          <v-divider />
+        </v-card>
+        <div class="text-center justify-center py-9 basil">
+          <h1
+            class="font-weight-bold text-h2 basil--text"
+          > 
+            HowToBOIトレ？
+          </h1>
+        </div>
+        <v-tabs
+          grow
+        >
+          <v-tab
+            href="#tab-1"
+            class="basil--text font-weight-bold text-h6 basil"
+          >
+            練習方法
+          </v-tab>
+          <v-tab
+            href="#tab-2"
+            class="basil--text font-weight-bold text-h6 basil"
+          >
+            新規登録後に利用可能な機能
+          </v-tab>
+          <v-tabs-slider color="basil--text" />
+          <v-tab-item
+            value="tab-1"
+            class="basil"
+          >
+            <TheHowToPlay />
+          </v-tab-item>
+          <v-tab-item value="tab-2">
+            <TheAfterSignUp />
+          </v-tab-item>
+        </v-tabs>
+        <transition name="fade">
+          <v-btn 
+            v-show="fab"
+            v-scroll="onScroll"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="error"
+            @click="toTop"
+          >
+            <v-icon>mdi-apple-keyboard-caps</v-icon>
+          </v-btn>
+        </transition>
+      </v-sheet>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+import TheHowToPlay from'../../components/how-to/TheHowToPlay'
+import TheAfterSignUp from'../../components/how-to/TheAfterSignUp'
+export default {
+  name: "HowToIndex",
+  components: {
+    TheHowToPlay,
+    TheAfterSignUp
+  },
+  data() {
+    return {
+      fab: false
+    }
+  },
+  methods: {
+    onScroll (e){
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset ||   e.target.scrollTop || 0
+      this.fab = top > 500
+    },
+    toTop () {
+      this.$vuetify.goTo(0)
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+.basil--text {
+  color: #356859 !important;
+}
+.v-card__title {
+  padding-bottom: 40px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: 0.5s;
+} 
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+.basil {
+  background-color: #FFFBE6 !important;
+}
+p {
+  font-size: 15px;
+  font-weight: bold;
+}
+</style>

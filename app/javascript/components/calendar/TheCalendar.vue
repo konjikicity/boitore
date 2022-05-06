@@ -90,7 +90,7 @@
           :close-on-content-click="false"
           :activator="selectedElement"
           offset-x
-          max-width="60vw"
+          max-width="35vw"
         >
           <v-card
             color="grey lighten-4"

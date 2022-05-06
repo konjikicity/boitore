@@ -88,7 +88,7 @@ export default {
       sentences: []
     }
   },
-  created (){
+  mounted (){
     this.fetchSentences();
   },
   methods: {
