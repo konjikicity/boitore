@@ -79,11 +79,6 @@
         <v-row
           justify="center"
         >
-          <Message :alert="alert" />
-        </v-row>
-        <v-row
-          justify="center"
-        >
           <v-col
             cols="3"
             class="text-center"
@@ -91,7 +86,7 @@
             <v-btn
               :href="shareTwitter"
               target="_blank"
-              class="x-small light-blue white--text my-12"
+              class="x-small light-blue white--text mt-12 mb-3 font-weight-bold"
               rounded
               style="text-transform: none"
             >
@@ -102,6 +97,9 @@
               </v-icon>
               結果をツイートする！
             </v-btn>
+            <p class="red--text font-weight-bold">
+              ※ 録音音声は共有されません
+            </p>
           </v-col>
           <v-col
             v-if="token !== null"
