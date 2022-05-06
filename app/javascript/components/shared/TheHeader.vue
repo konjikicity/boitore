@@ -13,7 +13,7 @@
         <v-img 
           max-height="150"
           max-width="150"
-          src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544232/logo_j6nywc.webp"
+          src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544232/boi%E3%83%88%E3%83%AC/logo_j6nywc.webp"
         />
       </router-link>
       <v-app-bar-nav-icon
