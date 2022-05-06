@@ -91,7 +91,7 @@
             <v-btn
               :href="shareTwitter"
               target="_blank"
-              class="x-small light-blue white--text my-12"
+              class="x-small light-blue white--text mt-12 mb-3 font-weight-bold"
               rounded
               style="text-transform: none"
             >
@@ -102,6 +102,7 @@
               </v-icon>
               結果をツイートする！
             </v-btn>
+            <p class="red--text">※ 音声は共有されません</p>
           </v-col>
           <v-col
             v-if="token !== null"
