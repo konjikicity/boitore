@@ -9,8 +9,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651839957/boi%E3%83%88%E3%83%AC/14caecababc47167a653af9bcea383dd_ddmqi0.webp"
-      width="1000"
-      height="800"
+      width="100%"
+      height="90vh"
     />
     <p
       class="pt-5"
@@ -25,12 +25,12 @@
     <div
       class="font-weight-bold py-8 text-h5"
     >
-      Calendar機能
+      カレンダー機能
     </div>
     <v-img
-      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651840575/boi%E3%83%88%E3%83%AC/c3de5a67d40450b79c35b77ce6b214ee_r7gjyz.webp"
-      width="1500"
-      height="700"
+      src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651848206/boi%E3%83%88%E3%83%AC/82c12d5b788af2c08eccde25941dbbcb_fokzhx.jpg"
+      width="100%"
+      height="80vh"
     />
     <p
       class="pt-5"
@@ -44,23 +44,40 @@
     </p>
     <ul>
       他にもこんなことができます！
-      <li class="pt-5">
-        日単位での表示
-      </li>
+      <li class="pt-5">日単位での表示</li>
       <li>練習履歴を一覧で表示</li>
       <li>日付でのソート機能</li>
-    </ul>
-    <v-row
-      justify="center"
-      class="py"
-    >
-      <v-btn
-        class="error my-4z" 
-        :to="{ name: 'ModeIndex'}"
-        x-large
-      >
-        練習開始！
-      </v-btn>
+      </ul>
+      <v-row
+          justify="space-around"
+          class="font-weight-bold py-15 text-h5"
+        >
+          <v-btn
+          class="x-small light-blue white--text rounded-lg ml-10 font-weight-bold"
+          :to="{ name: 'SignUpForm'}"
+          style="text-transform: none"
+          x-large
+        >
+          <v-icon
+            class="mr-2"
+          >
+            mdi-file-sign
+          </v-icon>
+          新規登録!
+        </v-btn>
+         <v-btn
+          class="x-small white--text rounded-lg error mr-10 font-weight-bold"
+          style="text-transform: none"
+          x-large
+          :to="{ name: 'ModeIndex'}"
+        >
+         <v-icon
+            class="mr-2"
+          >
+            mdi-microphone
+          </v-icon>
+          Start!
+        </v-btn>
     </v-row>
   </v-card>
 </template>
