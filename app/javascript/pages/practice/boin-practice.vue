@@ -42,8 +42,8 @@
           </div>
         </v-card>
         <v-card
-          class="mb-15"
           elevation="20"
+          class="mb-10"
         >
           <v-card-title
             class="red lighten-1"
@@ -86,15 +86,14 @@
           </div>
         </v-row>
         <v-row
-          justify="center"
+          justify="center mb-8"
         >
           <div>
             <v-btn
               v-if="status === 'recorded'"
               color="error"
-              class="mb-5 rounded-lg font-weight-bold"
+              class="rounded-lg font-weight-bold"
               x-large
-              rounded
               @click.stop="PracticeResult"
             >
               結果を見る!

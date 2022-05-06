@@ -60,7 +60,7 @@
           justify="center"
         >
           <div 
-            class="white--text py-5 text-h6 font-weight-bold"
+            class="white--text text-h6 py-5 font-weight-bold"
           >
             {{ recordingText }}
           </div>
@@ -72,7 +72,7 @@
             v-if="status=== 'recorded'"
             :to="{ name: 'BoinPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
             color="error"
-            class="my-10 font-weight-bold rounded-lg"
+            class="font-weight-bold rounded-lg"
             x-large
           >
             母音法で練習する!   
