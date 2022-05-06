@@ -36,14 +36,14 @@
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py fc"
+            class="text-h3 text-center py-5 fc"
           >
             {{ sentence.boin }}
           </div>
         </v-card>
         <v-card
-          class="mb-15"
           elevation="20"
+          class="mb-10"
         >
           <v-card-title
             class="red lighten-1"
@@ -54,7 +54,7 @@
           </v-card-title>
           <v-divider />
           <div
-            class="text-h2 text-center py fc"
+            class="text-h3 text-center py-5 fc"
           >
             {{ sentence.normal }}
           </div>
@@ -86,15 +86,14 @@
           </div>
         </v-row>
         <v-row
-          justify="center"
+          justify="center mb-8"
         >
           <div>
             <v-btn
               v-if="status === 'recorded'"
               color="error"
-              class="mb-5 rounded-lg font-weight-bold"
+              class="rounded-lg font-weight-bold"
               x-large
-              rounded
               @click.stop="PracticeResult"
             >
               結果を見る!
@@ -274,10 +273,7 @@ export default {
 }
 </script>
 <style scoped>
-.py {
-  padding: 35px 0px 35px 0px; 
-}
 .fc {
-  color: #424242;
+  color: #616161;
 }
 </style>
