@@ -3,11 +3,11 @@ module ApplicationHelper
     {
       site: 'BOIトレ',
       title: '~母音法で発声練習~',
-      reverse: true,
       charset: 'UTF-8',
       description: 'BOIトレは劇団四季も使っている母音法で練習する、発声練習・滑舌改善サービスです。',
       canonical: request.original_url,
       separator: '|',
+      keywords: 'BOIトレ', '母音法', '発声練習'
       icon: [
         { href: image_url('favicon.ico') },
       ],
