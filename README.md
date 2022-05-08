@@ -1,69 +1,105 @@
 # BOIトレ
+![rails](https://img.shields.io/badge/Rails-v6.1.4.4-red)
+![rails](https://img.shields.io/badge/Vue-v2.6.14-brightgreen)
+
+### https://www.boitore.jp/
 
 ### サービス概要
 滑舌に悩みを持っている人が
 母音法で滑舌を練習できるサービスです。
 
 ### まず母音法とは？
-日本語は母音の「あ・い・う・え・お」と子音でできている。
-いわば母音は言葉の土台部分にあたるので
-この土台がしっかり発音できるようになると
-ハッキリした声で発音できるようになる
-例)「おはようございます」→「おあいうおあいあう」
-という感じで母音のみで発音する感じ
+日本語は母音の「あ・い・う・え・お」と子音でできている。<br>
+いわば母音は言葉の土台部分にあたるので、<br>
+この土台がしっかり発音できるようになると、ハッキリした声で発音できるようになる<br>
 
-### メインのターゲットユーザー
-- 滑舌が悪いことが悩みの人
-- 小さい声でもしっかり相手に言葉を伝えたい人
+例)「おはようございます」→「おあいうおあいあう」<br>
+という感じで母音のみで発音する感じ<br>
 
-### ユーザーが抱える課題
-- 滑舌が悪いせいで何回も相手に聞き変えされてしまう
-- 音声チャットサービスなどを使うと滑舌が悪いせいでさらに言葉が相手に伝わりずらくなる。
-- リモートワークが増えたことでしゃべる機会が減っているので、いきなりしゃべると変な声になる。
-- 自分の音声チャット等で自分の音声がどう聞こえているか判断しずらい
 
-### 解決方法
-- 劇団四季でも使われている母音法を用いることで滑舌改善を図る。
-- 最初の音声、母音法を練習したあとの音声を比較できるようにすることで改善点を自分で把握、意識できる
+## 画面・機能一覧
+| トップページ                                                          | モード選択ページ                                                          |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| <img src="https://i.gyazo.com/c90e3a5f4bde7fe5af07a62c313d066d.jpg"> | <img src="https://i.gyazo.com/c521f6007d3e24746ed47476177b973b.jpg">   |
+| ・スタートボタンをクリックすると注意事項のモーダルを表示|・モードを選択できます。<br>・難易度によって選択できる文章が変化                           |
 
-### 実装予定の機能
-- MVP
-  - 音声入力による録音機能、録音された音声の音声認識機能
-    1. まず発声する用意された文章を選択
-    2. 最初に通常の文章を練習（録音）
-    3. 次に母音のみの文章を練習
-    4. もういちど通常の文章を練習（練習）
-    5. 結果画面で両方の録音した音声、音声認識によりどう聞こえたかわかる
-  - 上記の流れを説明するpageを作成
-- 本リリース
-  - 結果画面にtipsや発声に役立つyoutubeのリンクを埋め込み
-  - ログイン機能の追加
-   - 練習した通常音声、母音の音声をログイン時は保存できるようにする
-   - マイページで音声を確認できる
+| 文字選択ページ                                                               |
+| --------------------------------------------------------------------    |
+| <img src="https://i.gyazo.com/6bed2e0ca79a4c16287f8b984bf28e3e.jpg">      |
+| ・練習する文字を選択する<br>・スライダー形式で文字を選択可能                            |
 
-### なぜこのサービスを作りたいのか？
-もともと自分は滑舌が悪く、小、中学校はそのことで心ない言葉をかけられていた時期も
-ありました。見かねた親が滑舌を改善できる塾に通わせてくれるようになり
-そこで出会ったのが母音法でした。他にも練習方法はありましたが、自分で体験した中で
-一番母音法が効果があり、成人するにつれて、相手から聞き直されたり、他の人から指摘を
-受けることがなくなっていきました。
-そこで、滑舌に悩みを持っている人が母音法を練習できるサービスを作ることで
-自分と同じように滑舌を改善することができるのではないか？と思いました。
-普通の音声と母音法を練習した音声を比較することで、自分で変化に気づくことができ
-投稿して意見をもらえるようなプラットホームをつくることで、より改善に向かうことを
-期待しています。
-自分は滑舌が悪いのが個性だ！と思っていましたが、心ない言葉をかけられると
-落ち込むこともありました。そんな僕と同じような思いをして欲しくないので
-同じ悩みを抱えている人に滑舌改善のキッカケになれるようなサービスにしたいと
-考えております。
+| 通常練習ページ                                                                       | 母音法練習ページ                                                         |
+| ------------------------------------------------------------------                | -------------------------------------------------------------------- |
+| <img src="https://i.gyazo.com/e05f5798c618641ac53520fb43a3e8ab.jpg">                | <img src="https://i.gyazo.com/93190b380e5fff31b2345a5492191d17.jpg">   |
+| ・選択した文章を録音できる。<br>・録音ボタンを押して5秒後に録音が終了<br>・録音終了後、母音法の練習ページへのリンクを表示 | ・母音法の文章を発音した後、文章を録音できる。<br>・録音ボタンを押して5秒後に録音が終了　<br>・録音終了後、結果ページへのリンクを表示|
 
-### スケジュール
-- 12/31 〆ER図作成
-- 2/28 〆MVPリリース
-- 3/31 〆本リリース
+| マイページ                                                       
+| -------------------------------------------------------------------- |
+| <img src="https://i.gyazo.com/c4fcb5b5cd9522d79be53bcd3d8584e2.jpg"> |
+| ・保存した練習をカレンダーで表示<br>・クリックするとモーダルで保存内容を表示|
+
+| プライバシーポリシー                                                    |  結果ページ                                                           
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------
+| <img src="https://i.gyazo.com/dcb67a419b1760e309d68f4a553cf2e1.jpg"> |  <img src="https://i.gyazo.com/78046198c1d4ddfe079a33969ed19ae2.png"> 
+| プライバシーポリシーを表示する                                            | ・録音した音声の音声認識を見れる<br>・録音した音声を再生できる<br>・新規登録をしていると保存可能<br>・twitter共有ボタンより投稿が可能 |　
+
+| 利用規約      　                                                      | お問い合わせ                                                               |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------    |
+| <img src="https://i.gyazo.com/5e37877796e6fb52674bc0db9090573f.jpg"> | <img src="https://i.gyazo.com/dbf221d33cfe4e2f665edd58c8dfc846.jpg">      |
+| 利用規約を表示する| お問い合わせ先(Twitterアカウント)の情報を表示する|
+
+## 使用技術
+**フロントエンド**
+<ul>
+  <li>Vue.js 2.6.14</li>
+  <details>
+    <summary>主要yarnパッケージ</summary>
+    <ul>
+      <li><a href="https://github.com/vuetifyjs/vuetify">vuetify</a></li>
+      <li><a href="https://github.com/vuejs/vue-router">vue-router</a></li>
+      <li><a href="https://github.com/vuejs/vuex/tree/3.x">vuex</a></li>
+      <li><a href="https://github.com/logaretm/vee-validate">vee-validate</a></li>
+      <li><a href="https://github.com/robinvdvleuten/vuex-persistedstate">vue-persistedstate</a></li>
+      <li><a href="https://github.com/axios/axios">axios</a></li>
+      <li><a href="https://github.com/eslint/eslint">eslint</a></li>
+    </ul>
+  </deatails>
+</ul>
+
+**バックエンド**
+<ul>
+  <li>Ruby 3.0.2</li>
+  <li>Rails 6.1.4.4</li>
+  <details>
+    <summary>主要gem</summary>
+    <ul>
+      <li><a href="https://github.com/lynndylanhurley/devise_token_auth">devise_token_auth</a></li>
+      <li><a href="https://github.com/rails-api/active_model_serializers">active_model_serializers</a></li>
+      <li><a href="https://github.com/carrierwaveuploader/carrierwave">carrierwave</a></li>     
+      <li><a href="https://github.com/cloudinary/cloudinary_gem">cloudinary</a></li>
+      <li><a href="https://github.com/mbleigh/seed-fu">seed-fu</a></li>
+      <li><a href="https://github.com/kpumuk/meta-tags">meta-tags</a></li>
+      <li><a href="https://github.com/rubocop/rubocop">rubocop</a></li>
+    </ul>
+  </deatails>
+</ul>
+  
+**インフラ**
+- Heroku
+- PostgreSQL
+- Cloudinary
+
+**使用API**
+- MediaRecorderAPI(音声録音に使用)
+- WebSpeechAPI(音声認識に使用)
+- ひらがな化API（音声認識した文章をひらがなに変換するために使用）
 
 ### 画面遷移図
 https://www.figma.com/file/4h1J03eBaY1HfQgUWrITyE/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3
 
 ### ER図
 https://drive.google.com/file/d/1A1z26Ly0_2f2jSIsMQL8VnW_xm36FCwk/view?usp=sharing
+
+## 関連ページ
+- Twitterハッシュタグ: [#BOIトレ](https://twitter.com/hashtag/BOI%E3%83%88%E3%83%AC?src=hashtag_click)
+- Qiita記事: 
