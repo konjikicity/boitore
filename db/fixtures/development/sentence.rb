@@ -14,7 +14,7 @@ end
 Sentence.seed do |s|
   s.id = 2
   s.boin = "おんあんあ"
-  s.normal = "こんばんわ"
+  s.normal = "こんばんは"
   s.mode_id = 1
 end
 Sentence.seed do |s|
@@ -58,4 +58,22 @@ Sentence.seed do |s|
   s.boin = "いんえう いんあう いういあう"
   s.normal = "しんせつしんさつしつしさつ"
   s.mode_id = 3
+end
+Sentence.seed do |s|
+  s.id = 10
+  s.boin = "おいい あう あう"
+  s.normal = "きゃりーぱみゅぱみゅ"
+  s.mode_id = 4
+end
+Sentence.seed do |s|
+  s.id = 11
+  s.boin = "おう あう あんい"
+  s.normal = "ろうにゃくなんにょ"
+  s.mode_id = 4
+end
+Sentence.seed do |s|
+  s.id = 12
+  s.boin = "おうお おう おう"
+  s.normal = "こっそしょうしょう"
+  s.mode_id = 4
 end

@@ -11,5 +11,10 @@ end
 Mode.seed do |s|
   s.id = 3
   s.difficulty = "むずかしい"
-  s.description="厳選した発音が難しい文章が練習できます。"
+  s.description="発音が難しい文章が練習できます。"
+end
+Mode.seed do |s|
+  s.id = 4
+  s.difficulty = "おに"
+  s.description="発音が鬼のように難しい言葉が練習できます。"
 end
