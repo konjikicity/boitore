@@ -98,7 +98,7 @@
 https://www.figma.com/file/4h1J03eBaY1HfQgUWrITyE/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3
 
 ### ER図
-https://drive.google.com/file/d/1kPgpxHeYxAXh7v5KR2EJr10DMD8CcHO9/view?usp=sharing
+https://drive.google.com/file/d/13kZIz5rIh9TxG5qj_IcDoLAyRNKizCz1/view?usp=sharing
 
 ## 関連ページ
 - Twitterハッシュタグ: [#BOIトレ](https://twitter.com/hashtag/BOI%E3%83%88%E3%83%AC?src=hashtag_click)
