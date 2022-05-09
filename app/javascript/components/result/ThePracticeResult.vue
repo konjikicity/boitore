@@ -192,15 +192,15 @@ export default {
     boinRecognition: function() {
         
       // 選択した文章と音声認識した文章を比較して何文字あっているかを算出
-      let resultWord = this.boinRecognition
-      let normalWord = this.normalSentence
-      let resultWordReplace = resultWord.replace(/\s+/g, "");
-      let resultWordSplit = resultWordReplace.split('');
-      let normalWordSplit = normalWord.split('');
-      let resultDifference = normalWordSplit.filter(i => resultWordSplit.indexOf(i) == -1);
-      let resultNormalLength = normalWord.length
-      let resultDifferenceLength = resultDifference.length
-      let result = resultNormalLength - resultDifferenceLength
+      const resultWord = this.boinRecognition
+      const normalWord = this.normalSentence
+      const resultWordReplace = resultWord.replace(/\s+/g, "");
+      const resultWordSplit = resultWordReplace.split('');
+      const normalWordSplit = normalWord.split('');
+      const resultDifference = normalWordSplit.filter(i => resultWordSplit.indexOf(i) == -1);
+      const resultNormalLength = normalWord.length
+      const resultDifferenceLength = resultDifference.length
+      const result = resultNormalLength - resultDifferenceLength
 
       //音声認識された文章の空白をなくす
       this.boinRecognition = resultWordReplace
