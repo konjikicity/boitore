@@ -216,7 +216,7 @@ export default {
 
       if(resultWord == normalWord ){
         this.judge = 'S'
-        this.activeColor = 'red'
+        this.activeColor = 'yellow'
         this.judgeText = '一言一句違わぬ発音です！すばらしい'
         this.score = 100
       }
