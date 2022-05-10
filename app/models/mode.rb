@@ -15,6 +15,6 @@
 class Mode < ApplicationRecord
   has_many :sentences, dependent: :destroy
 
-  validates :difficulty, uniqueness: true, presence: true, length: { in: 1..10 }
-  validates :description, presence: true,  length: { in: 1..30 }
+  validates :difficulty, uniqueness: true, presence: true, length: { maximum: 10 }
+  validates :description, presence: true,  length: { maximum: 30 }
 end
