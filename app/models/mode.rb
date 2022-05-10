@@ -3,8 +3,8 @@
 # Table name: modes
 #
 #  id          :bigint           not null, primary key
-#  description :string           not null
-#  difficulty  :string           not null
+#  description :string(30)       not null
+#  difficulty  :string(10)       not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -15,6 +15,6 @@
 class Mode < ApplicationRecord
   has_many :sentences, dependent: :destroy
 
-  validates :difficulty, uniqueness: true, presence: true
-  validates :description, presence: true
+  validates :difficulty, uniqueness: true, presence: true, length: { in: 1..10 }
+  validates :description, presence: true,  length: { in: 1..30 }
 end

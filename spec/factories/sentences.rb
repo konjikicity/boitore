@@ -21,7 +21,8 @@
 #
 FactoryBot.define do
   factory :sentence do
-    boin { "MyString" }
-    normal { "MyString" }
+    boin { "こんにちは" }
+    normal { "おんいいあ" }
+    association :mode
   end
 end
