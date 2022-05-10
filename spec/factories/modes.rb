@@ -14,7 +14,7 @@
 #
 FactoryBot.define do
   factory :mode do
-    difficulty { Faker::Lorem.characters(number:9) }
-    description { Faker::Lorem.characters(number:29) }
+    difficulty { "こんにちは" }
+    description { "簡単な挨拶を練習する言葉です" }
   end
 end
