@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_113715) do
+ActiveRecord::Schema.define(version: 2022_05_10_063542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "modes", force: :cascade do |t|
-    t.string "difficulty", null: false
+    t.string "difficulty", limit: 10, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "description", null: false
+    t.string "description", limit: 30, null: false
     t.index ["difficulty"], name: "index_modes_on_difficulty", unique: true
   end
 
