@@ -3,8 +3,8 @@
 # Table name: sentences
 #
 #  id         :bigint           not null, primary key
-#  boin       :string           not null
-#  normal     :string           not null
+#  boin       :string(20)       not null
+#  normal     :string(20)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  mode_id    :bigint
