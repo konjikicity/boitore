@@ -15,44 +15,47 @@
 require 'rails_helper'
 
 RSpec.describe Mode, type: :model do
-  describe 'mode_validation' do
+  let(:mode){ create(:mode) }
 
-    it 'difficultyカラムが空欄の場合' do
-      mode_without_difficulty = build(:mode, difficulty: "")
-      expect(mode_without_difficulty).to be_invalid
-      expect(mode_without_difficulty.errors[:difficulty]).to eq ["を入力してください", "は1文字以上で入力してください"]
+  describe 'バリデーション確認' do
+    context '正常系' do
+      it 'モードが正常に作成されること' do
+        expect(mode.valid?).to be true
+      end
     end
 
-    it 'descriptionカラムが空欄の場合' do
-      mode_without_description = build(:mode, description: "")
-      expect(mode_without_description).to be_invalid
-      expect(mode_without_description.errors[:description]).to eq ["を入力してください", "は1文字以上で入力してください"]
-    end
+    context 'エラー系' do
+      it 'difficultyカラムが空欄の場合' do
+        mode.difficulty = ''
+        expect(mode.valid?).to be false
+        expect(mode.errors[:difficulty]).to eq ["を入力してください"]
+      end
 
-    it 'difficultyカラムが10文字以上の場合' do
-      mode_over_characters_difficulty = build(:mode, difficulty: Faker::Lorem.characters(number:11))
-      expect(mode_over_characters_difficulty).to be_invalid
-      expect(mode_over_characters_difficulty.errors[:difficulty]).to eq ["は10文字以内で入力してください"]
-    end
+      it 'descriptionカラムが空欄の場合' do
+        mode.description = ''
+        expect(mode.valid?).to be false
+        expect(mode.errors[:description]).to eq ["を入力してください"]
+      end
 
-    it 'difficultyカラムが20文字以上の場合' do
-      mode_over_characters_description = build(:mode, description: Faker::Lorem.characters(number:31))
-      expect(mode_over_characters_description).to be_invalid
-      expect(mode_over_characters_description.errors[:description]).to eq ["は30文字以内で入力してください"]
-    end
+      it 'difficultyカラムが10文字以上の場合' do
+        mode.difficulty = Faker::Lorem.characters(number:11)
+        expect(mode.valid?).to be false
+        expect(mode.errors[:difficulty]).to eq ["は10文字以内で入力してください"]
+      end
 
-    it 'difficultyカラムが重複している場合' do
-      mode = create(:mode)
-      mode_with_duplicated_difficulty = build(:mode, difficulty: mode.difficulty)
-      expect(mode_with_duplicated_difficulty).to be_invalid
-      expect(mode_with_duplicated_difficulty.errors[:difficulty]).to eq ["はすでに存在します"]
-    end
+      it 'descriptionカラムが30文字以上の場合' do
+        mode.description = Faker::Lorem.characters(number:31)
+        expect(mode.valid?).to be false
+        expect(mode.errors[:description]).to eq ["は30文字以内で入力してください"]
+      end
 
-    it 'difficultyカラムが重複していない場合' do
-      mode = create(:mode)
-      mode_with_another_difficulty = build(:mode, difficulty: 'another')
-      expect(mode_with_another_difficulty).to be_valid
-      expect(mode_with_another_difficulty.errors).to be_empty
+      it 'difficultyカラムが重複している場合' do
+        mode = create(:mode)
+        mode_with_duplicated_difficulty = build(:mode, difficulty: mode.difficulty)
+        expect(mode_with_duplicated_difficulty.valid?).to be false
+        expect(mode_with_duplicated_difficulty.errors[:difficulty]).to eq ["はすでに存在します"]
+      end 
     end
+    
   end
 end
