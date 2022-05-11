@@ -24,6 +24,12 @@
 #
 FactoryBot.define do
   factory :play_result do
-    
+    boin_voice { [ Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/loop100302.wav'), 'spec/fixtures/loop100302.wav') ] }
+    normal_voice  { [ Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/loop100302.wav'), 'spec/fixtures/loop100302.wav') ] }
+    judge { "S" }
+    practiced_boin { "こんにちは" }
+    practiced_normal { "こんにちは" }
+    practiced_sentence { "こんにちは" }
+    score { "67" }
   end
 end
