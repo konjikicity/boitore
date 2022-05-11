@@ -228,7 +228,7 @@ export default {
           score: score,
           judge: judge
         }); 
-       
+
       }
       console.log(events)
       this.events = events
