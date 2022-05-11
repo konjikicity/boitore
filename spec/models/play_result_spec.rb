@@ -25,5 +25,14 @@
 require 'rails_helper'
 
 RSpec.describe PlayResult, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user){ create(:user) }
+  let(:play_result){ build(:play_result, user_id: user.id) }
+
+  describe 'バリデーション確認' do
+    context '正常系' do
+      it '練習結果が正常に作成されること' do
+        expect(play_result.valid?).to be true
+      end
+    end
+  end
 end
