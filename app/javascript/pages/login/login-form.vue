@@ -50,7 +50,7 @@
         >
           <TheMessage :alert="alert" />
         </div>
-   
+
         <v-card-actions>
           <v-btn 
             class="error ml-7 font-weight-bold"
@@ -109,7 +109,7 @@ export default {
             status: true,
           },
         )
-     
+
         console.log({ res })
         return res
       } catch (error) {
