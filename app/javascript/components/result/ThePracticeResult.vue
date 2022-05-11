@@ -170,7 +170,7 @@ export default {
       return window.location.origin + this.$router.resolve({ name: "TopIndex" }).href
     },
     shareTwitter() {
-     
+
       let share= "https://twitter.com/intent/tweet?url=" + 
       "【練習結果】" +
       "%0D%0A" +
@@ -243,7 +243,7 @@ export default {
         this.activeColor = 'blue'
         this.judgeText = '全く聞き取れないかもです...もう一度練習しましょう!'
         this.score = 10 + Math.floor( Math.random() * 16 );
-         
+
       }
   
     }

@@ -122,7 +122,6 @@ export default {
           output_type: OUTPUT_TYPE
         }
       };
-      console.log(options)
 
       this.$axios(options)
         .then(res => {
@@ -130,7 +129,7 @@ export default {
           this.$store.commit('practice/setNormalRecognition', this.normalRecognitionToHiragana.converted )
         })
         .catch(err => console.log(err.status));
-         
+
     }},
   mounted() {
 
