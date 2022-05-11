@@ -9,8 +9,8 @@
     >
       <v-img
         src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544233/boi%E3%83%88%E3%83%AC/top_eyvzeg.webp"
-        max-width="40vw"
-        max-height="40vh"
+        max-width="45vw"
+        max-height="45vh"
       />
     </v-row>
     <v-row
