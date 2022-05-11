@@ -139,9 +139,9 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-    font-awesome-sass (5.12.0)
-      sassc (>= 1.11)
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -378,7 +378,7 @@ DEPENDENCIES
   dotenv-rails
   enum_help
   factory_bot_rails
-  font-awesome-sass (~> 5.12.0)
+  faker
   foreman
   jbuilder (~> 2.7)
   jquery-rails
