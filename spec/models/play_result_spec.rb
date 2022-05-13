@@ -24,12 +24,12 @@
 #
 require 'rails_helper'
 
-RSpec.describe PlayResult, type: :model do
-  let(:user) { create(:user) }
-  let(:play_result){ build(:play_result, user_id: user.id) }
-  
+RSpec.describe PlayResult, type: :model do  
   describe '必須項目のバリデーション確認' do
     context '全カラムの値を指定しているとき' do
+      let(:user) { create(:user) }
+      let(:play_result){ build(:play_result, user_id: user.id) }
+
       it 'play_resultのレコードが作成される' do
         expect(play_result).to be_valid
       end
