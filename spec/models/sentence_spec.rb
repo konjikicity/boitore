@@ -22,54 +22,74 @@
 require 'rails_helper'
 
 RSpec.describe Sentence, type: :model do
-  let(:sentence){ create(:sentence) }
 
-  describe 'バリデーション確認' do
-    context '正常系' do
-      it 'sentenceが正常に作成されること' do
-        expect(sentence.valid?).to be true
+  describe '必須項目のバリデーション確認' do
+    context '全カラムの値を指定しているとき' do
+        let(:sentence){ create(:sentence) }
+
+      it "sentenceのレコードが作成される" do
+        expect(sentence).to be_valid
       end
     end
 
-    context 'エラー系' do
-      it 'boinカラムが空欄の場合' do
-        sentence.boin = ''
-        expect(sentence.valid?).to be false
-        expect(sentence.errors[:boin]).to eq ["を入力してください"]
-      end
+    context "boinカラムを指定していない時" do
+      let(:sentence) { build(:sentence, boin: nil) }
 
-      it 'normalカラムが空欄の場合' do
-        sentence.normal = ''
-        expect(sentence.valid?).to be false
-        expect(sentence.errors[:normal]).to eq ["を入力してください"]
+      it "エラーになる" do
+        sentence.valid?
+        expect(sentence.errors.messages[:boin]).to include "を入力してください"
       end
+    end
 
-      it 'boinカラムが20文字以上の場合' do
-        sentence.boin = Faker::Lorem.characters(number:21)
-        expect(sentence.valid?).to be false
-        expect(sentence.errors[:boin]).to eq ["は20文字以内で入力してください"]
+
+    context "normalカラムを指定していない時" do
+      let(:sentence) { build(:sentence, normal: nil) }
+
+      it "エラーになる" do
+        sentence.valid?
+        expect(sentence.errors.messages[:normal]).to include "を入力してください"
       end
+    end
+  end
 
-      it 'normalカラムが20文字以上の場合' do
-        sentence.normal = Faker::Lorem.characters(number:21)
-        expect(sentence.valid?).to be false
-        expect(sentence.errors[:normal]).to eq ["は20文字以内で入力してください"]
+  describe "文字数制限のバリデーション確認" do
+    context "boinカラムが20文字以上の場合" do
+      let(:sentence) { build(:sentence, boin: Faker::Lorem.characters(number:21)) }
+      
+      it "エラーになる" do
+        sentence.valid?
+        expect(sentence.errors.messages[:boin]).to include "は20文字以内で入力してください"
       end
+    end
 
-      it 'boinカラムが重複している場合' do
-        sentence = create(:sentence)
-        sentence_with_duplicated_boin = build(:sentence, boin: sentence.boin)
-        expect(sentence_with_duplicated_boin.valid?).to be false
-        expect(sentence_with_duplicated_boin.errors[:boin]).to eq ["はすでに存在します"]
+    context "normalカラムが20文字以上の場合" do
+      let(:sentence) { build(:sentence, normal: Faker::Lorem.characters(number:21)) }
+
+      it "エラーになる" do
+        sentence.valid?
+        expect(sentence.errors.messages[:normal]).to include "は20文字以内で入力してください"
+      end
+    end
+  end
+
+
+  describe "重複のバリデーション確認" do
+    context "boinカラムが重複しているとき" do
+      let(:boin1) { create(:sentence) }
+      let(:boin2) { build(:sentence, boin: boin1.boin, normal: "こんばんわ")}
+      it 'エラーになる' do
+        boin2.valid?
+        expect(boin2.errors.messages[:boin]).to include "はすでに存在します"
       end 
-
-      it 'normalカラムが重複している場合' do
-        sentence = create(:sentence)
-        sentence_with_duplicated_normal = build(:sentence, normal: sentence.normal)
-        expect(sentence_with_duplicated_normal.valid?).to be false
-        expect(sentence_with_duplicated_normal.errors[:normal]).to eq ["はすでに存在します"]
-      end
     end
-    
+
+    context "normalカラムが重複しているとき" do
+      let(:normal1) { create(:sentence) }
+      let(:normal2) { build(:sentence, boin: "おんあんあ", normal: normal1.normal)}
+      it 'エラーになる' do
+        normal2.valid?
+        expect(normal2.errors.messages[:normal]).to include "はすでに存在します"
+      end 
+    end
   end
 end
