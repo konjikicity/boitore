@@ -39,7 +39,6 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -60,14 +59,11 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+
+  config.after(:suite) do
+    FileUtils.rm_rf("#{Rails.root}/public/uploads/tmp") #テスト終了時アップロードしたファイルを削除
+  end
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  # テスト実行時はアップロードした音声を削除するように設定
-  config.after(:all) do
-    if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
-    end
-  end
-
   config.include FactoryBot::Syntax::Methods
 end

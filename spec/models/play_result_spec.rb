@@ -34,5 +34,39 @@ RSpec.describe PlayResult, type: :model do
         expect(play_result.valid?).to be true
       end
     end
+
+    context 'エラー系' do
+      it '母音法の練習音声がなければ作成に失敗する' do
+        play_result.boin_voice = ''
+        expect(play_result.valid?).to be false
+      end
+
+      it '通常の練習音声がなければ作成に失敗する' do
+        play_result.normal_voice = ''
+        expect(play_result.valid?).to be false
+      end
+
+      it '判定がなければ作成に失敗する' do
+        play_result.judge = ''
+        expect(play_result.valid?).to be false
+      end
+
+      
+      it '点数がなければ作成に失敗する' do
+        play_result.score = ''
+        expect(play_result.valid?).to be false
+      end
+
+      it '母音の音声認識がなければ作成に失敗する' do
+        play_result.practiced_boin = ''
+        expect(play_result.valid?).to be false
+      end
+
+      it '通常の音声認識がなければ作成に失敗する' do
+        play_result.practiced_normal = ''
+        expect(play_result.valid?).to be false
+      end
+
+    end
   end
 end
