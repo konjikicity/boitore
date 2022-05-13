@@ -15,47 +15,63 @@
 require 'rails_helper'
 
 RSpec.describe Mode, type: :model do
-  let(:mode){ create(:mode) }
+  describe '必須項目のバリデーション確認' do
+    context '全カラムの値を指定しているとき' do
+      let(:mode) { create(:mode) }
 
-  describe 'バリデーション確認' do
-    context '正常系' do
-      it 'モードが正常に作成されること' do
-        expect(mode.valid?).to be true
+      it 'modeのレコードが作成される' do
+        expect(mode).to be_valid
       end
     end
 
-    context 'エラー系' do
-      it 'difficultyカラムが空欄の場合' do
-        mode.difficulty = ''
-        expect(mode.valid?).to be false
-        expect(mode.errors[:difficulty]).to eq ["を入力してください"]
-      end
+    context 'difficultyカラムを指定していないとき' do
+      let(:mode) { build(:mode, difficulty: nil) }
 
-      it 'descriptionカラムが空欄の場合' do
-        mode.description = ''
-        expect(mode.valid?).to be false
-        expect(mode.errors[:description]).to eq ["を入力してください"]
+      it 'エラーになる' do
+        mode.valid?
+        expect(mode.errors.messages[:difficulty]).to include "を入力してください"
       end
-
-      it 'difficultyカラムが10文字以上の場合' do
-        mode.difficulty = Faker::Lorem.characters(number:11)
-        expect(mode.valid?).to be false
-        expect(mode.errors[:difficulty]).to eq ["は10文字以内で入力してください"]
-      end
-
-      it 'descriptionカラムが30文字以上の場合' do
-        mode.description = Faker::Lorem.characters(number:31)
-        expect(mode.valid?).to be false
-        expect(mode.errors[:description]).to eq ["は30文字以内で入力してください"]
-      end
-
-      it 'difficultyカラムが重複している場合' do
-        mode = create(:mode)
-        mode_with_duplicated_difficulty = build(:mode, difficulty: mode.difficulty)
-        expect(mode_with_duplicated_difficulty.valid?).to be false
-        expect(mode_with_duplicated_difficulty.errors[:difficulty]).to eq ["はすでに存在します"]
-      end 
     end
-    
+
+    context 'descriptionカラムを指定していないとき' do
+      let(:mode) { build(:mode, description: nil) }
+
+      it 'エラーになる' do
+        mode.valid?
+        expect(mode.errors.messages[:description]).to include "を入力してください"
+      end
+    end
+  end
+
+  describe '文字制限のバリデーション確認' do
+    context 'diffcultyカラムが10文字以上のとき' do
+      let(:mode){ build(:mode, difficulty: Faker::Lorem.characters(number:11) )}
+      
+      it 'エラーになる' do
+        mode.valid?
+        expect(mode.errors.messages[:difficulty]).to include "は10文字以内で入力してください"
+      end
+    end
+
+    context 'descriptionカラムが30文字以上のとき' do
+      let(:mode){ build(:mode, description: Faker::Lorem.characters(number:31) )}
+      
+      it 'エラーになる' do
+        mode.valid?
+        expect(mode.errors.messages[:description]).to include "は30文字以内で入力してください"
+      end
+    end
+  end
+
+  describe "重複のバリデーション確認" do
+    context "保存されたdiffucultyカラムと重複しているとき" do
+      let(:mode1) { create(:mode) }
+      let(:mode2) { build(:mode, difficulty: mode1.difficulty) }
+
+      it "エラーになる" do
+        mode2.valid?
+        expect(mode2.errors.messages[:difficulty]).to include "はすでに存在します"
+      end
+    end
   end
 end
