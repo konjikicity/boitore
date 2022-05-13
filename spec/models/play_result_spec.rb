@@ -25,48 +25,77 @@
 require 'rails_helper'
 
 RSpec.describe PlayResult, type: :model do
-  let(:user){ create(:user) }
+  let(:user) { create(:user) }
   let(:play_result){ build(:play_result, user_id: user.id) }
-
-  describe 'バリデーション確認' do
-    context '正常系' do
-      it '練習結果が正常に作成されること' do
-        expect(play_result.valid?).to be true
+  
+  describe '必須項目のバリデーション確認' do
+    context '全カラムの値を指定しているとき' do
+      it 'play_resultのレコードが作成される' do
+        expect(play_result).to be_valid
       end
     end
 
-    context 'エラー系' do
-      it '母音法の練習音声がなければ作成に失敗する' do
-        play_result.boin_voice = ''
-        expect(play_result.valid?).to be false
-      end
+    context 'boin_voiceカラムを指定していない時' do
+      let(:play_result){ build(:play_result, boin_voice: nil) }
 
-      it '通常の練習音声がなければ作成に失敗する' do
-        play_result.normal_voice = ''
-        expect(play_result.valid?).to be false
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:boin_voice]).to include "を入力してください"
       end
+    end
 
-      it '判定がなければ作成に失敗する' do
-        play_result.judge = ''
-        expect(play_result.valid?).to be false
+    context 'normal_voiceカラムを指定していない時' do
+      let(:play_result){ build(:play_result, normal_voice: nil) }
+
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:normal_voice]).to include "を入力してください"
       end
+    end  
 
+    context 'boin_voiceカラムを指定していない時' do
+      let(:play_result){ build(:play_result, boin_voice: nil) }
+
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:boin_voice]).to include "を入力してください"
+      end
+    end
+
+    context 'judgeカラムを指定していない時' do
+      let(:play_result){ build(:play_result, judge: nil) }
+
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:judge]).to include "を入力してください"
+      end
+    end
+    
+    context 'scoreカラムを指定していない時' do
+      let(:play_result){ build(:play_result, score: nil) }
+
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:score]).to include "を入力してください"
+      end
+    end
       
-      it '点数がなければ作成に失敗する' do
-        play_result.score = ''
-        expect(play_result.valid?).to be false
-      end
+    context 'practiced_boinカラムを指定していない時' do
+      let(:play_result){ build(:play_result, practiced_boin: nil) }
 
-      it '母音の音声認識がなければ作成に失敗する' do
-        play_result.practiced_boin = ''
-        expect(play_result.valid?).to be false
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:practiced_boin]).to include "を入力してください"
       end
+    end
+    
+    context 'practiced_normalカラムを指定していない時' do
+      let(:play_result){ build(:play_result, practiced_normal: nil) }
 
-      it '通常の音声認識がなければ作成に失敗する' do
-        play_result.practiced_normal = ''
-        expect(play_result.valid?).to be false
+      it "エラーになる" do
+        play_result.valid?
+        expect(play_result.errors.messages[:practiced_normal]).to include "を入力してください"
       end
-
     end
   end
 end
