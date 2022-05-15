@@ -11,14 +11,15 @@
     
     <validation-observer
       ref="observer"
+      v-slot="{ invalid }"
     >
       <v-form
         @submit.prevent="login"
       >
         <validation-provider
           v-slot="{ errors }"
-          rules="required"
-          name="email"
+          rules="required|email"
+          name="メールアドレス"
         >
           <v-text-field 
             v-model="email"
@@ -32,7 +33,7 @@
         <validation-provider
           v-slot="{ errors }"
           rules="required"
-          name="password"
+          name="パスワード"
         >
           <v-text-field 
             v-model="password" 
@@ -45,14 +46,10 @@
             @click:append="showPassword = !showPassword"
           />
         </validation-provider>
-        <div
-          v-show="this.email !== null && this.password !== null" 
-        >
           <TheMessage :alert="alert" />
-        </div>
-
         <v-card-actions>
           <v-btn 
+            :disabled="invalid"
             class="error ml-7 font-weight-bold"
             @click="login"
           >
@@ -113,13 +110,10 @@ export default {
         console.log({ res })
         return res
       } catch (error) {
-        this.$refs.observer.validate()
-        if(this.email !== null && this.password !== null){
           this.alert = 'メールアドレスまたはパスワードが違います。'
           this.notice = null
-        }
-        console.log({ error })
-        
+          console.log({ error })
+
       }
     }
   }

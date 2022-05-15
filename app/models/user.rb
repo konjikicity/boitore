@@ -5,9 +5,9 @@
 # Table name: users
 #
 #  id                 :bigint           not null, primary key
-#  email              :string
+#  email              :string           not null
 #  encrypted_password :string           default(""), not null
-#  name               :string
+#  name               :string(10)       not null
 #  provider           :string           default("email"), not null
 #  tokens             :json
 #  uid                :string           default(""), not null
@@ -17,6 +17,7 @@
 # Indexes
 #
 #  index_users_on_email             (email) UNIQUE
+#  index_users_on_name              (name) UNIQUE
 #  index_users_on_uid_and_provider  (uid,provider) UNIQUE
 #
 class User < ApplicationRecord
