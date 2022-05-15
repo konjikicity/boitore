@@ -1,20 +1,19 @@
-import { ValidationProvider, ValidationObserver, setInteractionMode, extend } from "vee-validate";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 import { required, confirmed, email, max } from 'vee-validate/dist/rules'
-setInteractionMode('eager')
 
 export default {
   name: 'SignUpForm',
   components: {
     ValidationProvider,
     ValidationObserver,
-   
+
   },
 };
 
 
 extend("required", {
   ...required,
-  message: "入力してください"
+  message: "{_field_}を入力してください"
 });
 
 extend('confirmed', {

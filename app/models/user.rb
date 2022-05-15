@@ -17,6 +17,7 @@
 # Indexes
 #
 #  index_users_on_email             (email) UNIQUE
+#  index_users_on_name              (name) UNIQUE
 #  index_users_on_uid_and_provider  (uid,provider) UNIQUE
 #
 class User < ApplicationRecord

@@ -10,6 +10,7 @@
     </v-card-title>
     <validation-observer
       ref="observer"
+      v-slot="{ invalid }"
     >
       <v-form
         @submit.prevent="signUp"
@@ -45,7 +46,7 @@
         <validation-provider
           v-slot="{ errors }"
           rules="required"
-          name="password"
+          name="パスワード"
         >
           <v-text-field 
             v-model="password" 
@@ -61,8 +62,8 @@
 
         <validation-provider
           v-slot="{ errors }"
-          rules="required|confirmed:password"
-          name="password_confirmation"    
+          rules="required|confirmed:パスワード"
+          name="パスワード確認"    
         >
           <v-text-field 
             v-model="passwordConfirmation" 
@@ -75,9 +76,11 @@
             @click:append="showPassword = !showPassword" 
           />
         </validation-provider>
+        <TheMessage :alert="alert" />
         <v-card-actions>
           <v-btn 
             class="error ml-7 font-weight-bold"
+            :disabled="invalid"
             @click="signUp"
           >
             登録
@@ -97,9 +100,13 @@
   </v-card>
 </template>
 <script>
+import TheMessage from '../../components/shared/TheMessage'
 
 export default {
   name: "SignUpForm",
+  components: {
+    TheMessage
+  },
   data(){
     return {
       showPassword: false,
@@ -107,6 +114,8 @@ export default {
       email:'',
       password:'',
       passwordConfirmation: '',
+      alert: null,
+      notice: null,
     }
   },
   methods: {
@@ -133,10 +142,10 @@ export default {
         )
         console.log({ res })
         return res
-       
+
       } catch (error) {
-        this.$refs.observer.validate()
-        console.log({ error })
+        this.alert = '名前またはメールアドレスが使用されています。'
+        this.notice = null
       }
 
     }
