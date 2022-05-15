@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'webdrivers'
   gem 'capybara'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
