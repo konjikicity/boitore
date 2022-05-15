@@ -1,6 +1,10 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ENV['VUE_APP_API_ORIGIN']
+  #本番環境
+  # origins ENV['VUE_APP_API_ORIGIN']
+  
+  #test環境
+  origins '*'
 
     resource '*',
              headers: :any,
