@@ -46,7 +46,7 @@
             @click:append="showPassword = !showPassword"
           />
         </validation-provider>
-          <TheMessage :alert="alert" />
+        <TheMessage :alert="alert" />
         <v-card-actions>
           <v-btn 
             :disabled="invalid"
@@ -110,9 +110,9 @@ export default {
         console.log({ res })
         return res
       } catch (error) {
-          this.alert = 'メールアドレスまたはパスワードが違います'
-          this.notice = null
-          console.log({ error })
+        this.alert = 'メールアドレスまたはパスワードが違います'
+        this.notice = null
+        console.log({ error })
 
       }
     }
