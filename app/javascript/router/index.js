@@ -70,17 +70,17 @@ const router = new Router({
       name: "LoginForm",    
     },
     {
-      path: '/SignUp',
+      path: '/sign-up',
       component: SignUpForm,
       name: "SignUpForm",
     },
     {
-      path: '/HowTo',
+      path: '/how-to',
       component: HowToIndex,
       name: "HowToIndex"
     },
     {
-      path:'/MyPage',
+      path:'/my-page',
       component: MyPageIndex,
       name: "MyPageIndex",
       meta: {requiresAuth: true}

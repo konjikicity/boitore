@@ -18,15 +18,15 @@ extend("required", {
 
 extend('confirmed', {
   ...confirmed,
-  message: "パスワードと一致しません。"
+  message: "パスワードと一致しません"
 });
 
 extend('email', {
   ...email,
-  message: '形式が正しくありません。'
+  message: '{_field_}の形式が正しくありません'
 });
 
 extend('max', {
   ...max,
-  message: '{length}文字以内で入力してください。'
+  message: '{length}文字以内で入力してください'
 });

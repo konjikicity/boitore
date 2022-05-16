@@ -31,13 +31,14 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'bullet'
+  gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'spring-commands-rspec'
   gem 'webdrivers'
-  gem 'capybara'
 end
 
 group :development do
