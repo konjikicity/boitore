@@ -54,8 +54,10 @@
             @click="startRecording"
           >
             <v-icon
-            large
-            >{{ icons.microphone }}</v-icon>
+              large
+            >
+              {{ icons.microphone }}
+            </v-icon>
           </v-btn>
         </v-row> 
         <v-row
