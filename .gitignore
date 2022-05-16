@@ -40,4 +40,3 @@ yarn-debug.log*
 /.env.development
 /.env.test
 /public/uploads
-/bin
