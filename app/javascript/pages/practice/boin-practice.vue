@@ -111,7 +111,7 @@
   </v-container>
 </template>
 <script>
-import ThePracticeResult from 'components/result/ThePracticeResult.vue'
+const  ThePracticeResult  = () => import('components/result/ThePracticeResult.vue');
 
 export default {
   name: "BoinPractice",

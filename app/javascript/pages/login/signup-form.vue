@@ -100,7 +100,7 @@
   </v-card>
 </template>
 <script>
-import TheMessage from '../../components/shared/TheMessage'
+const  TheMessage = () => import('../../components/shared/TheMessage');
 
 export default {
   name: "SignUpForm",

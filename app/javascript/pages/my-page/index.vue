@@ -53,8 +53,8 @@
 </template>
 
 <script>
-import TheCalendar from'../../components/calendar/TheCalendar'
-import TheResultTable from '../../components/calendar/TheResultTable'
+const  TheCalendar  = () => import('../../components/calendar/TheCalendar');
+const  TheResultTable  = () => import('../../components/calendar/TheResultTable');
 
 export default {
   name: 'MyPageIndex',
