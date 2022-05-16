@@ -130,7 +130,7 @@
         <v-icon
           class="mr-2"
         >
-          mdi-file-sign
+          {{ icons.file }}
         </v-icon>
         新規登録!
       </v-btn>
@@ -143,7 +143,7 @@
         <v-icon
           class="mr-2"
         >
-          mdi-microphone
+          {{ icons.mic }}
         </v-icon>
         Start!
       </v-btn>
@@ -151,9 +151,19 @@
   </v-card>
 </template>
 <script>
-export default{
-  name: 'TheHowToPlay'
+import { mdiMicrophone } from '@mdi/js'
+import { mdiFileSign } from '@mdi/js'
 
+export default{
+  name: 'TheHowToPlay',
+  data() {
+    return {
+      icons: {
+        mic: mdiMicrophone,
+        file: mdiFileSign
+      }
+    }
+  }
 }
 </script>
 <style scoped>

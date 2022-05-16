@@ -103,7 +103,7 @@
             color="error"
             @click="toTop"
           >
-            <v-icon>mdi-apple-keyboard-caps</v-icon>
+            <v-icon>{{ icons.apple }}</v-icon>
           </v-btn>
         </transition>
       </v-sheet>
@@ -114,7 +114,7 @@
 <script>
 const TheHowToPlay = () => import('../../components/how-to/TheHowToPlay');
 const TheAfterSignUp = () => import('../../components/how-to/TheAfterSignUp');
-
+import { mdiAppleKeyboardCaps } from '@mdi/js'
 export default {
   name: "HowToIndex",
   components: {
@@ -123,7 +123,8 @@ export default {
   },
   data() {
     return {
-      fab: false
+      fab: false,
+      icons: { apple: mdiAppleKeyboardCaps }
     }
   },
   methods: {

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-const  TheHeader  = () => import('components/shared/TheHeader');
+import TheHeader from 'components/shared/TheHeader'
 
 export default {
   components: {
