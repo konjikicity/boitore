@@ -43,7 +43,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-home</v-icon>
+                <v-icon>{{ icons.home }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>HOME</v-list-item-title>
             </v-list-item>
@@ -55,7 +55,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-account</v-icon>
+                <v-icon>{{ icons.account }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>MyPage</v-list-item-title>
             </v-list-item>
@@ -67,7 +67,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-login</v-icon>
+                <v-icon>{{ icons.login }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>ログイン</v-list-item-title>
             </v-list-item>
@@ -79,7 +79,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-file-sign</v-icon>
+                <v-icon>{{ icons.file }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>新規登録</v-list-item-title>
             </v-list-item>
@@ -92,7 +92,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-logout</v-icon>
+                <v-icon>{{ icons.logout }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>ログアウト</v-list-item-title>
             </v-list-item>
@@ -103,7 +103,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-lightbulb-on-outline</v-icon>
+                <v-icon>{{ icons.light }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>BOIトレとは？</v-list-item-title>
             </v-list-item>
@@ -116,7 +116,7 @@
               class="mt-9"
             >
               <v-list-item-icon>
-                <v-icon>mdi-note-text-outline</v-icon>
+                <v-icon>{{ icons.note }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>利用規約</v-list-item-title>
             </v-list-item>
@@ -127,7 +127,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-shield-sun-outline</v-icon>
+                <v-icon>{{ icons.shield }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>プライバシーポリシー</v-list-item-title>
             </v-list-item>
@@ -138,7 +138,7 @@
           >
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-help-circle-outline</v-icon>
+                <v-icon>{{ icons.help }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>お問い合わせ</v-list-item-title>
             </v-list-item>
@@ -150,7 +150,16 @@
 </template>
 
 <script>
-import TheFlashMessage from "components/shared/TheFlashMessage"
+const  TheFlashMessage  = () => import('components/shared/TheFlashMessage');
+import { mdiHome } from '@mdi/js';
+import { mdiAccount } from '@mdi/js';
+import { mdiLogin } from '@mdi/js';
+import { mdiLogout } from '@mdi/js';
+import { mdiLightbulbOnOutline } from '@mdi/js';
+import { mdiFileSign } from '@mdi/js';
+import { mdiNoteTextOutline } from '@mdi/js';
+import { mdiShieldSunOutline } from '@mdi/js';
+import { mdiHelpCircleOutline } from '@mdi/js';
 
 export default {
   name: "TheHeader",
@@ -161,6 +170,17 @@ export default {
     return {
       drawer: false,
       group: null,
+      icons: {
+        home: mdiHome,
+        account: mdiAccount,
+        login: mdiLogin,
+        logout: mdiLogout,
+        light: mdiLightbulbOnOutline,
+        file: mdiFileSign,
+        note: mdiNoteTextOutline,
+        shield: mdiShieldSunOutline,
+        help: mdiHelpCircleOutline
+      }
     }
   },
   computed: {
