@@ -22,7 +22,7 @@
         >
           <v-text-field 
             v-model="name"
-            prepend-icon="mdi-account-circle"
+            :prepend-icon= icons.account
             label="ユーザー名"
             class="px-7" 
             :error-messages="errors"
@@ -36,7 +36,7 @@
         >
           <v-text-field 
             v-model="email"
-            prepend-icon="mdi-mail"
+            :prepend-icon= icons.email
             label="メールアドレス"
             class="px-7"
             :error-messages="errors"  
@@ -51,7 +51,7 @@
           <v-text-field 
             v-model="password" 
             :type="showPassword ? 'text' : 'password'" 
-            prepend-icon="mdi-lock" 
+            :prepend-icon= icons.password 
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
             label="パスワード"
             class="px-7"
@@ -68,7 +68,7 @@
           <v-text-field 
             v-model="passwordConfirmation" 
             :type="showPassword ? 'text' : 'password'" 
-            prepend-icon="mdi-lock" 
+            :prepend-icon= icons.password 
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
             label="パスワード確認" 
             class="px-7"
@@ -100,7 +100,10 @@
   </v-card>
 </template>
 <script>
-import TheMessage from '../../components/shared/TheMessage'
+const  TheMessage = () => import('../../components/shared/TheMessage');
+import { mdiAccountCircle } from '@mdi/js'
+import { mdiLock } from '@mdi/js'
+import { mdiEmail } from '@mdi/js'
 
 export default {
   name: "SignUpForm",
@@ -116,6 +119,11 @@ export default {
       passwordConfirmation: '',
       alert: null,
       notice: null,
+      icons: {
+        account: mdiAccountCircle,
+        password: mdiLock,
+        email: mdiEmail
+      }
     }
   },
   methods: {

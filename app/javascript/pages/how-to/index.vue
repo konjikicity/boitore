@@ -78,7 +78,7 @@
             href="#tab-2"
             class="basil--text font-weight-bold text-h6 basil"
           >
-            新規登録後に利用可能な機能
+            新規登録後
           </v-tab>
           <v-tabs-slider color="basil--text" />
           <v-tab-item
@@ -103,7 +103,7 @@
             color="error"
             @click="toTop"
           >
-            <v-icon>mdi-apple-keyboard-caps</v-icon>
+            <v-icon>{{ icons.apple }}</v-icon>
           </v-btn>
         </transition>
       </v-sheet>
@@ -112,8 +112,9 @@
 </template>
 
 <script>
-import TheHowToPlay from'../../components/how-to/TheHowToPlay'
-import TheAfterSignUp from'../../components/how-to/TheAfterSignUp'
+const TheHowToPlay = () => import('../../components/how-to/TheHowToPlay');
+const TheAfterSignUp = () => import('../../components/how-to/TheAfterSignUp');
+import { mdiAppleKeyboardCaps } from '@mdi/js'
 export default {
   name: "HowToIndex",
   components: {
@@ -122,7 +123,8 @@ export default {
   },
   data() {
     return {
-      fab: false
+      fab: false,
+      icons: { apple: mdiAppleKeyboardCaps }
     }
   },
   methods: {

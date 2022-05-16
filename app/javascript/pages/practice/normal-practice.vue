@@ -53,7 +53,11 @@
             class="red lighten-1"
             @click="startRecording"
           >
-            <v-icon>mdi-microphone</v-icon>
+            <v-icon
+              large
+            >
+              {{ icons.microphone }}
+            </v-icon>
           </v-btn>
         </v-row> 
         <v-row
@@ -83,6 +87,7 @@
   </v-container>
 </template>
 <script>
+import { mdiMicrophone } from '@mdi/js';
 
 export default {
   name: "NormalPractice",
@@ -98,7 +103,8 @@ export default {
       normalRecognition: '',
       normalRecognitionToHiragana: [],
       recordingText: '',
-      normalForm: ''
+      normalForm: '',
+      icons: { microphone: mdiMicrophone }
     }
   },
   watch: {

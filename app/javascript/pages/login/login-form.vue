@@ -23,7 +23,7 @@
         >
           <v-text-field 
             v-model="email"
-            prepend-icon="mdi-account-circle"
+            :prepend-icon= icons.account
             :error-messages="errors"
             label="メールアドレス"
             class="px-7"
@@ -38,7 +38,7 @@
           <v-text-field 
             v-model="password" 
             :type="showPassword ? 'text' : 'password'" 
-            prepend-icon="mdi-lock" 
+            :prepend-icon= icons.password 
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
             label="パスワード"
             :error-messages="errors"
@@ -70,7 +70,9 @@
   </v-card>
 </template>
 <script>
-import TheMessage from '../../components/shared/TheMessage'
+const  TheMessage = () => import('../../components/shared/TheMessage');
+import { mdiAccountCircle } from '@mdi/js'
+import { mdiLock } from '@mdi/js'
 
 export default {
   name: "LoginForm",
@@ -83,7 +85,11 @@ export default {
       email: null,
       password: null,
       alert: null,
-      notice: null
+      notice: null,
+      icons: {
+        account: mdiAccountCircle,
+        password: mdiLock
+      }
     }
   },
   methods: {

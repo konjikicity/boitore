@@ -73,7 +73,9 @@
             class="red lighten-1"
             @click="startRecording"
           >
-            <v-icon>mdi-microphone</v-icon>
+            <v-icon
+            large
+            >{{ icons.microphone }}</v-icon>
           </v-btn>
         </v-row>
         <v-row
@@ -111,7 +113,8 @@
   </v-container>
 </template>
 <script>
-import ThePracticeResult from 'components/result/ThePracticeResult.vue'
+const  ThePracticeResult  = () => import('components/result/ThePracticeResult.vue');
+import { mdiMicrophone } from '@mdi/js'
 
 export default {
   name: "BoinPractice",
@@ -130,7 +133,8 @@ export default {
       recordingText: '',
       boinRecognitionToHiragana: [],
       normalRecognition: null,
-      dialog: false
+      dialog: false,
+      icons: { microphone: mdiMicrophone }
     }
   },
   watch: {

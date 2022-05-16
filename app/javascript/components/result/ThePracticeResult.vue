@@ -93,7 +93,7 @@
               <v-icon
                 class="mr-2"
               >
-                mdi-twitter
+                {{ icons.twitter }}
               </v-icon>
               結果をツイートする！
             </v-btn>
@@ -114,7 +114,7 @@
               <v-icon
                 class="mr-2"
               >
-                mdi-content-save-outline
+                {{ icons.save }}
               </v-icon>
               結果を保存する
             </v-btn>
@@ -142,6 +142,8 @@
   </v-row>
 </template>
 <script>
+import { mdiTwitter } from '@mdi/js'
+import { mdiContentSaveOutline } from '@mdi/js'
 
 export default {
   name: 'ThePracticeResult',
@@ -163,6 +165,10 @@ export default {
       alert: null,
       normalForm: null,
       boinForm: null,
+      icons: { 
+        twitter: mdiTwitter,
+        save: mdiContentSaveOutline
+      } 
     }
   },
   computed: {

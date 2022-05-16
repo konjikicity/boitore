@@ -2,7 +2,7 @@
   "name": "boitore",
   "private": true,
   "dependencies": {
-    "@mdi/font": "^6.5.95",
+    "@mdi/js": "^6.6.96",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

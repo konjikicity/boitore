@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import TheWarning from "components/shared/TheWarning"
+const  TheWarning  = () => import('components/shared/TheWarning');
 
 export default {
   name: "TopIndex",
