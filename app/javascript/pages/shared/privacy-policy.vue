@@ -89,7 +89,7 @@
           <v-icon
             class="mr-2"
           >
-            mdi-twitter
+            {{ icons.twitter }}
           </v-icon>
           @konjikicity
         </v-btn>
@@ -108,8 +108,15 @@
   </v-container>
 </template>
 <script>
+import { mdiTwitter } from '@mdi/js'
+
 export default {
-  name: "PrivacyPolicy"
+  name: "PrivacyPolicy",
+  data() {
+    return {
+      icons:{ twitter: mdiTwitter}
+    }
+  }
 }
 </script>
 <style scoped>
