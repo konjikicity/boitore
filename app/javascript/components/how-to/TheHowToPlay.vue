@@ -9,8 +9,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1652016264/boi%E3%83%88%E3%83%AC/77ccc5223a03a9fab6fc6ab60302a8b3_kobdtk.png"
-      width="100%"
-      height="65vh"
+      width="80%"
+      height="60vh"
     />
     <p
       class="pt-5"
@@ -34,8 +34,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651847193/boi%E3%83%88%E3%83%AC/8290d4739603c545808a957f722a595a_xqixvd.webp"
-      width="100%"
-      height="60vh"
+      width="80%"
+      height="55vh"
     />
     <p
       class="pt-8 pb-5"
@@ -54,8 +54,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651847642/boi%E3%83%88%E3%83%AC/a0e0967ffcb302e8cce56974233d6ed4_biatha.webp"
-      width="100%"
-      height="65vh"
+      max-width="80%"
+      max-height="60vh"
     />
     <p
       class="pt-8"
@@ -74,8 +74,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651847979/boi%E3%83%88%E3%83%AC/1dfd99d9ad8c985772cc7f4074289176_kgtv1g.jpg"
-      width="100%"
-      height="75vh"
+      max-width="80%"
+      max-height="70vh"
     />
     <p
       class="pt-8"
@@ -97,8 +97,8 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651833567/boi%E3%83%88%E3%83%AC/791fe2b17ae9dca4894bccddf15e71b4_ayrewv.webp"
-      width="100%"
-      height="80vh"
+      max-width="80%"
+      max-height="70vh"
     />
     <p
       class="py-7 font-weight-bold text-h5"
