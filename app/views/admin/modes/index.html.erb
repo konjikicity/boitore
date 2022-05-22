@@ -1,0 +1,19 @@
+<div class="container mb-5 pt-2">
+  <h1><%= t('.title') %></h1>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col"><%= Mode.human_attribute_name(:id) %></th>
+          <th scope="col"><%= Mode.human_attribute_name(:difficulty) %></th>
+          <th scope="col"><%= Mode.human_attribute_name(:description) %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @modes %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

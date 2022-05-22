@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= sentence.id %>
+  </td>
+  <td>
+    <%= sentence.normal %>
+  <td>
+    <%= sentence.boin %>
+  </td>
+  <td>
+    <%= sentence.mode.difficulty %>
+  </td>
+  <td>
+    <%= link_to t('defaults.show'), admin_sentence_path(sentence), class: 'btn btn-info' %>
+    <%= link_to t('defaults.edit'), edit_admin_sentence_path(sentence), class: 'btn btn-success' %>
+    <%= link_to t('defaults.delete'), admin_sentence_path(sentence), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+  </td>
+</tr>
