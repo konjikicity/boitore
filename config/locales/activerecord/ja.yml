@@ -22,6 +22,8 @@ ja:
           id: ID
           name: 名前
           email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード確認
           role: 権限
           created_at: 作成日
   enums:

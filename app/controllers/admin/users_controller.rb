@@ -46,7 +46,7 @@ before_action :set_user, only: %i[edit update show destroy]
     @user = User.find(params[:id])
   end
 
-  def sentence_params
-    params.require(:user).permit(:name, :email, :role)
+  def user_params
+    params.require(:user).permit(:name, :email, :role, :password, :password_confirmation)
   end
 end
