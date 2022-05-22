@@ -13,6 +13,14 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
+          <%= link_to admin_users_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-file"></i>
+            <p>
+              Users
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to admin_modes_path, class: "nav-link" do %>
             <i class="nav-icon far fa-file"></i>
             <p>
@@ -29,10 +37,18 @@
           <% end %>
         </li>
         <li class="nav-item">
+          <%= link_to new_admin_user_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-file"></i>
+            <p>
+              ユーザー新規作成
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to new_admin_mode_path, class: "nav-link" do %>
             <i class="nav-icon far fa-file"></i>
             <p>
-              Modes新規作成
+              モード新規作成
             </p>
           <% end %>
         </li>
@@ -40,7 +56,7 @@
           <%= link_to new_admin_sentence_path, class: "nav-link" do %>
             <i class="nav-icon far fa-file"></i>
             <p>
-              Sentence新規作成
+              文章新規作成
             </p>
           <% end %>
         </li>
