@@ -9,6 +9,7 @@
 #  encrypted_password :string           default(""), not null
 #  name               :string(10)       not null
 #  provider           :string           default("email"), not null
+#  role               :integer          default("normal")
 #  tokens             :json
 #  uid                :string           default(""), not null
 #  created_at         :datetime         not null
@@ -24,8 +25,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :play_results, dependent: :destroy
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  enum role: { normal: 0, admin: 1}
 end
