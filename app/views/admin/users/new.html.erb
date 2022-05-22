@@ -10,11 +10,11 @@
         </div>
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.text_area :email, class: 'form-control' %>
+          <%= f.text_field :email, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :role %>
-          <%= f.select :role, User.roles_i18n.keys.map{|k| [I18n.t("enum.user.roles.#{k}"), k]} %>
+          <%= f.select :role, User.roles_i18n.keys.map {|k| [User.roles_i18n[k], k]} %>
         </div>
           <%= f.submit class: 'btn btn-primary' %>
       <% end %>
