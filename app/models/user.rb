@@ -29,5 +29,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  enum role: { normal: 0, admin: 1}
+  enum role: { normal: 0, admin: 1 }
 end
