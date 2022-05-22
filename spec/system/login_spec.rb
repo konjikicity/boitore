@@ -11,6 +11,7 @@ RSpec.describe "ユーザーログイン", type: :system, js:true do
       it 'ログインが成功する' do
         fill_in('メールアドレス', with: user.email)
         fill_in('パスワード', with: 'password')
+        send_keys :return
         click_on('ログイン')
         expect(page).to have_content('モード選択')
         expect(page).to have_content('ログインしました')
@@ -24,6 +25,7 @@ RSpec.describe "ユーザーログイン", type: :system, js:true do
         it 'エラーメッセージが表示される' do
           fill_in('メールアドレス', with: '')
           fill_in('パスワード', with: '')
+          send_keys :return
           expect(page).to have_content('メールアドレスを入力してください')
           expect(page).to have_content('パスワードを入力してください')
         end
@@ -35,6 +37,7 @@ RSpec.describe "ユーザーログイン", type: :system, js:true do
         it 'エラーメッセージが表示される' do
           fill_in('メールアドレス', with: Faker::Internet.email )
           fill_in('パスワード', with: Faker::Internet.password(min_length:8) )
+          send_keys :return
           click_on('ログイン')
           expect(page).to have_content('メールアドレスまたはパスワードが違います')
         end

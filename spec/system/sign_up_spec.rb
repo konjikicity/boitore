@@ -9,6 +9,7 @@ RSpec.describe "ユーザー登録", type: :system, js:true do
         fill_in('メールアドレス', with: Faker::Internet.email )
         fill_in('パスワード', with: 'password')
         fill_in('パスワード確認', with: 'password')
+        send_keys :return
         click_on('登録')
         expect(page).to have_content('モード選択')
         expect(page).to have_content('ユーザー登録が完了しました')
@@ -17,13 +18,14 @@ RSpec.describe "ユーザー登録", type: :system, js:true do
     end
 
     describe 'フロントのバリデーション確認' do
-        describe '必須項目の検証' do
+        describe '必須項目の検証'  do
           context '必須項目が全て未入力の場合' do
             it 'エラーメッセージが表示される' do
               fill_in('ユーザー名', with: '')
               fill_in('メールアドレス', with: '')
               fill_in('パスワード', with: '')
               fill_in('パスワード確認', with: '')
+              find('input[id="input-54"]').click
               expect(page).to have_content('ユーザー名を入力してください')
               expect(page).to have_content('メールアドレスを入力してください')
               expect(page).to have_content('パスワードを入力してください')
@@ -43,6 +45,7 @@ RSpec.describe "ユーザー登録", type: :system, js:true do
             fill_in('メールアドレス', with: user.email )
             fill_in('パスワード', with: 'password')
             fill_in('パスワード確認', with: 'password')
+            send_keys :return
             click_on('登録')
             expect(page).to have_content('名前またはメールアドレスが使用されています')
           end
@@ -58,6 +61,7 @@ RSpec.describe "ユーザー登録", type: :system, js:true do
             fill_in('メールアドレス', with: 'test@expample.com')
             fill_in('パスワード', with: 'password')
             fill_in('パスワード確認', with: 'password')
+            send_keys :return
             click_on('登録')
             expect(page).to have_content('名前またはメールアドレスが使用されています')
           end
@@ -68,6 +72,7 @@ RSpec.describe "ユーザー登録", type: :system, js:true do
       context '10文字以上の名前を入力した場合' do
         it 'エラーメッセージ「10文字以内で入力してください」が表示される' do
           fill_in('ユーザー名', with: Faker::Lorem.characters(number: 11))
+          find('input[id="input-54"]').click
           expect(page).to have_content('10文字以内で入力してください')
         end
       end
@@ -78,6 +83,7 @@ RSpec.describe "ユーザー登録", type: :system, js:true do
       it 'エラーメッセージ「メールアドレスの形式が正しくありません」が表示される' do
         invalid_addresses.each do |invalid_address|
           fill_in('メールアドレス', with: invalid_address)
+          find('input[id="input-54"]').click
           expect(page).to have_content('メールアドレスの形式が正しくありません')
         end
       end
