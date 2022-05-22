@@ -7,6 +7,6 @@ RSpec.configure do |config|
     driven_by(:selenium_chrome_headless)
 
     #Rspecのwarn解消
-    # Selenium::WebDriver.logger.ignore(:browser_options)
+    Selenium::WebDriver.logger.ignore(:browser_options)
   end
 end
