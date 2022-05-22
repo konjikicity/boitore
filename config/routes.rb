@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
     resources :modes
     resources :sentences
+    resources :users
   end
   get '*path', to: 'top#index'
 end
