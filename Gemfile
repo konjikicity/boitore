@@ -45,6 +45,11 @@ gem 'rails-i18n'
 # js speed-up
 gem 'uglifier'
 
+# admin use
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem 'font-awesome-sass', '~> 5.11.2'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
