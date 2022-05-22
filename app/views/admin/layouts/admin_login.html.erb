@@ -1,0 +1,17 @@
+<html>
+ <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="robots" content="noindex, nofollow">
+   <title>BOIトレ(管理画面)ログイン</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <%= csrf_meta_tags %>
+   <%= stylesheet_link_tag 'admin', media: 'all' %>
+ </head>
+ <body class="hold-transition login-page">
+   <div>
+     <%= render 'admin/shared/flash_message' %>
+     <%= yield %>
+   </div>
+ </body>
+ </html>

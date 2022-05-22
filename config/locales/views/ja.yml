@@ -5,6 +5,7 @@ ja:
     show: '詳細'
     delete: '削除'
     unspecified: '指定なし'
+    login: 'ログイン'
     message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
