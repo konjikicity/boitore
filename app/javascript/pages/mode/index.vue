@@ -50,7 +50,7 @@ export default {
   methods: {
     async fetchModes(){
       try {
-        const res = await this.$axios.get('/api/modes')
+        const res = await this.$axios.get('modes')
         this.modes = res.data
       }
       catch(error) {

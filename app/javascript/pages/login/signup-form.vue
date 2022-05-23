@@ -129,7 +129,7 @@ export default {
   methods: {
     async signUp () {
       try {
-        const res = await this.$axios.post('/auth', {
+        const res = await this.$axios.post('auth', {
           name: this.name,
           email: this.email,
           password: this.password,

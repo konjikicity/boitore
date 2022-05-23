@@ -1,9 +1,9 @@
-class Api::PlayResultsController < ApplicationController
+class Api::V1::PlayResultsController <  Api::V1::ApplicationController
   before_action :play_results_params, only: %i[create]
-  before_action :authenticate_user!, only: %i[index create]
-
+  before_action :authenticate_api_v1_user!
+  
   def index
-    play_results = PlayResult.where(user_id: current_user.id)
+    play_results = PlayResult.where(user_id: current_api_v1_user.id)
     render json: play_results, each_serializer: PlayResultSerializer
   end
 
