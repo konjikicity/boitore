@@ -10,7 +10,7 @@ ja:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"
-      deleted : "%{item}を削除しました"
+      deleted: "%{item}を削除しました"
       not_updated: "%{item}を更新できませんせした"
       delete_confirm: '削除しますか？'
   views:

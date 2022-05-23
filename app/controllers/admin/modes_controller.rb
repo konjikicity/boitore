@@ -1,4 +1,4 @@
-class Admin::ModesController < Admin::BaseController
+class Admin::ModesController < Admin::ApplicationController
   before_action :set_mode, only: %i[edit update show destroy]
 
   def index

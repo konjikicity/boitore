@@ -1,4 +1,4 @@
-class Admin::UserSessionsController < Admin::BaseController
+class Admin::UserSessionsController < Admin::ApplicationController
   layout 'admin/layouts/admin_login'
 
   def new; end

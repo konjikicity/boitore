@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::BaseController
+class Admin::UsersController < Admin::ApplicationController
 before_action :set_user, only: %i[edit update show destroy]
 
   def index
@@ -23,7 +23,7 @@ before_action :set_user, only: %i[edit update show destroy]
   def edit; end
 
   def update
-    if @user.update(user_params)
+    if @user.update(update_user_params)
       redirect_to admin_user_path(@user),
                   success: t('defaults.message.updated', item: User.model_name.human)
     else
@@ -49,4 +49,9 @@ before_action :set_user, only: %i[edit update show destroy]
   def user_params
     params.require(:user).permit(:name, :email, :role, :password, :password_confirmation)
   end
+  
+  def update_user_params
+    params.require(:user).permit(:name, :email, :role)
+  end
+
 end

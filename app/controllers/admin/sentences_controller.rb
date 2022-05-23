@@ -1,4 +1,4 @@
-class Admin::SentencesController < Admin::BaseController
+class Admin::SentencesController < Admin::ApplicationController
   before_action :set_sentence, only: %i[edit update show destroy]
 
   def index

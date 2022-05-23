@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #api認証、DBからデータを取得する用のルート
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+      mount_devise_token_auth_for 'User', at: 'auth', skip: [:password], controllers: {
         registrations: 'api/v1/auth/registrations'
       }
       resources :modes, only: %i[index] do
@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   # 管理者用ルート
   namespace :admin do
     root to: 'dashboards#index'
-    devise_for :users
+    devise_for :user, skip: [:password, :registrations], controllers: {
+      sessions: 'admin/user_sessions'
+    } 
+    resources :users
     resources :modes
     resources :sentences
   end
