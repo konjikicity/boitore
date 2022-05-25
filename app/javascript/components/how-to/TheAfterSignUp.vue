@@ -9,8 +9,7 @@
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651839957/boi%E3%83%88%E3%83%AC/14caecababc47167a653af9bcea383dd_ddmqi0.png"
-      max-width="80%"
-      max-height="80vh"
+      width="80%"
     />
     <p
       class="pt-5"
@@ -30,7 +29,6 @@
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651848206/boi%E3%83%88%E3%83%AC/82c12d5b788af2c08eccde25941dbbcb_fokzhx.jpg"
       width="80%"
-      height="70vh"
     />
     <p
       class="pt-5"
