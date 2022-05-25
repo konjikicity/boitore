@@ -2,7 +2,7 @@ class Admins::SentencesController < Admins::ApplicationController
   before_action :set_sentence, only: %i[edit update show destroy]
 
   def index
-    @sentences = Sentence.all.order(:id)
+    @sentences = Sentence.all.page(params[:page]).per(8).order(:id)
   end
 
   def new
