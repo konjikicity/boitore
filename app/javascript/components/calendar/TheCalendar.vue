@@ -21,7 +21,7 @@
         <v-icon
           class="white--text"
         >
-          mdi-chevron-left
+          {{ icons.mdiLeft }}
         </v-icon>
       </v-btn>
       <v-btn
@@ -31,7 +31,7 @@
         <v-icon
           class="white--text"
         >
-          mdi-chevron-right
+          {{ icons.mdiRight }}
         </v-icon>
       </v-btn>
       <v-toolbar-title
@@ -54,7 +54,7 @@
           >
             <span>{{ typeToLabel[type] }}</span>
             <v-icon right>
-              mdi-menu-down
+              {{ icons.mdiMenu }}
             </v-icon>
           </v-btn>
         </template>
@@ -167,6 +167,9 @@
 
 <script>
 import moment from 'moment'
+import { mdiChevronLeft } from '@mdi/js'
+import { mdiChevronRight } from '@mdi/js'
+import { mdiMenuDown } from '@mdi/js'
 
 export default {
   name: 'TheCalender',
@@ -187,6 +190,11 @@ export default {
         month: '月',
         day: '日',
       },
+      icons: { 
+        mdiLeft: mdiChevronLeft, 
+        mdiRight: mdiChevronRight,
+        mdiMenu: mdiMenuDown
+      }
     }
   },
   computed: {
