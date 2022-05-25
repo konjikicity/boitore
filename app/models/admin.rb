@@ -15,5 +15,5 @@
 #
 class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
 end

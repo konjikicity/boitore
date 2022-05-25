@@ -47,9 +47,9 @@ gem 'uglifier'
 
 # admin use
 gem 'bootstrap', '~> 4.3.1'
+gem 'enum_help'
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'jquery-rails'
-gem 'enum_help'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

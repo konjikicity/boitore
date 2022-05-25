@@ -1,5 +1,5 @@
 class Admins::UsersController < Admins::ApplicationController
-before_action :set_user, only: %i[edit update show destroy]
+  before_action :set_user, only: %i[edit update show destroy]
 
   def index
     @users = User.all.order(:id)
@@ -49,9 +49,8 @@ before_action :set_user, only: %i[edit update show destroy]
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
   def update_user_params
     params.require(:user).permit(:name, :email)
   end
-
 end
