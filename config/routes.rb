@@ -16,15 +16,16 @@ Rails.application.routes.draw do
   end
   
   # 管理者用ルート
-  namespace :admin do
+  devise_for :admins, :skip => [:registrations, :password],controllers: {
+    sessions: 'admins/sessions',
+  }
+  namespace :admins do
     root to: 'dashboards#index'
-    devise_for :user, skip: [:password, :registrations], controllers: {
-      sessions: 'admin/user_sessions'
-    } 
     resources :users
     resources :modes
     resources :sentences
   end
+  
   # rails側のrouting error回避
   get '*path', to: 'top#index'
 end

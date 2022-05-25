@@ -20,7 +20,7 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
-  admin:
+  admins:
     dashboards:
       index:
         title: 'BOIトレ管理画面'
