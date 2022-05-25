@@ -242,7 +242,7 @@ export default {
     },
     async fetchPlayResults() {
       try {
-        const res = await this.$axios.get('/api/play_results', {
+        const res = await this.$axios.get('play_results', {
           headers: {
             uid: this.uid,
             "access-token": this.token,
@@ -282,7 +282,7 @@ export default {
       try{
         let accept = confirm('本当に削除しますか？')
         if(accept) {
-          const result = await this.$axios.delete('/api/play_results/' + this.selectedEvent.id , {
+          const result = await this.$axios.delete('play_results/' + this.selectedEvent.id , {
             headers: {
               uid: this.uid,
               "access-token": this.token,

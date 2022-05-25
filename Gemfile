@@ -19,8 +19,8 @@ gem 'puma', '~> 5.0'
 gem 'webpacker', '~> 5.0'
 
 # serializer
-gem 'jbuilder', '~> 2.7'
 gem 'active_model_serializers'
+gem 'jbuilder', '~> 2.7'
 
 # media upload
 gem 'carrierwave'
@@ -45,25 +45,31 @@ gem 'rails-i18n'
 # js speed-up
 gem 'uglifier'
 
+# admin use
+gem 'bootstrap', '~> 4.3.1'
+gem 'enum_help'
+gem 'font-awesome-sass', '~> 5.11.2'
+gem 'jquery-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # code check
+  gem 'bullet'
   gem 'rails_best_practices'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'bullet'
 
   # debug
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  
-  #test
+  gem 'pry-byebug'
+  gem 'pry-rails'
+
+  # test
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
@@ -76,7 +82,7 @@ group :development do
 
   gem 'listen', '~> 3.3'
   gem 'web-console', '>= 4.1.0'
-  
+
   # Manage multiple processes
   gem 'foreman'
 
@@ -85,8 +91,8 @@ end
 
 group :test do
   # user test browser
-  gem 'webdrivers'
   gem 'capybara'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

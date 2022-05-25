@@ -193,7 +193,7 @@ export default {
   methods: {
     async fetchSentences() {
       try {
-        const res = await this.$axios.get('/api/modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
+        const res = await this.$axios.get('modes/' + this.$route.params.mode_id + '/selects/' + this.$route.params.id)
         this.sentence = res.data
       }
       catch(error) {

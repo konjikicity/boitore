@@ -71,6 +71,8 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    autoprefixer-rails (10.4.7.0)
+      execjs (~> 2)
     aws_cf_signer (0.1.3)
     bcrypt (3.1.17)
     better_errors (2.9.1)
@@ -82,6 +84,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.10.1)
       msgpack (~> 1.2)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     bullet (7.0.1)
       activesupport (>= 3.0.0)
@@ -133,6 +139,8 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    enum_help (0.0.18)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
@@ -144,6 +152,8 @@ GEM
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    font-awesome-sass (5.11.2)
+      sassc (>= 1.11)
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -158,6 +168,10 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jquery-rails (4.4.0)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     json (2.6.1)
     jsonapi-renderer (0.2.2)
     listen (3.7.1)
@@ -191,6 +205,7 @@ GEM
     parser (3.1.0.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -304,6 +319,14 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     seed-fu (2.3.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -325,6 +348,7 @@ GEM
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
     thor (1.2.1)
+    tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
@@ -366,6 +390,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.4)
+  bootstrap (~> 4.3.1)
   bullet
   capybara
   carrierwave
@@ -373,10 +398,13 @@ DEPENDENCIES
   devise (~> 4.8)
   devise_token_auth (~> 1.1, >= 1.1.5)
   dotenv-rails
+  enum_help
   factory_bot_rails
   faker
+  font-awesome-sass (~> 5.11.2)
   foreman
   jbuilder (~> 2.7)
+  jquery-rails
   listen (~> 3.3)
   meta-tags
   pg (~> 1.1)

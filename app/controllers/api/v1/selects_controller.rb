@@ -1,4 +1,4 @@
-class Api::SelectsController < ApplicationController
+class Api::V1::SelectsController < Api::V1::ApplicationController
   def index
     sentences = Sentence.where(mode_id: params[:mode_id])
     render json: sentences, each_serializer: SentenceSerializer

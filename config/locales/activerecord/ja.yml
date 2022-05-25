@@ -3,6 +3,7 @@ ja:
     models:
       mode: モード
       sentence: 文章
+      user: ユーザー
       created_at: 作成日
     attributes:
         mode:
@@ -17,3 +18,10 @@ ja:
           created_at: 作成日
           mode_id: 難易度
           mode: 難易度
+        user:
+          id: ID
+          name: 名前
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード確認
+          created_at: 作成日
