@@ -9,7 +9,6 @@
 #  encrypted_password :string           default(""), not null
 #  name               :string(10)       not null
 #  provider           :string           default("email"), not null
-#  role               :integer          default("normal")
 #  tokens             :json
 #  uid                :string           default(""), not null
 #  created_at         :datetime         not null
