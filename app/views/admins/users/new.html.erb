@@ -20,10 +20,6 @@
           <%= f.label :password_confirmation %>
           <%= f.text_field :password_confirmation, class: 'form-control' %>
         </div>
-        <div class="form-group">
-          <%= f.label :role %>
-          <%= f.select :role, User.roles_i18n.keys.map {|k| [User.roles_i18n[k], k]} %>
-        </div>
           <%= f.submit class: 'btn btn-primary' %>
       <% end %>
     </div>

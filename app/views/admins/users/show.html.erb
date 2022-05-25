@@ -20,10 +20,6 @@
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th scope="row"><%= User.human_attribute_name(:role) %></th>
-          <td><%= @user.role_i18n %></td>
-        </tr>
-        <tr>
           <th scope="row"><%= User.human_attribute_name(:created_at) %></th>
           <td><%= l @user.created_at, format: :long %></td>
         </tr>

@@ -47,11 +47,11 @@ before_action :set_user, only: %i[edit update show destroy]
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :role, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   
   def update_user_params
-    params.require(:user).permit(:name, :email, :role)
+    params.require(:user).permit(:name, :email)
   end
 
 end

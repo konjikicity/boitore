@@ -24,10 +24,4 @@ ja:
           email: メールアドレス
           password: パスワード
           password_confirmation: パスワード確認
-          role: 権限
           created_at: 作成日
-  enums:
-    user:   
-      role:   
-        admin: 管理者
-        normal: 一般 
