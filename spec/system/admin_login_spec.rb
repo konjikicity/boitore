@@ -1,10 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "Admins", type: :system do
+RSpec.describe "Adminのログイン", type: :system do
   let(:admin){ create(:admin) }
   before {
     visit new_admin_session_path
   }
+  describe 'アクセス制限の確認' do
+    context 'ログインしていない状態で管理者ページに遷移' do
+      it 'ログインページにリダイレクトする' do
+        visit admins_root_path
+        expect(page).to have_content('ログインもしくはアカウント登録してください。')
+      end
+    end
+  end
 
   describe '正常なユーザ-ログインが行えるか確認' do
     context '正常な値を入力した場合' do
@@ -26,7 +34,7 @@ RSpec.describe "Admins", type: :system do
       end
     end
   end
-
+  
   describe 'バリデーションの確認' do
     describe '必須項目の確認' do
       context '必須項目がすべて未入力の場合' do
