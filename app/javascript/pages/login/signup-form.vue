@@ -22,7 +22,7 @@
         >
           <v-text-field 
             v-model="name"
-            :prepend-icon= icons.account
+            :prepend-icon="icons.account"
             label="ユーザー名"
             class="px-7" 
             :error-messages="errors"
@@ -36,7 +36,7 @@
         >
           <v-text-field 
             v-model="email"
-            :prepend-icon= icons.email
+            :prepend-icon="icons.email"
             label="メールアドレス"
             class="px-7"
             :error-messages="errors"  
@@ -51,7 +51,7 @@
           <v-text-field 
             v-model="password" 
             :type="showPassword ? 'text' : 'password'" 
-            :prepend-icon= icons.password 
+            :prepend-icon="icons.password" 
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
             label="パスワード"
             class="px-7"
@@ -68,7 +68,7 @@
           <v-text-field 
             v-model="passwordConfirmation" 
             :type="showPassword ? 'text' : 'password'" 
-            :prepend-icon= icons.password 
+            :prepend-icon="icons.password" 
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
             label="パスワード確認" 
             class="px-7"
