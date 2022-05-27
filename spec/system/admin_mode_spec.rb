@@ -137,7 +137,7 @@ RSpec.describe "AdminのモードCRUD", type: :system do
             click_on('削除')
           end
           expect(page).to have_content('モードを削除しました')
-          expect(page).to_not have_content('こんにちは')
+          expect(page).to_not have_content('かんたん')
         end
       end
     end
