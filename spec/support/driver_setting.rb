@@ -4,8 +4,7 @@ RSpec.configure do |config|
     # driven_by(:selenium_chrome)
 
     # Spec実行時、ブラウザOFF
-    driven_by(:selenium_chrome_headless)
-
+    driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
     #Rspecのwarn解消
     Selenium::WebDriver.logger.ignore(:browser_options)
   end

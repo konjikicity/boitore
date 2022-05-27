@@ -15,5 +15,11 @@ module.exports = {
     "vue/this-in-template": "off",
     "no-undef": "off",
     "no-dupe-keys": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+        "jsx": true
+    }
   }
 };

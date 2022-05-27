@@ -11,7 +11,7 @@ ja:
       not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"
       deleted: "%{item}を削除しました"
-      not_updated: "%{item}を更新できませんせした"
+      not_updated: "%{item}を更新できませんでした"
       delete_confirm: '削除しますか？'
   views:
     pagination:

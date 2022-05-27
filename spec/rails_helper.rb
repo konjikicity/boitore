@@ -68,4 +68,5 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include LoginModule
   config.include SignUpModule
+  config.include AdminLoginModule
 end
