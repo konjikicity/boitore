@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :play_results, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :name, presence: true, length: { maximum: 10 }, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   include DeviseTokenAuth::Concerns::User
-
-  enum role: { normal: 0, admin: 1 }
 end
