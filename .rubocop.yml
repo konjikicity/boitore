@@ -54,6 +54,8 @@ Metrics/LineLength:
 # メソッドの行数を20行までにする
 Metrics/MethodLength:
   CountComments: false
+  Exclude:
+    - 'app/helpers/application_helper.rb' 
   Max: 20
 
 # ABC sizeは緩めにする
