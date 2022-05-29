@@ -1,0 +1,7 @@
+@modes.map do |mode|
+  {
+    id: mode.id,
+    description: mode.description,
+    difficulty: mode.difficulty
+  }
+end
