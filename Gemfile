@@ -19,8 +19,7 @@ gem 'puma', '~> 5.0'
 gem 'webpacker', '~> 5.0'
 
 # serializer
-gem 'active_model_serializers'
-gem 'jbuilder', '~> 2.7'
+gem 'jb'
 
 # media upload
 gem 'carrierwave'

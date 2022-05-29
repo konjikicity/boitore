@@ -39,11 +39,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_model_serializers (0.10.13)
-      actionpack (>= 4.1, < 7.1)
-      activemodel (>= 4.1, < 7.1)
-      case_transform (>= 0.2)
-      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (6.1.4.4)
       activesupport (= 6.1.4.4)
       globalid (>= 0.3.6)
@@ -110,8 +105,6 @@ GEM
       marcel (~> 1.0.0)
       mini_mime (>= 0.1.3)
       ssrf_filter (~> 1.0)
-    case_transform (0.2)
-      activesupport
     childprocess (4.1.0)
     cloudinary (1.23.0)
       aws_cf_signer
@@ -165,15 +158,12 @@ GEM
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    jbuilder (2.11.5)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
+    jb (0.8.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.6.1)
-    jsonapi-renderer (0.2.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -397,7 +387,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
   annotate
   better_errors
   binding_of_caller
@@ -415,7 +404,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 5.11.2)
   foreman
-  jbuilder (~> 2.7)
+  jb
   jquery-rails
   kaminari
   listen (~> 3.3)
