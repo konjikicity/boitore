@@ -12,17 +12,13 @@ import router from '../router'
 import store from '../store/index'
 import vuetify from '../plugins/vuetify'
 import veeValidate from "../plugins/vee-validate"
-import Turbolinks from 'turbolinks'
-import TurbolinksAdapter from 'vue-turbolinks'
 
-Vue.use(TurbolinksAdapter)
-Turbolinks.start()
 Vue.mixin(veeValidate)
 Vue.config.devtools = true
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify,
     router,
