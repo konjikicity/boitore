@@ -1,0 +1,14 @@
+@play_results.map do |play_result|
+  {
+    id: play_result.id,
+    boin_voice: play_result.boin_voice,
+    normal_voice: play_result.normal_voice,
+    practiced_boin: play_result.practiced_boin,
+    practiced_normal: play_result.practiced_normal,
+    practiced_sentence: play_result.practiced_sentence,
+    judge: play_result.judge,
+    score: play_result.score,
+    created_at: play_result.created_at,
+    user_id: play_result.user_id
+  }
+end
