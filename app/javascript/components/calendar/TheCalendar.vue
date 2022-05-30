@@ -202,14 +202,12 @@ export default {
       return moment(this.value).format('yyyy年 M月')
     },
   },
-  mounted() {
-    this.fetchPlayResults();
-  },
   created() {
     this.name = this.$store.getters['login/name']
     this.uid = this.$store.getters['login/uid']
     this.token = this.$store.getters['login/token']
     this.client = this.$store.getters['login/client']
+    this.fetchPlayResults();
   },
   methods: {
     getEvents() {
