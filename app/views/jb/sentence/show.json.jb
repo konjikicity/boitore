@@ -1,6 +1,6 @@
-  {
-    id: @sentence.id,
-    normal: @sentence.normal,
-    boin: @sentence.boin,
-    mode_id: @sentence.mode_id
-  }
+{
+  id: @sentence.id,
+  normal: @sentence.normal,
+  boin: @sentence.boin,
+  mode_id: @sentence.mode_id
+}

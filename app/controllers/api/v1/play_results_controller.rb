@@ -4,7 +4,7 @@ class Api::V1::PlayResultsController < Api::V1::ApplicationController
 
   def index
     @play_results = PlayResult.where(user_id: current_api_v1_user.id)
-    render "jb/play_result/index.json.jb"
+    render 'jb/play_result/index.json.jb'
   end
 
   def create
