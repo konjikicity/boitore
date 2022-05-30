@@ -135,10 +135,7 @@ export default {
     this.uid = this.$store.getters['login/uid']
     this.token = this.$store.getters['login/token']
     this.client = this.$store.getters['login/client']
-  },
-  mounted() {
     this.fetchPlayResults();
-
   },
   methods: {
     async fetchPlayResults()  {

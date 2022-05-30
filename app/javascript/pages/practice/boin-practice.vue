@@ -170,12 +170,10 @@ export default {
 
     }},
   created() {
-    
+    this.fetchSentences();
     this.normalRecognition = this.$store.getters['practice/normalRecognition']
   },
   mounted() {
-
-    this.fetchSentences();
     // マイク許可
     navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,

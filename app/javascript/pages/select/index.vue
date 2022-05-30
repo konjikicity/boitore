@@ -88,7 +88,7 @@ export default {
       sentences: []
     }
   },
-  mounted (){
+  created() {
     this.fetchSentences();
   },
   methods: {
@@ -111,8 +111,8 @@ export default {
     color: #616161;
 }
 .v-application a:hover {
-   color: #E57373;
-   transition: 0.5s;
+  color: #E57373;
+  transition: 0.5s;
 }
 .v-application p {
   font-size: 58px;
