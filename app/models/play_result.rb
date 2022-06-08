@@ -40,5 +40,6 @@ class PlayResult < ApplicationRecord
     remove_normal_voice!
     remove_boin_voice!
     save
+    delete
   end
 end
