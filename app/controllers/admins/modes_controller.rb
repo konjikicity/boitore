@@ -2,7 +2,7 @@ class Admins::ModesController < Admins::ApplicationController
   before_action :set_mode, only: %i[edit update show destroy]
 
   def index
-    @modes = Mode.all.page(params[:page]).per(8).order(:id)
+    @modes = Mode.page(params[:page]).per(8).order(:id)
   end
 
   def new
