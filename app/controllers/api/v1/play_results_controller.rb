@@ -18,12 +18,8 @@ class Api::V1::PlayResultsController < Api::V1::ApplicationController
 
   def destroy
     play_results = PlayResult.find(params[:id])
-    if Rails.env.development?
-      play_results.delete
-    end
-    if Rails.env.production?
-      play_results.practice_delete
-    end
+    play_results.delete if Rails.env.development?
+    play_results.practice_delete if Rails.env.production?
     render json: true
   end
 

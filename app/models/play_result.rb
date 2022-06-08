@@ -37,9 +37,8 @@ class PlayResult < ApplicationRecord
   mount_uploader :normal_voice, AudioUploader
 
   def practice_delete
-    self.remove_normal_voice!
-    self.remove_boin_voice!
-    self.save
+    remove_normal_voice!
+    remove_boin_voice!
+    save
   end
-
 end
