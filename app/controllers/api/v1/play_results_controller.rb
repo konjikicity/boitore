@@ -18,10 +18,8 @@ class Api::V1::PlayResultsController < Api::V1::ApplicationController
 
   def destroy
     play_results = PlayResult.find(params[:id])
-    play_results.remove_normal_voice!
-    play_results.remove_boin_voice!
-    play_results.save
-    play_results.destroy
+    play_results.delete if Rails.env.development?
+    play_results.practice_delete if Rails.env.production?
     render json: true
   end
 

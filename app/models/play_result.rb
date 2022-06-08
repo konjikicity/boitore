@@ -35,4 +35,11 @@ class PlayResult < ApplicationRecord
 
   mount_uploader :boin_voice, AudioUploader
   mount_uploader :normal_voice, AudioUploader
+  
+  def practice_delete
+    remove_normal_voice!
+    remove_boin_voice!
+    save
+    delete
+  end
 end
