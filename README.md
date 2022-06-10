@@ -107,7 +107,7 @@
 https://www.figma.com/file/4h1J03eBaY1HfQgUWrITyE/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3
 
 ### ER図
-https://drive.google.com/file/d/13kZIz5rIh9TxG5qj_IcDoLAyRNKizCz1/view?usp=sharing
+https://drive.google.com/file/d/1GeOCJNw3wjY2WjxfHInObvoY2KGv8qCD/view?usp=sharing
 
 ## こだわった点・苦労した点
 [issue](https://github.com/konjikicity/boitore/issues/243)
