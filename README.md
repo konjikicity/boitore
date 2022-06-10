@@ -109,6 +109,9 @@ https://www.figma.com/file/4h1J03eBaY1HfQgUWrITyE/%E7%94%BB%E9%9D%A2%E9%81%B7%E7
 ### ER図
 https://drive.google.com/file/d/13kZIz5rIh9TxG5qj_IcDoLAyRNKizCz1/view?usp=sharing
 
+## こだわった点・苦労した点
+[issue](https://github.com/konjikicity/boitore/issues/243)
+
 ## 関連ページ
 - Twitterハッシュタグ: [#BOIトレ](https://twitter.com/hashtag/BOI%E3%83%88%E3%83%AC?src=hashtag_click)
 - Qiita記事: [【個人開発】母音法を広めたい！劇団四季も使っている『母音法』で発声練習ができるサービス『BOIトレ ~ 母音法で発声練習 ~』をリリースしました！](https://qiita.com/konjikicity/items/005cda4b9248803efa7e)
