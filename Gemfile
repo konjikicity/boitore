@@ -27,7 +27,9 @@ gem 'cloudinary'
 
 # authentication
 gem 'devise', '~> 4.8'
-gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
+gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth.git'
+gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'
 
 # .env
 gem 'dotenv-rails'
