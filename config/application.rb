@@ -54,5 +54,6 @@ module VowelTraining
                        fixtures: true
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
+    config.action_controller.allow_forgery_protection = false
   end
 end
