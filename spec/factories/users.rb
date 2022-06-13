@@ -5,7 +5,9 @@
 #  id                 :bigint           not null, primary key
 #  email              :string           not null
 #  encrypted_password :string           default(""), not null
+#  image              :string
 #  name               :string(10)       not null
+#  nickname           :string
 #  provider           :string           default("email"), not null
 #  tokens             :json
 #  uid                :string           default(""), not null
