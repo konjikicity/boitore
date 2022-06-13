@@ -27,7 +27,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :play_results, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
   validates :name, presence: true, length: { maximum: 10 }, uniqueness: true
   validates :email, presence: true, uniqueness: true
   include DeviseTokenAuth::Concerns::User
