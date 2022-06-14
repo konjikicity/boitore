@@ -67,6 +67,11 @@
         </v-row>
       </v-form>
     </validation-observer>
+    <v-btn
+    @click="twitterLogin"
+    >
+    twitterLogin
+    </v-btn>
   </v-card>
 </template>
 <script>
@@ -121,7 +126,26 @@ export default {
         console.log({ error })
 
       }
-    }
+    },
+    twitterLogin(){
+  // open with post method to protect from csrf
+  const provider = 'twitter'
+  const blankForm = document.createElement('form')
+  blankForm.target = provider
+  blankForm.method = 'post'
+  blankForm.action = 'http://localhost:3000/api/v1/auth/twitter?omniauth_window_type=newWindow'
+
+  // connect form
+  blankForm.style.display = 'none'
+  document.body.appendChild(blankForm)
+  const authWindow = window.open('', provider)
+  blankForm.submit()
+
+  // cut form
+  document.body.removeChild(blankForm)
+
+  return authWindow
+    }  
   }
 }
 </script>
