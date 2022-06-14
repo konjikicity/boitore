@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_001222) do
+ActiveRecord::Schema.define(version: 2022_06_14_020329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_001222) do
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name", limit: 10, null: false
+    t.string "name", limit: 50, null: false
     t.string "email", null: false
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false

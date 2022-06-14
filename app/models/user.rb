@@ -8,7 +8,7 @@
 #  email              :string           not null
 #  encrypted_password :string           default(""), not null
 #  image              :string
-#  name               :string(10)       not null
+#  name               :string(50)       not null
 #  nickname           :string
 #  provider           :string           default("email"), not null
 #  tokens             :json
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :play_results, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
-  validates :name, presence: true, length: { maximum: 10 }, uniqueness: true
+  validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :email, presence: true, uniqueness: true
   include DeviseTokenAuth::Concerns::User
 end
