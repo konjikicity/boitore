@@ -23,6 +23,13 @@
               image: auth_hash['info']['image'],
               email: auth_hash['info']['email']
             })
+          when 'google'
+            user.assign_attributes({
+              nickname: auth_hash['info']['nickname'],
+              name: auth_hash['info']['name'],
+              image: auth_hash['info']['image'],
+              email: auth_hash['info']['email']
+            })
           else
             super
           end
