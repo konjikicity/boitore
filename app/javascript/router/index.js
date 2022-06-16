@@ -16,6 +16,7 @@ import LoginForm from "../pages/login/login-form";
 import SignUpForm from "../pages/login/signup-form";
 import HowToIndex from "../pages/how-to/index"
 import MyPageIndex from "../pages/my-page/index";
+import TwitterCallback from "../pages/oauth/twitter/callback";
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ const router = new Router({
       path: '/how-to',
       component: HowToIndex,
       name: "HowToIndex"
+    },
+    {
+      path: '/oauth/twitter/callback',
+      component: TwitterCallback,
+      name: "TwitterCallBack",
     },
     {
       path:'/my-page',

@@ -67,11 +67,9 @@
         </v-row>
       </v-form>
     </validation-observer>
-    <v-btn
-    @click="twitterLogin"
-    >
-    twitterLogin
-    </v-btn>
+    <v-btn :href="twitterLoginURL">
+               Twitterログイン
+             </v-btn>
   </v-card>
 </template>
 <script>
@@ -94,9 +92,20 @@ export default {
       icons: {
         account: mdiAccountCircle,
         password: mdiLock
-      }
+      },
+      twitter: {
+        url: 'http://localhost:3000/api/v1/auth/twitter',
+        redirectUrl:'http://localhost:3000/oauth/twitter/callback'
+      },
     }
   },
+  computed: {
+     twitterLoginURL() {
+        return `${this.twitter.url}?auth_origin_url=${encodeURI(this.twitter.redirectUrl)}`
+
+     }
+   },
+
   methods: {
     async login(){
       try {
@@ -126,25 +135,6 @@ export default {
         console.log({ error })
 
       }
-    },
-    twitterLogin(){
-  // open with post method to protect from csrf
-  const provider = 'twitter'
-  const blankForm = document.createElement('form')
-  blankForm.target = provider
-  blankForm.method = 'post'
-  blankForm.action = 'http://localhost:3000/api/v1/auth/twitter?omniauth_window_type=newWindow'
-
-  // connect form
-  blankForm.style.display = 'none'
-  document.body.appendChild(blankForm)
-  const authWindow = window.open('', provider)
-  blankForm.submit()
-
-  // cut form
-  document.body.removeChild(blankForm)
-
-  return authWindow
     }  
   }
 }
