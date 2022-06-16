@@ -17,6 +17,7 @@ import SignUpForm from "../pages/login/signup-form";
 import HowToIndex from "../pages/how-to/index"
 import MyPageIndex from "../pages/my-page/index";
 import TwitterCallback from "../pages/oauth/twitter/callback";
+import GoogleCallback from "../pages/oauth/google/callback";
 
 Vue.use(Router)
 
@@ -84,6 +85,11 @@ const router = new Router({
       path: '/oauth/twitter/callback',
       component: TwitterCallback,
       name: "TwitterCallBack",
+    },
+    {
+      path: '/oauth/google/callback',
+      component: GoogleCallback,
+      name: "GoogleCallBack",
     },
     {
       path:'/my-page',

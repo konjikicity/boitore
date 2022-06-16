@@ -68,8 +68,11 @@
       </v-form>
     </validation-observer>
     <v-btn :href="twitterLoginURL">
-               Twitterログイン
-             </v-btn>
+      Twitterログイン
+    </v-btn>
+    <v-btn :href="googleLoginURL">
+      googleログイン
+    </v-btn>
   </v-card>
 </template>
 <script>
@@ -97,14 +100,22 @@ export default {
         url: 'http://localhost:3000/api/v1/auth/twitter',
         redirectUrl:'http://localhost:3000/oauth/twitter/callback'
       },
+      google: {
+        url: 'http://localhost:3000/api/v1/auth/google',
+        redirectUrl:'http://localhost:3000/oauth/google/callback'
+      },
     }
   },
   computed: {
-     twitterLoginURL() {
-        return `${this.twitter.url}?auth_origin_url=${encodeURI(this.twitter.redirectUrl)}`
+    twitterLoginURL() {
+      return `${this.twitter.url}?auth_origin_url=${encodeURI(this.twitter.redirectUrl)}`
 
-     }
-   },
+    },
+    googleLoginURL() {
+      return `${this.google.url}?auth_origin_url=${encodeURI(this.google.redirectUrl)}`
+
+    }
+  },
 
   methods: {
     async login(){

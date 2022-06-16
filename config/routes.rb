@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'top#index'
 
   # コールバックページへの遷移
-  get '/oauth/twitter/callback', to: 'callbacks#index'
-  
+  get '/oauth/twitter/callback', to: 'callbacks#twitter'
+  get '/oauth/google/callback', to: 'callbacks#google'
   # api認証、DBからデータを取得する用のルート
   namespace :api do
     namespace :v1 do
