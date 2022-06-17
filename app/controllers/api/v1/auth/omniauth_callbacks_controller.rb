@@ -1,7 +1,9 @@
 class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksController
+  protect_from_forgery
+  
   def omniauth_success
     super
-    @resource.update(nickname: @resource.name)
+    @resource.update(nickname: @resource.name) if @resource.nickname.nil?
   end
 
   protected
