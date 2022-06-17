@@ -6,16 +6,27 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
 
   protected
 
-  def render_data_or_redirect(message, data, user_data = {})
-    if %w[inAppBrowser newWindow].include?(omniauth_window_type)
-      render_data(message, user_data.merge(data))
-    elsif auth_origin_url
-      redirect_to DeviseTokenAuth::Url.generate(auth_origin_url, data.merge(blank: true))
+  def assign_provider_attrs(user, auth_hash)
+    case auth_hash['provider']
+    when 'twitter'
+      user.assign_attributes({
+        nickname: auth_hash['info']['nickname'],
+        name: auth_hash['info']['name'],
+        image: auth_hash['info']['image'],
+        email: auth_hash['info']['email']
+      })
+    when 'google'
+      user.assign_attributes({
+        nickname: auth_hash['info']['nickname'],
+        name: auth_hash['info']['name'],
+        image: auth_hash['info']['image'],
+        email: auth_hash['info']['email']
+      })
     else
-      fallback_render data[:error] || 'An error occurred'
+      super
     end
   end
-
+  
   def clean_resource
     @resource.name = strip_emoji(@resource.name)
     @resource.nickname = strip_emoji(@resource.nickname)
