@@ -104,7 +104,7 @@
           >
             <v-row
               justify="center"
-              class="mt-100"
+              class="mt-80"
             >
               <v-btn
                 :href="googleLoginURL"
@@ -192,7 +192,6 @@ export default {
 
     }
   },
-
   methods: {
     async login(){
       try {
@@ -237,8 +236,8 @@ export default {
 .mt-120 {
   margin-top: 120px;
 }
-.mt-100 {
-  margin-top: 100px;
+.mt-80 {
+  margin-top: 80px;
 }
 .row+.row  {
   margin-top: 50px;
