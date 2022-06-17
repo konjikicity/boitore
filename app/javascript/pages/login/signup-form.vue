@@ -204,12 +204,12 @@ export default {
         google: mdiGoogle
       },
       twitter: {
-        url: 'http://localhost:3000/api/v1/auth/twitter',
-        redirectUrl:'http://localhost:3000/oauth/twitter/callback'
+        url: process.env.VUE_APP_TWITTER_URL,
+        redirectUrl: process.env.VUE_APP_TWITTER_REDIRECT_URL
       },
       google: {
-        url: 'http://localhost:3000/api/v1/auth/google',
-        redirectUrl:'http://localhost:3000/oauth/google/callback'
+        url: process.env.VUE_APP_GOOGLE_URL,
+        redirectUrl: process.env.VUE_APP_GOOGLE_REDIRECT_URL
       }
     }
   },
