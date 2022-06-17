@@ -1,5 +1,5 @@
 <template>
-<v-container
+  <v-container
     fill-height 
     fluid
   >
@@ -9,107 +9,107 @@
       <v-col
         cols="5"
       >
-  <v-card
-    class="mx-auto"
-    height="500px"
-  >
-    <v-card-title>
-      <h1 class="display-1 font-weight-bold">
-        ユーザー登録
-      </h1>
-    </v-card-title>
-    <validation-observer
-      ref="observer"
-      v-slot="{ invalid }"
-    >
-      <v-form
-        @submit.prevent="signUp"
-      >
-        <validation-provider
-          v-slot="{ errors }"
-          rules="required|max:10"
-          name="ユーザー名"
+        <v-card
+          class="mx-auto"
+          height="500px"
         >
-          <v-text-field 
-            v-model="name"
-            :prepend-icon="icons.account"
-            label="ユーザー名"
-            class="px-7" 
-            :error-messages="errors"
-          />
-        </validation-provider>
-
-        <validation-provider
-          v-slot="{ errors }"
-          rules="required|email"
-          name="メールアドレス"
-        >
-          <v-text-field 
-            v-model="email"
-            :prepend-icon="icons.email"
-            label="メールアドレス"
-            class="px-7"
-            :error-messages="errors"  
-          />
-        </validation-provider>
-
-        <validation-provider
-          v-slot="{ errors }"
-          rules="required"
-          name="パスワード"
-        >
-          <v-text-field 
-            v-model="password" 
-            :type="showPassword ? 'text' : 'password'" 
-            :prepend-icon="icons.password" 
-            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
-            label="パスワード"
-            class="px-7"
-            :error-messages="errors"
-            @click:append="showPassword = !showPassword"
-          />
-        </validation-provider>
-
-        <validation-provider
-          v-slot="{ errors }"
-          rules="required|confirmed:パスワード"
-          name="パスワード確認"    
-        >
-          <v-text-field 
-            v-model="passwordConfirmation" 
-            :type="showPassword ? 'text' : 'password'" 
-            :prepend-icon="icons.password" 
-            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
-            label="パスワード確認" 
-            class="px-7"
-            :error-messages="errors"
-            @click:append="showPassword = !showPassword" 
-          />
-        </validation-provider>
-        <TheMessage :alert="alert" />
-        <v-card-actions>
-          <v-btn 
-            class="error ml-7 font-weight-bold"
-            :disabled="invalid"
-            @click="signUp"
+          <v-card-title>
+            <h1 class="display-1 font-weight-bold">
+              ユーザー登録
+            </h1>
+          </v-card-title>
+          <validation-observer
+            ref="observer"
+            v-slot="{ invalid }"
           >
-            登録
-          </v-btn>
-        </v-card-actions>
-      </v-form>
-    </validation-observer>
-    <v-row
-      justify="center"
-      class="font-weight-bold py-9"
-    >
-      既にご登録済みの方は
-      <router-link :to="{ name: 'LoginForm' }">
-        こちら
-      </router-link>
-    </v-row>
-  </v-card>
-  </v-col>
-  <div
+            <v-form
+              @submit.prevent="signUp"
+            >
+              <validation-provider
+                v-slot="{ errors }"
+                rules="required|max:10"
+                name="ユーザー名"
+              >
+                <v-text-field 
+                  v-model="name"
+                  :prepend-icon="icons.account"
+                  label="ユーザー名"
+                  class="px-7" 
+                  :error-messages="errors"
+                />
+              </validation-provider>
+
+              <validation-provider
+                v-slot="{ errors }"
+                rules="required|email"
+                name="メールアドレス"
+              >
+                <v-text-field 
+                  v-model="email"
+                  :prepend-icon="icons.email"
+                  label="メールアドレス"
+                  class="px-7"
+                  :error-messages="errors"  
+                />
+              </validation-provider>
+
+              <validation-provider
+                v-slot="{ errors }"
+                rules="required"
+                name="パスワード"
+              >
+                <v-text-field 
+                  v-model="password" 
+                  :type="showPassword ? 'text' : 'password'" 
+                  :prepend-icon="icons.password" 
+                  :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
+                  label="パスワード"
+                  class="px-7"
+                  :error-messages="errors"
+                  @click:append="showPassword = !showPassword"
+                />
+              </validation-provider>
+
+              <validation-provider
+                v-slot="{ errors }"
+                rules="required|confirmed:パスワード"
+                name="パスワード確認"    
+              >
+                <v-text-field 
+                  v-model="passwordConfirmation" 
+                  :type="showPassword ? 'text' : 'password'" 
+                  :prepend-icon="icons.password" 
+                  :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" 
+                  label="パスワード確認" 
+                  class="px-7"
+                  :error-messages="errors"
+                  @click:append="showPassword = !showPassword" 
+                />
+              </validation-provider>
+              <TheMessage :alert="alert" />
+              <v-card-actions>
+                <v-btn 
+                  class="error ml-7 font-weight-bold"
+                  :disabled="invalid"
+                  @click="signUp"
+                >
+                  登録
+                </v-btn>
+              </v-card-actions>
+            </v-form>
+          </validation-observer>
+          <v-row
+            justify="center"
+            class="font-weight-bold py-9"
+          >
+            既にご登録済みの方は
+            <router-link :to="{ name: 'LoginForm' }">
+              こちら
+            </router-link>
+          </v-row>
+        </v-card>
+      </v-col>
+      <div
         class="white--text my-auto font-weight-bold px-10"
       >
         or
@@ -171,7 +171,7 @@
           </div>
         </v-card>
       </v-col>
-  </v-row>
+    </v-row>
   </v-container>
 </template>
 <script>
