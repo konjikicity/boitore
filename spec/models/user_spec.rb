@@ -7,7 +7,7 @@
 #  encrypted_password :string           default(""), not null
 #  image              :string
 #  name               :string(50)       not null
-#  nickname           :string           default("name"), not null
+#  nickname           :string(50)
 #  provider           :string           default("email"), not null
 #  tokens             :json
 #  uid                :string           default(""), not null

@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_06_17_004846) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname", default: "name", null: false
+    t.string "nickname", limit: 50
     t.string "image"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
