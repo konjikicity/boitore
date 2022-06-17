@@ -29,4 +29,8 @@ Rails.application.routes.draw do
     resources :modes
     resources :sentences
   end
+  
+  # 違うpathのURLの時topページへ遷移するルート
+  get '*path', to: 'top#index'
+
 end

@@ -7,7 +7,7 @@
 #  encrypted_password :string           default(""), not null
 #  image              :string
 #  name               :string(50)       not null
-#  nickname           :string
+#  nickname           :string           default("name"), not null
 #  provider           :string           default("email"), not null
 #  tokens             :json
 #  uid                :string           default(""), not null
@@ -16,7 +16,6 @@
 #
 # Indexes
 #
-#  index_users_on_email             (email) UNIQUE
 #  index_users_on_name              (name) UNIQUE
 #  index_users_on_uid_and_provider  (uid,provider) UNIQUE
 #
