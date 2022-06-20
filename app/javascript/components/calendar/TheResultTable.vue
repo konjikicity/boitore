@@ -94,6 +94,7 @@
 </template>
 <script>
 import moment from 'moment'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "TheResultTable",
@@ -112,9 +113,6 @@ export default {
         { text: '日付', value: 'created_at' },
       ],
       play_results: [],
-      uid: null,
-      token: null,
-      client: null,
       editedIndex: -1,
       editedItem: {
         practiced_sentence: '',
@@ -126,15 +124,19 @@ export default {
         score: '',
         created_at: '',
         id: ''
-      
+      },
+      users: {
+        uid: null,
+        token: null,
+        client: null,
       }
     }
   }, 
+  computed: {
+    ...mapGetters(["login/uid", "login/token", "login/client"])
+  },
   created() {
-    this.name = this.$store.getters['login/name']
-    this.uid = this.$store.getters['login/uid']
-    this.token = this.$store.getters['login/token']
-    this.client = this.$store.getters['login/client']
+    this.getLogin();
     this.fetchPlayResults();
   },
   methods: {
@@ -142,17 +144,21 @@ export default {
       try {
         const res = await this.$axios.get('play_results', {
           headers: {
-            uid: this.uid,
-            "access-token": this.token,
-            client: this.client,
+            uid: this.users.uid,
+            "access-token": this.users.token,
+            client: this.users.client,
           },
         })
-        console.log(res.data);
         this.play_results = res.data;
       }
       catch(error) {
         console.log(error)
       }
+    },
+    getLogin() {
+      this.users.uid = this['login/uid']
+      this.users.token = this['login/token']
+      this.users.client = this['login/client']
     },
     showItem (item) {
       this.editIndex = this.play_results.indexOf(item)
@@ -160,20 +166,19 @@ export default {
       this.dialog = true
     },
     formatDate(value) {
-      return moment(value).format("YYYY年MM月DD日")
+      return moment(value).format("YYYY年MM月DD日HH時mm分")
     },
     async DeleteResult(){
       try{
         let accept = confirm('本当に削除しますか？')
         if(accept) {
-          const result = await this.$axios.delete('play_results/' + this.editedItem.id , {
+          await this.$axios.delete('play_results/' + this.editedItem.id , {
             headers: {
-              uid: this.uid,
-              "access-token": this.token,
-              client: this.client,
+              uid: this.users.uid,
+              "access-token": this.users.token,
+              client: this.users.client,
             },
           })
-          console.log(result.data)
           this.$router.go(this.$router.currentRoute.path)
         }
         else {

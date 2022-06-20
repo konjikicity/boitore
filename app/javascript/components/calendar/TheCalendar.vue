@@ -106,7 +106,7 @@
               <div
                 class="pl-15"
               >
-                {{ selectedEvent.start }}
+                {{ formatDate(selectedEvent.start) }}
               </div>
               <v-spacer />
               <v-btn
@@ -170,6 +170,7 @@ import moment from 'moment'
 import { mdiChevronLeft } from '@mdi/js'
 import { mdiChevronRight } from '@mdi/js'
 import { mdiMenuDown } from '@mdi/js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'TheCalender',
@@ -177,9 +178,6 @@ export default {
     return {
       events: [],
       value: moment().format('yyyy-MM-DD'),
-      uid: null,
-      token: null,
-      client: null,
       play_results: [],
       dialog: false,
       selectedEvent: {},
@@ -194,26 +192,29 @@ export default {
         mdiLeft: mdiChevronLeft, 
         mdiRight: mdiChevronRight,
         mdiMenu: mdiMenuDown
-      }
+      },
+      users: {
+        uid: null,
+        token: null,
+        client: null
+      }      
     }
   },
   computed: {
     title() {
       return moment(this.value).format('yyyy年 M月')
     },
+    ...mapGetters(["login/uid", "login/token", "login/client"]),
   },
   created() {
-    this.name = this.$store.getters['login/name']
-    this.uid = this.$store.getters['login/uid']
-    this.token = this.$store.getters['login/token']
-    this.client = this.$store.getters['login/client']
+    this.getLogin();
     this.fetchPlayResults();
   },
   methods: {
     getEvents() {
       const events = [];
       for (let i = 0; i < this.play_results.length; i++) {
-        const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH:mm');
+        const first =  new Date(this.play_results[i].created_at)
         const name = this.play_results[i].practiced_sentence
         const id = this.play_results[i].id
         const practiced_normal = this.play_results[i].practiced_normal
@@ -236,7 +237,6 @@ export default {
         }); 
 
       }
-      console.log(events)
       this.events = events
     },
     setToday () {
@@ -246,22 +246,29 @@ export default {
     getEventColor(event) {
       return event.color;
     },
+    formatDate(value) {
+      return moment(value).format("YYYY年MM月DD日HH時mm分")
+    },
     async fetchPlayResults() {
       try {
         const res = await this.$axios.get('play_results', {
           headers: {
-            uid: this.uid,
-            "access-token": this.token,
-            client: this.client,
+            uid: this.users.uid,
+            "access-token": this.users.token,
+            client: this.users.client,
           },
         })
-        console.log(res.data);
         this.play_results = res.data;
         this.getEvents();
       }
       catch(error) {
         console.log(error)
       }
+    },
+    getLogin() {
+      this.users.uid = this['login/uid']
+      this.users.token = this['login/token']
+      this.users.client = this['login/client']
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {
@@ -288,14 +295,13 @@ export default {
       try{
         let accept = confirm('本当に削除しますか？')
         if(accept) {
-          const result = await this.$axios.delete('play_results/' + this.selectedEvent.id , {
+          await this.$axios.delete('play_results/' + this.selectedEvent.id , {
             headers: {
-              uid: this.uid,
-              "access-token": this.token,
-              client: this.client,
+              uid: this.users.uid,
+              "access-token": this.users.token,
+              client: this.users.client,
             },
           })
-          console.log(result.data)
           this.$router.go(this.$router.currentRoute.path)
         }
         else {
@@ -305,7 +311,7 @@ export default {
       catch(error) {
         console.log(error)
       }
-    } 
+    }
   }
 }
 </script>

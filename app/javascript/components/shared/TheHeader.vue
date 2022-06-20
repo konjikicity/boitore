@@ -148,18 +148,18 @@
     </v-navigation-drawer>
   </div>
 </template>
-
 <script>
-const  TheFlashMessage  = () => import('components/shared/TheFlashMessage');
-import { mdiHome } from '@mdi/js';
-import { mdiAccount } from '@mdi/js';
-import { mdiLogin } from '@mdi/js';
-import { mdiLogout } from '@mdi/js';
-import { mdiLightbulbOnOutline } from '@mdi/js';
-import { mdiFileSign } from '@mdi/js';
-import { mdiNoteTextOutline } from '@mdi/js';
-import { mdiShieldSunOutline } from '@mdi/js';
-import { mdiHelpCircleOutline } from '@mdi/js';
+const  TheFlashMessage  = () => import('components/shared/TheFlashMessage')
+import { mdiHome } from '@mdi/js'
+import { mdiAccount } from '@mdi/js'
+import { mdiLogin } from '@mdi/js'
+import { mdiLogout } from '@mdi/js'
+import { mdiLightbulbOnOutline } from '@mdi/js'
+import { mdiFileSign } from '@mdi/js'
+import { mdiNoteTextOutline } from '@mdi/js'
+import { mdiShieldSunOutline } from '@mdi/js'
+import { mdiHelpCircleOutline } from '@mdi/js'
+import { mapGetters } from "vuex"
 
 export default {
   name: "TheHeader",
@@ -184,22 +184,22 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["login/uid", "login/token", "login/client"]),
     isLoggedIn() {
-      return this.$store.getters['login/token'] !== null;
+      return this['login/token'] !== null
     },
     isNotLoggedIn() {
-      return this.$store.getters['login/token'] == null;
+      return this['login/token'] == null
     }
   },
   methods: {
-
     async logout () {
       try {
-        const res = await this.$axios.delete('/auth/sign_out', {
+        await this.$axios.delete('/auth/sign_out', {
           headers: {
-            uid: this.$store.getters['login/uid'],
-            "access-token": this.$store.getters['login/token'],
-            client: this.$store.getters['login/client']
+            uid: this['login/uid'],
+            "access-token": this['login/token'],
+            client: this['login/client']
           },
         })
         this.$store.dispatch(
@@ -214,17 +214,14 @@ export default {
         this.drawer = false
         this.$store.commit('login/logoutUser')
         this.$store.commit('practice/resetResult')
-        console.log({ res })
-        return res
-
-      } catch (error) {
+      } 
+      catch (error) {
         console.log({ error })
       }
     }
   }
 }
 </script>
-
 <style scoped>
 .v-image:hover {
   opacity: 0.8;

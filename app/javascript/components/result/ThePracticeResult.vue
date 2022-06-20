@@ -102,7 +102,7 @@
             </p>
           </v-col>
           <v-col
-            v-if="token !== null"
+            v-if="users.token !== null"
             cols="3"
             class="text-center"
           >
@@ -144,6 +144,7 @@
 <script>
 import { mdiTwitter } from '@mdi/js'
 import { mdiContentSaveOutline } from '@mdi/js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ThePracticeResult',
@@ -159,12 +160,14 @@ export default {
       normalSentence: '',
       boinSentence: '',
       score: '',
-      token: null,
-      uid: null,
-      id: null,
-      alert: null,
       normalForm: null,
       boinForm: null,
+      users: {
+        id: null,
+        token: null,
+        uid: null,
+        client: null,
+      },
       icons: { 
         twitter: mdiTwitter,
         save: mdiContentSaveOutline
@@ -176,7 +179,6 @@ export default {
       return window.location.origin + this.$router.resolve({ name: "TopIndex" }).href
     },
     shareTwitter() {
-
       let share= "https://twitter.com/intent/tweet?url=" + 
       "【練習結果】" +
       "%0D%0A" +
@@ -192,7 +194,11 @@ export default {
       this.fullPath + "&hashtags=BOIトレ"+"&hashtags=母音法"
 
       return share
-    }
+    },
+    ...mapGetters(["login/id","login/uid", "login/token", "login/client"]),
+    ...mapGetters(["practice/normalSentence", "practice/boinSentence", "practice/boinVoice", "practice/normalVoice",
+      "practice/boinRecognition", "practice/normalRecognition", "practice/boinForm", "practice/normalForm"
+    ])
   },
   watch: {
     boinRecognition: function() {
@@ -219,7 +225,8 @@ export default {
       if (resultB > 0) resultB = Math.round(resultB);
       let resultC = resultNormalLength * 0.25
       if (resultC > 0) resultC = Math.round(resultC);
-
+      
+      // 評価基準に基づいて採点を行う
       if(resultWord == normalWord ){
         this.judge = 'S'
         this.activeColor = 'yellow'
@@ -249,64 +256,64 @@ export default {
         this.activeColor = 'blue'
         this.judgeText = '全く聞き取れないかもです...もう一度練習しましょう!'
         this.score = 10 + Math.floor( Math.random() * 16 );
-
       }
-  
     }
   },
   created() {
-  
-    this.id = this.$store.getters['login/id']
-    this.token = this.$store.getters['login/token']
-    this.uid = this.$store.getters['login/uid']
-    this.client = this.$store.getters['login/client']
-    this.normalSentence = this.$store.getters['practice/normalSentence']
-    this.boinSentence = this.$store.getters['practice/boinSentence']
-    this.boinVoice.url = this.$store.getters['practice/boinVoice']
-    this.normalVoice.url = this.$store.getters['practice/normalVoice']
-    this.boinRecognition = this.$store.getters['practice/boinRecognition']
-    this.normalRecognition = this.$store.getters['practice/normalRecognition']
-    this.boinForm = this.$store.getters['practice/boinForm']
-    this.normalForm = this.$store.getters['practice/normalForm']
+    this.getLogin();
+    this.getPracticeResult();
   },
   methods: {
-  
-    saveResult() {
-      const form = new FormData();
-      form.append("play_result[normal_voice]", this.normalForm)
-      form.append("play_result[boin_voice]", this.boinForm)
-      form.append("play_result[practiced_sentence]", this.normalSentence)
-      form.append("play_result[practiced_normal]", this.normalRecognition)
-      form.append("play_result[practiced_boin]", this.boinRecognition)
-      form.append("play_result[judge]", this.judge)
-      form.append("play_result[score]", this.score)
-      form.append("play_result[user_id]", this.id)
-      this.$axios.post('play_results', form,{
-        headers: {
-          'content-type': 'multipart/form-data',
-          uid: this.uid,
-          "access-token": this.token,
-          client: this.client,
-        },   
-      })
-        .then(res => {
-        
-          this.$store.dispatch(
-            "message/showMessage",
-            {
-              message: "練習内容を保存しました。",
-              type: "success",
-              status: true,
-            },
-          )
-          
-          console.log({ res })
-          this.$router.push({ name: 'MyPageIndex' })
+    async saveResult() {
+      try {
+        const form = new FormData()
+        form.append("play_result[normal_voice]", this.normalForm)
+        form.append("play_result[boin_voice]", this.boinForm)
+        form.append("play_result[practiced_sentence]", this.normalSentence)
+        form.append("play_result[practiced_normal]", this.normalRecognition)
+        form.append("play_result[practiced_boin]", this.boinRecognition)
+        form.append("play_result[judge]", this.judge)
+        form.append("play_result[score]", this.score)
+        form.append("play_result[user_id]", this.users.id)
+
+        await this.$axios.post('play_results', form,{
+          headers: {
+            'content-type': 'multipart/form-data',
+            uid: this.users.uid,
+            "access-token": this.users.token,
+            client: this.users.client,
+          },   
         })
-        .catch(err => {
-          console.log(err.status)
-          this.alert = "練習していない文章があります！ 文章が保存できませんでした."
-        });
+
+        this.$store.dispatch(
+          "message/showMessage",
+          {
+            message: "練習内容を保存しました。",
+            type: "success",
+            status: true,
+          },
+        )
+        this.$router.push({ name: 'MyPageIndex' })
+      }
+      catch(error) {
+        console.log(error)
+      }
+    },
+    getLogin() {
+      this.users.id = this['login/id']
+      this.users.token = this['login/token']
+      this.users.uid = this['login/uid']
+      this.users.client = this['login/client']
+    },
+    getPracticeResult() {
+      this.normalSentence = this['practice/normalSentence']
+      this.boinSentence = this['practice/boinSentence']
+      this.boinVoice.url = this['practice/boinVoice']
+      this.normalVoice.url = this['practice/normalVoice']
+      this.boinRecognition = this['practice/boinRecognition']
+      this.normalRecognition = this['practice/normalRecognition']
+      this.boinForm = this['practice/boinForm']
+      this.normalForm = this['practice/normalForm']
     }
   }
 } 

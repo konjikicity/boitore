@@ -175,7 +175,7 @@
   </v-container>
 </template>
 <script>
-const  TheMessage = () => import('../../components/shared/TheMessage');
+const  TheMessage = () => import('../../components/shared/TheMessage')
 import { mdiAccountCircle } from '@mdi/js'
 import { mdiLock } from '@mdi/js'
 import { mdiEmail } from '@mdi/js'
@@ -245,14 +245,11 @@ export default {
             status: true,
           },
         )
-        console.log({ res })
-        return res
-
-      } catch (error) {
+      } 
+      catch (error) {
         this.alert = '名前またはメールアドレスが使用されています。'
         this.notice = null
       }
-
     }
   }
 }

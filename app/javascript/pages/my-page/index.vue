@@ -53,8 +53,8 @@
 </template>
 
 <script>
-const  TheCalendar  = () => import('../../components/calendar/TheCalendar');
-const  TheResultTable  = () => import('../../components/calendar/TheResultTable');
+import TheCalendar from '../../components/calendar/TheCalendar'
+import TheResultTable from '../../components/calendar/TheResultTable'
 import { mdiCalendar } from '@mdi/js'
 import { mdiClock } from '@mdi/js'
 
@@ -87,7 +87,6 @@ export default {
     anyCalendar() {
       this.ChangeSheet = false  
     }
-
   }
 }
 </script>
