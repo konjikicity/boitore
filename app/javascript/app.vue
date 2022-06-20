@@ -45,7 +45,4 @@ export default {
 .v-enter, .v-leave-to {
   opacity: 0;
 }
-.v-main {
-  padding: 70px 0px 0px;
-}
 </style>
