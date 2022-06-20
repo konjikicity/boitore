@@ -170,6 +170,7 @@ import moment from 'moment'
 import { mdiChevronLeft } from '@mdi/js'
 import { mdiChevronRight } from '@mdi/js'
 import { mdiMenuDown } from '@mdi/js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'TheCalender',
@@ -177,9 +178,6 @@ export default {
     return {
       events: [],
       value: moment().format('yyyy-MM-DD'),
-      uid: null,
-      token: null,
-      client: null,
       play_results: [],
       dialog: false,
       selectedEvent: {},
@@ -194,19 +192,22 @@ export default {
         mdiLeft: mdiChevronLeft, 
         mdiRight: mdiChevronRight,
         mdiMenu: mdiMenuDown
-      }
+      },
+      users: {
+        uid: null,
+        token: null,
+        client: null
+      }      
     }
   },
   computed: {
     title() {
       return moment(this.value).format('yyyy年 M月')
     },
+    ...mapGetters(["login/uid", "login/token", "login/client"])
   },
   created() {
-    this.name = this.$store.getters['login/name']
-    this.uid = this.$store.getters['login/uid']
-    this.token = this.$store.getters['login/token']
-    this.client = this.$store.getters['login/client']
+    this.getLogin();
     this.fetchPlayResults();
   },
   methods: {
@@ -250,9 +251,9 @@ export default {
       try {
         const res = await this.$axios.get('play_results', {
           headers: {
-            uid: this.uid,
-            "access-token": this.token,
-            client: this.client,
+            uid: this.users.uid,
+            "access-token": this.users.token,
+            client: this.users.client,
           },
         })
         console.log(res.data);
@@ -262,6 +263,11 @@ export default {
       catch(error) {
         console.log(error)
       }
+    },
+    getLogin() {
+      this.users.uid = this['login/uid']
+      this.users.token = this['login/token']
+      this.users.client = this['login/client']
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {
@@ -290,9 +296,9 @@ export default {
         if(accept) {
           const result = await this.$axios.delete('play_results/' + this.selectedEvent.id , {
             headers: {
-              uid: this.uid,
-              "access-token": this.token,
-              client: this.client,
+              uid: this.users.uid,
+              "access-token": this.users.token,
+              client: this.users.client,
             },
           })
           console.log(result.data)
