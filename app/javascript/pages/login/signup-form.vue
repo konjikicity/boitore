@@ -14,9 +14,9 @@
           height="500px"
         >
           <v-card-title>
-            <h1 class="display-1 font-weight-bold">
+            <h2 class="font-weight-bold pt-5 pl-2">
               ユーザー登録
-            </h1>
+            </h2>
           </v-card-title>
           <validation-observer
             ref="observer"
@@ -122,9 +122,9 @@
           height="500px"
         >
           <v-card-title>
-            <h2 class="font-weight-bold pt-5 pl-2">
+            <h3 class="font-weight-bold pt-5 pl-2">
               他のサービスで新規登録
-            </h2>
+            </h3>
           </v-card-title>
           <div
             class="my-auto"

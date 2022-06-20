@@ -323,5 +323,4 @@ export default {
   margin: 0;
   padding: 0px 0px 30px 0px;
 }
-
 </style>

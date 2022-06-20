@@ -1,46 +1,50 @@
 <template>  
   <v-card
-    class="basil"
+    class="gray"
   >
     <div
-      class="font-weight-bold py-8 text-h5"
+      class="font-weight-bold py-8 text-h5 white--text"
     >
       練習保存機能
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651839957/boi%E3%83%88%E3%83%AC/14caecababc47167a653af9bcea383dd_ddmqi0.png"
-      width="80%"
+      max-height="700"
+      max-width="700"
     />
     <p
-      class="pt-5"
+      class="pt-5 white--text"
     >
       練習した音声を結果ページから保存できるようなります！
     </p>
     <p
-      class="pb-5"
+      class="pb-5 white--text"
     >
       保存後は下記のカレンダー機能から参照することができます！
     </p>
     <div
-      class="font-weight-bold py-8 text-h5"
+      class="font-weight-bold py-8 text-h5 white--text"
     >
       カレンダー機能
     </div>
     <v-img
       src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651848206/boi%E3%83%88%E3%83%AC/82c12d5b788af2c08eccde25941dbbcb_fokzhx.jpg"
-      width="80%"
+      max-height="700"
+      max-width="700"
     />
     <p
-      class="pt-5"
+      class="pt-5 white--text"
     >
       保存した音声はMyPageのカレンダーから見られます！
     </p>
     <p
-      class="pb-5"
+      class="pb-5 white--text"
     >
       登録された音声をクリックすると詳細画面が表示され、練習結果を見られます！
     </p>
-    <ul>
+    <ul
+      class="white--text"
+    >
       他にもこんなことができます！
       <li class="pt-5">
         日単位での表示
@@ -95,7 +99,6 @@ export default{
       }
     }
   }
-
 }
 </script>
 <style scoped>
@@ -113,7 +116,7 @@ li {
 .py {
   padding: 50px 0px 50px 0px;
 }
-.basil {
-  background-color: #FFFBE6 !important;
+.gray {
+  background-color: #424242 !important;
 }
 </style>
