@@ -144,6 +144,7 @@
 <script>
 import { mdiTwitter } from '@mdi/js'
 import { mdiContentSaveOutline } from '@mdi/js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ThePracticeResult',
@@ -159,12 +160,15 @@ export default {
       normalSentence: '',
       boinSentence: '',
       score: '',
-      token: null,
-      uid: null,
-      id: null,
-      alert: null,
       normalForm: null,
       boinForm: null,
+      alert: null,
+      users: {
+        id: null,
+        token: null,
+        uid: null,
+        client: null,
+      },
       icons: { 
         twitter: mdiTwitter,
         save: mdiContentSaveOutline
@@ -192,7 +196,11 @@ export default {
       this.fullPath + "&hashtags=BOIトレ"+"&hashtags=母音法"
 
       return share
-    }
+    },
+    ...mapGetters(["login/id","login/uid", "login/token", "login/client"]),
+    ...mapGetters(["practice/normalSentence", "practice/boinSentence", "practice/boinVoice", "practice/normalVoice",
+      "practice/boinRecognition", "practice/normalRecognition", "practice/boinForm", "practice/normalForm"
+    ])
   },
   watch: {
     boinRecognition: function() {
@@ -255,19 +263,8 @@ export default {
     }
   },
   created() {
-  
-    this.id = this.$store.getters['login/id']
-    this.token = this.$store.getters['login/token']
-    this.uid = this.$store.getters['login/uid']
-    this.client = this.$store.getters['login/client']
-    this.normalSentence = this.$store.getters['practice/normalSentence']
-    this.boinSentence = this.$store.getters['practice/boinSentence']
-    this.boinVoice.url = this.$store.getters['practice/boinVoice']
-    this.normalVoice.url = this.$store.getters['practice/normalVoice']
-    this.boinRecognition = this.$store.getters['practice/boinRecognition']
-    this.normalRecognition = this.$store.getters['practice/normalRecognition']
-    this.boinForm = this.$store.getters['practice/boinForm']
-    this.normalForm = this.$store.getters['practice/normalForm']
+    this.getLogin();
+    this.getPracticeResult();
   },
   methods: {
   
@@ -280,13 +277,13 @@ export default {
       form.append("play_result[practiced_boin]", this.boinRecognition)
       form.append("play_result[judge]", this.judge)
       form.append("play_result[score]", this.score)
-      form.append("play_result[user_id]", this.id)
+      form.append("play_result[user_id]", this.users.id)
       this.$axios.post('play_results', form,{
         headers: {
           'content-type': 'multipart/form-data',
-          uid: this.uid,
-          "access-token": this.token,
-          client: this.client,
+          uid: this.users.uid,
+          "access-token": this.users.token,
+          client: this.users.client,
         },   
       })
         .then(res => {
@@ -307,6 +304,22 @@ export default {
           console.log(err.status)
           this.alert = "練習していない文章があります！ 文章が保存できませんでした."
         });
+    },
+    getLogin() {
+      this.users.id = this['login/id']
+      this.users.token = this['login/token']
+      this.users.uid = this['login/uid']
+      this.users.client = this['login/client']
+    },
+    getPracticeResult() {
+      this.normalSentence = this['practice/normalSentence']
+      this.boinSentence = this['practice/boinSentence']
+      this.boinVoice.url = this['practice/boinVoice']
+      this.normalVoice.url = this['practice/normalVoice']
+      this.boinRecognition = this['practice/boinRecognition']
+      this.normalRecognition = this['practice/normalRecognition']
+      this.boinForm = this['practice/boinForm']
+      this.normalForm = this['practice/normalForm']
     }
   }
 } 

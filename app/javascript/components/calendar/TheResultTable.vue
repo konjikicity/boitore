@@ -167,7 +167,7 @@ export default {
       this.dialog = true
     },
     formatDate(value) {
-      return moment(value).format("YYYY年MM月DD日")
+      return moment(value).format("YYYY年MM月DD日HH時mm分")
     },
     async DeleteResult(){
       try{

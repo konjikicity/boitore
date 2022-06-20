@@ -106,7 +106,7 @@
               <div
                 class="pl-15"
               >
-                {{ selectedEvent.start }}
+                {{ formatDate(selectedEvent.start) }}
               </div>
               <v-spacer />
               <v-btn
@@ -204,7 +204,7 @@ export default {
     title() {
       return moment(this.value).format('yyyy年 M月')
     },
-    ...mapGetters(["login/uid", "login/token", "login/client"])
+    ...mapGetters(["login/uid", "login/token", "login/client"]),
   },
   created() {
     this.getLogin();
@@ -214,7 +214,7 @@ export default {
     getEvents() {
       const events = [];
       for (let i = 0; i < this.play_results.length; i++) {
-        const first =  moment(this.play_results[i].created_at).format('yyyy-MM-DD-HH:mm');
+        const first =  new Date(this.play_results[i].created_at)
         const name = this.play_results[i].practiced_sentence
         const id = this.play_results[i].id
         const practiced_normal = this.play_results[i].practiced_normal
@@ -246,6 +246,9 @@ export default {
     },
     getEventColor(event) {
       return event.color;
+    },
+    formatDate(value) {
+      return moment(value).format("YYYY年MM月DD日HH時mm分")
     },
     async fetchPlayResults() {
       try {
@@ -311,7 +314,7 @@ export default {
       catch(error) {
         console.log(error)
       }
-    } 
+    }
   }
 }
 </script>
