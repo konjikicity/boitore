@@ -237,7 +237,6 @@ export default {
         }); 
 
       }
-      console.log(events)
       this.events = events
     },
     setToday () {
@@ -259,7 +258,6 @@ export default {
             client: this.users.client,
           },
         })
-        console.log(res.data);
         this.play_results = res.data;
         this.getEvents();
       }
@@ -297,14 +295,13 @@ export default {
       try{
         let accept = confirm('本当に削除しますか？')
         if(accept) {
-          const result = await this.$axios.delete('play_results/' + this.selectedEvent.id , {
+          await this.$axios.delete('play_results/' + this.selectedEvent.id , {
             headers: {
               uid: this.users.uid,
               "access-token": this.users.token,
               client: this.users.client,
             },
           })
-          console.log(result.data)
           this.$router.go(this.$router.currentRoute.path)
         }
         else {

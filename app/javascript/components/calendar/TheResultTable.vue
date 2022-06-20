@@ -149,7 +149,6 @@ export default {
             client: this.users.client,
           },
         })
-        console.log(res.data);
         this.play_results = res.data;
       }
       catch(error) {
@@ -173,14 +172,13 @@ export default {
       try{
         let accept = confirm('本当に削除しますか？')
         if(accept) {
-          const result = await this.$axios.delete('play_results/' + this.editedItem.id , {
+          await this.$axios.delete('play_results/' + this.editedItem.id , {
             headers: {
               uid: this.users.uid,
               "access-token": this.users.token,
               client: this.users.client,
             },
           })
-          console.log(result.data)
           this.$router.go(this.$router.currentRoute.path)
         }
         else {

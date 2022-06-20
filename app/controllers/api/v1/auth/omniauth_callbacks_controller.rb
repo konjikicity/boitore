@@ -1,6 +1,4 @@
 class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksController
-  protect_from_forgery
-  
   def omniauth_success
     super
     @resource.update(nickname: @resource.name) if @resource.nickname.nil?
@@ -12,23 +10,23 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
     case auth_hash['provider']
     when 'twitter'
       user.assign_attributes({
-        nickname: auth_hash['info']['nickname'],
-        name: auth_hash['info']['name'],
-        image: auth_hash['info']['image'],
-        email: auth_hash['info']['email']
-      })
+                               nickname: auth_hash['info']['nickname'],
+                               name: auth_hash['info']['name'],
+                               image: auth_hash['info']['image'],
+                               email: auth_hash['info']['email']
+                             })
     when 'google'
       user.assign_attributes({
-        nickname: auth_hash['info']['nickname'],
-        name: auth_hash['info']['name'],
-        image: auth_hash['info']['image'],
-        email: auth_hash['info']['email']
-      })
+                               nickname: auth_hash['info']['nickname'],
+                               name: auth_hash['info']['name'],
+                               image: auth_hash['info']['image'],
+                               email: auth_hash['info']['email']
+                             })
     else
       super
     end
   end
-  
+
   def clean_resource
     @resource.name = strip_emoji(@resource.name)
     @resource.nickname = strip_emoji(@resource.nickname)

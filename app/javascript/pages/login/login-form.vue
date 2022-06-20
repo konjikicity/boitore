@@ -195,7 +195,7 @@ export default {
   methods: {
     async login(){
       try {
-        const res = await this.$axios.post('auth/sign_in', {
+        await this.$axios.post('auth/sign_in', {
           email: this.email,
           password: this.password,
         }
@@ -212,7 +212,7 @@ export default {
             status: true,
           },
         )
-        } 
+      } 
       catch (error) {
         this.alert = 'メールアドレスまたはパスワードが違います'
         this.notice = null

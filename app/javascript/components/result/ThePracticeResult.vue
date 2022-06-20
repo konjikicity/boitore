@@ -264,40 +264,40 @@ export default {
     this.getPracticeResult();
   },
   methods: {
-    saveResult() {
-      const form = new FormData();
-      form.append("play_result[normal_voice]", this.normalForm)
-      form.append("play_result[boin_voice]", this.boinForm)
-      form.append("play_result[practiced_sentence]", this.normalSentence)
-      form.append("play_result[practiced_normal]", this.normalRecognition)
-      form.append("play_result[practiced_boin]", this.boinRecognition)
-      form.append("play_result[judge]", this.judge)
-      form.append("play_result[score]", this.score)
-      form.append("play_result[user_id]", this.users.id)
-      this.$axios.post('play_results', form,{
-        headers: {
-          'content-type': 'multipart/form-data',
-          uid: this.users.uid,
-          "access-token": this.users.token,
-          client: this.users.client,
-        },   
-      })
-        .then(res => {
-          this.$store.dispatch(
-            "message/showMessage",
-            {
-              message: "練習内容を保存しました。",
-              type: "success",
-              status: true,
-            },
-          )
-          console.log({ res })
-          this.$router.push({ name: 'MyPageIndex' })
+    async saveResult() {
+      try {
+        const form = new FormData()
+        form.append("play_result[normal_voice]", this.normalForm)
+        form.append("play_result[boin_voice]", this.boinForm)
+        form.append("play_result[practiced_sentence]", this.normalSentence)
+        form.append("play_result[practiced_normal]", this.normalRecognition)
+        form.append("play_result[practiced_boin]", this.boinRecognition)
+        form.append("play_result[judge]", this.judge)
+        form.append("play_result[score]", this.score)
+        form.append("play_result[user_id]", this.users.id)
+
+        await this.$axios.post('play_results', form,{
+          headers: {
+            'content-type': 'multipart/form-data',
+            uid: this.users.uid,
+            "access-token": this.users.token,
+            client: this.users.client,
+          },   
         })
-        
-        .catch(err => {
-          console.log(err.status)
-        });
+
+        this.$store.dispatch(
+          "message/showMessage",
+          {
+            message: "練習内容を保存しました。",
+            type: "success",
+            status: true,
+          },
+        )
+        this.$router.push({ name: 'MyPageIndex' })
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
     getLogin() {
       this.users.id = this['login/id']

@@ -195,7 +195,7 @@ export default {
   methods: {
     async logout () {
       try {
-        const res = await this.$axios.delete('/auth/sign_out', {
+        await this.$axios.delete('/auth/sign_out', {
           headers: {
             uid: this['login/uid'],
             "access-token": this['login/token'],
@@ -214,7 +214,7 @@ export default {
         this.drawer = false
         this.$store.commit('login/logoutUser')
         this.$store.commit('practice/resetResult')
-        } 
+      } 
       catch (error) {
         console.log({ error })
       }
