@@ -102,7 +102,7 @@
             </p>
           </v-col>
           <v-col
-            v-if="token !== null"
+            v-if="users.token !== null"
             cols="3"
             class="text-center"
           >
@@ -162,7 +162,6 @@ export default {
       score: '',
       normalForm: null,
       boinForm: null,
-      alert: null,
       users: {
         id: null,
         token: null,
@@ -180,7 +179,6 @@ export default {
       return window.location.origin + this.$router.resolve({ name: "TopIndex" }).href
     },
     shareTwitter() {
-
       let share= "https://twitter.com/intent/tweet?url=" + 
       "【練習結果】" +
       "%0D%0A" +
@@ -227,7 +225,8 @@ export default {
       if (resultB > 0) resultB = Math.round(resultB);
       let resultC = resultNormalLength * 0.25
       if (resultC > 0) resultC = Math.round(resultC);
-
+      
+      // 評価基準に基づいて採点を行う
       if(resultWord == normalWord ){
         this.judge = 'S'
         this.activeColor = 'yellow'
@@ -257,9 +256,7 @@ export default {
         this.activeColor = 'blue'
         this.judgeText = '全く聞き取れないかもです...もう一度練習しましょう!'
         this.score = 10 + Math.floor( Math.random() * 16 );
-
       }
-  
     }
   },
   created() {
@@ -267,7 +264,6 @@ export default {
     this.getPracticeResult();
   },
   methods: {
-  
     saveResult() {
       const form = new FormData();
       form.append("play_result[normal_voice]", this.normalForm)
@@ -287,7 +283,6 @@ export default {
         },   
       })
         .then(res => {
-        
           this.$store.dispatch(
             "message/showMessage",
             {
@@ -296,13 +291,12 @@ export default {
               status: true,
             },
           )
-          
           console.log({ res })
           this.$router.push({ name: 'MyPageIndex' })
         })
+        
         .catch(err => {
           console.log(err.status)
-          this.alert = "練習していない文章があります！ 文章が保存できませんでした."
         });
     },
     getLogin() {
