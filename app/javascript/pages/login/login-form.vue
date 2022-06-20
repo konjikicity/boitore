@@ -212,14 +212,11 @@ export default {
             status: true,
           },
         )
-
-        console.log({ res })
-        return res
-      } catch (error) {
+        } 
+      catch (error) {
         this.alert = 'メールアドレスまたはパスワードが違います'
         this.notice = null
         console.log({ error })
-
       }
     }  
   }

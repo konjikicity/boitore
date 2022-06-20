@@ -110,10 +110,9 @@
     </v-row>
   </v-container>
 </template>
-
 <script>
-const TheHowToPlay = () => import('../../components/how-to/TheHowToPlay');
-const TheAfterSignUp = () => import('../../components/how-to/TheAfterSignUp');
+const TheHowToPlay = () => import('../../components/how-to/TheHowToPlay')
+const TheAfterSignUp = () => import('../../components/how-to/TheAfterSignUp')
 import { mdiAppleKeyboardCaps } from '@mdi/js'
 export default {
   name: "HowToIndex",
@@ -139,7 +138,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 
 .basil--text {

@@ -148,7 +148,6 @@
     </v-navigation-drawer>
   </div>
 </template>
-
 <script>
 const  TheFlashMessage  = () => import('components/shared/TheFlashMessage')
 import { mdiHome } from '@mdi/js'
@@ -223,7 +222,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 .v-image:hover {
   opacity: 0.8;
