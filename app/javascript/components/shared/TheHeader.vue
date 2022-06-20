@@ -16,10 +16,59 @@
           src="https://res.cloudinary.com/dzlhvpfmo/image/upload/v1651544232/boi%E3%83%88%E3%83%AC/logo_j6nywc.webp"
         />
       </router-link>
+      <div
+      class="ml-auto"
+      >
+         <v-btn
+         v-if="isNotLoggedIn"
+         class="mr-5 font-weight-bold"
+         text
+         :to="{ name: 'LoginForm'}"
+         >
+          ログイン
+        </v-btn>
+  
+        <v-btn
+        v-if="isNotLoggedIn"
+        class="mr-5 font-weight-bold"
+         :to="{ name: 'SignUpForm'}"
+        text
+        >
+          新規登録
+        </v-btn>
+         <v-btn
+        v-if="isLoggedIn"
+        class="mr-5 font-weight-bold"
+         :to="{ name: 'SignUpForm'}"
+         style="text-transform: none"
+        text
+        >
+          MyPage
+        </v-btn>
+         <v-btn
+        v-if="isLoggedIn"
+        class="mr-5 font-weight-bold"
+        @click="logout"
+        text
+        >
+          ログアウト
+        </v-btn>
+        <v-btn
+        class="mr-5 font-weight-bold"
+        color="error"
+        rounded
+        :to="{ name: 'HowToIndex'}"
+        >
+        <v-icon
+        dense
+        >{{ icons.light }}</v-icon>
+          BOIトレとは？
+        </v-btn>
       <v-app-bar-nav-icon
-        class="ml-auto mr-5"
+        class="mr-5"
         @click="drawer = true"
       />
+      </div>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -46,66 +95,6 @@
                 <v-icon>{{ icons.home }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>HOME</v-list-item-title>
-            </v-list-item>
-          </router-link>
-
-          <router-link
-            v-if="isLoggedIn"
-            :to="{ name: 'MyPageIndex'}"
-          >
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon>{{ icons.account }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>MyPage</v-list-item-title>
-            </v-list-item>
-          </router-link>
-
-          <router-link
-            v-if="isNotLoggedIn"
-            :to="{ name: 'LoginForm'}"
-          >
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon>{{ icons.login }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>ログイン</v-list-item-title>
-            </v-list-item>
-          </router-link>
-
-          <router-link
-            v-if="isNotLoggedIn"
-            :to="{ name: 'SignUpForm'}"
-          >
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon>{{ icons.file }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>新規登録</v-list-item-title>
-            </v-list-item>
-          </router-link>
-
-          <router-link
-            v-if="isLoggedIn"
-            :to="{ name: 'TopIndex'}"
-            @click.native="logout"
-          >
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon>{{ icons.logout }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>ログアウト</v-list-item-title>
-            </v-list-item>
-          </router-link>
-
-          <router-link
-            :to="{ name: 'HowToIndex'}"
-          >
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon>{{ icons.light }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>BOIトレとは？</v-list-item-title>
             </v-list-item>
           </router-link>
 
@@ -180,17 +169,18 @@ export default {
         note: mdiNoteTextOutline,
         shield: mdiShieldSunOutline,
         help: mdiHelpCircleOutline
-      }
+      },
     }
   },
   computed: {
-    ...mapGetters(["login/uid", "login/token", "login/client"]),
+    ...mapGetters(["login/uid", "login/token", "login/client", "login/name"]),
     isLoggedIn() {
+      this.name = this['login/name']
       return this['login/token'] !== null
     },
     isNotLoggedIn() {
       return this['login/token'] == null
-    }
+    },
   },
   methods: {
     async logout () {
@@ -209,7 +199,7 @@ export default {
             type: "error",
             status: true,
           },
-          
+        this.$router.push({ name: 'TopIndex' })
         ),
         this.drawer = false
         this.$store.commit('login/logoutUser')
