@@ -17,57 +17,58 @@
         />
       </router-link>
       <div
-      class="ml-auto"
+        class="ml-auto"
       >
-         <v-btn
-         v-if="isNotLoggedIn"
-         class="mr-5 font-weight-bold"
-         text
-         :to="{ name: 'LoginForm'}"
-         >
+        <v-btn
+          v-if="isNotLoggedIn"
+          class="mr-5 font-weight-bold"
+          text
+          :to="{ name: 'LoginForm'}"
+        >
           ログイン
         </v-btn>
-  
         <v-btn
-        v-if="isNotLoggedIn"
-        class="mr-5 font-weight-bold"
-         :to="{ name: 'SignUpForm'}"
-        text
+          v-if="isNotLoggedIn"
+          class="mr-5 font-weight-bold"
+          :to="{ name: 'SignUpForm'}"
+          text
         >
           新規登録
         </v-btn>
-         <v-btn
-        v-if="isLoggedIn"
-        class="mr-5 font-weight-bold"
-         :to="{ name: 'SignUpForm'}"
-         style="text-transform: none"
-        text
+        <v-btn
+          v-if="isLoggedIn"
+          class="mr-5 font-weight-bold"
+          :to="{ name: 'SignUpForm'}"
+          style="text-transform: none"
+          text
         >
           MyPage
         </v-btn>
-         <v-btn
-        v-if="isLoggedIn"
-        class="mr-5 font-weight-bold"
-        @click="logout"
-        text
+        <v-btn
+          v-if="isLoggedIn"
+          class="mr-5 font-weight-bold"
+          text
+          @click="logout"
         >
           ログアウト
         </v-btn>
         <v-btn
-        class="mr-5 font-weight-bold"
-        color="error"
-        rounded
-        :to="{ name: 'HowToIndex'}"
+          class="mr-5 font-weight-bold"
+          color="error"
+          rounded
+          :to="{ name: 'HowToIndex'}"
         >
-        <v-icon
-        dense
-        >{{ icons.light }}</v-icon>
+          <v-icon
+            dense
+          >
+            {{ icons.light }}
+          </v-icon>
           BOIトレとは？
         </v-btn>
-      <v-app-bar-nav-icon
-        class="mr-5"
-        @click="drawer = true"
-      />
+        <v-app-bar-nav-icon
+          class="mr-5"
+          @click="drawer = true"
+        />
       </div>
     </v-app-bar>
 
@@ -173,9 +174,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["login/uid", "login/token", "login/client", "login/name"]),
+    ...mapGetters(["login/uid", "login/token", "login/client"]),
     isLoggedIn() {
-      this.name = this['login/name']
       return this['login/token'] !== null
     },
     isNotLoggedIn() {
@@ -199,7 +199,7 @@ export default {
             type: "error",
             status: true,
           },
-        this.$router.push({ name: 'TopIndex' })
+          this.$router.push({ name: 'TopIndex' })
         ),
         this.drawer = false
         this.$store.commit('login/logoutUser')

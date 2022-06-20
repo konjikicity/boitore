@@ -83,7 +83,7 @@
       次は母音法で練習してみましょう！
     </p>
     <p
-    class="white--text"
+      class="white--text"
     >
       母音の文章を<span class="red--text">ゆっくり・しっかり</span>何回か発音しましょう
     </p>
@@ -108,7 +108,7 @@
       結果画面では以下が確認できます
     </p>
     <ul
-    class="white--text"
+      class="white--text"
     >
       <li>判定結果:  母音法での音声認識結果が元の文章と一致しているかを判定します。</li>
       <li>判定基準:  5段階のS・A・B・C・Dの順で評価</li>

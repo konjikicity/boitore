@@ -22,7 +22,7 @@
             </div>
           </v-card-title>
           <v-card-text
-          class="white--text"
+            class="white--text"
           >
             <p>劇団四季にも使われている母音法を使って、発声練習ができるサービスです。</p>
             <p>テレワークで喋ることが少なくなった方にもおすすめです！</p>
@@ -38,7 +38,7 @@
             </div>
           </v-card-title>
           <v-card-text
-          class="white--text"
+            class="white--text"
           >
             <p>文章を母音のみで発声する練習法で、母音がはっきり聞こえるようになり、</p>
             <p>聞こえづらかった声もはっきり聞こえるようになります！</p>
@@ -55,7 +55,7 @@
             </div>
           </v-card-title>
           <v-card-text
-          class="white--text"
+            class="white--text"
           >
             <p>通常の文章と母音法後の文章の録音と再生、</p>
             <p>音声認識を利用してそれぞれの文章がどう聞こえているか結果ページで見られます！</p>
