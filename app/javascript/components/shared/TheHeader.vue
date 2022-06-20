@@ -38,7 +38,7 @@
         <v-btn
           v-if="isLoggedIn"
           class="mr-5 font-weight-bold"
-          :to="{ name: 'SignUpForm'}"
+          :to="{ name: 'MyPageIndex'}"
           style="text-transform: none"
           text
         >
