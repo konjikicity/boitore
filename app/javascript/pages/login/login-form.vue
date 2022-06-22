@@ -10,9 +10,9 @@
         cols="5"
       >
         <v-card
+          id="login"
           class="mx-auto"
           height="500px"
-          id="login"
         >
           <v-card-title>
             <h2 class="font-weight-bold pt-5 pl-2">
