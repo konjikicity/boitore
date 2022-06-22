@@ -60,4 +60,24 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "文字制限のバリデーション確認" do
+    context "名前が50文字以上だった場合" do
+      let(:user) { build(:user, name: Faker::Lorem.characters(number:51) )}
+
+      it "エラーになる" do
+        user.valid?
+        expect(user.errors.messages[:name]).to include "は50文字以内で入力してください"
+      end
+    end
+
+    context "nicknameが50文字以上だった場合" do
+      let(:user) { build(:user, nickname: Faker::Lorem.characters(number:51) )}
+      
+      it "エラーになる" do
+        user.valid?
+        expect(user.errors.messages[:nickname]).to include "は50文字以内で入力してください"
+      end
+    end
+  end
 end
