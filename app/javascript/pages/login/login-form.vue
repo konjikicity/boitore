@@ -12,6 +12,7 @@
         <v-card
           class="mx-auto"
           height="500px"
+          id="login"
         >
           <v-card-title>
             <h2 class="font-weight-bold pt-5 pl-2">
@@ -195,13 +196,12 @@ export default {
   methods: {
     async login(){
       try {
-        await this.$axios.post('auth/sign_in', {
+        const res = await this.$axios.post('auth/sign_in', {
           email: this.email,
           password: this.password,
-        }
-        )
+        })
         this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client,
-          uid: res.data.data.uid, name: res.data.data.name,id: res.data.data.id
+          uid: res.data.data.uid, name: res.data.data.name, id: res.data.data.id
         })
         this.$router.push({ name: 'ModeIndex' })
         this.$store.dispatch(

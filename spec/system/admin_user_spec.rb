@@ -41,49 +41,20 @@ RSpec.describe "AdminのUserCRUD", type: :system do
       end
 
       describe '文字制限の確認' do
-        context '名前を10文字以上で作成した場合' do
+        context '名前を50文字以上で作成した場合' do
           it 'エラーメッセージが表示される' do
             visit new_admins_user_path
-            fill_in('名前', with: Faker::Lorem.characters(number:11) )
+            fill_in('名前', with: Faker::Lorem.characters(number:51) )
             fill_in('メールアドレス', with: 'example@example.com')
             fill_in('パスワード', with: 'password')
             fill_in('パスワード確認', with: 'password')
             click_on('登録する')
             expect(page).to have_content('ユーザーを作成できませんでした')
-            expect(page).to have_content('名前は10文字以内で入力してください')
+            expect(page).to have_content('名前は50文字以内で入力してください')
         end
       end
     end
 
-      describe '重複の確認' do
-        context '作成済みの名前で作成した場合' do
-          let(:user) { create(:user) }
-          it 'エラーメッセージが表示される' do
-            visit new_admins_user_path
-            fill_in('名前', with: user.name )
-            fill_in('メールアドレス', with: 'example@example.com')
-            fill_in('パスワード', with: 'password')
-            fill_in('パスワード確認', with: 'password')
-            click_on('登録する')
-            expect(page).to have_content('ユーザーを作成できませんでした')
-            expect(page).to have_content('名前はすでに存在します')
-          end
-        end
-
-        context '作成済みのメールアドレスで作成した場合' do
-          let(:user) { create(:user) }
-          it 'エラーメッセージが表示される' do
-            visit new_admins_user_path
-            fill_in('名前', with: 'sonoda' )
-            fill_in('メールアドレス', with: user.email )
-            fill_in('パスワード', with: 'password')
-            fill_in('パスワード確認', with: 'password')
-            click_on('登録する')
-            expect(page).to have_content('ユーザーを作成できませんでした')
-            expect(page).to have_content('メールアドレスはすでに存在します')
-          end
-        end
-      end
       describe 'フォーマットの検証' do
         context 'フォーマットが正しくないメールアドレスを作成した場合' do
           invalid_addresses = %w[user@example,com USER.foo.COM A_US-ER@foo. foo@bar_foo.jp foo@bar+baz.com foo@bar..com foo\ bar@baz.com]
@@ -136,41 +107,15 @@ RSpec.describe "AdminのUserCRUD", type: :system do
       end
 
       describe '文字制限の確認' do
-        context '名前を10文字以上で作成した場合' do
+        context '名前を50文字以上で作成した場合' do
           let(:user) { create(:user) }
           it 'エラーメッセージが表示される' do
             visit edit_admins_user_path(user)
-            fill_in('名前', with: Faker::Lorem.characters(number:11) )
+            fill_in('名前', with: Faker::Lorem.characters(number:51) )
             fill_in('メールアドレス', with: 'example@example.com')
             click_on('更新する')
             expect(page).to have_content('ユーザーを更新できませんでした')
-            expect(page).to have_content('名前は10文字以内で入力してください')
-          end
-        end
-      end
-
-      describe '重複の確認' do
-        context '作成済みの名前で作成した場合' do
-          let(:user1) { create(:user) }
-          let(:user2) { create(:user) }
-          it 'エラーメッセージが表示される' do
-            visit edit_admins_user_path(user2)
-            fill_in('名前', with: user1.name )
-            click_on('更新する')
-            expect(page).to have_content('ユーザーを更新できませんでした')
-            expect(page).to have_content('名前はすでに存在します')
-          end
-        end
-
-        context '作成済みのメールアドレスで作成した場合' do
-          let(:user1) { create(:user) }
-          let(:user2) { create(:user) }
-          it 'エラーメッセージが表示される' do
-            visit edit_admins_user_path(user2)
-            fill_in('メールアドレス', with: user1.email )
-            click_on('更新する')
-            expect(page).to have_content('ユーザーを更新できませんでした')
-            expect(page).to have_content('メールアドレスはすでに存在します')
+            expect(page).to have_content('名前は50文字以内で入力してください')
           end
         end
       end

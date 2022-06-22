@@ -27,7 +27,7 @@
             >
               <validation-provider
                 v-slot="{ errors }"
-                rules="required|max:10"
+                rules="required|max:50"
                 name="ユーザー名"
               >
                 <v-text-field 
@@ -231,8 +231,7 @@ export default {
           email: this.email,
           password: this.password,
           password_confirmation: this.passwordConfirmation
-        }
-        )
+        })
         this.$store.commit('login/loginUser', { token: res.headers["access-token"], client: res.headers.client, 
           uid: res.data.data.uid, name: res.data.data.name,id: res.data.data.id
         })
@@ -249,6 +248,7 @@ export default {
       catch (error) {
         this.alert = '名前またはメールアドレスが使用されています。'
         this.notice = null
+        console.log({ error })
       }
     }
   }
