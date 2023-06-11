@@ -7,21 +7,13 @@
       justify="center"
       align-content="center"
     >
-      <v-col
-        cols="11"
-      >
-        <div
-          class="py-5"
-        >
-          <h1
-            class="white--text"
-          >
+      <v-col cols="11">
+        <div class="py-5">
+          <h1 class="white--text">
             Step.1 文章の選択
-          </h1>          
+          </h1>
         </div>
-        <div
-          class="white--text font-weight-bold pb-5"
-        >
+        <div class="white--text font-weight-bold pb-5">
           練習したい文章を選択しましょう!
         </div>
         <v-carousel
@@ -64,9 +56,7 @@
                 align="center"
                 justify="center"
               >
-                <router-link 
-                  :to="{ name: 'NormalPractice', params: { id: sentence.id, mode_id: sentence.mode_id }}"
-                >
+                <router-link :to="{ name: 'NormalPractice', params: { id: sentence.id, mode_id: sentence.mode_id } }">
                   <p>
                     {{ sentence.normal }}
                   </p>
@@ -83,7 +73,7 @@
 <script>
 export default {
   name: "SelectIndex",
-  data () {
+  data() {
     return {
       sentences: []
     }
@@ -94,10 +84,10 @@ export default {
   methods: {
     async fetchSentences() {
       try {
-        const res = await this.$axios.get( 'modes/' + this.$route.params.id + '/selects')
+        const res = await this.$axios.get('modes/' + this.$route.params.id + '/selects')
         this.sentences = res.data
       }
-      catch(error) {
+      catch (error) {
         console.log(error)
       }
     }
@@ -106,17 +96,19 @@ export default {
 </script>
 
 <style  scoped>
-.v-application a{
-    text-decoration: none;
-    color: #616161;
+.v-application a {
+  text-decoration: none;
+  color: #616161;
 }
+
 .v-application a:hover {
   color: #E57373;
   transition: 0.5s;
 }
+
 .v-application p {
   font-size: 58px;
   margin-bottom: 0px;
-  
+
 }
 </style>

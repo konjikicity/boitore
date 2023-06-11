@@ -1,29 +1,63 @@
 <template>
-  <v-container fill-height fluid>
+  <v-container
+    fill-height
+    fluid
+  >
     <v-row justify="center">
       <v-col cols="5">
-        <v-card id="login" class="mx-auto" height="500px">
+        <v-card
+          id="login"
+          class="mx-auto"
+          height="500px"
+        >
           <v-card-title>
             <h2 class="font-weight-bold pt-5 pl-2">
               ログイン
             </h2>
           </v-card-title>
 
-          <validation-observer ref="observer" v-slot="{ invalid }">
+          <validation-observer
+            ref="observer"
+            v-slot="{ invalid }"
+          >
             <v-form @submit.prevent="login">
-              <validation-provider v-slot="{ errors }" rules="required|email" name="メールアドレス">
-                <v-text-field v-model="email" :prepend-icon="icons.account" :error-messages="errors" label="メールアドレス"
-                  class="px-7" />
+              <validation-provider
+                v-slot="{ errors }"
+                rules="required|email"
+                name="メールアドレス"
+              >
+                <v-text-field
+                  v-model="email"
+                  :prepend-icon="icons.account"
+                  :error-messages="errors"
+                  label="メールアドレス"
+                  class="px-7"
+                />
               </validation-provider>
 
-              <validation-provider v-slot="{ errors }" rules="required" name="パスワード">
-                <v-text-field v-model="password" :type="showPassword ? 'text' : 'password'" :prepend-icon="icons.password"
-                  :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" label="パスワード" :error-messages="errors"
-                  class="px-7" @click:append="showPassword = !showPassword" />
+              <validation-provider
+                v-slot="{ errors }"
+                rules="required"
+                name="パスワード"
+              >
+                <v-text-field
+                  v-model="password"
+                  :type="showPassword ? 'text' : 'password'"
+                  :prepend-icon="icons.password"
+                  :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                  label="パスワード"
+                  :error-messages="errors"
+                  class="px-7"
+                  @click:append="showPassword = !showPassword"
+                />
               </validation-provider>
               <TheMessage :alert="alert" />
               <v-card-actions>
-                <v-btn :disabled="invalid" class="error ml-7 font-weight-bold" @click="login">
+                <v-btn
+                  :disabled="invalid"
+                  class="error ml-7 font-weight-bold"
+                  @click="login"
+                >
                   ログイン
                 </v-btn>
               </v-card-actions>
