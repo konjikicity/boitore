@@ -2,12 +2,12 @@
 #
 # Table name: sentences
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
 #  boin       :string(20)       not null
 #  normal     :string(20)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  mode_id    :bigint
+#  mode_id    :integer
 #
 # Indexes
 #
@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (mode_id => modes.id)
+#  mode_id  (mode_id => modes.id)
 #
 FactoryBot.define do
   factory :sentence do

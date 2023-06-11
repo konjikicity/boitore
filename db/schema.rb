@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2022_06_17_105436) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_06_17_105436) do
     t.string "boin_voice", null: false
     t.string "judge", null: false
     t.integer "score", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_play_results_on_user_id"
@@ -51,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_06_17_105436) do
     t.string "normal", limit: 20, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "mode_id"
+    t.integer "mode_id"
     t.index ["boin"], name: "index_sentences_on_boin", unique: true
     t.index ["mode_id"], name: "index_sentences_on_mode_id"
     t.index ["normal"], name: "index_sentences_on_normal", unique: true

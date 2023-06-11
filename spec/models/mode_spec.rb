@@ -2,7 +2,7 @@
 #
 # Table name: modes
 #
-#  id          :bigint           not null, primary key
+#  id          :integer          not null, primary key
 #  description :string(30)       not null
 #  difficulty  :string(10)       not null
 #  created_at  :datetime         not null

@@ -1,0 +1,29 @@
+# fly.toml app configuration file generated for boitore on 2023-06-11T14:07:47+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "boitore"
+primary_region = "nrt"
+console_command = "/rails/bin/rails console"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
+
+[build]
+  [build.args]
+    VUE_APP_HIRAGANA_KEY="a58867b205dbef9f181c87b274754847752eefdb3d35ae27d19e92cdee2dabf5"
+    VUE_APP_API_URL="https://labs.goo.ne.jp/api/hiragana"
+    VUE_APP_API_ORIGIN="https://boitore.fly.dev"
+    VUE_APP_TWITTER_URL="https://boitore.fly.dev/api/v1/auth/twitter"
+    VUE_APP_TWITTER_REDIRECT_URL="https://boitore.fly.dev/oauth/twitter/callback"
+    VUE_APP_GOOGLE_URL="https://boitore.fly.dev/api/v1/auth/google"
+    VUE_APP_GOOGLE_REDIRECT_URL="https://boitore.fly.dev/oauth/google/callback"

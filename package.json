@@ -38,5 +38,6 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue app/javascript",
     "lint-fix": "eslint --fix --ext .js,.vue app/javascript"
-  }
+  },
+  "packageManager": "yarn@1.22.11"
 }

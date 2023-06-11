@@ -59,6 +59,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # code check
+  gem 'sqlite3'
   gem 'bullet'
   gem 'rails_best_practices'
   gem 'rubocop', require: false
@@ -82,7 +83,6 @@ end
 group :development do
   # schema confirmation
   gem 'annotate'
-
   gem 'listen', '~> 3.3'
   gem 'web-console', '>= 4.1.0'
 
@@ -100,3 +100,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "dockerfile-rails", ">= 1.4", :group => :development
+
+gem "net-smtp", "~> 0.3.3", :require => false
+
+gem "net-imap", "~> 0.3.4", :require => false
+
+gem "net-pop", "~> 0.1.2", :require => false

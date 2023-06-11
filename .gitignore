@@ -36,7 +36,9 @@ yarn-debug.log*
 .yarn-integrity
 /.env.production
 .DS_Store
-/config/database.yml
 /.env.development
 /.env.test
 /public/uploads
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/Dockerfile
