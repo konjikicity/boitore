@@ -2,7 +2,7 @@
 ![rails](https://img.shields.io/badge/Rails-v6.1.4.4-red)
 ![rails](https://img.shields.io/badge/Vue-v2.6.14-brightgreen)
 
-### https://www.boitore.jp/
+### https://boitore.fly.dev/
 
 ### サービス概要
 劇団四季も使っている「母音法」という発声練習方法で、発声練習ができるサービスです。
